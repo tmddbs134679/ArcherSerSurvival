@@ -14,13 +14,9 @@ public class PeriodicTrap : NormalTrap   //활성화/비활성화를 반복하는 함정
     private Animator animator;
     private readonly int IsActive = Animator.StringToHash("IsActive");
 
-    private void Awake()
-    {
-        animator = GetComponentInChildren<Animator>();
-        trapCollider = GetComponent<Collider2D>();
-    }
     private void Start()
-    {     
+    {
+        Init();
         SetTrapState(true);   //비활성화 상태로 시작   
     }
 
@@ -32,6 +28,12 @@ public class PeriodicTrap : NormalTrap   //활성화/비활성화를 반복하는 함정
             //함정 상태 전환
             SetTrapState(!isActive);
         }
+    }
+
+    void Init()
+    {
+        animator = GetComponentInChildren<Animator>();
+        trapCollider = GetComponent<Collider2D>();
     }
 
     void SetTrapState(bool newActiveState)
@@ -51,14 +53,15 @@ public class PeriodicTrap : NormalTrap   //활성화/비활성화를 반복하는 함정
     }
 
     void CheckAndDamagePlayerInside()
-    {   //함정 활성화 시, 플레이어가 이미 밟고 있으면 데미지 처리
+    {   
+        //함정 활성화 시, 플레이어가 이미 밟고 있으면 데미지 처리
         //OverlapBox 를 활용하여 플레이어 레이어 감지
         Bounds trapBounds = trapCollider.bounds;
 
-        Collider2D playerColliderHit = Physics2D.OverlapBox(
+        Collider2D playerCollider = Physics2D.OverlapBox(
             trapBounds.center,  trapBounds.size, 0, playerLayer);
 
-        if (playerColliderHit != null)
+        if (playerCollider != null)
         {
             //데미지 처리
         }
