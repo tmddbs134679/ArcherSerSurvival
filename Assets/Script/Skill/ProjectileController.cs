@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectileController : MonoBehaviour {
-    private ProjectileData data;
-    private Vector2 direction;
-    private Rigidbody2D rb;
+    private ProjectileData data;//비어있는 투사체의 데이터
+    private Vector2 direction;//비어있는 공격방향
+    private Rigidbody2D rb;//프리팹한 투사체의 리짓바디
 
     public void Init(Vector2 dir, ProjectileData _data) {
         direction = dir.normalized;
