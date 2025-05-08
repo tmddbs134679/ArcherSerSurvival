@@ -2,13 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PeriodicTrap : MonoBehaviour   //활성화/비활성화를 반복하는 함정 
+public class PeriodicTrap : NormalTrap   //활성화/비활성화를 반복하는 함정 
 {
-    [Header("Trap Settings")]
-    [SerializeField] private float damageAmount = 10f;        // 피해량
+    [Header("Trap Settings(Periodic)")]
     [SerializeField] private float activeDuration = 1.5f;     // 함정이 활성화되어 있는 시간
     [SerializeField] private float inactiveDuration = 2.0f;   // 함정이 비활성화되어 있는 시간
-    [SerializeField] private LayerMask playerLayer;           // 피해 대상 레이어(플레이어)
 
     private bool isActive = false;      //현재 함정 활성화 상태
     private float timer = 0f;          //주기 변경을 위한 타이머
@@ -65,14 +63,12 @@ public class PeriodicTrap : MonoBehaviour   //활성화/비활성화를 반복하는 함정
             //데미지 처리
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D other)
+    protected override void OnTriggerEnter2D(Collider2D other)
     {
-        if(isActive && ((1 << other.gameObject.layer) & playerLayer) != 0)
+        if (isActive && ((1 << other.gameObject.layer) & playerLayer) != 0)
         {
             //데미지 처리
         }
     }
-
 }
 
