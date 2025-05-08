@@ -1,8 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.UIElements;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
+
 
 public class MonsterSpawnPoint : MonoBehaviour
 {
@@ -23,9 +24,12 @@ public class MonsterSpawnPoint : MonoBehaviour
         return Instantiate(monsterPrefab, spawnPoint, Quaternion.identity);
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         Handles.color = new Color(spawnAreaColor.r, spawnAreaColor.g, spawnAreaColor.b, 0.2f); ;
         Handles.DrawSolidDisc(transform.position, Vector3.forward, spawnAreaRadius);
     }
+#endif
 }
+
