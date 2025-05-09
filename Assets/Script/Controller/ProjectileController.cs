@@ -10,6 +10,9 @@ public class ProjectileController : MonoBehaviour
     private Rigidbody2D rigidbody;
     private Transform pivot;
 
+    LayerMask enemyLayer;
+    LayerMask levelLayer;
+
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody2D>();
@@ -17,6 +20,8 @@ public class ProjectileController : MonoBehaviour
         {
             pivot = transform.GetChild(0);
         }
+        enemyLayer = LayerMask.GetMask("Enemy");
+        levelLayer = LayerMask.GetMask("Level");
     }
 
     private void Update()
@@ -33,5 +38,24 @@ public class ProjectileController : MonoBehaviour
             pivot.localRotation = Quaternion.Euler(180, 0, 0);
         else
             pivot.localRotation = Quaternion.Euler(0, 0, 0);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (levelLayer.value == (1<<collision.gameObject.layer))
+        {
+            DestroyProjectile();
+        }
+        else if (enemyLayer.value == (1<<collision.gameObject.layer))
+        {
+            // enemy와 충돌하면 enemy 피격, 일단 파괴
+            Destroy(collision.gameObject);
+            DestroyProjectile();
+        }
+    }
+
+    void DestroyProjectile()
+    {
+        Destroy(this.gameObject);
     }
 }
