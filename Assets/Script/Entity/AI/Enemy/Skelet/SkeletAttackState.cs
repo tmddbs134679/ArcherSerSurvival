@@ -8,6 +8,7 @@ public class SkeletAttackState : EnemyAttackState
     private float testTime = 0.2f;
     public SkeletAttackState(EnemyStateMachine stateMachine) : base(stateMachine)
     {
+
     }
 
 

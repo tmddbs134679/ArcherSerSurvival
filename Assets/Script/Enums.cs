@@ -10,6 +10,7 @@ public enum EENEMYSTATE
     MOVE,
     PATROL,
     ATTACK,
+    SKILL,
     CHASING,
     DIE,
 }
