@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
         RotateWeaponToTarget();
         AttackDelayHandler();
 
-        // Ã¼·Â °¨¼Ò Å×½ºÆ®
+        // Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½×½ï¿½Æ®
         if (Input.GetKeyDown(KeyCode.H))
         {
             ReduceHp(1);
@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
     {
         rigidbody.velocity = Vector3.zero;
 
-        // Á×À¸¸é Åõ¸íÇØÁö±â
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         foreach (SpriteRenderer renderer in transform.GetComponentsInChildren<SpriteRenderer>())
         {
             Color color = renderer.color;
@@ -80,13 +80,13 @@ public class PlayerController : MonoBehaviour
             renderer.color = color;
         }
 
-        // »ç¸ÁÇÏ¸é ¸ðµç ÄÄÆ÷³ÍÆ® ²ô±â
+        // ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
         foreach (Behaviour componenet in transform.GetComponentsInChildren<Behaviour>())
         {
             componenet.enabled = false;
         }
 
-        // »ç¸Á 2ÃÊ ÈÄ Á¦°Å
+        // ï¿½ï¿½ï¿½ 2ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         Destroy(gameObject, 2f);
     }
 
@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
         
         animator.SetBool("isMove", movement.magnitude > 0.1f);
 
-        // ÀÌµ¿½Ã¿¡´Â È¸Àü°ª °íÁ¤
+        // ï¿½Ìµï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (isMoving)
         {
             Rotate(movement);
@@ -127,12 +127,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Å¸°Ù °¨ÁöÇÏ¿© Å¸°Ù À§Ä¡¸¦ returnÇÏ´Â ÇÔ¼ö
+    // Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ Å¸ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ returnï¿½Ï´ï¿½ ï¿½Ô¼ï¿½
     Transform GetClosestEnemy()
     {
         if (!isMoving)
         {
-            // collider·Î ÀûÀ» °¨Áö -> ÃÖÀûÈ­¸¦ À§ÇØ ¹è¿­ Á¦ÇÑ
+            // colliderï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ -> ï¿½ï¿½ï¿½ï¿½È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­ ï¿½ï¿½ï¿½ï¿½
             Collider2D[] enemiesInRange = new Collider2D[10];
 
             LayerMask enemyLayer = LayerMask.GetMask("Enemy");
@@ -169,7 +169,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    // Å¸°Ù °¨ÁöÇÏ¸é Å¸°ÙÂÊÀ¸·Î sprite È¸Àü ¹× flip
+    // Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ Å¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ sprite È¸ï¿½ï¿½ ï¿½ï¿½ flip
     void RotateWeaponToTarget()
     {
         if (GetClosestEnemy() != null)
@@ -186,7 +186,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // ÇÃ·¹ÀÌ¾îºÎÅÍ Å¸°Ù±îÁöÀÇ ¹æÇâÀ» returnÇÏ´Â ÇÔ¼ö
+    // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½Ù±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ returnï¿½Ï´ï¿½ ï¿½Ô¼ï¿½
     Vector2 EnemyDirection()
     {
         Transform target = GetClosestEnemy();
@@ -199,7 +199,7 @@ public class PlayerController : MonoBehaviour
         weaponController.ShootBullet(EnemyDirection());
     }
 
-    // °ø°Ý µô·¹ÀÌ
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     void AttackDelayHandler()
     {
         if (timeLastAttack <= weaponController.Delay)
@@ -214,7 +214,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Å¸°Ù °¨Áö ¹üÀ§ gizmo
+    // Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ gizmo
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;

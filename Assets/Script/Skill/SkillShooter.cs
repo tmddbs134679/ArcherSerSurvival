@@ -40,11 +40,11 @@ public class SkillShooter : MonoBehaviour
         else
         {
             projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);//투사체 프리팹을 받음
-            projectile.GetComponent<ProjectileController>().OnClick += ReturnToPool;//skillShooter를 구독해서 ReturnToPool을 쓸 수 있게함
+            projectile.GetComponent<ProjectileController2>().OnClick += ReturnToPool;//skillShooter를 구독해서 ReturnToPool을 쓸 수 있게함
         }
         Vector2 dir = target.position - pivot.position;
         Vector2 angleDir = Quaternion.Euler(0, 0, -(count * Data.angle / 2) + Data.angle * (count - 1)) * dir;
-        projectile.GetComponent<ProjectileController>().Init(dir,angleDir, Data);//공격방향,데이터를 받음
+        projectile.GetComponent<ProjectileController2>().Init(dir,angleDir, Data);//공격방향,데이터를 받음
     }
 
     public void ReturnToPool(GameObject projectile)//투사체가 소멸해야 할 때 호출
