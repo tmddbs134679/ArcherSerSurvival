@@ -14,9 +14,17 @@ public class SkillShooter : MonoBehaviour
     private Stack<GameObject> gameObjects = new Stack<GameObject>();//투사체들을 담을 스택
 
 
-    public Transform target;
+     Transform target;
 
-    public Transform pivot;
+     Transform pivot;
+
+    public PlayerController playerController;
+
+    void Awake()
+    {
+        target=playerController.GetClosestEnemy();
+        pivot=playerController.transform;
+    }
     private void Update()
     {
         fireTimer += Time.deltaTime;
@@ -25,6 +33,7 @@ public class SkillShooter : MonoBehaviour
             StartCoroutine(FireWithDelay());
             fireTimer = 0;
         }
+
     }
 
     private void Fire(int count)
