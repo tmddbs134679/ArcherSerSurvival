@@ -3220,7 +3220,7 @@ GameObject:
   - component: {fileID: 2733949812788973212}
   - component: {fileID: 3113737924749302858}
   - component: {fileID: 1300533826611821804}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: NonVisibleCollision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5040,7 +5040,7 @@ GameObject:
   - component: {fileID: 2269172830258283897}
   - component: {fileID: 2387429585334139669}
   - component: {fileID: 8814435437054529770}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: VisibleCollision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
