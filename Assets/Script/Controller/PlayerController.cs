@@ -66,8 +66,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
-
     private void Death()
     {
         rigidbody.velocity = Vector3.zero;
@@ -195,8 +193,14 @@ public class PlayerController : MonoBehaviour
 
     void Attack()
     {
-        weaponController.AttackAni();
-        weaponController.ShootBullet(EnemyDirection());
+        Transform target = GetClosestEnemy();
+        if (target != null)
+        {
+            Vector2 direction = (target.position - transform.position).normalized;
+            weaponController.AttackAni();
+            weaponController.ShootBullet(direction);
+        }
+        
     }
 
     // 공격 딜레이
