@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StatHandler : MonoBehaviour
 {
+    // PlayerStat으로 클래스명 변경
     [SerializeField] private float hp = 10;
     public float Hp
     {

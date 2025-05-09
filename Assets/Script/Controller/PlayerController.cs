@@ -59,20 +59,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Stat 쪽에 가면 좋다.
+    // 체력감소 무적판정은 collision에서 진행할것.
     public void ReduceHp(float reduceHp)
     {
-        Debug.Log("time" + timeLastReduceHp);
-        Debug.Log("delay" + hpReduceDelay);
-
-        if (timeLastReduceHp < hpReduceDelay)
-        {
-            timeLastReduceHp += Time.deltaTime;
-
-            if(timeLastReduceHp > hpReduceDelay)
-            {
-                currentHp -= reduceHp;
-            }
-        }
+        currentHp -= reduceHp;
 
         if (currentHp <= 0)
         {
@@ -104,6 +95,7 @@ public class PlayerController : MonoBehaviour
 
     void ActionHandler()
     {
+        // 인풋 분리
         Vector2 movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
         rigidbody.velocity = movement * speed;
 
