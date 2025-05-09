@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.RuleTile.TilingRuleOutput;
+using Transform = UnityEngine.Transform;
 
 public abstract class EnemyBaseState : State
 {
@@ -13,9 +14,7 @@ public abstract class EnemyBaseState : State
 
     protected void Move(float deltaTime)
     {
-        FlipX();
-
-
+        
     }
     protected bool IsInChaseRange()
     {
@@ -36,17 +35,21 @@ public abstract class EnemyBaseState : State
         return playerDistanceSqr <= stateMachine.AttackRange * stateMachine.AttackRange;
     }
 
-    protected void FlipX()
+    protected void FlipX(Vector3 targetPos)
     {
-        bool playerDir = false;
-
-        playerDir = stateMachine.Player.transform.position.x < stateMachine.transform.position.x;
+        bool faceLeft = targetPos.x < stateMachine.transform.position.x;
 
         foreach (SpriteRenderer spr in stateMachine.SpriteRenderers)
         {
-            spr.flipX = playerDir;
+            spr.flipX = faceLeft;
         }
     }
 
+    public void MoveToTarget(Transform target, float deltaTime)
+    {
+        FlipX(target.position);
+        Vector2 dir = (target.position - stateMachine.transform.position).normalized;
+        stateMachine.transform.position += (Vector3)dir * stateMachine.MovementSpeed * deltaTime;
+    }
 
 }

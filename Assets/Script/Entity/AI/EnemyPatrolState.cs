@@ -41,13 +41,12 @@ public class EnemyPatrolState : EnemyBaseState
             return;
 
         Transform target = patrolPoints[currentPointIndex];
-        Vector2 dir = (target.position - stateMachine.transform.position).normalized;
-        stateMachine.transform.position += (Vector3)dir * stateMachine.MovementSpeed * deltaTime;
+
+        MoveToTarget(target, deltaTime);
 
         if(Vector2.Distance(stateMachine.transform.position, target.position) < reach)
         {
             currentPointIndex = Random.Range(0, patrolPoints.Count);
-
             stateMachine.SwitchState(stateMachine.States[EENEMYSTATE.IDLE]); 
         }
     }

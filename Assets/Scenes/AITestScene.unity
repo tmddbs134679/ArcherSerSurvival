@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c5619bc38914a4418ccdb3225a57f45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  patrolAxis: 2
   patrolPoints: []
   patrolDistance: 1.5
 --- !u!212 &467573791 stripped
@@ -296,7 +297,7 @@ Transform:
   m_GameObject: {fileID: 1121534802}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.75, y: 0, z: 0}
+  m_LocalPosition: {x: 5.83, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -607,7 +608,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5567701086094010334, guid: 7e99233efb0341a4e81b52828b771101, type: 3}
       propertyPath: <AttackRange>k__BackingField
-      value: 2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5567701086094010334, guid: 7e99233efb0341a4e81b52828b771101, type: 3}
       propertyPath: <AttackDamage>k__BackingField
@@ -615,7 +616,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5567701086094010334, guid: 7e99233efb0341a4e81b52828b771101, type: 3}
       propertyPath: <MovementSpeed>k__BackingField
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5567701086094010334, guid: 7e99233efb0341a4e81b52828b771101, type: 3}
       propertyPath: <EnemyAIController>k__BackingField

@@ -19,8 +19,7 @@ public class EnemyChasingState : EnemyBaseState
 
     public override void Tick(float deltaTime)
     {
-        Move(deltaTime);
-
+       
         if (!IsInChaseRange())
         {
             stateMachine.SwitchState(stateMachine.States[EENEMYSTATE.IDLE]);
@@ -30,14 +29,13 @@ public class EnemyChasingState : EnemyBaseState
         {
             stateMachine.SwitchState(stateMachine.States[EENEMYSTATE.ATTACK]);
         }
+
+        MoveToTarget(stateMachine.Player.transform, deltaTime);
     }
 
     public override void Exit()
     {
     }
 
-    private void MoveToPlayer(float deltaTime)
-    {
 
-    }
 }
