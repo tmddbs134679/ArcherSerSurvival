@@ -3,19 +3,21 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - UI
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - ProjectTile
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - Level
+  - Wall
+  - Projectile
+  - Item
   - 
   - 
   - 

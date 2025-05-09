@@ -1,0 +1,9 @@
+diff a/Assets/Script/Manager/GameManager.cs b/Assets/Script/Manager/GameManager.cs	(rejected hunks)
+@@ -37,6 +37,7 @@
+ 
+ 
+     
++>>>>>>> feature-stage
+ 
+     // ���Ͱ� �׾��� �� Ǯ�� ��ȯ�ϴ� �Լ�
+     private void HandleMonsterDeath(GameObject monster)

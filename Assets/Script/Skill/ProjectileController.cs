@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class ProjectileController : MonoBehaviour
+public class ProjectileController2 : MonoBehaviour
 {
     private ProjectileData data;//비어있는 투사체의 데이터
     private Vector2 direction;//비어있는 공격방향
