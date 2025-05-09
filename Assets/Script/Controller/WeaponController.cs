@@ -36,8 +36,8 @@ public class WeaponController : MonoBehaviour
         GameObject origin = projectilePrefab;
         GameObject projectileObject = Instantiate(origin, startPoint, Quaternion.identity);
 
-        ProjectileController2 projectileController = projectileObject.GetComponent<ProjectileController2>();
-      // projectileController.Init(direction);
+        ProjectileController projectileController = projectileObject.GetComponent<ProjectileController>();
+        projectileController.Init(direction);
     }
 
     public void AttackAni()
