@@ -20,8 +20,19 @@ public class OpenCloseDoor : MonoBehaviour
     {
         //gameManager = GameManager.Instance;
         transitionPortal = GetComponent<StageTransitionPortal>();
+        
     }
 
+    private void OnEnable()
+    {
+        GameManager.openCloseDoor += OpenDoor;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.openCloseDoor -= OpenDoor;
+
+    }
     public void OpenDoor()
     {
         doorClosedSprite.enabled = false;

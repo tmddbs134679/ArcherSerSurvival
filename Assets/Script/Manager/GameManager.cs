@@ -36,6 +36,8 @@ public class GameManager : Singleton<GameManager>
 
 
 
+    
+>>>>>>> feature-stage
 
     // 몬스터가 죽었을 때 풀에 반환하는 함수
     private void HandleMonsterDeath(GameObject monster)
@@ -80,6 +82,18 @@ public class GameManager : Singleton<GameManager>
         time += Time.deltaTime;
     }
 
+   
+    public void CreateRoom()
+    {
+        Instantiate(rooms[UnityEngine.Random.RandomRange(0, rooms.Length)]);
+    }
+    public void NextRoom()
+    {
+        if (isOpen)
+        {
+            SceneManager.LoadScene("Main");
+        }
+    }
 
     public void CreateRoom()
     {
@@ -117,6 +131,7 @@ public class GameManager : Singleton<GameManager>
     {
         GameObject monster = monsterPool.GetObject(UnityEngine.Random.RandomRange(0, 3));
         monster.transform.position = new Vector3(UnityEngine.Random.RandomRange(0, 10), UnityEngine.Random.RandomRange(0, 10), 0);
+        monster.transform.position = new Vector3(UnityEngine.Random.RandomRange(0,10), UnityEngine.Random.RandomRange(0, 10),0);
     }
 
 }
