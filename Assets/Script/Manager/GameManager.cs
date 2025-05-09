@@ -1,13 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-
-    public GameManager manager;
-    public static GameManager instance;
-
     [SerializeField]
     private int stage = 0;
     [SerializeField]
@@ -15,12 +13,14 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     private bool isOpen = false;
 
-    GameObject[] entities;
+    public GameObject[] entities;
 
     [SerializeField]
     private int enemyCount = 0;
 
     public MonsterPoolManager monsterPool;
+
+    public GameObject[] rooms;
 
 
     private void OnEnable()
@@ -33,22 +33,44 @@ public class GameManager : Singleton<GameManager>
         Monster.OnMonsterDeath -= HandleMonsterDeath;
     }
 
+
+
+    
+
     // 몬스터가 죽었을 때 풀에 반환하는 함수
     private void HandleMonsterDeath(GameObject monster)
     {
         enemyCount--;
-        monsterPool.ReturnObject(monster);
+        monsterPool.ReturnObject(monster, int.Parse(monster.name));
         CheckEnemy();
     }
 
-    //딱히 할게없구나
+
+    private void Awake()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Init_GameManager();
+    }
+
+
+
     private void Start()
     {
-        if (GameObject.FindGameObjectsWithTag("Enemy") != null)
-        {
-            entities = GameObject.FindGameObjectsWithTag("Enemy");
-        }
 
+    }
+
+    private void Init_GameManager()
+    {
+        CreateRoom();
     }
 
     void Update()
@@ -57,14 +79,28 @@ public class GameManager : Singleton<GameManager>
         time += Time.deltaTime;
     }
 
+   
+    public void CreateRoom()
+    {
+        Instantiate(rooms[UnityEngine.Random.RandomRange(0, rooms.Length)]);
+    }
+    public void NextRoom()
+    {
+        if (isOpen)
+        {
+            SceneManager.LoadScene("Main");
+        }
+    }
 
 
+    public static event Action openCloseDoor;
     public void CheckEnemy()
     {
 
         if (enemyCount <= 0)
         {
             isOpen = true;
+            openCloseDoor?.Invoke();
         }
 
     }
@@ -78,8 +114,8 @@ public class GameManager : Singleton<GameManager>
 
     public void spawn()
     {
-        GameObject monster = monsterPool.GetObject();
-        monster.transform.position = new Vector3();
+        GameObject monster = monsterPool.GetObject(UnityEngine.Random.RandomRange(0, 3));
+        monster.transform.position = new Vector3(UnityEngine.Random.RandomRange(0,10), UnityEngine.Random.RandomRange(0, 10),0);
     }
 
 }
