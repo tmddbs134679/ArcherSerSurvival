@@ -27,15 +27,13 @@ public class MonsterPoolManager : Singleton<MonsterPoolManager>
 
     void Start()
     {
-
-
-
         // 풀에 오브젝트 미리 생성
         for (int j = 0; j < objectPrefabs.Length; j++)
         {
             for (int i = 0; i < poolSize; i++)
             {
                 GameObject obj = Instantiate(objectPrefabs[j]);
+                //obj.GetComponent<대충사망처리하는클래스>().OnDeath += () => ReturnObject(obj, j);
                 obj.SetActive(false);  // 오브젝트 비활성화
                 obj.transform.SetParent(gameObject.transform);
                 pool[j].Enqueue(obj);  // 큐에 넣기
@@ -47,6 +45,7 @@ public class MonsterPoolManager : Singleton<MonsterPoolManager>
     // 풀에서 오브젝트를 가져오는 함수
     public GameObject GetObject(int index)
     {
+        GameManager.Instance.EnemyCounting(1);
         if (pool[index].Count > 0)
         {
             GameObject obj = pool[index].Dequeue();  // 큐에서 오브젝트 하나 꺼내기
@@ -64,6 +63,7 @@ public class MonsterPoolManager : Singleton<MonsterPoolManager>
     // 사용이 끝난 오브젝트를 풀에 반환하는 함수
     public void ReturnObject(GameObject obj, int index)
     {
+        GameManager.Instance.EnemyCounting(-1);
         obj.SetActive(false);  // 오브젝트 비활성화
         pool[index].Enqueue(obj);  // 풀에 반환
     }

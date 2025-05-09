@@ -43,6 +43,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1286535750216555089}
   - component: {fileID: 451983690521816876}
+  - component: {fileID: 8859995227554173232}
   m_Layer: 0
   m_Name: MonsterSpawnPoint
   m_TagString: Untagged
@@ -78,6 +79,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnAreaRadius: 2.2
+--- !u!114 &8859995227554173232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2800612170964803406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f396bf5bfa26b7419c1306e67c1fdf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterID: 0
+  spawnMonsterCount: 0
 --- !u!1 &2845275732445977061
 GameObject:
   m_ObjectHideFlags: 0
@@ -989,7 +1004,7 @@ GameObject:
   - component: {fileID: 2143541850674460841}
   - component: {fileID: 7699436170952548591}
   - component: {fileID: 1309928832858556553}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1928,6 +1943,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5409944640570295933}
   - component: {fileID: 2665800206871909011}
+  - component: {fileID: 8371058580125107752}
   m_Layer: 0
   m_Name: MonsterSpawnPoint (1)
   m_TagString: Untagged
@@ -1962,7 +1978,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd725ebf1d261ee4ba8d8f168b24f33b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnAreaRadius: 2.03
+  spawnAreaRadius: 2.2
+--- !u!114 &8371058580125107752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5892904887244056766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f396bf5bfa26b7419c1306e67c1fdf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterID: 0
+  spawnMonsterCount: 0
 --- !u!1 &5969912053132259089
 GameObject:
   m_ObjectHideFlags: 0

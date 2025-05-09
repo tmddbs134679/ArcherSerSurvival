@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2328793131750090103}
   - component: {fileID: 3211102782083481814}
   - component: {fileID: 6131359025833230849}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: VisibleCollision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -359,7 +359,7 @@ GameObject:
   - component: {fileID: 3637765145074833991}
   - component: {fileID: 8173550058278425838}
   - component: {fileID: 7825037402344065145}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: NonVisibleCollision
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -190,7 +190,6 @@ public class PlayerController : MonoBehaviour
     Vector2 EnemyDirection()
     {
         Transform target = GetClosestEnemy();
-        Debug.Log(target.gameObject.name);
         return (target.position - transform.position).normalized;
     }
 

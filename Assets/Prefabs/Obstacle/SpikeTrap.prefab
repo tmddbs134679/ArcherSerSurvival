@@ -155,7 +155,7 @@ MonoBehaviour:
   damageAmount: 10
   playerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   activeDuration: 3
   inactiveDuration: 3
 --- !u!61 &2113146473962221685
