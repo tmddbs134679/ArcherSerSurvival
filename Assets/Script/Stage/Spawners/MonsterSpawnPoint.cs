@@ -3,8 +3,6 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-
-
 public class MonsterSpawnPoint : MonoBehaviour
 {
     [Header("Spawn Point Settings")]
