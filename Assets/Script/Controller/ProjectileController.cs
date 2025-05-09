@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -48,7 +48,7 @@ public class ProjectileController : MonoBehaviour
         }
         else if (enemyLayer.value == (1<<collision.gameObject.layer))
         {
-            // enemy¿Í Ãæµ¹ÇÏ¸é enemy ÇÇ°Ý, ÀÏ´Ü ÆÄ±«
+            // enemyì™€ ì¶©ëŒí•˜ë©´ enemy í”¼ê²©, ì¼ë‹¨ íŒŒê´´
             Destroy(collision.gameObject);
             DestroyProjectile();
         }

@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private WeaponController WeaponPrefab;
     [SerializeField] private SpriteRenderer spriteRenderer;
 
-    [SerializeField] private Vector2 targetRange = new Vector2(5,5);
+    [SerializeField] private Vector2 targetRange = new Vector2(5, 5);
     private WeaponController weaponController;
 
     private Rigidbody2D rigidbody;
@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
         RotateWeaponToTarget();
         AttackDelayHandler();
 
-        // ü�� ���� �׽�Ʈ
+        // 체력 감소 테스트
         if (Input.GetKeyDown(KeyCode.H))
         {
             ReduceHp(1);
@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
     {
         rigidbody.velocity = Vector3.zero;
 
-        // ������ ����������
+        // 죽으면 투명해지기
         foreach (SpriteRenderer renderer in transform.GetComponentsInChildren<SpriteRenderer>())
         {
             Color color = renderer.color;
@@ -80,13 +80,13 @@ public class PlayerController : MonoBehaviour
             renderer.color = color;
         }
 
-        // ����ϸ� ��� ������Ʈ ����
+        // 사망하면 모든 컴포넌트 끄기
         foreach (Behaviour componenet in transform.GetComponentsInChildren<Behaviour>())
         {
             componenet.enabled = false;
         }
 
-        // ��� 2�� �� ����
+        // 사망 2초 후 제거
         Destroy(gameObject, 2f);
     }
 
@@ -96,10 +96,10 @@ public class PlayerController : MonoBehaviour
         rigidbody.velocity = movement * speed;
 
         isMoving = movement.magnitude > 0.1f;
-        
+
         animator.SetBool("isMove", movement.magnitude > 0.1f);
 
-        // �̵��ÿ��� ȸ���� ����
+        // 이동시에는 회전값 고정
         if (isMoving)
         {
             Rotate(movement);
@@ -127,12 +127,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Ÿ�� �����Ͽ� Ÿ�� ��ġ�� return�ϴ� �Լ�
+    // 타겟 감지하여 타겟 위치를 return하는 함수
     Transform GetClosestEnemy()
     {
         if (!isMoving)
         {
-            // collider�� ���� ���� -> ����ȭ�� ���� �迭 ����
+            // collider로 적을 감지 -> 최적화를 위해 배열 제한
             Collider2D[] enemiesInRange = new Collider2D[10];
 
             LayerMask enemyLayer = LayerMask.GetMask("Enemy");
@@ -150,7 +150,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            if(closestEnemy != null)
+            if (closestEnemy != null)
             {
                 float targetRangeDistance = targetRange.magnitude * 0.5f;
                 float closestEnemyDistance = Vector2.Distance(transform.position, closestEnemy.position);
@@ -169,7 +169,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    // Ÿ�� �����ϸ� Ÿ�������� sprite ȸ�� �� flip
+    // 타겟 감지하면 타겟쪽으로 sprite 회전 및 flip
     void RotateWeaponToTarget()
     {
         if (GetClosestEnemy() != null)
@@ -186,7 +186,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // �÷��̾���� Ÿ�ٱ����� ������ return�ϴ� �Լ�
+    // 플레이어부터 타겟까지의 방향을 return하는 함수
     Vector2 EnemyDirection()
     {
         Transform target = GetClosestEnemy();
@@ -200,7 +200,7 @@ public class PlayerController : MonoBehaviour
         weaponController.ShootBullet(EnemyDirection());
     }
 
-    // ���� ������
+    // 공격 딜레이
     void AttackDelayHandler()
     {
         if (timeLastAttack <= weaponController.Delay)
@@ -215,7 +215,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Ÿ�� ���� ���� gizmo
+    // 타겟 감지 범위 gizmo
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
