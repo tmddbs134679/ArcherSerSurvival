@@ -5,21 +5,44 @@ using UnityEngine;
 public class WeaponController : MonoBehaviour
 {
     [Header("Attack Info")]
-    [SerializeField] private float speed = 1f;
-    [SerializeField] private float power = 1f;
 
     [SerializeField] private SpriteRenderer weaponRenderer;
 
     [SerializeField] private GameObject projectilePrefab;
-    
+
+    [SerializeField] private Transform bulletSpawnPoint;
+
+    [SerializeField] private float delay = 1f;
+    public float Delay { get => delay; set => delay = value; }
+
+    private Animator animator;
+
+    private static readonly int isAttack = Animator.StringToHash("isAttack");
+
     private void Awake()
     {
-
+        animator = GetComponentInChildren<Animator>();
+        animator.speed = 1.8f;
     }
 
-    public void RotateWeapon(bool isLeft)
+    public void FlipWeapon(bool isLeft)
     {
         weaponRenderer.flipY = isLeft;
     }
 
+    public void ShootBullet(Vector2 direction)
+    {
+        Vector2 startPoint = bulletSpawnPoint.position;
+        GameObject origin = projectilePrefab;
+        GameObject projectileObject = Instantiate(origin, startPoint, Quaternion.identity);
+
+        ProjectileController projectileController = projectileObject.GetComponent<ProjectileController>();
+        projectileController.Init(direction);
+    }
+
+    public void AttackAni()
+    {
+        animator.SetTrigger(isAttack);
+    }
+    
 }

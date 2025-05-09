@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 5382316130620887}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.4, z: 0}
+  m_LocalPosition: {x: 0, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -262,3 +262,4 @@ MonoBehaviour:
   WeaponPrefab: {fileID: -2287486402934077916, guid: f22dcd2012bfed84b9eba977d962233b, type: 3}
   spriteRenderer: {fileID: 4305354024098089528}
   attackRange: 15
+  targetRange: {x: 8, y: 8}
