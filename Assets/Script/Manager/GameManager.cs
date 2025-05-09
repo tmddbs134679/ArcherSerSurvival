@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
 
     public GameManager manager;
@@ -40,17 +40,6 @@ public class GameManager : MonoBehaviour
         monsterPool.ReturnObject(monster);
         CheckEnemy();
     }
-
-    //싱글톤 선언
-    private void Awake()
-    {
-        if(instance == null)
-        {
-            instance = this;
-            //씬전환시 비파괴는 생각좀 해봐야할듯
-        }
-    }
-
 
     //딱히 할게없구나
     private void Start()
