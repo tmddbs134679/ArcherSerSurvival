@@ -10,7 +10,7 @@ public class EnemyAIController : MonoBehaviour
     public List<Transform> patrolPoints = new List<Transform>();
     public float patrolDistance = 3f;
 
-    private void Awake()
+    private void OnEnable()
     {
         CreatePatrolPoints();
     }
