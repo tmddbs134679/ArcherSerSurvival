@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 636751bd5872dc349a8077bae4932916, type: 3}
   m_Name: NewProjectileData
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 4.95
   damage: 10
-  duration: 10.6
+  duration: 4.09
   color: {r: 1, g: 1, b: 1, a: 1}
   impactEffect: {fileID: 0}
   rotateSpeed: 1011.94
