@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class EnemyPatrolState : EnemyBaseState
@@ -41,6 +42,20 @@ public class EnemyPatrolState : EnemyBaseState
             return;
 
         Transform target = patrolPoints[currentPointIndex];
+
+        Vector2 current = stateMachine.transform.position;
+        Vector2 destination = target.position;
+
+        RaycastHit2D hit = Physics2D.Linecast(current, destination, stateMachine.wallLayer);
+
+        if (hit.collider != null)
+        {
+            stateMachine.SwitchState(stateMachine.States[EENEMYSTATE.IDLE]);
+            return;
+        }
+
+
+
 
         MoveToTarget(target, deltaTime);
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 using Transform = UnityEngine.Transform;
 
@@ -29,10 +30,11 @@ public abstract class EnemyBaseState : State
     protected bool IsInAttackRange()
     {
         //if (stateMachine.Player.IsDead) { return false; }
+        Vector2 playerPos = stateMachine.Player.transform.position;
+        Vector2 enemyPos = stateMachine.transform.position;
 
-        float playerDistanceSqr = (stateMachine.Player.transform.position - stateMachine.transform.position).sqrMagnitude;
-
-        return playerDistanceSqr <= stateMachine.AttackRange * stateMachine.AttackRange;
+        float sqrDistance = ((Vector2)stateMachine.transform.position - (Vector2)stateMachine.Player.transform.position).sqrMagnitude;
+        return sqrDistance <= stateMachine.MonsterData.attackRange * stateMachine.MonsterData.attackRange;
     }
 
     protected void FlipX(Vector3 targetPos)
@@ -49,7 +51,8 @@ public abstract class EnemyBaseState : State
     {
         FlipX(target.position);
         Vector2 dir = (target.position - stateMachine.transform.position).normalized;
-        stateMachine.transform.position += (Vector3)dir * stateMachine.MovementSpeed * deltaTime;
+        stateMachine.transform.position += (Vector3)dir * stateMachine.MonsterData.movementSpeed * deltaTime;
     }
+
 
 }

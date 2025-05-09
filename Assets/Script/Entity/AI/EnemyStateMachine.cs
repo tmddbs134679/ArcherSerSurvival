@@ -9,14 +9,13 @@ public class EnemyStateMachine : StateMachine
     [field: SerializeField] public Animator Animator { get; private set; }
 
     [field: SerializeField] public List<SpriteRenderer> SpriteRenderers { get; private set; }
-    [field: SerializeField] public int AttackDamage { get; private set; }
-    [field: SerializeField] public float AttackRange { get; private set; }
-    [field: SerializeField] public float MovementSpeed { get; private set; }
+    [field: SerializeField] public MonsterData MonsterData { get; private set; }
     [field: SerializeField] public GameObject Player { get; private set; }
     [field: SerializeField] public float PlayerChasingRange { get; private set; }
     [field: SerializeField] public EnemyAIController EnemyAIController { get; private set; }
     [field: SerializeField] public bool CanAttack { get; set; } = true;
 
+    [SerializeField] public LayerMask wallLayer;
     protected virtual void Awake()
     {
         States.Add(EENEMYSTATE.IDLE, new EnemyIdleState(this));
