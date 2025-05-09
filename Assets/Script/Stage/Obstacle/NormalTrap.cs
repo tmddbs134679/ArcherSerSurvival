@@ -20,10 +20,11 @@ public class NormalTrap : MonoBehaviour   //플레이어 접촉 시 피해를 입히는 함정
 
     protected virtual void OnTriggerStay2D(Collider2D other)
     {
-        if (((1 << other.gameObject.layer) & playerLayer) != 0)
+        /*if (player != null && other.gameObject == player.gameObject)
         {
-            TryDealDamage();
+            TryDealDamage(); // 캐시된 player를 대상으로 데미지 시도
         }
+        */
     }
 
     protected virtual void OnTriggerExit2D(Collider2D other)
