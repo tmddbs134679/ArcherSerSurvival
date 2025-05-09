@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,6 +26,8 @@ public class PlayerController : MonoBehaviour
     private StatHandler statHandler;
 
     [SerializeField] private float currentHp = 0;
+    [SerializeField] private float hpReduceDelay = 0.5f;
+    private float timeLastReduceHp = 0f;
 
     void Awake()
     {
@@ -58,7 +61,18 @@ public class PlayerController : MonoBehaviour
 
     public void ReduceHp(float reduceHp)
     {
-        currentHp -= reduceHp;
+        Debug.Log("time" + timeLastReduceHp);
+        Debug.Log("delay" + hpReduceDelay);
+
+        if (timeLastReduceHp < hpReduceDelay)
+        {
+            timeLastReduceHp += Time.deltaTime;
+
+            if(timeLastReduceHp > hpReduceDelay)
+            {
+                currentHp -= reduceHp;
+            }
+        }
 
         if (currentHp <= 0)
         {
