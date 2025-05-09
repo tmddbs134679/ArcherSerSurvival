@@ -19,11 +19,9 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     private int enemyCount = 0;
 
-    public MonsterPoolManager monsterPool;
-
     public GameObject[] rooms;
 
-
+    //í¬ì•„ì•… ì£¼ì„ í…ŒìŠ¤íŠ¸
     private void OnEnable()
     {
         //Monster.OnMonsterDeath += HandleMonsterDeath;
@@ -38,11 +36,11 @@ public class GameManager : Singleton<GameManager>
 
 
 
-    // ¸ó½ºÅÍ°¡ Á×¾úÀ» ¶§ Ç®¿¡ ¹İÈ¯ÇÏ´Â ÇÔ¼ö
+    // ï§ÑŠë’ª?ê³Œ? äºŒìŒë¿€?????Â€??è«›ì„‘ì†š?ì„ë’— ?â‘¥ë‹”
     private void HandleMonsterDeath(GameObject monster)
     {
         enemyCount--;
-        monsterPool.ReturnObject(monster, int.Parse(monster.name));
+        MonsterPoolManager.Instance.ReturnObject(monster, int.Parse(monster.name));
         CheckEnemy();
     }
 
@@ -77,7 +75,8 @@ public class GameManager : Singleton<GameManager>
 
     void Update()
     {
-        //ÃßÈÄ »ç¿ëÇÒ¼öµµÀÖ´Â ½Ã°£ ¹Ì¸®Ã¼Å©
+        //ç•°ë·€ì‘ ?ÑŠìŠœ?ì¢ë‹”?ê¾©ì—³???ì’“ì»™ èª˜ëªƒâ”ï§£ëŒ„ê²•
+        //ç•°ë·€ì‘ ?ÑŠìŠœ?ì¢ë‹”?ê¾©ì—³???ì’“ì»™ èª˜ëªƒâ”ï§£ëŒ„ê²•
         time += Time.deltaTime;
     }
 
@@ -103,6 +102,7 @@ public class GameManager : Singleton<GameManager>
         {
             isOpen = true;
             openCloseDoor?.Invoke();
+            UIManager.Instance.ShowUI("Reward");
         }
 
     }
@@ -114,10 +114,18 @@ public class GameManager : Singleton<GameManager>
         enemyCount = entities.Length;
     }
 
-    public void spawn()
+    public void test_spawn()
     {
-        GameObject monster = monsterPool.GetObject(UnityEngine.Random.RandomRange(0, 3));
+        GameObject monster = MonsterPoolManager.Instance.GetObject(UnityEngine.Random.RandomRange(0, 3));
         monster.transform.position = new Vector3(UnityEngine.Random.RandomRange(0, 10), UnityEngine.Random.RandomRange(0, 10), 0);
+        EnemyCounting();
+    }
+
+    public void spawn(int index, Vector3 spawnPos)
+    {
+        GameObject monster = MonsterPoolManager.Instance.GetObject(index);
+        monster.transform.position = spawnPos;
+        EnemyCounting();
     }
 
 }
