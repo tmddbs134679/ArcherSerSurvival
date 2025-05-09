@@ -13,21 +13,18 @@ public class EnemyStateMachine : StateMachine
     [field: SerializeField] public float AttackRange { get; private set; }
     [field: SerializeField] public float MovementSpeed { get; private set; }
     [field: SerializeField] public GameObject Player { get; private set; }
-
     [field: SerializeField] public float PlayerChasingRange { get; private set; }
-
     [field: SerializeField] public EnemyAIController EnemyAIController { get; private set; }
+    [field: SerializeField] public bool CanAttack { get; set; } = true;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         States.Add(EENEMYSTATE.IDLE, new EnemyIdleState(this));
-        States.Add(EENEMYSTATE.PATROL, new EnemyPatrolState(this));
-        States.Add(EENEMYSTATE.CHASING, new EnemyChasingState(this));
         States.Add(EENEMYSTATE.ATTACK, new EnemyAttackState(this));
     }
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
 
@@ -37,6 +34,5 @@ public class EnemyStateMachine : StateMachine
     private void Update()
     {
         currentState?.Tick(Time.deltaTime);
-
     }
 }

@@ -158,7 +158,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 9dc0612e3458d02499ddc55173f15763, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -200,13 +200,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4343138819513920215}
+  - component: {fileID: 4493697438409537768}
+  - component: {fileID: 3470322307665087890}
   m_Layer: 0
   m_Name: Skelet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4343138819513920215
 Transform:
   m_ObjectHideFlags: 0
@@ -223,3 +225,38 @@ Transform:
   - {fileID: 3760362281344297298}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4493697438409537768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7659958387202495407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e256ecaa8306a8a4289acc498e2b7d56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Animator>k__BackingField: {fileID: 5346012146063818453}
+  <SpriteRenderers>k__BackingField: []
+  <AttackDamage>k__BackingField: 3
+  <AttackRange>k__BackingField: 10
+  <MovementSpeed>k__BackingField: 3
+  <Player>k__BackingField: {fileID: 0}
+  <PlayerChasingRange>k__BackingField: 0
+  <EnemyAIController>k__BackingField: {fileID: 3470322307665087890}
+--- !u!114 &3470322307665087890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7659958387202495407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5619bc38914a4418ccdb3225a57f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patrolAxis: 1
+  patrolPoints: []
+  patrolDistance: 4

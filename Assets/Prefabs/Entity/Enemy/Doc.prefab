@@ -200,7 +200,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5437609621943608088}
-  - component: {fileID: 5567701086094010334}
+  - component: {fileID: 5995887376640259419}
+  - component: {fileID: 2327899744472762287}
   m_Layer: 0
   m_Name: Doc
   m_TagString: Untagged
@@ -224,7 +225,7 @@ Transform:
   - {fileID: 7987368450098578089}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5567701086094010334
+--- !u!114 &5995887376640259419
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -233,10 +234,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 6800338950794716611}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b4d9c6f7a8a6ce409bd764e6782714b, type: 3}
+  m_Script: {fileID: 11500000, guid: 5338d88df69604b459be9dbfcb80a24a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <Animator>k__BackingField: {fileID: 8035420521145780144}
+  <SpriteRenderers>k__BackingField:
+  - {fileID: 2821711444294859596}
+  - {fileID: 5478024326061024807}
   <AttackDamage>k__BackingField: 0
-  <AttackRange>k__BackingField: 0
-  <MovementSpeed>k__BackingField: 0
+  <AttackRange>k__BackingField: 0.5
+  <MovementSpeed>k__BackingField: 2
+  <Player>k__BackingField: {fileID: 0}
+  <PlayerChasingRange>k__BackingField: 5
+  <EnemyAIController>k__BackingField: {fileID: 2327899744472762287}
+--- !u!114 &2327899744472762287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6800338950794716611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5619bc38914a4418ccdb3225a57f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patrolAxis: 2
+  patrolPoints: []
+  patrolDistance: 1.5

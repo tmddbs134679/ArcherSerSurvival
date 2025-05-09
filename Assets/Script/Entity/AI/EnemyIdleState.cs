@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyIdleState : EnemyBaseState
 {
-    private float idleTime;
-    private float timer;
+    protected float idleTime;
+    protected float timer;
     private readonly int IdleHas = Animator.StringToHash("Idle");
     private const float AnimatorDampTime = 0.1f;
     private const float CrossFadeDuration = 0.1f;

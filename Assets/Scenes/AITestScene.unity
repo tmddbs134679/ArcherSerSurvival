@@ -123,31 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &362154443 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6800338950794716611, guid: 7e99233efb0341a4e81b52828b771101, type: 3}
-  m_PrefabInstance: {fileID: 2023548924}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &362154446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 362154443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c5619bc38914a4418ccdb3225a57f45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  patrolAxis: 2
-  patrolPoints: []
-  patrolDistance: 1.5
---- !u!212 &467573791 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 5478024326061024807, guid: 7e99233efb0341a4e81b52828b771101, type: 3}
-  m_PrefabInstance: {fileID: 2023548924}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &556896793
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,11 +447,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!212 &1768493737 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 2821711444294859596, guid: 7e99233efb0341a4e81b52828b771101, type: 3}
-  m_PrefabInstance: {fileID: 2023548924}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1866842033
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -550,18 +520,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 238551665466846539, guid: 7e99233efb0341a4e81b52828b771101, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2821711444294859596, guid: 7e99233efb0341a4e81b52828b771101, type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2821711444294859596, guid: 7e99233efb0341a4e81b52828b771101, type: 3}
-      propertyPath: m_FlipY
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5437609621943608088, guid: 7e99233efb0341a4e81b52828b771101, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.54
@@ -602,42 +560,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5478024326061024807, guid: 7e99233efb0341a4e81b52828b771101, type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5567701086094010334, guid: 7e99233efb0341a4e81b52828b771101, type: 3}
-      propertyPath: <AttackRange>k__BackingField
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5567701086094010334, guid: 7e99233efb0341a4e81b52828b771101, type: 3}
-      propertyPath: <AttackDamage>k__BackingField
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5567701086094010334, guid: 7e99233efb0341a4e81b52828b771101, type: 3}
-      propertyPath: <MovementSpeed>k__BackingField
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5567701086094010334, guid: 7e99233efb0341a4e81b52828b771101, type: 3}
-      propertyPath: <EnemyAIController>k__BackingField
-      value: 
-      objectReference: {fileID: 362154446}
-    - target: {fileID: 5567701086094010334, guid: 7e99233efb0341a4e81b52828b771101, type: 3}
-      propertyPath: <PlayerChasingRange>k__BackingField
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5567701086094010334, guid: 7e99233efb0341a4e81b52828b771101, type: 3}
-      propertyPath: <SpriteRenderers>k__BackingField.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5567701086094010334, guid: 7e99233efb0341a4e81b52828b771101, type: 3}
-      propertyPath: <SpriteRenderers>k__BackingField.Array.data[0]
-      value: 
-      objectReference: {fileID: 1768493737}
-    - target: {fileID: 5567701086094010334, guid: 7e99233efb0341a4e81b52828b771101, type: 3}
-      propertyPath: <SpriteRenderers>k__BackingField.Array.data[1]
-      value: 
-      objectReference: {fileID: 467573791}
     - target: {fileID: 6800338950794716611, guid: 7e99233efb0341a4e81b52828b771101, type: 3}
       propertyPath: m_Name
       value: Doc
@@ -645,10 +567,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6800338950794716611, guid: 7e99233efb0341a4e81b52828b771101, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 362154446}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e99233efb0341a4e81b52828b771101, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

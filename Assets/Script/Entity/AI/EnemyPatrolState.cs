@@ -32,7 +32,7 @@ public class EnemyPatrolState : EnemyBaseState
 
     public override void Exit()
     {
-       
+        stateMachine.CanAttack = true;
     }
 
     private void MoveToNextPatrolPoint(float deltaTime)
