@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using System.Linq;
 public class UIManager : Singleton<UIManager>
 {
-    // UI ¿ÀºêÁ§Æ®µéÀ» °ü¸®ÇÒ µñ¼Å³Ê¸®
+    // UI ì˜¤ë¸Œì íŠ¸ë“¤ì„ ê´€ë¦¬í•  ë”•ì…”ë„ˆë¦¬
     private Dictionary<string, GameObject> uiElements = new Dictionary<string, GameObject>();
 
     [SerializeField]
@@ -48,12 +48,12 @@ public class UIManager : Singleton<UIManager>
 
         }
 
-        //Linq»ç¿ëÇØ¼­ °É·¯¿À±â
+        //Linqì‚¬ìš©í•´ì„œ ê±¸ëŸ¬ì˜¤ê¸°
         uiObjects = objects
-            .Where(obj => obj.CompareTag("UI"))
+            .Where(obj => obj != null && obj.CompareTag("UI"))
             .ToArray();
 
-        //¼º´ÉÀÌ½´ ¹èÁ¦
+        //ì„±ëŠ¥ì´ìŠˆ ë°°ì œ
         //GameObject[] uiObjects = GameObject.FindGameObjectsWithTag("UI");
         foreach (var uiObject in uiObjects)
         {

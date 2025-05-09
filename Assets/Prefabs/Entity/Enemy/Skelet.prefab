@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 234430179223417770}
   - component: {fileID: 1012770518878365492}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: weapon_bow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 5346012146063818453}
   - component: {fileID: 5543064064620370087}
   - component: {fileID: 8604600554162533212}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MainSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,7 +276,7 @@ GameObject:
   - component: {fileID: 4343138819513920215}
   - component: {fileID: 4493697438409537768}
   - component: {fileID: 3470322307665087890}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Skelet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

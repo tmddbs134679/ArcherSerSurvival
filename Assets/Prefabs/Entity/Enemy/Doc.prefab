@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6018350448677667150}
   - component: {fileID: 5478024326061024807}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: weapon_knife
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 8035420521145780144}
   - component: {fileID: 8865799734586489951}
   - component: {fileID: 1264626164576110990}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MainSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,7 +276,7 @@ GameObject:
   - component: {fileID: 5437609621943608088}
   - component: {fileID: 2327899744472762287}
   - component: {fileID: 3744437999047480500}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Doc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
