@@ -16,15 +16,12 @@ public class UIManager : Singleton<UIManager>
 
     GameObject[] objects;
 
+
+
+
     private void Awake()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
-        /*
-        if (gameObject.GetComponent<Button>() != null)
-        {
-            gameObject.GetComponent<Button>().onClick.AddListener(() => ToggleUI(gameObject.name));
-        }
-        */
     }
 
     private void OnDestroy()
@@ -34,7 +31,6 @@ public class UIManager : Singleton<UIManager>
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-
         GetUI();
     }
 
