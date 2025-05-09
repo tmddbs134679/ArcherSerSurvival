@@ -12,7 +12,7 @@ public enum EENEMYSTATE
     ATTACK,
     SKILL,
     CHASING,
-    DIE,
+    Dead,
 }
 
 public enum EPATROLAXIS
