@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterPoolManager : MonoBehaviour
+public class MonsterPoolManager : Singleton<MonsterPoolManager>
 {
     public GameObject[] objectPrefabs;
 
@@ -15,17 +15,21 @@ public class MonsterPoolManager : MonoBehaviour
     GameObject poolParent;
 
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         pool[0] = new Queue<GameObject>();
         pool[1] = new Queue<GameObject>();
         pool[2] = new Queue<GameObject>();
 
-        
     }
 
     void Start()
     {
+
+
+
         // 풀에 오브젝트 미리 생성
         for (int j = 0; j < objectPrefabs.Length; j++)
         {

@@ -46,8 +46,9 @@ public class GameManager : Singleton<GameManager>
     }
 
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
