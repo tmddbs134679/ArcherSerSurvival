@@ -196,7 +196,6 @@ public class PlayerController : MonoBehaviour
     void Attack()
     {
         weaponController.AttackAni();
-        weaponController.ShootBullet(EnemyDirection());
     }
 
     // 공격 딜레이
