@@ -65,7 +65,7 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
-        EnemyCounting();
+        
     }
 
     private void Init_GameManager()
