@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 4112157654392324652}
   - component: {fileID: 730661592102225474}
   - component: {fileID: 3026092303025384751}
+  - component: {fileID: 2055548919317617274}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -261,5 +262,18 @@ MonoBehaviour:
   weaponPivot: {fileID: 9087734745600258595}
   WeaponPrefab: {fileID: -2287486402934077916, guid: f22dcd2012bfed84b9eba977d962233b, type: 3}
   spriteRenderer: {fileID: 4305354024098089528}
-  attackRange: 15
-  targetRange: {x: 8, y: 8}
+  targetRange: {x: 10, y: 10}
+  currentHp: 0
+--- !u!114 &2055548919317617274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8184897253490379571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc8d5551acf4043489520f5fb8719cb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 10

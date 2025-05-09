@@ -9,8 +9,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform weaponPivot;
     [SerializeField] private WeaponController WeaponPrefab;
     [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private float attackRange = 15f;
-    [SerializeField] private Vector2 targetRange;
+
+    [SerializeField] private Vector2 targetRange = new Vector2(5,5);
     private WeaponController weaponController;
 
     private Rigidbody2D rigidbody;
@@ -22,10 +22,15 @@ public class PlayerController : MonoBehaviour
     private bool isAttacking = false;
     private float timeLastAttack = float.MaxValue;
 
+    private StatHandler statHandler;
+
+    [SerializeField] private float currentHp = 0;
+
     void Awake()
     {
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
+        statHandler = GetComponent<StatHandler>();
 
         if (WeaponPrefab != null)
             weaponController = Instantiate(WeaponPrefab, weaponPivot);
@@ -33,7 +38,10 @@ public class PlayerController : MonoBehaviour
             weaponController = GetComponentInChildren<WeaponController>();
     }
 
-
+    private void Start()
+    {
+        currentHp = statHandler.Hp;
+    }
 
     void Update()
     {
@@ -41,6 +49,45 @@ public class PlayerController : MonoBehaviour
         RotateWeaponToTarget();
         AttackDelayHandler();
 
+        // 체력 감소 테스트
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            ReduceHp(1);
+        }
+    }
+
+    public void ReduceHp(float reduceHp)
+    {
+        currentHp -= reduceHp;
+
+        if (currentHp <= 0)
+        {
+            Death();
+        }
+    }
+
+
+
+    private void Death()
+    {
+        rigidbody.velocity = Vector3.zero;
+
+        // 죽으면 투명해지기
+        foreach (SpriteRenderer renderer in transform.GetComponentsInChildren<SpriteRenderer>())
+        {
+            Color color = renderer.color;
+            color.a = 0.3f;
+            renderer.color = color;
+        }
+
+        // 사망하면 모든 컴포넌트 끄기
+        foreach (Behaviour componenet in transform.GetComponentsInChildren<Behaviour>())
+        {
+            componenet.enabled = false;
+        }
+
+        // 사망 2초 후 제거
+        Destroy(gameObject, 2f);
     }
 
     void ActionHandler()
