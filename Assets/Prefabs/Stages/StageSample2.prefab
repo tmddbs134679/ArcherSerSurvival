@@ -4332,6 +4332,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5514591551294222356}
+  - component: {fileID: 8912120472620934663}
   - component: {fileID: 4670372954835591985}
   m_Layer: 0
   m_Name: MonsterSpawnPoint (2)
@@ -4355,6 +4356,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3606385296254130277}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8912120472620934663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834997603082520614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f396bf5bfa26b7419c1306e67c1fdf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnMonsterCount: 0
 --- !u!114 &4670372954835591985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4367,7 +4381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd725ebf1d261ee4ba8d8f168b24f33b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnAreaRadius: 2.03
+  spawnAreaRadius: 2.2
 --- !u!1 &3907442891116244256
 GameObject:
   m_ObjectHideFlags: 0
@@ -5311,6 +5325,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7325312591977550802}
+  - component: {fileID: 7571093017836092714}
   - component: {fileID: 5662971358604622811}
   m_Layer: 0
   m_Name: MonsterSpawnPoint (3)
@@ -5334,6 +5349,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3606385296254130277}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7571093017836092714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6915871980507911319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f396bf5bfa26b7419c1306e67c1fdf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnMonsterCount: 0
 --- !u!114 &5662971358604622811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5346,7 +5374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd725ebf1d261ee4ba8d8f168b24f33b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnAreaRadius: 2.03
+  spawnAreaRadius: 2.2
 --- !u!1 &7790281534039975969
 GameObject:
   m_ObjectHideFlags: 0
@@ -5356,6 +5384,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9211993909960333174}
+  - component: {fileID: 442237245301328526}
   - component: {fileID: 7869128498734879434}
   m_Layer: 0
   m_Name: MonsterSpawnPoint (1)
@@ -5379,6 +5408,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3606385296254130277}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &442237245301328526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7790281534039975969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f396bf5bfa26b7419c1306e67c1fdf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnMonsterCount: 0
 --- !u!114 &7869128498734879434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5391,7 +5433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd725ebf1d261ee4ba8d8f168b24f33b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnAreaRadius: 2.03
+  spawnAreaRadius: 2.2
 --- !u!1 &8128428509213280278
 GameObject:
   m_ObjectHideFlags: 0
@@ -5911,6 +5953,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7003509309821268655}
+  - component: {fileID: 4983449588371913369}
   - component: {fileID: 5182804469333860371}
   m_Layer: 0
   m_Name: MonsterSpawnPoint
@@ -5934,6 +5977,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3606385296254130277}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4983449588371913369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8451113901114663480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f396bf5bfa26b7419c1306e67c1fdf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnMonsterCount: 0
 --- !u!114 &5182804469333860371
 MonoBehaviour:
   m_ObjectHideFlags: 0

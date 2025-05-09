@@ -5,7 +5,7 @@ using UnityEngine;
 public class MonsterSpawner : MonoBehaviour
 {
     //[SerializeField] private int monsterID;
-    [SerializeField] private int monsterCount;      //생성할 몬스터 수
+    [SerializeField] private int spawnMonsterCount;      //생성할 몬스터 수
     
     private MonsterSpawnPoint spawnPoint;
     private MonsterPoolManager poolManager;
@@ -14,12 +14,13 @@ public class MonsterSpawner : MonoBehaviour
     private void Start()
     {
         spawnPoint = GetComponent<MonsterSpawnPoint>();
-        poolManager = GetComponent<MonsterPoolManager>();
+        //poolManager = MonsterPoolManager.Instance;
+        SpawnWave();
     }
 
     private void SpawnWave()
-    {
-        for(int i = 0; i < monsterCount; i++) 
+    {   //몬스터 전부 생성
+        for(int i = 0; i < spawnMonsterCount; i++) 
         {
             GameObject monster = poolManager.GetObject();
             if(monster != null) 
@@ -28,6 +29,4 @@ public class MonsterSpawner : MonoBehaviour
             }
         }
     }
-
-   
 }

@@ -42,6 +42,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5432156146008096235}
+  - component: {fileID: 1478317510104742221}
   - component: {fileID: 3651767808354398922}
   m_Layer: 0
   m_Name: MonsterSpawnPoint (1)
@@ -59,12 +60,25 @@ Transform:
   m_GameObject: {fileID: 1200405600133968898}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6, y: 4.5, z: 0}
+  m_LocalPosition: {x: 6, y: 3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7516901012246092956}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1478317510104742221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200405600133968898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f396bf5bfa26b7419c1306e67c1fdf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnMonsterCount: 0
 --- !u!114 &3651767808354398922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd725ebf1d261ee4ba8d8f168b24f33b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnAreaRadius: 2.03
+  spawnAreaRadius: 2.2
 --- !u!1 &1282404322905999752
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,6 +611,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 926311009662116935}
+  - component: {fileID: 5238600852887172364}
   - component: {fileID: 7769099843339251870}
   m_Layer: 0
   m_Name: MonsterSpawnPoint (2)
@@ -614,12 +629,25 @@ Transform:
   m_GameObject: {fileID: 1674439290753597824}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.5, z: 0}
+  m_LocalPosition: {x: 0, y: 3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7516901012246092956}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5238600852887172364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674439290753597824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f396bf5bfa26b7419c1306e67c1fdf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnMonsterCount: 0
 --- !u!114 &7769099843339251870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -632,7 +660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd725ebf1d261ee4ba8d8f168b24f33b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnAreaRadius: 2.03
+  spawnAreaRadius: 2.2
 --- !u!1 &2210839590630608425
 GameObject:
   m_ObjectHideFlags: 0
@@ -2301,6 +2329,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4176958586968663338}
+  - component: {fileID: 2262511575698684163}
   - component: {fileID: 772623535550440359}
   m_Layer: 0
   m_Name: MonsterSpawnPoint
@@ -2318,12 +2347,25 @@ Transform:
   m_GameObject: {fileID: 5549214558182750984}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6, y: 4.5, z: 0}
+  m_LocalPosition: {x: -6, y: 3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7516901012246092956}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2262511575698684163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5549214558182750984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f396bf5bfa26b7419c1306e67c1fdf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnMonsterCount: 0
 --- !u!114 &772623535550440359
 MonoBehaviour:
   m_ObjectHideFlags: 0
