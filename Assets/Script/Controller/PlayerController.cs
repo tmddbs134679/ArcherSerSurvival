@@ -198,7 +198,6 @@ public class PlayerController : MonoBehaviour
         {
             Vector2 direction = (target.position - transform.position).normalized;
             weaponController.AttackAni();
-            weaponController.ShootBullet(direction);
         }
         
     }
