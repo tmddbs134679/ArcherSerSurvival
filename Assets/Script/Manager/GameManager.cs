@@ -65,7 +65,7 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
-
+        EnemyCounting();
     }
 
     private void Init_GameManager()
@@ -107,25 +107,27 @@ public class GameManager : Singleton<GameManager>
 
     }
 
-    public void EnemyCounting()
+    public void EnemyCounting(int count)
     {
+        /*
         entities = GameObject.FindGameObjectsWithTag("Enemy");
-
         enemyCount = entities.Length;
+        */
+        enemyCount += count;
     }
 
     public void test_spawn()
     {
         GameObject monster = MonsterPoolManager.Instance.GetObject(UnityEngine.Random.RandomRange(0, 3));
         monster.transform.position = new Vector3(UnityEngine.Random.RandomRange(0, 10), UnityEngine.Random.RandomRange(0, 10), 0);
-        EnemyCounting();
+        EnemyCounting(1);
     }
 
     public void spawn(int index, Vector3 spawnPos)
     {
         GameObject monster = MonsterPoolManager.Instance.GetObject(index);
         monster.transform.position = spawnPos;
-        EnemyCounting();
+        EnemyCounting(1);
     }
 
 }
