@@ -185,7 +185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5001682591193698872, guid: 726839dce665f624280ccdd5b5cbef93, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -334,7 +334,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3026092303025384751, guid: 86cec8cee33f5594ab57bb8cf11a70b4, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3033453059338148139, guid: 86cec8cee33f5594ab57bb8cf11a70b4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -558,6 +558,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3248456437876207710, guid: 0fae2dfc2385c0b498a17a20783f762e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3470322307665087890, guid: 0fae2dfc2385c0b498a17a20783f762e, type: 3}
       propertyPath: patrolAxis
       value: 0
@@ -606,6 +610,10 @@ PrefabInstance:
       propertyPath: wallLayer.m_Bits
       value: 64
       objectReference: {fileID: 0}
+    - target: {fileID: 6052919295922691267, guid: 0fae2dfc2385c0b498a17a20783f762e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7659958387202495407, guid: 0fae2dfc2385c0b498a17a20783f762e, type: 3}
       propertyPath: m_Name
       value: Skelet
@@ -617,6 +625,10 @@ PrefabInstance:
     - target: {fileID: 7659958387202495407, guid: 0fae2dfc2385c0b498a17a20783f762e, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7659958387202495407, guid: 0fae2dfc2385c0b498a17a20783f762e, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -714,6 +726,10 @@ PrefabInstance:
     - target: {fileID: 6800338950794716611, guid: 7e99233efb0341a4e81b52828b771101, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6800338950794716611, guid: 7e99233efb0341a4e81b52828b771101, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7987368450098578089, guid: 7e99233efb0341a4e81b52828b771101, type: 3}
       propertyPath: m_LocalPosition.x
