@@ -32,8 +32,14 @@ public class ProjectileController2 : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)//충돌했을 시
     {
         CancelInvoke("WrappingInvoke");
-        OnClick?.Invoke(gameObject);//skillShooter의 ReturnToPool() 메서드를 호출
-        collision.GetComponent<EnemyStateMachine>().Health.DealDamage(data.damage);
+       
+        if(collision.GetComponent<EnemyStateMachine>() != null)
+        {
+            Debug.Log("dsd");
+            collision.GetComponent<EnemyStateMachine>().Health.DealDamage(data.damage);
+            OnClick?.Invoke(gameObject);//skillShooter의 ReturnToPool() 메서드를 호출
+        }
+          
     }
 
     void WrappingInvoke()//Invoke(name,time) 지연 호출을 쓰려면 함수 이름으로 넣어줘야 하므로 래핑
