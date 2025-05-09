@@ -49,7 +49,7 @@ public class ProjectileController : MonoBehaviour
         else if (enemyLayer.value == (1<<collision.gameObject.layer))
         {
             // enemy와 충돌하면 enemy 피격, 일단 파괴
-            Destroy(collision.gameObject);
+       //     Destroy(collision.gameObject);
             DestroyProjectile();
         }
     }

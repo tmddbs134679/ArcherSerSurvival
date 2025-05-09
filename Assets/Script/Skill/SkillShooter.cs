@@ -11,19 +11,18 @@ public class SkillShooter : MonoBehaviour
     public float fireRate; //한 사이클 발사 간격
     public float individualFireRate;//개별 발사간격
     private float fireTimer;//단순 시간변수
-    private Stack<GameObject> gameObjects = new Stack<GameObject>();//투사체들을 담을 스택
+    private Stack<GameObject> gameObjects;//투사체들을 담을 스택
 
 
-     Transform target;
+    Transform target;
 
-     Transform pivot;
+    Transform pivot;
 
-    public PlayerController playerController;
+    public GameObject player;
 
     void Awake()
     {
-        target=playerController.GetClosestEnemy();
-        pivot=playerController.transform;
+        gameObjects = new Stack<GameObject>(Data.count);
     }
     private void Update()
     {
@@ -36,24 +35,27 @@ public class SkillShooter : MonoBehaviour
 
     }
 
-    private void Fire(int count)
+    private void Fire(int count, Vector2 pivotPos, Vector2 targetPos)
     {
-        GameObject projectile; //투사체프리팹과 투사체 데이터를 받을 오브젝트
-        if (gameObjects.Count > 0)//스택안에 오브젝트가 남아있으면
+        GameObject projectile;
+
+        if (gameObjects.Count > 0)
         {
-            projectile = gameObjects.Pop();//오브젝트를 꺼낸다.
-            projectile.transform.position = pivot.position;
+            projectile = gameObjects.Pop();
+            projectile.transform.position = pivotPos;
             projectile.transform.rotation = Quaternion.identity;
             projectile.SetActive(true);
         }
         else
         {
-            projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);//투사체 프리팹을 받음
-            projectile.GetComponent<ProjectileController2>().OnClick += ReturnToPool;//skillShooter를 구독해서 ReturnToPool을 쓸 수 있게함
+            projectile = Instantiate(projectilePrefab, pivotPos, Quaternion.identity);
+            projectile.GetComponent<ProjectileController2>().OnClick += ReturnToPool;
         }
-        Vector2 dir = target.position - pivot.position;
-        Vector2 angleDir = Quaternion.Euler(0, 0, -(count * Data.angle / 2) + Data.angle * (count - 1)) * dir;
-        projectile.GetComponent<ProjectileController2>().Init(dir,angleDir, Data);//공격방향,데이터를 받음
+
+        Vector2 dir = targetPos - pivotPos;
+        Vector2 angleDir = Quaternion.Euler(0, 0, -(Data.angle * Data.count / 2f) + Data.angle * count) * dir;
+
+        projectile.GetComponent<ProjectileController2>().Init(dir, angleDir, Data);
     }
 
     public void ReturnToPool(GameObject projectile)//투사체가 소멸해야 할 때 호출
@@ -63,13 +65,20 @@ public class SkillShooter : MonoBehaviour
 
     }
 
-    private IEnumerator FireWithDelay()
+private IEnumerator FireWithDelay()
+{
+    for (int i = 0; i < Data.count; i++)
     {
-        for (int i = 0; i < Data.count; i++)
-        {
-            Fire(i);
-            yield return new WaitForSeconds(individualFireRate); // 각 발사마다 individualFireRate초 만큼 딜레이
-        }
+        var currentPivotPos = player.transform.position;
+        var targetTransform = player.GetComponent<PlayerController>().GetClosestEnemy();
+        if (targetTransform == null) yield break;
+        var currentTargetPos = targetTransform.position;
+
+        Fire(i, currentPivotPos, currentTargetPos);
+
+        yield return new WaitForSeconds(individualFireRate);
     }
+}
+
 
 }

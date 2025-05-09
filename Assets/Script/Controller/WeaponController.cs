@@ -8,10 +8,6 @@ public class WeaponController : MonoBehaviour
 
     [SerializeField] private SpriteRenderer weaponRenderer;
 
-    [SerializeField] private GameObject projectilePrefab;
-
-    [SerializeField] private Transform bulletSpawnPoint;
-
     [SerializeField] private float delay = 1f;
     public float Delay { get => delay; set => delay = value; }
 
@@ -30,15 +26,6 @@ public class WeaponController : MonoBehaviour
         weaponRenderer.flipY = isLeft;
     }
 
-    public void ShootBullet(Vector2 direction)
-    {
-        Vector2 startPoint = bulletSpawnPoint.position;
-        GameObject origin = projectilePrefab;
-        GameObject projectileObject = Instantiate(origin, startPoint, Quaternion.identity);
-
-        ProjectileController projectileController = projectileObject.GetComponent<ProjectileController>();
-        projectileController.Init(direction);
-    }
 
     public void AttackAni()
     {
