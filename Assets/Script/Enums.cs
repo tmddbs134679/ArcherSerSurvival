@@ -14,3 +14,10 @@ public enum EENEMYSTATE
     DIE,
 }
 
+public enum EPATROLAXIS
+{
+    HORIZONTAL,
+    VERTICAL,
+    ALL
+}
+

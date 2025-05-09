@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyIdleState : EnemyBaseState
 {
+    private float idleTime;
+    private float timer;
     private readonly int IdleHas = Animator.StringToHash("Idle");
     private const float AnimatorDampTime = 0.1f;
     private const float CrossFadeDuration = 0.1f;
@@ -11,18 +13,27 @@ public class EnemyIdleState : EnemyBaseState
 
     public override void Enter()
     {
-        stateMachine.Animator.CrossFadeInFixedTime(IdleHas, CrossFadeDuration);
-
+        idleTime = Random.Range(2, 3);
         Debug.Log("Idle");
+        stateMachine.Animator.CrossFadeInFixedTime(IdleHas, CrossFadeDuration);
+        timer = 0;
+  
     }
 
     public override void Tick(float deltaTime)
     {
+        timer += deltaTime;
+
         Move(deltaTime);
 
         if (IsInChaseRange())
         {
             stateMachine.SwitchState(stateMachine.States[EENEMYSTATE.CHASING]);
+        }
+
+        if (timer >= idleTime)
+        {
+            stateMachine.SwitchState(stateMachine.States[EENEMYSTATE.PATROL]);
         }
     }
 

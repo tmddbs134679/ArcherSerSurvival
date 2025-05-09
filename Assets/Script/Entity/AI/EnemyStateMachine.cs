@@ -16,9 +16,12 @@ public class EnemyStateMachine : StateMachine
 
     [field: SerializeField] public float PlayerChasingRange { get; private set; }
 
+    [field: SerializeField] public EnemyAIController EnemyAIController { get; private set; }
+
     private void Awake()
     {
         States.Add(EENEMYSTATE.IDLE, new EnemyIdleState(this));
+        States.Add(EENEMYSTATE.PATROL, new EnemyPatrolState(this));
         States.Add(EENEMYSTATE.CHASING, new EnemyChasingState(this));
         States.Add(EENEMYSTATE.ATTACK, new EnemyAttackState(this));
     }
