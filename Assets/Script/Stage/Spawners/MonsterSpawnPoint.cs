@@ -10,16 +10,15 @@ public class MonsterSpawnPoint : MonoBehaviour
 
     private Color spawnAreaColor = Color.red;
 
-    public GameObject SpawnMonster(GameObject monsterPrefab)
+    public Vector2 GetRandomPoint()
     {
         // 스폰 영역 내 랜덤 위치에서 몬스터 생성
         Vector2 randomCirclePoint = Random.insideUnitCircle * spawnAreaRadius;
-        Vector3 spawnPoint = new Vector3(
+        Vector2 spawnPoint = new Vector2(
             transform.position.x + randomCirclePoint.x,
-            transform.position.y + randomCirclePoint.y,
-            transform.position.z);
+            transform.position.y + randomCirclePoint.y);
 
-        return Instantiate(monsterPrefab, spawnPoint, Quaternion.identity);
+        return spawnPoint;
     }
 
 #if UNITY_EDITOR

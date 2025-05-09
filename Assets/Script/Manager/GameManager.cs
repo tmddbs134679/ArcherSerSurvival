@@ -25,12 +25,12 @@ public class GameManager : Singleton<GameManager>
 
     private void OnEnable()
     {
-        Monster.OnMonsterDeath += HandleMonsterDeath;
+        ///Monster.OnMonsterDeath += HandleMonsterDeath;
     }
 
     private void OnDisable()
     {
-        Monster.OnMonsterDeath -= HandleMonsterDeath;
+        //Monster.OnMonsterDeath -= HandleMonsterDeath;
     }
 
     // 몬스터가 죽었을 때 풀에 반환하는 함수
