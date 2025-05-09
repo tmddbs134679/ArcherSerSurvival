@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyChasingState : EnemyBaseState
 {
+    private readonly int RunHas = Animator.StringToHash("Run");
+    private const float AnimatorDampTime = 0.1f;
+    private const float CrossFadeDuration = 0.1f;
     public EnemyChasingState(EnemyStateMachine stateMachine) : base(stateMachine)
     {
     }
@@ -11,11 +14,22 @@ public class EnemyChasingState : EnemyBaseState
     public override void Enter()
     {
         Debug.Log("Chasing");
+        stateMachine.Animator.CrossFadeInFixedTime(RunHas, CrossFadeDuration);
     }
 
     public override void Tick(float deltaTime)
     {
-       
+        Move(deltaTime);
+
+        if (!IsInChaseRange())
+        {
+            stateMachine.SwitchState(stateMachine.States[EENEMYSTATE.IDLE]);
+        }
+
+        if(IsInAttackRange())
+        {
+            stateMachine.SwitchState(stateMachine.States[EENEMYSTATE.ATTACK]);
+        }
     }
 
     public override void Exit()
@@ -25,14 +39,5 @@ public class EnemyChasingState : EnemyBaseState
     private void MoveToPlayer(float deltaTime)
     {
 
-        if (stateMachine.Agent.isOnNavMesh)
-        {
-            stateMachine.Agent.destination = stateMachine.Player.transform.position;
-
-            //Move(stateMachine.Agent.desiredVelocity.normalized * stateMachine.MovementSpeed, deltaTime);
-        }
-
-
-        //stateMachine.Agent.velocity = stateMachine.Controller.velocity;
     }
 }

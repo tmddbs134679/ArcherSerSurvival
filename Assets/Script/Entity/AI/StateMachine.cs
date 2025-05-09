@@ -5,20 +5,18 @@ using UnityEngine;
 public class StateMachine : MonoBehaviour
 {
 
-    private State currentState;
-    void Start()
-    {
-        
-    }
-
+    protected State currentState;
     
-    void Update()
+    private void Update()
     {
         currentState?.Tick(Time.deltaTime);
     }
 
     public void SwitchState(State newState)
     {
+        if (currentState == newState)
+            return;
+
         currentState?.Exit();
         currentState = newState;
         currentState?.Enter();

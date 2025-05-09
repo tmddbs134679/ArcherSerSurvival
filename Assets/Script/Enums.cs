@@ -8,6 +8,7 @@ public enum EENEMYSTATE
     IDLE,
     RUN,
     MOVE,
+    PATROL,
     ATTACK,
     CHASING,
     DIE,

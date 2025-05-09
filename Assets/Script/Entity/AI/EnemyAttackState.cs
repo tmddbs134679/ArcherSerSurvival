@@ -2,34 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyIdleState : EnemyBaseState
+public class EnemyAttackState : EnemyBaseState
 {
-    private readonly int IdleHas = Animator.StringToHash("Idle");
+    private readonly int AttackHas = Animator.StringToHash("Attack");
     private const float AnimatorDampTime = 0.1f;
     private const float CrossFadeDuration = 0.1f;
-    public EnemyIdleState(EnemyStateMachine stateMachine) : base(stateMachine) { }
+
+    public EnemyAttackState(EnemyStateMachine stateMachine) : base(stateMachine){ }
 
     public override void Enter()
     {
-        stateMachine.Animator.CrossFadeInFixedTime(IdleHas, CrossFadeDuration);
+        stateMachine.Animator.CrossFadeInFixedTime(AttackHas, CrossFadeDuration);
 
-        Debug.Log("Idle");
+        Debug.Log("Attack");
     }
 
     public override void Tick(float deltaTime)
     {
         Move(deltaTime);
 
-        if (IsInChaseRange())
+        if (!IsInAttackRange())
         {
             stateMachine.SwitchState(stateMachine.States[EENEMYSTATE.CHASING]);
         }
     }
 
-
     public override void Exit()
     {
 
     }
-
 }
