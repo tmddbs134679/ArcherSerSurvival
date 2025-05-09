@@ -128,7 +128,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // 타겟 감지하여 타겟 위치를 return하는 함수
-    Transform GetClosestEnemy()
+    public Transform GetClosestEnemy()
     {
         if (!isMoving)
         {
