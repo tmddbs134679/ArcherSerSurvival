@@ -15,5 +15,6 @@ public class ProjectileData : ScriptableObject//공용느낌
     public int count;//갯수
     public float angle;//투사체 발사각
 
-    public float angleDelay; //타겟팅 지연 시간
+    public float hormingStartDelay; //타겟팅 지연 시간
+    public float hormingTurnDelay;
 }

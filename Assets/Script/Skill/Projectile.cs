@@ -7,48 +7,50 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     private ProjectileData data;//비어있는 투사체의 데이터
-    private Vector2 direction;//비어있는 공격방향
-    private Vector2  angleDirection;//비어있는 선처리 공격방향
+    private Vector2 Target;//비어있는 공격방향
+    private Vector2 angleDirection;//비어있는 선처리 공격방향
     private Rigidbody2D rb;//프리팹한 투사체의 리짓바디
-    public event Action<GameObject> OnClick;
-
-    public void Init(Vector2 dir,Vector2 angleDir, ProjectileData _data)
+    public string serialName;//이름
+    private Coroutine CoroutineTemp;
+    public void Init(Vector2 target, Vector2 angleDir, ProjectileData _data)
     {
-        direction = dir.normalized;
-        angleDirection=angleDir.normalized;
+        Target = target;
+        angleDirection = angleDir.normalized;
         data = _data;
         rb = GetComponent<Rigidbody2D>();
         GetComponent<SpriteRenderer>().color = data.color;
-        Invoke("WrappingInvoke", data.duration);
+        StartCoroutine(WrappingInvokeDelay(data.duration));
     }
 
     private void FixedUpdate()//물리처리
     {
-       // StartCoroutine(AngleDirDelay());
         rb.velocity = angleDirection * data.speed;
+        StartCoroutine(AngleDirDelay());
         transform.Rotate(Vector3.forward, data.rotateSpeed * Time.fixedDeltaTime); //프리팹 자체 회전
     }
 
     void OnTriggerEnter2D(Collider2D collision)//충돌했을 시
     {
-        CancelInvoke("WrappingInvoke");
-       
-        if(collision.GetComponent<EnemyStateMachine>() != null)
+
+        if (collision.GetComponent<EnemyStateMachine>() != null)
         {
-            Debug.Log("dsd");
             collision.GetComponent<EnemyStateMachine>().Health.DealDamage(data.damage);
-            OnClick?.Invoke(gameObject);//skillShooter의 ReturnToPool() 메서드를 호출
+            StartCoroutine(WrappingInvokeDelay(0f));//skillShooter의 ReturnToPool() 메서드를 호출
         }
-          
+
+    }
+    private IEnumerator WrappingInvokeDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        ProjectileObjectPool.Instance.Release(serialName, this.gameObject);
     }
 
-    void WrappingInvoke()//Invoke(name,time) 지연 호출을 쓰려면 함수 이름으로 넣어줘야 하므로 래핑
+    private IEnumerator AngleDirDelay()
     {
-        OnClick?.Invoke(gameObject);
+        yield return new WaitForSeconds(data.hormingStartDelay);
+        Vector2 self = this.transform.position;
+
+        angleDirection = Vector2.Lerp(angleDirection, (Target - self).normalized, Time.deltaTime * data.hormingTurnDelay);
+        rb.velocity = angleDirection * data.speed;
     }
-private IEnumerator AngleDirDelay()
-{
-    yield return new WaitForSeconds(data.angleDelay);
-    angleDirection=direction;
-}
 }
