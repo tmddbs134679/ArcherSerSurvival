@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8417026583083812365}
   - component: {fileID: 9095210462969037168}
   m_Layer: 0
-  m_Name: SkillShooter
+  m_Name: Skill001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,7 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 480090936706811311, guid: 9541eb16087af3049a73d7259a0117e2, type: 3}
   Data: {fileID: 11400000, guid: c586466931787a644b98640a32006d09, type: 2}
-  fireRate: 0.7
+  fireRate: 0.55
   individualFireRate: 0.7
-  PjObjPool: {fileID: 0}
   player: {fileID: 0}

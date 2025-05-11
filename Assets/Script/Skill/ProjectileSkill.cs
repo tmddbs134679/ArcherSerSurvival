@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 
-public class Skill : MonoBehaviour
+public class ProjectileSkill : MonoBehaviour
 {
     public GameObject projectilePrefab; //투사체 프리팹
     public ProjectileData Data; //투사체의 데이터
@@ -44,7 +44,9 @@ public class Skill : MonoBehaviour
         for (int i = 0; i < Data.count; i++)
         {
 
-
+//player,monster를 unit으로 상속받아서 공통된 변수를 써야함
+//타겟의 레이어or태그를 받아서 투사체의 충돌 처리를 구별해 줘야함 
+//projectile의 OnTriggerEnter2D메서드에서 정의 필요
             var currentPivotPos = player.transform.position;
             var targetTransform = player.GetComponent<PlayerController>().GetClosestEnemy();
             if (targetTransform == null) yield break;

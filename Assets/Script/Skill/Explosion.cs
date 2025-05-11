@@ -4,28 +4,35 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Projectile : MonoBehaviour
+public class Explosion : MonoBehaviour
 {
-    private ProjectileData data;//비어있는 투사체의 데이터
+    private ProjectileData data;//비어있는 폭발체의 데이터
     private Vector2 Target;//비어있는 공격방향
-    private Vector2 angleDirection;//비어있는 추적 공격방향
     private Rigidbody2D rb;//프리팹한 투사체의 리짓바디
     public string serialName;//이름
+
+        public float radius = 0f;           // 현재 반지름
+    public float maxRadius = 2.5f;        // 최대 반지름
+    public float growSpeed = 0.5f;        // 초당 커지는 속도
+
+    public GameObject CircleRange;
+    public GameObject magicZone;
     public void Init(Vector2 target, Vector2 angleDir, ProjectileData _data)
     {
         Target = target;
-        angleDirection = angleDir.normalized;
         data = _data;
         rb = GetComponent<Rigidbody2D>();
         GetComponent<SpriteRenderer>().color = data.color;
         StartCoroutine(WrappingInvokeDelay(data.duration));
     }
 
-    private void FixedUpdate()//물리처리
+    private void Update()//물리처리
     {
-        rb.velocity = angleDirection * data.speed;
-        StartCoroutine(AngleDirDelay());
-        transform.Rotate(Vector3.forward, data.rotateSpeed * Time.fixedDeltaTime); //프리팹 자체 회전
+        if (radius < maxRadius)
+        {
+                        radius += growSpeed * Time.deltaTime;
+            CircleRange.transform.localScale = new Vector2(radius,radius);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)//충돌했을 시
@@ -44,12 +51,4 @@ public class Projectile : MonoBehaviour
         ProjectileObjectPool.Instance.Release(serialName, this.gameObject);
     }
 
-    private IEnumerator AngleDirDelay()
-    {
-        yield return new WaitForSeconds(data.hormingStartDelay);
-        Vector2 self = this.transform.position;
-
-        angleDirection = Vector2.Lerp(angleDirection, (Target - self).normalized, Time.deltaTime * data.hormingTurnDelay);
-        rb.velocity = angleDirection * data.speed;
-    }
 }
