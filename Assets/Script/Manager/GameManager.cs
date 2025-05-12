@@ -21,9 +21,12 @@ public class GameManager : Singleton<GameManager>
 
     public GameObject[] rooms;
 
+    public SkillLevelSystem skillLevelSystem;
+
     //?¬ì•„??ì£¼ì„ ?ŒìŠ¤??
     private void OnEnable()
     {
+        skillLevelSystem = GetComponent<SkillLevelSystem>();
         //Monster.OnMonsterDeath += HandleMonsterDeath;
     }
 
@@ -75,8 +78,6 @@ public class GameManager : Singleton<GameManager>
 
     void Update()
     {
-        //?°ë???????ì¢ë‹”?ê¾©ì—³????“ì»™ èª˜ëªƒ?ï§£?„ê²•
-        //?°ë???????ì¢ë‹”?ê¾©ì—³????“ì»™ èª˜ëªƒ?ï§£?„ê²•
         time += Time.deltaTime;
     }
 
@@ -90,6 +91,7 @@ public class GameManager : Singleton<GameManager>
         if (isOpen)
         {
             SceneManager.LoadScene("AITestScene");
+            //UIManager.Instance.ShowUI("Reward");
         }
     }
 

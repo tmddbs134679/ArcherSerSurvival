@@ -6,11 +6,11 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    private ProjectileData data;//비어있는 투사체의 데이터
-    private Vector2 Target;//비어있는 공격방향
-    private Vector2 angleDirection;//비어있는 추적 공격방향
-    private Rigidbody2D rb;//프리팹한 투사체의 리짓바디
-    public string serialName;//이름
+    private ProjectileData data;//비어?�는 ?�사체의 ?�이??
+    private Vector2 Target;//비어?�는 공격방향
+    private Vector2 angleDirection;//비어?�는 추적 공격방향
+    private Rigidbody2D rb;//?�리?�한 ?�사체의 리짓바디
+    public string serialName;//?�름
     public void Init(Vector2 target, Vector2 angleDir, ProjectileData _data)
     {
         Target = target;
@@ -25,15 +25,15 @@ public class Projectile : MonoBehaviour
     {
         rb.velocity = angleDirection * data.speed;
         StartCoroutine(AngleDirDelay());
-        transform.Rotate(Vector3.forward, data.rotateSpeed * Time.fixedDeltaTime); //프리팹 자체 회전
+        transform.Rotate(Vector3.forward, data.rotateSpeed * Time.fixedDeltaTime); //?�리???�체 ?�전
     }
 
-    void OnTriggerEnter2D(Collider2D collision)//충돌했을 시
+    void OnTriggerEnter2D(Collider2D collision)//충돌?�을 ??
     {
         if (collision.GetComponent<EnemyStateMachine>() != null) //&&Target.tag==collsion.tag or layermask 비교
         {
             collision.GetComponent<EnemyStateMachine>().Health.DealDamage(data.damage);
-            StartCoroutine(WrappingInvokeDelay(0f));//skillShooter의 ReturnToPool() 메서드를 호출
+            StartCoroutine(WrappingInvokeDelay(0f));//skillShooter??ReturnToPool() 메서?��? ?�출
         }
     }
     private IEnumerator WrappingInvokeDelay(float delay)

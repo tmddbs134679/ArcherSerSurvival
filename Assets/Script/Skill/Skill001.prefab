@@ -44,8 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ea8fb224cdf9f0479e86a1826b0680c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Axe
   projectilePrefab: {fileID: 480090936706811311, guid: 9541eb16087af3049a73d7259a0117e2, type: 3}
   Data: {fileID: 11400000, guid: c586466931787a644b98640a32006d09, type: 2}
   fireRate: 0.55
-  individualFireRate: 0.7
+  individualFireRate: 0.05
   player: {fileID: 0}
+  skillLevelSystem: {fileID: 0}

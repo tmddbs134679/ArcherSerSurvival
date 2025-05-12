@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using System.Linq;
 public class UIManager : Singleton<UIManager>
 {
-    // UI 오브젝트들을 관리할 딕셔너리
+
     private Dictionary<string, GameObject> uiElements = new Dictionary<string, GameObject>();
 
     [SerializeField]
@@ -48,12 +48,10 @@ public class UIManager : Singleton<UIManager>
 
         }
 
-        //Linq사용해서 걸러오기
         uiObjects = objects
             .Where(obj => obj != null && obj.CompareTag("UI"))
             .ToArray();
 
-        //성능이슈 배제
         //GameObject[] uiObjects = GameObject.FindGameObjectsWithTag("UI");
         foreach (var uiObject in uiObjects)
         {
