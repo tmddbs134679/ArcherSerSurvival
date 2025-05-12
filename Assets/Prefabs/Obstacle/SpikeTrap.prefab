@@ -156,7 +156,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
-  activeDuration: 3
+  activeDuration: 10
   inactiveDuration: 3
 --- !u!61 &2113146473962221685
 BoxCollider2D:
