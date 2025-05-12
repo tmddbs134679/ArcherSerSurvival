@@ -6,12 +6,12 @@ using UnityEngine.UIElements;
 
 public class ExplosionSkill : MonoBehaviour
 {
-    public GameObject projectilePrefab; //íˆ¬ì‚¬ì²´ í”„ë¦¬íŒ¹
-    public ProjectileData Data; //íˆ¬ì‚¬ì²´ì˜ ë°ì´í„°
-    public float fireRate; //í•œ ì‚¬ì´í´ ë°œì‚¬ ê°„ê²©
+    public GameObject projectilePrefab; //?¬ì‚¬ì²??„ë¦¬??
+    public ChangedSkillData Data; //?¬ì‚¬ì²´ì˜ ?°ì´??
+    public float fireRate; //???¬ì´??ë°œì‚¬ ê°„ê²©
     public float individualFireRate;//ê°œë³„ ë°œì‚¬ê°„ê²©
-    private float fireTimer;//ë‹¨ìˆœ ì‹œê°„ë³€ìˆ˜
-    //íŒŒí‹°í´
+    private float fireTimer;//?¨ìˆœ ?œê°„ë³€??
+    //?Œí‹°??
 
     public GameObject player;
 
@@ -28,7 +28,7 @@ public class ExplosionSkill : MonoBehaviour
 
     private void Fire(int count, Vector2 pivotPos, Vector2 targetPos)
     {
-        GameObject projectile = ProjectileObjectPool.Instance.Get(projectilePrefab.name); //objectpoolì—ì„œ ìë™ìœ¼ë¡œ ë¶€ì¡±í•  ì‹œ í”„ë¦¬íŒ¹ì„ ì±„ì›Œì¤Œ
+        GameObject projectile = ProjectileObjectPool.Instance.Get(projectilePrefab.name); //objectpool¿¡¼­ ÀÚµ¿À¸·Î ºÎÁ·ÇÒ ½Ã ÇÁ¸®ÆÕÀ» Ã¤¿öÁÜ
 
         projectile.transform.position = pivotPos;
         projectile.transform.rotation = Quaternion.identity;
@@ -44,9 +44,9 @@ public class ExplosionSkill : MonoBehaviour
         for (int i = 0; i < Data.count; i++)
         {
 
-//player,monsterë¥¼ unitìœ¼ë¡œ ìƒì†ë°›ì•„ì„œ ê³µí†µëœ ë³€ìˆ˜ë¥¼ ì¨ì•¼í•¨
-//íƒ€ê²Ÿì˜ ë ˆì´ì–´oríƒœê·¸ë¥¼ ë°›ì•„ì„œ íˆ¬ì‚¬ì²´ì˜ ì¶©ëŒ ì²˜ë¦¬ë¥¼ êµ¬ë³„í•´ ì¤˜ì•¼í•¨ 
-//projectileì˜ OnTriggerEnter2Dë©”ì„œë“œì—ì„œ ì •ì˜ í•„ìš”
+//player,monster¸¦ unitÀ¸·Î »ó¼Ó¹Ş¾Æ¼­ °øÅëµÈ º¯¼ö¸¦ ½á¾ßÇÔ
+//Å¸°ÙÀÇ ·¹ÀÌ¾îorÅÂ±×¸¦ ¹Ş¾Æ¼­ Åõ»çÃ¼ÀÇ Ãæµ¹ Ã³¸®¸¦ ±¸º°ÇØ Áà¾ßÇÔ 
+//projectileÀÇ OnTriggerEnter2D¸Ş¼­µå¿¡¼­ Á¤ÀÇ ÇÊ¿ä
             var currentPivotPos = player.transform.position;
             var targetTransform = player.GetComponent<PlayerController>().GetClosestEnemy();
             if (targetTransform == null) yield break;

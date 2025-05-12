@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Singleton<PlayerController>
 {
     [SerializeField] private Transform weaponPivot;
     [SerializeField] private WeaponController WeaponPrefab;
@@ -23,6 +23,10 @@ public class PlayerController : MonoBehaviour
     private float timeLastAttack = float.MaxValue;
 
     private PlayerStat playerStat;
+
+    [SerializeField] private float currentHp = 0;
+
+    public List<GameObject> skillList = new List<GameObject>();
 
     void Awake()
     {
@@ -45,7 +49,7 @@ public class PlayerController : MonoBehaviour
 
     void PlayerMove()
     {
-        // 인풋 분리
+        // ?�풋 분리
         Vector2 movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
         pRigidbody.velocity = movement * playerStat.Speed;
 
@@ -53,7 +57,7 @@ public class PlayerController : MonoBehaviour
 
         animator.SetBool("isMove", movement.magnitude > 0.1f);
 
-        // 이동시에는 회전값 고정
+        // ?�동?�에???�전�?고정
         if (isMoving)
         {
             Rotate(movement);
@@ -81,12 +85,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // 타겟 감지하여 타겟 위치를 return하는 함수
+    // ?��?감�??�여 ?��??�치�?return?�는 ?�수
     public Transform GetClosestEnemy()
     {
         if (!isMoving)
         {
-            // collider로 적을 감지 -> 최적화를 위해 배열 제한
+            // collider�??�을 감�? -> 최적?��? ?�해 배열 ?�한
             Collider2D[] enemiesInRange = new Collider2D[10];
 
             LayerMask enemyLayer = LayerMask.GetMask("Enemy");
@@ -123,7 +127,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    // 타겟 감지하면 타겟쪽으로 sprite 회전 및 flip
+    // ?��?감�??�면 ?�겟쪽?�로 sprite ?�전 �?flip
     void RotateWeaponToTarget()
     {
         if (GetClosestEnemy() != null)
@@ -140,7 +144,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // 플레이어부터 타겟까지의 방향을 return하는 함수
+    // ?�레?�어부???�겟까지??방향??return?�는 ?�수
     Vector2 EnemyDirection()
     {
         Transform target = GetClosestEnemy();
@@ -158,7 +162,7 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    // 공격 딜레이
+    // 공격 ?�레??
     void AttackDelayHandler()
     {
         if (timeLastAttack <= weaponController.Delay)
@@ -173,7 +177,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // 타겟 감지 범위 gizmo
+    // ?��?감�? 범위 gizmo
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
