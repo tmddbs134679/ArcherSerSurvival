@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,6 @@ using static UnityEngine.GraphicsBuffer;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float speed = 5f;
     [SerializeField] private Transform weaponPivot;
     [SerializeField] private WeaponController WeaponPrefab;
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Vector2 targetRange = new Vector2(5, 5);
     private WeaponController weaponController;
 
-    private Rigidbody2D rigidbody;
+    private Rigidbody2D pRigidbody;
     private Animator animator;
 
     private bool isMoving = false;
@@ -22,15 +22,13 @@ public class PlayerController : MonoBehaviour
     private bool isAttacking = false;
     private float timeLastAttack = float.MaxValue;
 
-    private StatHandler statHandler;
-
-    [SerializeField] private float currentHp = 0;
+    private PlayerStat playerStat;
 
     void Awake()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+        pRigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
-        statHandler = GetComponent<StatHandler>();
+        playerStat = GetComponent<PlayerStat>();
 
         if (WeaponPrefab != null)
             weaponController = Instantiate(WeaponPrefab, weaponPivot);
@@ -38,62 +36,18 @@ public class PlayerController : MonoBehaviour
             weaponController = GetComponentInChildren<WeaponController>();
     }
 
-    private void Start()
-    {
-        currentHp = statHandler.Hp;
-    }
-
     void Update()
     {
-        ActionHandler();
+        PlayerMove();
         RotateWeaponToTarget();
         AttackDelayHandler();
-
-        // 체력 감소 테스트
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            ReduceHp(1);
-        }
     }
 
-    public void ReduceHp(float reduceHp)
+    void PlayerMove()
     {
-        currentHp -= reduceHp;
-
-        if (currentHp <= 0)
-        {
-            Death();
-        }
-    }
-
-
-
-    private void Death()
-    {
-        rigidbody.velocity = Vector3.zero;
-
-        // 죽으면 투명해지기
-        foreach (SpriteRenderer renderer in transform.GetComponentsInChildren<SpriteRenderer>())
-        {
-            Color color = renderer.color;
-            color.a = 0.3f;
-            renderer.color = color;
-        }
-
-        // 사망하면 모든 컴포넌트 끄기
-        foreach (Behaviour componenet in transform.GetComponentsInChildren<Behaviour>())
-        {
-            componenet.enabled = false;
-        }
-
-        // 사망 2초 후 제거
-        Destroy(gameObject, 2f);
-    }
-
-    void ActionHandler()
-    {
+        // 인풋 분리
         Vector2 movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
-        rigidbody.velocity = movement * speed;
+        pRigidbody.velocity = movement * playerStat.Speed;
 
         isMoving = movement.magnitude > 0.1f;
 
@@ -195,7 +149,13 @@ public class PlayerController : MonoBehaviour
 
     void Attack()
     {
-        weaponController.AttackAni();
+        Transform target = GetClosestEnemy();
+        if (target != null)
+        {
+            Vector2 direction = (target.position - transform.position).normalized;
+            weaponController.AttackAni();
+        }
+        
     }
 
     // 공격 딜레이
@@ -214,7 +174,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // 타겟 감지 범위 gizmo
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(transform.position, targetRange);
