@@ -6,14 +6,14 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
-    private ProjectileData data;//비어있는 폭발체의 데이터
-    private Vector2 Target;//비어있는 공격방향
-    private Rigidbody2D rb;//프리팹한 투사체의 리짓바디
-    public string serialName;//이름
+    private ProjectileData data;//??쑴堉??덈뮉 ??而삼㎗?곸벥 ?怨쀬뵠??
+    private Vector2 Target;//??쑴堉??덈뮉 ?⑤벀爰썼쳸?븍샨
+    private Rigidbody2D rb;//?袁ⓥ봺?諭곷립 ??沅쀯㎗?곸벥 ?귐딆췂獄쏅뗀逾?
+    public string serialName;//??已?
 
-        public float radius = 0f;           // 현재 반지름
-    public float maxRadius = 2.5f;        // 최대 반지름
-    public float growSpeed = 0.5f;        // 초당 커지는 속도
+        public float radius = 0f;           // ?袁⑹삺 獄쏆꼷???
+    public float maxRadius = 2.5f;        // 筌ㅼ뮆? 獄쏆꼷???
+    public float growSpeed = 0.5f;        // ?λ뜄???뚣끉?????얜즲
 
     public void Init(Vector2 target, Vector2 angleDir, ProjectileData _data)
     {
@@ -24,7 +24,7 @@ public class Explosion : MonoBehaviour
         StartCoroutine(WrappingInvokeDelay(data.duration));
     }
 
-    private void Update()//물리처리
+    private void Update()//?얠눖?곻㎗?롡봺
     {
         if (radius < maxRadius)
         {
@@ -33,13 +33,13 @@ public class Explosion : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)//충돌했을 시
+    void OnTriggerEnter2D(Collider2D collision)//?겸뫖猷??됱뱽 ??
     {
 
-        if (collision.GetComponent<EnemyStateMachine>() != null) //&&Target.tag==collsion.tag or layermask 비교
+        if (collision.GetComponent<EnemyStateMachine>() != null) //&&Target.tag==collsion.tag or layermask ??쑨??
         {
-            collision.GetComponent<EnemyStateMachine>().Health.DealDamage(data.damage);
-            StartCoroutine(WrappingInvokeDelay(0f));//skillShooter의 ReturnToPool() 메서드를 호출
+            collision.GetComponent<BaseStat>().Damaged(data.damage);
+            StartCoroutine(WrappingInvokeDelay(0f));//skillShooter??ReturnToPool() 筌롫뗄苑??? ?紐꾪뀱
         }
 
     }

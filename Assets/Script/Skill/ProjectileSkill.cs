@@ -6,14 +6,46 @@ using UnityEngine.UIElements;
 
 public class ProjectileSkill : MonoBehaviour
 {
-    public GameObject projectilePrefab; //투사체 프리팹
-    public ProjectileData Data; //투사체의 데이터
-    public float fireRate; //한 사이클 발사 간격
-    public float individualFireRate;//개별 발사간격
-    private float fireTimer;//단순 시간변수
-    //파티클
+    public string name = "Axe";
+    public GameObject projectilePrefab; //??沅쀯㎗??袁ⓥ봺??
+    public ChangedSkillData Data; //??沅쀯㎗?곸벥 ?怨쀬뵠??
+    public float fireRate; //???????獄쏆뮇沅?揶쏄쑨爰?
+
+    public float individualFireRate;//揶쏆뮆??獄쏆뮇沅쀥첎袁㏐봄
+    private float fireTimer;//??λ떄 ??볦퍢癰궰??
+    //??곕뼒??
 
     public GameObject player;
+
+
+    public SkillLevelSystem skillLevelSystem;
+
+
+
+    private void Awake()
+    {
+        player = GameObject.Find("Player");
+        SetSkillData();
+    }
+
+    public void SetSkillData()
+    {
+        Data = new ChangedSkillData();
+
+        skillLevelSystem = GameManager.Instance.skillLevelSystem;
+        Data.speed = skillLevelSystem.changedSkillData[name].speed;
+        Data.damage = skillLevelSystem.changedSkillData[name].damage;
+        Data.duration = skillLevelSystem.changedSkillData[name].duration;
+        Data.color = skillLevelSystem.changedSkillData[name].color;
+        Data.impactEffect = skillLevelSystem.changedSkillData[name].impactEffect;
+        Data.rotateSpeed = skillLevelSystem.changedSkillData[name].rotateSpeed;
+        Data.count = skillLevelSystem.changedSkillData[name].count;
+        Data.angle = skillLevelSystem.changedSkillData[name].angle;
+        Data.hormingStartDelay = skillLevelSystem.changedSkillData[name].hormingStartDelay;
+        Data.hormingTurnDelay = skillLevelSystem.changedSkillData[name].hormingTurnDelay;
+    }
+
+
 
     private void Update()
     {
@@ -28,7 +60,7 @@ public class ProjectileSkill : MonoBehaviour
 
     private void Fire(int count, Vector2 pivotPos, Vector2 targetPos)
     {
-        GameObject projectile = ProjectileObjectPool.Instance.Get(projectilePrefab.name); //objectpool에서 자동으로 부족할 시 프리팹을 채워줌
+        GameObject projectile = ProjectileObjectPool.Instance.Get(projectilePrefab.name); //objectpool?癒?퐣 ?癒?짗??곗쨮 ?봔鈺곌퉲釉????袁ⓥ봺?諭??筌?쑴?쇾빳?
 
         projectile.transform.position = pivotPos;
         projectile.transform.rotation = Quaternion.identity;
@@ -44,9 +76,6 @@ public class ProjectileSkill : MonoBehaviour
         for (int i = 0; i < Data.count; i++)
         {
 
-//player,monster를 unit으로 상속받아서 공통된 변수를 써야함
-//타겟의 레이어or태그를 받아서 투사체의 충돌 처리를 구별해 줘야함 
-//projectile의 OnTriggerEnter2D메서드에서 정의 필요
             var currentPivotPos = player.transform.position;
             var targetTransform = player.GetComponent<PlayerController>().GetClosestEnemy();
             if (targetTransform == null) yield break;
