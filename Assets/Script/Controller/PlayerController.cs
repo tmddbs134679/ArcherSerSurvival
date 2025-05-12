@@ -30,6 +30,7 @@ public class PlayerController : Singleton<PlayerController>
 
     void Awake()
     {
+        base.Awake();
         pRigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
         playerStat = GetComponent<PlayerStat>();
@@ -49,7 +50,7 @@ public class PlayerController : Singleton<PlayerController>
 
     void PlayerMove()
     {
-        // ?명뭼 遺꾨━
+        // ?筌뤿굝? ?釉뚯뫊??
         Vector2 movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
         pRigidbody.velocity = movement * playerStat.Speed;
 
@@ -57,7 +58,7 @@ public class PlayerController : Singleton<PlayerController>
 
         animator.SetBool("isMove", movement.magnitude > 0.1f);
 
-        // ?대룞?쒖뿉???뚯쟾媛?怨좎젙
+        // ??????戮?뱺??????덃뤆???μ쪠??
         if (isMoving)
         {
             Rotate(movement);
@@ -85,12 +86,12 @@ public class PlayerController : Singleton<PlayerController>
         }
     }
 
-    // ?寃?媛먯??섏뿬 ?寃??꾩튂瑜?return?섎뒗 ?⑥닔
+    // ?????띠룆흮???琉우뿰 ?????熬곣뫚???return??濡ル츎 ??貫??
     public Transform GetClosestEnemy()
     {
         if (!isMoving)
         {
-            // collider濡??곸쓣 媛먯? -> 理쒖쟻?붾? ?꾪빐 諛곗뿴 ?쒗븳
+            // collider????⑤챷諭??띠룆흮? -> 嶺뚣끉裕???? ?熬곥굥???꾩룄?ｈ굢????ル┰
             Collider2D[] enemiesInRange = new Collider2D[10];
 
             LayerMask enemyLayer = LayerMask.GetMask("Enemy");
@@ -133,7 +134,7 @@ public class PlayerController : Singleton<PlayerController>
     }
 
 
-    // ?寃?媛먯??섎㈃ ?寃잛そ?쇰줈 sprite ?뚯쟾 諛?flip
+    // ?????띠룆흮???濡?듆 ???롪퍔????怨쀬Ŧ sprite ???????flip
     void RotateWeaponToTarget()
     {
         if (GetClosestEnemy() != null)
@@ -150,7 +151,7 @@ public class PlayerController : Singleton<PlayerController>
         }
     }
 
-    // ?뚮젅?댁뼱遺???寃잕퉴吏??諛⑺뼢??return?섎뒗 ?⑥닔
+    // ??????怨룹꽑?遊붋?????롪퍔???먯?????꾩렮維싧젆??return??濡ル츎 ??貫??
     Vector2 EnemyDirection()
     {
         Transform target = GetClosestEnemy();
@@ -168,7 +169,7 @@ public class PlayerController : Singleton<PlayerController>
         
     }
 
-    // 怨듦꺽 ?쒕젅??
+    // ??ㅻ?????類ㅼ읉??
     void AttackDelayHandler()
     {
         if (timeLastAttack <= weaponController.Delay)
@@ -183,7 +184,7 @@ public class PlayerController : Singleton<PlayerController>
         }
     }
 
-    // ?寃?媛먯? 踰붿쐞 gizmo
+    // ?????띠룆흮? ?뺢퀡???gizmo
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
