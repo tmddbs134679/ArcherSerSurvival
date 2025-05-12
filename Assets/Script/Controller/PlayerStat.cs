@@ -2,37 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStat : MonoBehaviour
+public class PlayerStat : BaseStat
 {
     private Rigidbody2D sRigidBody;
     private Animator animator;
     
-    [SerializeField] private float maxHp = 10f;
-    public float MaxHp
-    {
-        get => maxHp;
-        set => maxHp = Mathf.Clamp(value, 0, 100);
-    }
-    float currentHp;
-
-    float timeHpDelay = 0f;
-    [SerializeField] float hpChangeDelay = 3f;
-    bool isHpChanged = true;
-
-    [SerializeField] private float speed = 5f;
-    public float Speed
-    {
-        get => speed;
-        set => speed = Mathf.Clamp(value, 0, 100);
-    }
-
-    [SerializeField] private float atk = 10f;
-    public float Atk
-    {
-        get => atk;
-        set => atk = value;
-    }
-
     private void Awake()
     {
         sRigidBody = GetComponent<Rigidbody2D>();
@@ -61,15 +35,11 @@ public class PlayerStat : MonoBehaviour
     }
 
     // 체력감소 무적판정은 collision에서 진행할것.
-    public void Damaged(float reduceHp)
+    public override void  Damaged(float reduceHp)
     {
         if (isHpChanged)
         {
-            if (currentHp <= 0)
-            {
-                currentHp = 0;
-                return;
-            }
+            base.Damaged(reduceHp);
 
             isHpChanged = false;
             timeHpDelay = 0;
@@ -79,12 +49,11 @@ public class PlayerStat : MonoBehaviour
             if (currentHp <= 0)
             {
                 Death();
-            }
-            
+            }   
         }
     }
 
-    private void Death()
+    protected override void Death()
     {
         sRigidBody.velocity = Vector3.zero;
 
