@@ -114,6 +114,7 @@ public class GameManager : Singleton<GameManager>
         enemyCount = entities.Length;
         */
         enemyCount += count;
+        CheckEnemy();
     }
 
     public void test_spawn()

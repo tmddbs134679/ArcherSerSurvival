@@ -6808,6 +6808,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2697236484844072699}
     m_Modifications:
+    - target: {fileID: 2751982207105245834, guid: 706eabd1839e919419801be10c94abc2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8461933685825200043, guid: 706eabd1839e919419801be10c94abc2, type: 3}
       propertyPath: m_Name
       value: StageTransitionDoor
