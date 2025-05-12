@@ -20,18 +20,15 @@ public class EnemyStateMachine : StateMachine
 
     private void OnEnable()
     {
-       // Health.OnTakeDamage += HandleTakeDamage;
+        Health.OnTakeDamage += HandleTakeDamage;
         Health.OnDie += HandleDie;
     }
 
-    private void HandleTakeDamage()
-    {
-        
-    }
+ 
 
-    private void OnDisable()
+    private void OnDisable() 
     {
-        //Health.OnTakeDamage -= HandleTakeDamage;
+         Health.OnTakeDamage -= HandleTakeDamage;
          Health.OnDie -= HandleDie;
     }
 
@@ -60,6 +57,9 @@ public class EnemyStateMachine : StateMachine
     {
         SwitchState(new EnemyDeadState(this));
     }
-
+    private void HandleTakeDamage()
+    {
+        SwitchState(new EnemyStunState(this));
+    }
 
 }

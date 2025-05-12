@@ -30,7 +30,7 @@ public class EnemyChasingState : EnemyBaseState
             stateMachine.SwitchState(stateMachine.States[EENEMYSTATE.ATTACK]);
         }
 
-        MoveToTarget(stateMachine.Player.transform, deltaTime);
+        MoveToTarget((Vector2)stateMachine.Player.transform.position, deltaTime);
     }
 
     public override void Exit()
