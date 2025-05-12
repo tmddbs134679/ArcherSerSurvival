@@ -6,17 +6,6 @@ using UnityEngine;
 public class SkillLevelSystem : MonoBehaviour
 {
 
-    public float speed;
-    public float damage;
-    public float duration;
-    public Color color;
-    public ParticleSystem impactEffect;
-    public float rotateSpeed;
-    public int count;
-    public float angle;
-    public float hormingStartDelay;
-    public float hormingTurnDelay;
-
 
     public ProjectileData[] skillDataObject;
 
@@ -31,10 +20,11 @@ public class SkillLevelSystem : MonoBehaviour
     {
         skillData.Add("Axe", skillDataObject[0]);
         skillData.Add("Knife", skillDataObject[1]);
+        skillData.Add("Meteo", skillDataObject[2]);
     }
-    
 
-    
+
+
     private void Start()
     {
         skillKey = skillData.Keys.ToList();
@@ -68,7 +58,7 @@ public class SkillLevelSystem : MonoBehaviour
         changedSkillData[key].count = skillData[key].count + skillData[key].lvcount * changedSkillData[key].level;
 
         Debug.Log(changedSkillData[key].count);
-
+        Debug.Log(changedSkillData[key]);
         changedSkillData[key].level += 1;
     }
 }

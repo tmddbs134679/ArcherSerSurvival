@@ -1,19 +1,67 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+
 
 
 public class ExplosionSkill : MonoBehaviour
 {
-    public GameObject projectilePrefab; //?¬ì‚¬ì²??„ë¦¬??
-    public ChangedSkillData Data; //?¬ì‚¬ì²´ì˜ ?°ì´??
-    public float fireRate; //???¬ì´??ë°œì‚¬ ê°„ê²©
+        public string serialname;
+    public GameObject projectilePrefab; //?ï¿½ì‚¬ï¿½??ï¿½ë¦¬??
+    public ChangedSkillData Data; //?ï¿½ì‚¬ì²´ì˜ ?ï¿½ì´??
+    public float fireRate; //???ï¿½ì´??ë°œì‚¬ ê°„ê²©
     public float individualFireRate;//ê°œë³„ ë°œì‚¬ê°„ê²©
-    private float fireTimer;//?¨ìˆœ ?œê°„ë³€??
-    //?Œí‹°??
+    private float fireTimer;//?ï¿½ìˆœ ?ï¿½ê°„ë³€??
+    //?ï¿½í‹°??
 
     public GameObject player;
+      public SkillLevelSystem skillLevelSystem;
+
+
+    private void Awake()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        Init();
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Init();
+    }
+
+    private void Init()
+    {
+        player = PlayerController.Instance.gameObject;
+        SetSkillData();
+    }
+
+        public void SetSkillData()
+    {
+        Data = new ChangedSkillData();
+
+        skillLevelSystem = GameManager.Instance.skillLevelSystem;
+        Data.speed = skillLevelSystem.changedSkillData[serialname].speed;
+        Data.damage = skillLevelSystem.changedSkillData[serialname].damage;
+        Data.duration = skillLevelSystem.changedSkillData[serialname].duration;
+        Data.color = skillLevelSystem.changedSkillData[serialname].color;
+        Data.impactEffect = skillLevelSystem.changedSkillData[serialname].impactEffect;
+        Data.rotateSpeed = skillLevelSystem.changedSkillData[serialname].rotateSpeed;
+        Data.count = skillLevelSystem.changedSkillData[serialname].count;
+        Data.angle = skillLevelSystem.changedSkillData[serialname].angle;
+        Data.hormingStartDelay = skillLevelSystem.changedSkillData[serialname].hormingStartDelay;
+        Data.hormingTurnDelay = skillLevelSystem.changedSkillData[serialname].hormingTurnDelay;
+    }
+
+
+
 
     private void Update()
     {
@@ -28,7 +76,7 @@ public class ExplosionSkill : MonoBehaviour
 
     private void Fire(int count, Vector2 pivotPos, Vector2 targetPos)
     {
-        GameObject projectile = ProjectileObjectPool.Instance.Get(projectilePrefab.name); //objectpool¿¡¼­ ÀÚµ¿À¸·Î ºÎÁ·ÇÒ ½Ã ÇÁ¸®ÆÕÀ» Ã¤¿öÁÜ
+        GameObject projectile = ProjectileObjectPool.Instance.Get(projectilePrefab.name); //objectpoolï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¤ï¿½ï¿½ï¿½ï¿½
 
         projectile.transform.position = pivotPos;
         projectile.transform.rotation = Quaternion.identity;
@@ -44,9 +92,9 @@ public class ExplosionSkill : MonoBehaviour
         for (int i = 0; i < Data.count; i++)
         {
 
-//player,monster¸¦ unitÀ¸·Î »ó¼Ó¹Ş¾Æ¼­ °øÅëµÈ º¯¼ö¸¦ ½á¾ßÇÔ
-//Å¸°ÙÀÇ ·¹ÀÌ¾îorÅÂ±×¸¦ ¹Ş¾Æ¼­ Åõ»çÃ¼ÀÇ Ãæµ¹ Ã³¸®¸¦ ±¸º°ÇØ Áà¾ßÇÔ 
-//projectileÀÇ OnTriggerEnter2D¸Ş¼­µå¿¡¼­ Á¤ÀÇ ÇÊ¿ä
+//player,monsterï¿½ï¿½ unitï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ó¹Ş¾Æ¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+//Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¾ï¿½orï¿½Â±×¸ï¿½ ï¿½Ş¾Æ¼ï¿½ ï¿½ï¿½ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½æµ¹ Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ 
+//projectileï¿½ï¿½ OnTriggerEnter2Dï¿½Ş¼ï¿½ï¿½å¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½
             var currentPivotPos = player.transform.position;
             var targetTransform = player.GetComponent<PlayerController>().GetClosestEnemy();
             if (targetTransform == null) yield break;
