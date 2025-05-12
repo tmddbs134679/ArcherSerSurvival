@@ -7,7 +7,7 @@ public class EnemyPatrolState : EnemyBaseState
 {
     private int currentPointIndex = 0;
     private float reach = 0.1f;
-    private List<Transform> patrolPoints => stateMachine.EnemyAIController.patrolPoints;
+    private List<Vector2> patrolPoints => stateMachine.EnemyAIController.PatrolPositions;
 
     public EnemyPatrolState(EnemyStateMachine stateMachine) : base(stateMachine)
     {
@@ -41,10 +41,10 @@ public class EnemyPatrolState : EnemyBaseState
         if (patrolPoints == null || patrolPoints.Count == 0)
             return;
 
-        Transform target = patrolPoints[currentPointIndex];
+        Vector2 target = patrolPoints[currentPointIndex];
 
         Vector2 current = stateMachine.transform.position;
-        Vector2 destination = target.position;
+        Vector2 destination = target;
 
         RaycastHit2D hit = Physics2D.Linecast(current, destination, stateMachine.wallLayer);
 
@@ -59,7 +59,7 @@ public class EnemyPatrolState : EnemyBaseState
 
         MoveToTarget(target, deltaTime);
 
-        if(Vector2.Distance(stateMachine.transform.position, target.position) < reach)
+        if(Vector2.Distance(stateMachine.transform.position, target) < reach)
         {
             currentPointIndex = Random.Range(0, patrolPoints.Count);
             stateMachine.SwitchState(stateMachine.States[EENEMYSTATE.IDLE]); 
