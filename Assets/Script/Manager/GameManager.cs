@@ -21,7 +21,7 @@ public class GameManager : Singleton<GameManager>
 
     public GameObject[] rooms;
 
-    //크아악 주석 테스트
+    //?�아??주석 ?�스??
     private void OnEnable()
     {
         //Monster.OnMonsterDeath += HandleMonsterDeath;
@@ -36,7 +36,7 @@ public class GameManager : Singleton<GameManager>
 
 
 
-    // 紐ъ뒪?곌? 二쎌뿀???????諛섑솚?섎뒗 ?⑥닔
+    // 紐ъ뒪?�? 二쎌뿀????????諛섑???�뒗 ??�닔
     private void HandleMonsterDeath(GameObject monster)
     {
         enemyCount--;
@@ -75,8 +75,8 @@ public class GameManager : Singleton<GameManager>
 
     void Update()
     {
-        //異뷀썑 ?ъ슜?좎닔?꾩엳???쒓컙 誘몃━泥댄겕
-        //異뷀썑 ?ъ슜?좎닔?꾩엳???쒓컙 誘몃━泥댄겕
+        //?��???????좎닔?꾩엳????�컙 誘몃?�泥?�겕
+        //?��???????좎닔?꾩엳????�컙 誘몃?�泥?�겕
         time += Time.deltaTime;
     }
 
@@ -89,7 +89,7 @@ public class GameManager : Singleton<GameManager>
     {
         if (isOpen)
         {
-            SceneManager.LoadScene("Main");
+            SceneManager.LoadScene("AITestScene");
         }
     }
 
@@ -130,5 +130,7 @@ public class GameManager : Singleton<GameManager>
         monster.transform.position = spawnPos;
         EnemyCounting(1);
     }
+
+    
 
 }
