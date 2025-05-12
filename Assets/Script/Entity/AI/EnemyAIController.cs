@@ -49,19 +49,14 @@ public class EnemyAIController : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.CompareTag("Player"))
-        {
-            other.GetComponent<BaseStat>().Damaged(10);
-        }
-    }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<BaseStat>().Damaged(10);
         }
     }
+
+
 }
