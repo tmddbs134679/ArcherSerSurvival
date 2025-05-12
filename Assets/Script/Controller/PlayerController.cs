@@ -43,6 +43,12 @@ public class PlayerController : Singleton<PlayerController>
 
     void PlayerMove()
     {
+        // 닷지중이면 이동 멈춤
+        if (isDodging)
+        {
+            return;
+        }
+        
         // 인풋 분리
         Vector2 movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
         pRigidbody.velocity = movement * playerStat.Speed;
@@ -62,9 +68,9 @@ public class PlayerController : Singleton<PlayerController>
 
     void Dodge(Vector2 direction)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !isDodging)
         {
-            StartCoroutine(DodgeRoutine(direction, 10, 0.5f));
+            StartCoroutine(DodgeRoutine(direction, playerStat.dodgePower, playerStat.dodgeCoolTime));
         }
         
     }

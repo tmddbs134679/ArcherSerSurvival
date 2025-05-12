@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerStat : BaseStat
 {
+    public float dodgeCoolTime = 3f;
+    public float dodgePower = 5f;
+    
     private Rigidbody2D sRigidBody;
     private Animator animator;
     
