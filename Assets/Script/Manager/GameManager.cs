@@ -58,6 +58,7 @@ public class GameManager : Singleton<GameManager>
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        isOpen = false;
         Init_GameManager();
     }
 
