@@ -2368,7 +2368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterID: 0
-  spawnMonsterCount: 0
+  spawnMonsterCount: 1
 --- !u!114 &772623535550440359
 MonoBehaviour:
   m_ObjectHideFlags: 0

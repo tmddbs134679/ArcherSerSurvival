@@ -27,45 +27,45 @@ public class MonsterPoolManager : Singleton<MonsterPoolManager>
 
     void Start()
     {
-        // Ç®¿¡ ¿ÀºêÁ§Æ® ¹Ì¸® »ı¼º
+        // ?Â€???ã…»íˆ•?ì•ºë“ƒ èª˜ëªƒâ” ?ì•¹ê½¦
         for (int j = 0; j < objectPrefabs.Length; j++)
         {
             for (int i = 0; i < poolSize; i++)
             {
                 GameObject obj = Instantiate(objectPrefabs[j]);
                 int temp = j;
-                obj.GetComponent<Health>().OnDie += () => ReturnObject(obj, temp);
-                obj.SetActive(false);  // ¿ÀºêÁ§Æ® ºñÈ°¼ºÈ­
+                obj.GetComponent<EnemyStat>().OnDie += () => ReturnObject(obj, temp);
+                obj.SetActive(false);  // ?ã…»íˆ•?ì•ºë“ƒ é®ê¾ªì†¢?ê¹Šì†•
                 obj.transform.SetParent(gameObject.transform);
-                pool[j].Enqueue(obj);  // Å¥¿¡ ³Ö±â
+                pool[j].Enqueue(obj);  // ?ë¨¯ë¿‰ ?ï½Šë¦°
             }
         }
     }
 
 
-    // Ç®¿¡¼­ ¿ÀºêÁ§Æ®¸¦ °¡Á®¿À´Â ÇÔ¼ö
+    // ?Â€?ë¨¯ê½Œ ?ã…»íˆ•?ì•ºë“ƒç‘œ?åª›Â€?ëª„ì‚¤???â‘¥ë‹”
     public GameObject GetObject(int index)
     {
         GameManager.Instance.EnemyCounting(1);
         if (pool[index].Count > 0)
         {
-            GameObject obj = pool[index].Dequeue();  // Å¥¿¡¼­ ¿ÀºêÁ§Æ® ÇÏ³ª ²¨³»±â
-            obj.SetActive(true);  // ¿ÀºêÁ§Æ® È°¼ºÈ­
+            GameObject obj = pool[index].Dequeue();  // ?ë¨¯ë¿‰???ã…»íˆ•?ì•ºë“ƒ ?ì„êµ¹ çˆ°ì‡°ê¶¡æ¹²?
+            obj.SetActive(true);  // ?ã…»íˆ•?ì•ºë“ƒ ?ì’–ê½¦??
             return obj;
         }
         else
         {
-            // ÇÊ¿ä½Ã Ç®¿¡ ¿ÀºêÁ§Æ®¸¦ µ¿ÀûÀ¸·Î Ãß°¡
+            // ?ê¾©ìŠ‚???Â€???ã…»íˆ•?ì•ºë“ƒç‘œ??ìˆˆìŸ»?ì‡°ì¤ˆ ç•°ë¶½?
             GameObject obj = Instantiate(objectPrefabs[index]);
             return obj;
         }
     }
 
-    // »ç¿ëÀÌ ³¡³­ ¿ÀºêÁ§Æ®¸¦ Ç®¿¡ ¹İÈ¯ÇÏ´Â ÇÔ¼ö
+    // ?ÑŠìŠœ???ì•¸ê¶ƒ ?ã…»íˆ•?ì•ºë“ƒç‘œ??Â€??è«›ì„‘ì†š?ì„ë’— ?â‘¥ë‹”
     public void ReturnObject(GameObject obj, int index)
     {
         GameManager.Instance.EnemyCounting(-1);
-        obj.SetActive(false);  // ¿ÀºêÁ§Æ® ºñÈ°¼ºÈ­
-        pool[index].Enqueue(obj);  // Ç®¿¡ ¹İÈ¯
+        obj.SetActive(false);  // ?ã…»íˆ•?ì•ºë“ƒ é®ê¾ªì†¢?ê¹Šì†•
+        pool[index].Enqueue(obj);  // ?Â€??è«›ì„‘ì†š
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine.Pool;
 public class ProjectileObjectPool : MonoBehaviour
 {
     public static ProjectileObjectPool Instance { get; private set; }
-    public List<GameObject> projectilePrefabs; // 여러 종류의 프리팹
+    public List<GameObject> projectilePrefabs; // ?????ル굝履???袁ⓥ봺??
 
     private Dictionary<string, ObjectPool<GameObject>> pools = new Dictionary<string, ObjectPool<GameObject>>();
 
@@ -24,7 +24,7 @@ public class ProjectileObjectPool : MonoBehaviour
                  () =>
                  {
                      var obj = Instantiate(prefab);
-                     obj.transform.SetParent(this.transform); //오브젝트풀 밑으로 투사체 하위파일 생성
+                     obj.transform.SetParent(this.transform); //??삵닏??븍뱜?? 獄쏅쵐?앮에???沅쀯㎗???륁맄???뵬 ??밴쉐
                      return obj;
                  },
                  obj => obj.SetActive(true),
@@ -36,7 +36,7 @@ public class ProjectileObjectPool : MonoBehaviour
         }
     }
 
-    // 풀에서 가져오기
+    // ???癒?퐣 揶쎛?紐꾩궎疫?
     public GameObject Get(string prefabName)
     {
         if (pools.TryGetValue(prefabName, out var pool))
@@ -46,11 +46,11 @@ public class ProjectileObjectPool : MonoBehaviour
 
         }
 
-        Debug.LogWarning($"풀에 {prefabName}이(가) 없습니다!");
+        Debug.LogWarning($"????{prefabName}??揶쎛) ??곷뮸??덈뼄!");
         return null;
     }
 
-    // 풀로 반환하기
+    // ??嚥?獄쏆꼹???띾┛
     public void Release(string prefabName, GameObject obj)
     {
         if (pools.TryGetValue(prefabName, out var pool))
@@ -59,7 +59,7 @@ public class ProjectileObjectPool : MonoBehaviour
         }
         else
         {
-            Destroy(obj); // 없으면 그냥 파괴
+            Destroy(obj); // ??곸몵筌?域밸챶源????댘
         }
     }
 }

@@ -5,7 +5,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Singleton<PlayerController>
 {
     [SerializeField] private Transform weaponPivot;
     [SerializeField] private WeaponController WeaponPrefab;
@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     private bool isDodging = false;
     void Awake()
     {
+        base.Awake();
         pRigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
         playerStat = GetComponent<PlayerStat>();
@@ -115,6 +116,12 @@ public class PlayerController : MonoBehaviour
 
             LayerMask enemyLayer = LayerMask.GetMask("Enemy");
             int count = Physics2D.OverlapBoxNonAlloc(transform.position, targetRange, 0f, enemiesInRange, enemyLayer);
+
+            if(count == 0)
+            {
+                closestEnemy = null;
+                return null;
+            }
 
             float minDistance = Mathf.Infinity;
 
