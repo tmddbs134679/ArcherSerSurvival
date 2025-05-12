@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour
 
     private PlayerStat playerStat;
 
+    private bool isDodging = false;
     void Awake()
     {
         pRigidbody = GetComponent<Rigidbody2D>();
@@ -61,8 +63,30 @@ public class PlayerController : MonoBehaviour
             weaponController.FlipWeapon(false);
             isAttacking = false;
         }
-
+        Dodge(movement);
     }
+
+    void Dodge(Vector2 direction)
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            StartCoroutine(DodgeRoutine(direction, 10, 0.5f));
+        }
+        
+    }
+
+    IEnumerator DodgeRoutine(Vector2 direction, float dodgeSpeed, float duration)
+    {
+        isDodging = true;
+        pRigidbody.velocity = direction.normalized * dodgeSpeed;
+        Debug.Log("Dodge!");
+
+        yield return new WaitForSeconds(duration);
+
+        pRigidbody.velocity = Vector2.zero;
+        isDodging = false;
+    }
+
 
     void Rotate(Vector2 direction)
     {
