@@ -62,7 +62,7 @@ public class PlayerController : Singleton<PlayerController>
 
     void Dodge(Vector2 direction)
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             StartCoroutine(DodgeRoutine(direction, 10, 0.5f));
         }
