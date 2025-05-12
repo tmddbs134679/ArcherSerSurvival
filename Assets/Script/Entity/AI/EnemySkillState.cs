@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public class EnemySkillState : EnemyBaseState
 {
-    private readonly int SkillHas;
+    private int SkillHas;
     private const float CrossFadeDuration = 0.1f;
 
     private bool isSkillFinished = false;
@@ -19,12 +19,15 @@ public class EnemySkillState : EnemyBaseState
     {
         Debug.Log("Skill");
 
-        stateMachine.Animator.CrossFadeInFixedTime(SkillHas, CrossFadeDuration);
-
         int idx = Random.Range(0, stateMachine.Skills.Count);
+        SkillHas = stateMachine.Skills[idx].animationName;
+
+        stateMachine.Animator.CrossFadeInFixedTime(SkillHas, CrossFadeDuration);
 
         // 콜백 전달: 스킬이 끝나면 OnSkillComplete 호출
         stateMachine.Skills[idx].Execute(stateMachine, OnSkillComplete);
+
+        FlipX(stateMachine.Player.transform.position);
     }
 
     public override void Tick(float deltaTime)

@@ -39,12 +39,10 @@ public abstract class EnemyBaseState : State
 
     protected void FlipX(Vector3 targetPos)
     {
+
         bool faceLeft = targetPos.x < stateMachine.transform.position.x;
 
-        foreach (SpriteRenderer spr in stateMachine.SpriteRenderers)
-        {
-            spr.flipX = faceLeft;
-        }
+        stateMachine.transform.rotation = Quaternion.Euler(0, faceLeft ? 180f : 0f, 0);
     }
 
     public void MoveToTarget(Vector2 target, float deltaTime)
