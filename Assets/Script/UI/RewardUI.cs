@@ -17,10 +17,6 @@ public class RewardUI : BaseUI
     {
         Time.timeScale = 0f;
     }
-    private void OnEnable()
-    {
-        Time.timeScale = 0f;
-    }
     private void Start()
     {
         for (int i = 0; i < rewardButtons.Length; i++)
