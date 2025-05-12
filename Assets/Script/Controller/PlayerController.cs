@@ -204,4 +204,13 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawWireCube(transform.position, targetRange);
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Portal"))
+        {
+            GameManager.Instance.NextRoom();
+        }
+    }
+
 }

@@ -33,7 +33,8 @@ public class MonsterPoolManager : Singleton<MonsterPoolManager>
             for (int i = 0; i < poolSize; i++)
             {
                 GameObject obj = Instantiate(objectPrefabs[j]);
-                //obj.GetComponent<대충사망처리하는클래스>().OnDeath += () => ReturnObject(obj, j);
+                int temp = j;
+                obj.GetComponent<Health>().OnDie += () => ReturnObject(obj, temp);
                 obj.SetActive(false);  // 오브젝트 비활성화
                 obj.transform.SetParent(gameObject.transform);
                 pool[j].Enqueue(obj);  // 큐에 넣기

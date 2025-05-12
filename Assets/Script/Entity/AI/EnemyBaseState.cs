@@ -47,10 +47,12 @@ public abstract class EnemyBaseState : State
         }
     }
 
-    public void MoveToTarget(Transform target, float deltaTime)
+    public void MoveToTarget(Vector2 target, float deltaTime)
     {
-        FlipX(target.position);
-        Vector2 dir = (target.position - stateMachine.transform.position).normalized;
+        FlipX(target);
+
+        Vector2 current = stateMachine.transform.position;
+        Vector2 dir = (target - current).normalized;
         stateMachine.transform.position += (Vector3)dir * stateMachine.MonsterData.movementSpeed * deltaTime;
     }
 

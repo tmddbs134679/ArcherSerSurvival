@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterID: 0
-  spawnMonsterCount: 0
+  spawnMonsterCount: 1
 --- !u!1 &2845275732445977061
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,6 +992,90 @@ Transform:
   - {fileID: 5409944640570295933}
   m_Father: {fileID: 442788971139579725}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4052840385510946959
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2788690315728270220}
+  - component: {fileID: 7339427215283734238}
+  m_Layer: 0
+  m_Name: DoorBlankSpace
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2788690315728270220
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4052840385510946959}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 1.5, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8304714368395121126}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &7339427215283734238
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4052840385510946959}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &5001682591193698872
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,7 +1088,7 @@ GameObject:
   - component: {fileID: 2143541850674460841}
   - component: {fileID: 7699436170952548591}
   - component: {fileID: 1309928832858556553}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1991,8 +2075,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f396bf5bfa26b7419c1306e67c1fdf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterID: 0
-  spawnMonsterCount: 0
+  monsterID: 1
+  spawnMonsterCount: 1
 --- !u!1 &5969912053132259089
 GameObject:
   m_ObjectHideFlags: 0
@@ -5012,6 +5096,14 @@ Tilemap:
   m_TileAssetArray:
   - m_RefCount: 280
     m_Data: {fileID: 11400000, guid: 1b49e671e46bf4f4b87c23722b4c455d, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -5583,7 +5675,7 @@ Tilemap:
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -10, y: -8, z: 0}
-  m_Size: {x: 20, y: 17, z: 1}
+  m_Size: {x: 20, y: 19, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -8450,6 +8542,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5034145309568947391}
     m_Modifications:
+    - target: {fileID: 2751982207105245834, guid: 706eabd1839e919419801be10c94abc2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8461933685825200043, guid: 706eabd1839e919419801be10c94abc2, type: 3}
       propertyPath: m_Name
       value: StageTransitionDoor
@@ -8494,14 +8590,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9174958923242705161, guid: 706eabd1839e919419801be10c94abc2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3271812759363626396, guid: 706eabd1839e919419801be10c94abc2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2788690315728270220}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 706eabd1839e919419801be10c94abc2, type: 3}
 --- !u!4 &2818205466241055480 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8735808009955905154, guid: 706eabd1839e919419801be10c94abc2, type: 3}
+  m_PrefabInstance: {fileID: 6784556193432188026}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8304714368395121126 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3271812759363626396, guid: 706eabd1839e919419801be10c94abc2, type: 3}
   m_PrefabInstance: {fileID: 6784556193432188026}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6876447188226233343

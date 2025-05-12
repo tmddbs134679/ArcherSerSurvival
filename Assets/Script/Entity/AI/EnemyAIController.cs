@@ -7,18 +7,19 @@ public class EnemyAIController : MonoBehaviour
 {
     [Header("Patrol Settings")]
     public EPATROLAXIS patrolAxis = EPATROLAXIS.ALL;
-    public List<Transform> patrolPoints = new List<Transform>();
     public float patrolDistance = 3f;
+
+    public List<Vector2> PatrolPositions { get; private set; } = new();
 
     private void OnEnable()
     {
-        CreatePatrolPoints();
+        CreatePatrolPositions();
     }
 
-    private void CreatePatrolPoints()
+    private void CreatePatrolPositions()
     {
-        patrolPoints.Clear();
-        Vector2 standardPos = transform.position;
+        PatrolPositions.Clear();
+        Vector2 origin = transform.position;
         List<Vector2> dirs = new();
 
         switch (patrolAxis)
@@ -43,9 +44,24 @@ public class EnemyAIController : MonoBehaviour
 
         foreach (var dir in dirs)
         {
-            GameObject point = new GameObject("PatrolPoint");
-            point.transform.position = standardPos + dir * patrolDistance;
-            patrolPoints.Add(point.transform);
+            PatrolPositions.Add(origin + dir * patrolDistance);
+        }
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            other.GetComponent<BaseStat>().Damaged(10);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<BaseStat>().Damaged(10);
         }
     }
 }
