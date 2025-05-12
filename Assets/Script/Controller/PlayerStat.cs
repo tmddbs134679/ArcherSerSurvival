@@ -28,6 +28,7 @@ public class PlayerStat : BaseStat
                 timeHpDelay += Time.deltaTime;
                 if (timeHpDelay >= hpChangeDelay)
                 {
+                    animator.SetBool("IsDamaged", false);
                     isHpChanged = true;
                 }
             }
@@ -44,7 +45,7 @@ public class PlayerStat : BaseStat
             isHpChanged = false;
             timeHpDelay = 0;
             currentHp -= reduceHp;
-            animator.SetTrigger("isDamaged");
+            animator.SetBool("IsDamaged", true);
 
             if (currentHp <= 0)
             {
@@ -71,7 +72,5 @@ public class PlayerStat : BaseStat
             componenet.enabled = false;
         }
 
-        // 사망 2초 후 제거
-        Destroy(gameObject, 2f);
     }
 }

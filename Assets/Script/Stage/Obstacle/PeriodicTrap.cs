@@ -2,22 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PeriodicTrap : NormalTrap   //È°¼ºÈ­/ºñÈ°¼ºÈ­¸¦ ¹İº¹ÇÏ´Â ÇÔÁ¤ 
+public class PeriodicTrap : NormalTrap   //í™œì„±í™”/ë¹„í™œì„±í™”ë¥¼ ë°˜ë³µí•˜ëŠ” í•¨ì • 
 {
     [Header("Trap Settings(Periodic)")]
-    [SerializeField] private float activeDuration = 1.5f;     // ÇÔÁ¤ÀÌ È°¼ºÈ­µÇ¾î ÀÖ´Â ½Ã°£
-    [SerializeField] private float inactiveDuration = 2.0f;   // ÇÔÁ¤ÀÌ ºñÈ°¼ºÈ­µÇ¾î ÀÖ´Â ½Ã°£
+    [SerializeField] private float activeDuration = 1.5f;     // í•¨ì •ì´ í™œì„±í™”ë˜ì–´ ìˆëŠ” ì‹œê°„
+    [SerializeField] private float inactiveDuration = 2.0f;   // í•¨ì •ì´ ë¹„í™œì„±í™”ë˜ì–´ ìˆëŠ” ì‹œê°„
 
-    private bool isActive = false;      //ÇöÀç ÇÔÁ¤ È°¼ºÈ­ »óÅÂ
-    private float activeTimer = 0f;          //ÁÖ±â º¯°æÀ» À§ÇÑ Å¸ÀÌ¸Ó
+    private bool isActive = false;      //í˜„ì¬ í•¨ì • í™œì„±í™” ìƒíƒœ
+    private float activeTimer = 0f;          //ì£¼ê¸° ë³€ê²½ì„ ìœ„í•œ íƒ€ì´ë¨¸
     private Collider2D trapCollider;
     private Animator animator;
     private readonly int IsActive = Animator.StringToHash("IsActive");
 
+
     private void Start()
     {
         Init();
-        SetTrapState(true);   //È°¼ºÈ­ »óÅÂ·Î ½ÃÀÛ   
+        SetTrapState(true);   //í™œì„±í™” ìƒíƒœë¡œ ì‹œì‘   
     }
 
     private void Update()
@@ -25,7 +26,7 @@ public class PeriodicTrap : NormalTrap   //È°¼ºÈ­/ºñÈ°¼ºÈ­¸¦ ¹İº¹ÇÏ´Â ÇÔÁ¤
         activeTimer -= Time.deltaTime;
         if(activeTimer <= 0f)
         {
-            //ÇÔÁ¤ »óÅÂ ÀüÈ¯
+            //í•¨ì • ìƒíƒœ ì „í™˜
             SetTrapState(!isActive);
         }
     }
@@ -39,6 +40,7 @@ public class PeriodicTrap : NormalTrap   //È°¼ºÈ­/ºñÈ°¼ºÈ­¸¦ ¹İº¹ÇÏ´Â ÇÔÁ¤
     void SetTrapState(bool newActiveState)
     {
         isActive = newActiveState;
+        trapCollider.enabled = isActive;
         animator.SetBool(IsActive, isActive);
         if (isActive)
         {
@@ -52,18 +54,19 @@ public class PeriodicTrap : NormalTrap   //È°¼ºÈ­/ºñÈ°¼ºÈ­¸¦ ¹İº¹ÇÏ´Â ÇÔÁ¤
 
     protected override void OnTriggerEnter2D(Collider2D other)
     {
-        if (isActive &&  ((1 << other.gameObject.layer) & playerLayer) != 0)
+        if (((1 << other.gameObject.layer) & playerLayer) != 0)
         {
-            TryDealDamage();
+            player = other.GetComponent<PlayerStat>();
+            if (isActive)
+            {
+                TryDealDamage();
+            }
         }
     }
 
     protected override void OnTriggerStay2D(Collider2D other)
     {
-        if (isActive && ((1 << other.gameObject.layer) & playerLayer) != 0)
-        {
-            TryDealDamage();
-        }
+        base.OnTriggerStay2D(other);
     }
 
     protected override void OnTriggerExit2D(Collider2D other)

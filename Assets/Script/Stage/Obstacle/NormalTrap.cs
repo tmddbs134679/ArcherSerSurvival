@@ -2,43 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NormalTrap : MonoBehaviour   //ÇÃ·¹ÀÌ¾î Á¢ÃË ½Ã ÇÇÇØ¸¦ ÀÔÈ÷´Â ÇÔÁ¤
+public class NormalTrap : MonoBehaviour   //í”Œë ˆì´ì–´ ì ‘ì´‰ ì‹œ í”¼í•´ë¥¼ ì…íˆëŠ” í•¨ì •
 {
     [Header("Trap Settings(Base)")]
-    [SerializeField] protected float damageAmount = 10f;        // ÇÇÇØ·®
-    [SerializeField] protected LayerMask playerLayer;           // ÇÇÇØ ´ë»ó ·¹ÀÌ¾î(ÇÃ·¹ÀÌ¾î)
-    //protected PlayerResource player  µ¥¹ÌÁö Ã³¸®¸¦ À§ÇÑ ÇÃ·¹ÀÌ¾î Ã¼·Â °ü¸® °´Ã¼
+    [SerializeField] protected float damageAmount = 10f;        // í”¼í•´ëŸ‰
+    [SerializeField] protected LayerMask playerLayer;           // í”¼í•´ ëŒ€ìƒ ë ˆì´ì–´(í”Œë ˆì´ì–´)
+    protected PlayerStat player;  //ë°ë¯¸ì§€ ì²˜ë¦¬ë¥¼ ìœ„í•œ í”Œë ˆì´ì–´ ì²´ë ¥ ê´€ë¦¬ ê°ì²´
 
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
+        
         if (((1 << other.gameObject.layer) & playerLayer) != 0)
         {
-            //player = other.GetComponent<PlayerResource>();
+            player = other.GetComponent<PlayerStat>();
             TryDealDamage();
         }
     }
 
     protected virtual void OnTriggerStay2D(Collider2D other)
     {
-        /*if (player != null && other.gameObject == player.gameObject)
+        if (player != null && other.gameObject == player.gameObject)
         {
-            TryDealDamage(); // Ä³½ÃµÈ player¸¦ ´ë»óÀ¸·Î µ¥¹ÌÁö ½Ãµµ
+            TryDealDamage(); // ìºì‹œëœ playerë¥¼ ëŒ€ìƒìœ¼ë¡œ ë°ë¯¸ì§€ ì‹œë„
         }
-        */
+        
     }
 
     protected virtual void OnTriggerExit2D(Collider2D other)
     {
-        /*
-         * if(player != null && other.gameObject = player.gameObject){
-         *      player = null;
-         */
+        if (player != null && other.gameObject == player.gameObject)
+        {
+            player = null;
+        }
     }
 
     protected void TryDealDamage()
     {
-        //if(player == null) return;
-        //µ¥¹ÌÁö Ã³¸®
+        if(player == null) return;
+        player.Damaged(damageAmount);
     }
 }
 
