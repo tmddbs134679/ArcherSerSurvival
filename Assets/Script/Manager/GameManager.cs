@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 public class GameManager : Singleton<GameManager>
 {
     [SerializeField]
@@ -20,6 +22,7 @@ public class GameManager : Singleton<GameManager>
     public GameObject[] rooms;
     public GameObject[] bossRooms;
     public SkillLevelSystem skillLevelSystem;
+
     private void HandleMonsterDeath(GameObject monster)
     {
         enemyCount--;
@@ -90,6 +93,13 @@ public class GameManager : Singleton<GameManager>
         enemyCount += count;
         CheckEnemy();
     }
+
+    public void GameOver()
+    {
+        UIManager.Instance.ShowUI("GameOverUI");
+    }
+
+
 }
 
 

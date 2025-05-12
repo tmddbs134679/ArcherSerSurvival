@@ -72,5 +72,6 @@ public class PlayerStat : BaseStat
             componenet.enabled = false;
         }
 
+        GameManager.Instance.GameOver();
     }
 }
