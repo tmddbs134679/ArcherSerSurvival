@@ -16,7 +16,7 @@ public class RewardUI : BaseUI
     private void Awake()
     {
         skillLevelSystem = GameManager.Instance.skillLevelSystem;
-        
+
     }
 
     private void OnEnable()
@@ -37,9 +37,9 @@ public class RewardUI : BaseUI
     public void SelectButton(int index)
     {
 
-        if(index == 0)
+        if (index == 0)
         {
-            
+
             if (skillLevelSystem.changedSkillData["Axe"].level == 0)
             {
                 Debug.Log(index);
@@ -55,19 +55,18 @@ public class RewardUI : BaseUI
             else
             {
                 skillLevelSystem.SkillLevelUp("Axe");
-                Debug.Log(skillLevelSystem.changedSkillData["Axe"].level);
             }
         }
 
 
-        else if(index == 1)
+        else if (index == 1)
         {
-
-            Debug.Log(index);
             if (skillLevelSystem.changedSkillData["Knife"].level == 0)
             {
                 GameObject go = Instantiate(skillPrefabs[1]);
                 go.transform.SetParent(GameObject.Find("Player").transform);
+
+                PlayerController.Instance.skillList.Add(go);
 
                 skillLevelSystem.changedSkillData["Knife"].level += 1;
 
@@ -79,7 +78,7 @@ public class RewardUI : BaseUI
             }
         }
 
-        else if(index == 2)
+        else if (index == 2)
         {
 
         }

@@ -44,8 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e49556e129e05d241a0f8663c1fb1000, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 8632524457957267343, guid: 4c454b45d3489874da4c6e80ee9112a9, type: 3}
-  Data: {fileID: 11400000, guid: 19cf548b03044084689541e419da6343, type: 2}
+  serialname: Meteo
+  projectilePrefab: {fileID: 7827560360998576179, guid: 4c454b45d3489874da4c6e80ee9112a9, type: 3}
+  Data: {fileID: 0}
   fireRate: 0
   individualFireRate: 0
   player: {fileID: 0}
+  skillLevelSystem: {fileID: 0}
