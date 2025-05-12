@@ -12,13 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 636751bd5872dc349a8077bae4932916, type: 3}
   m_Name: KnifeData
   m_EditorClassIdentifier: 
-  speed: 22.8
+  speed: 11.5
+  lvspeed: 1
   damage: 10
-  duration: 8
-  color: {r: 1, g: 1, b: 1, a: 1}
+  lvdamage: 1
+  count: 1
+  lvcount: 1
+  duration: 0
+  color: {r: 0, g: 0, b: 0, a: 0}
   impactEffect: {fileID: 0}
   rotateSpeed: 0
-  count: 5
-  angle: 29.6
+  angle: 0
   hormingStartDelay: 0
-  hormingTurnDelay: 10
+  hormingTurnDelay: 0

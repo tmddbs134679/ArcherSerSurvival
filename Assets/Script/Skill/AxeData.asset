@@ -13,12 +13,15 @@ MonoBehaviour:
   m_Name: AxeData
   m_EditorClassIdentifier: 
   speed: 11.4
+  lvspeed: 0
   damage: 10
+  lvdamage: 0
+  count: 1
+  lvcount: 1
   duration: 14.8
   color: {r: 1, g: 1, b: 1, a: 1}
   impactEffect: {fileID: 0}
   rotateSpeed: 10
-  count: 5
   angle: 29.6
   hormingStartDelay: 7.1
   hormingTurnDelay: 8.2
