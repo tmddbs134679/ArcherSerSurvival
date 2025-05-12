@@ -30,6 +30,7 @@ public class PlayerController : Singleton<PlayerController>
 
     void Awake()
     {
+        base.Awake();
         pRigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
         playerStat = GetComponent<PlayerStat>();
