@@ -16,6 +16,12 @@ public class RewardUI : BaseUI
     private void Awake()
     {
         skillLevelSystem = GameManager.Instance.skillLevelSystem;
+        
+    }
+
+    private void OnEnable()
+    {
+        Time.timeScale = 0f;
     }
 
 
@@ -85,6 +91,8 @@ public class RewardUI : BaseUI
         }
         UIManager.Instance.HideUI(gameObject.name);
         //gameObject.SetActive(false);
+
+        Time.timeScale = 1f;
     }
 
 }

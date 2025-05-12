@@ -5,7 +5,7 @@ using UnityEngine.Pool;
 public class ProjectileObjectPool : MonoBehaviour
 {
     public static ProjectileObjectPool Instance { get; private set; }
-    public List<GameObject> projectilePrefabs; // ?щ윭 醫낅쪟???꾨━??
+    public List<GameObject> projectilePrefabs; // ?????ル굝履???袁ⓥ봺??
 
     private Dictionary<string, ObjectPool<GameObject>> pools = new Dictionary<string, ObjectPool<GameObject>>();
 
@@ -24,7 +24,7 @@ public class ProjectileObjectPool : MonoBehaviour
                  () =>
                  {
                      var obj = Instantiate(prefab);
-                     obj.transform.SetParent(this.transform); //?ㅻ툕?앺듃? 諛묒쑝濡??ъ궗泥??섏쐞?뚯씪 ?앹꽦
+                     obj.transform.SetParent(this.transform); //??삵닏??븍뱜?? 獄쏅쵐?앮에???沅쀯㎗???륁맄???뵬 ??밴쉐
                      return obj;
                  },
                  obj => obj.SetActive(true),
@@ -36,7 +36,7 @@ public class ProjectileObjectPool : MonoBehaviour
         }
     }
 
-    // ??먯꽌 媛?몄삤湲?
+    // ???癒?퐣 揶쎛?紐꾩궎疫?
     public GameObject Get(string prefabName)
     {
         if (pools.TryGetValue(prefabName, out var pool))
@@ -46,11 +46,11 @@ public class ProjectileObjectPool : MonoBehaviour
 
         }
 
-        Debug.LogWarning($"???{prefabName}??媛) ?놁뒿?덈떎!");
+        Debug.LogWarning($"????{prefabName}??揶쎛) ??곷뮸??덈뼄!");
         return null;
     }
 
-    // ?濡?諛섑솚?섍린
+    // ??嚥?獄쏆꼹???띾┛
     public void Release(string prefabName, GameObject obj)
     {
         if (pools.TryGetValue(prefabName, out var pool))
@@ -59,7 +59,7 @@ public class ProjectileObjectPool : MonoBehaviour
         }
         else
         {
-            Destroy(obj); // ?놁쑝硫?洹몃깷 ?뚭눼
+            Destroy(obj); // ??곸몵筌?域밸챶源????댘
         }
     }
 }

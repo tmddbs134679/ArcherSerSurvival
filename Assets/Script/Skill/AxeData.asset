@@ -21,7 +21,7 @@ MonoBehaviour:
   duration: 14.8
   color: {r: 1, g: 1, b: 1, a: 1}
   impactEffect: {fileID: 0}
-  rotateSpeed: 10
+  rotateSpeed: 175
   angle: 29.6
   hormingStartDelay: 7.1
   hormingTurnDelay: 8.2

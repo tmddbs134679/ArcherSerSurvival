@@ -1,29 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
     private static T _instance;
+    private static bool applicationIsQuitting = false;
 
     public static T Instance
     {
         get
         {
-            // ÀÎ½ºÅÏ½º°¡ ¾ø´Ù¸é, ¾À¿¡¼­ Ã£¾Æ¼­ ¼³Á¤
             if (_instance == null)
             {
                 _instance = FindObjectOfType<T>();
+
                 if (_instance == null)
                 {
-                    // ÀÎ½ºÅÏ½º°¡ ¾øÀ¸¸é »õ·Î¿î ¿ÀºêÁ§Æ® »ı¼º
                     GameObject singletonObject = new GameObject(typeof(T).Name);
                     _instance = singletonObject.AddComponent<T>();
                 }
 
-                // »ı¼ºµÇ¾ú°Å³ª Ã£¾Æ³½ ÀÎ½ºÅÏ½º¸¦ DDOL¿¡ Ãß°¡
-                // ÀÌ ºÎºĞÀ» Instance¿¡¼­ ´Ù½Ã È£ÃâÇÏµµ·Ï º¯°æ
-                DontDestroyOnLoad(((MonoBehaviour)_instance).gameObject);
+                // ì´ ì‹œì ì—ì„œ ì¸ìŠ¤í„´ìŠ¤ëŠ” ë§Œë“¤ì–´ì¡Œìœ¼ë¯€ë¡œ DDOL ë“±ë¡
+                DontDestroyOnLoad(_instance.gameObject);
             }
 
             return _instance;
@@ -34,14 +31,15 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         if (_instance == null)
         {
-            // ÀÎ½ºÅÏ½º¸¦ ÀÌ ¿ÀºêÁ§Æ®·Î ¼³Á¤
             _instance = this as T;
-            DontDestroyOnLoad(gameObject);  // ÀÌ ÀÎ½ºÅÏ½º´Â DDOL¿¡ ¿Ã¸®±â
+            DontDestroyOnLoad(gameObject);
         }
         else if (_instance != this)
         {
-            // Áßº¹µÈ ÀÎ½ºÅÏ½º´Â ÆÄ±«
+            // ì¤‘ë³µëœ ì˜¤ë¸Œì íŠ¸ê°€ DDOL ì „ì— íŒŒê´´ë¨
             Destroy(gameObject);
         }
     }
+
+
 }

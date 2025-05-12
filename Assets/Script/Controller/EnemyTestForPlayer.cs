@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// player 체력 감소 테스트 스크립트
+// player 泥대젰 媛먯냼 ?뚯뒪???ㅽ겕由쏀듃
 public class EnemyTestForPlayer : MonoBehaviour
 {
     [SerializeField] private PlayerStat playerStat;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 
@@ -21,14 +22,30 @@ public class ProjectileSkill : MonoBehaviour
     public SkillLevelSystem skillLevelSystem;
 
 
-
     private void Awake()
     {
-        player = GameObject.Find("Player");
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        Init();
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Init();
+    }
+
+    private void Init()
+    {
+        player = PlayerController.Instance.gameObject;
         SetSkillData();
     }
 
-    public void SetSkillData()
+        public void SetSkillData()
     {
         Data = new ChangedSkillData();
 

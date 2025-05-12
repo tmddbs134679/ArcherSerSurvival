@@ -27,7 +27,7 @@ public class MonsterPoolManager : Singleton<MonsterPoolManager>
 
     void Start()
     {
-        // 풀에 오브젝트 미리 생성
+        // ????ㅻ툕?앺듃 誘몃━ ?앹꽦
         for (int j = 0; j < objectPrefabs.Length; j++)
         {
             for (int i = 0; i < poolSize; i++)
@@ -35,37 +35,37 @@ public class MonsterPoolManager : Singleton<MonsterPoolManager>
                 GameObject obj = Instantiate(objectPrefabs[j]);
                 int temp = j;
                 obj.GetComponent<EnemyStat>().OnDie += () => ReturnObject(obj, temp);
-                obj.SetActive(false);  // 오브젝트 비활성화
+                obj.SetActive(false);  // ?ㅻ툕?앺듃 鍮꾪솢?깊솕
                 obj.transform.SetParent(gameObject.transform);
-                pool[j].Enqueue(obj);  // 큐에 넣기
+                pool[j].Enqueue(obj);  // ?먯뿉 ?ｊ린
             }
         }
     }
 
 
-    // 풀에서 오브젝트를 가져오는 함수
+    // ??먯꽌 ?ㅻ툕?앺듃瑜?媛?몄삤???⑥닔
     public GameObject GetObject(int index)
     {
         GameManager.Instance.EnemyCounting(1);
         if (pool[index].Count > 0)
         {
-            GameObject obj = pool[index].Dequeue();  // 큐에서 오브젝트 하나 꺼내기
-            obj.SetActive(true);  // 오브젝트 활성화
+            GameObject obj = pool[index].Dequeue();  // ?먯뿉???ㅻ툕?앺듃 ?섎굹 爰쇰궡湲?
+            obj.SetActive(true);  // ?ㅻ툕?앺듃 ?쒖꽦??
             return obj;
         }
         else
         {
-            // 필요시 풀에 오브젝트를 동적으로 추가
+            // ?꾩슂??????ㅻ툕?앺듃瑜??숈쟻?쇰줈 異붽?
             GameObject obj = Instantiate(objectPrefabs[index]);
             return obj;
         }
     }
 
-    // 사용이 끝난 오브젝트를 풀에 반환하는 함수
+    // ?ъ슜???앸궃 ?ㅻ툕?앺듃瑜????諛섑솚?섎뒗 ?⑥닔
     public void ReturnObject(GameObject obj, int index)
     {
         GameManager.Instance.EnemyCounting(-1);
-        obj.SetActive(false);  // 오브젝트 비활성화
-        pool[index].Enqueue(obj);  // 풀에 반환
+        obj.SetActive(false);  // ?ㅻ툕?앺듃 鍮꾪솢?깊솕
+        pool[index].Enqueue(obj);  // ???諛섑솚
     }
 }
