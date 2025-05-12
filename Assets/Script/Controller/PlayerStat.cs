@@ -71,7 +71,5 @@ public class PlayerStat : BaseStat
             componenet.enabled = false;
         }
 
-        // 사망 2초 후 제거
-        Destroy(gameObject, 2f);
     }
 }
