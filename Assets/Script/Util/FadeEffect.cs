@@ -14,7 +14,7 @@ public class FadeEffect : MonoBehaviour
     private float fadeTime;             //페이드 되는 시간
     private Image fadeImage;            //페이드 효과에 사용되는 검은 바탕 이미지
 
-    private void Awake()
+    private void Start()
     {
         fadeImage = GetComponent<Image>();
     }
@@ -30,6 +30,10 @@ public class FadeEffect : MonoBehaviour
 
     private IEnumerator Fade(UnityAction action, float start, float end)
     {
+        if(fadeImage == null)
+        {
+            fadeImage = GetComponent<Image>();
+        }
         onFadeEvent.AddListener(action);
 
         float current = 0f;
