@@ -65,5 +65,12 @@ public class PlayerStat : BaseStat
             color.a = 0.3f;
             renderer.color = color;
         }
+
+        // 사망하면 모든 컴포넌트 끄기
+        foreach (Behaviour componenet in transform.GetComponentsInChildren<Behaviour>())
+        {
+            componenet.enabled = false;
+        }
+
     }
 }
