@@ -35,7 +35,7 @@ public class PlayerStat : BaseStat
     }
 
     // 체력감소 무적판정은 collision에서 진행할것.
-    public override void  Damaged(float reduceHp)
+    public override void Damaged(float reduceHp)
     {
         if (isHpChanged)
         {

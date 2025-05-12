@@ -47,4 +47,21 @@ public class EnemyAIController : MonoBehaviour
             PatrolPositions.Add(origin + dir * patrolDistance);
         }
     }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            other.GetComponent<BaseStat>().Damaged(10);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<BaseStat>().Damaged(10);
+        }
+    }
 }

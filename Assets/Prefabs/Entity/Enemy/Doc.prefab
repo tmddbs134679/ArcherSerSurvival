@@ -205,6 +205,7 @@ GameObject:
   - component: {fileID: 1221144516760593067}
   - component: {fileID: 148256016238909937}
   - component: {fileID: 4159071615303732288}
+  - component: {fileID: 1783932811612168923}
   m_Layer: 6
   m_Name: Doc
   m_TagString: Untagged
@@ -260,7 +261,7 @@ MonoBehaviour:
   - {fileID: 5478024326061024807}
   <MonsterData>k__BackingField: {fileID: 11400000, guid: 8b52f1d5ed1317e459ee4b5f8fd6112d, type: 2}
   <Player>k__BackingField: {fileID: 0}
-  <Health>k__BackingField: {fileID: 1221144516760593067}
+  <EnemyStat>k__BackingField: {fileID: 1783932811612168923}
   <PlayerChasingRange>k__BackingField: 5
   <EnemyAIController>k__BackingField: {fileID: 2327899744472762287}
   <CanAttack>k__BackingField: 1
@@ -353,3 +354,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.64769673, y: 1.0245795}
   m_EdgeRadius: 0
+--- !u!114 &1783932811612168923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6800338950794716611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c439057d16535a4992f1416cf00fcb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 10
+  hpChangeDelay: 3
+  speed: 5
+  atk: 10
