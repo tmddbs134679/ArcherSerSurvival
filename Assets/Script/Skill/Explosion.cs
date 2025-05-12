@@ -15,8 +15,6 @@ public class Explosion : MonoBehaviour
     public float maxRadius = 2.5f;        // 최대 반지름
     public float growSpeed = 0.5f;        // 초당 커지는 속도
 
-    public GameObject CircleRange;
-    public GameObject magicZone;
     public void Init(Vector2 target, Vector2 angleDir, ProjectileData _data)
     {
         Target = target;
@@ -31,7 +29,7 @@ public class Explosion : MonoBehaviour
         if (radius < maxRadius)
         {
                         radius += growSpeed * Time.deltaTime;
-            CircleRange.transform.localScale = new Vector2(radius,radius);
+            transform.localScale = new Vector2(radius,radius);
         }
     }
 

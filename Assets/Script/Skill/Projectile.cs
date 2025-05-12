@@ -30,13 +30,11 @@ public class Projectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)//충돌했을 시
     {
-
         if (collision.GetComponent<EnemyStateMachine>() != null) //&&Target.tag==collsion.tag or layermask 비교
         {
             collision.GetComponent<EnemyStateMachine>().Health.DealDamage(data.damage);
             StartCoroutine(WrappingInvokeDelay(0f));//skillShooter의 ReturnToPool() 메서드를 호출
         }
-
     }
     private IEnumerator WrappingInvokeDelay(float delay)
     {
