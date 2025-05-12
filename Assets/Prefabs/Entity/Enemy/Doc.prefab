@@ -256,7 +256,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Animator>k__BackingField: {fileID: 8035420521145780144}
-  <SpriteRenderers>k__BackingField: []
+  <SpriteRenderers>k__BackingField:
+  - {fileID: 2821711444294859596}
+  - {fileID: 5478024326061024807}
   <MonsterData>k__BackingField: {fileID: 11400000, guid: 8b52f1d5ed1317e459ee4b5f8fd6112d, type: 2}
   <Player>k__BackingField: {fileID: 0}
   <Health>k__BackingField: {fileID: 1221144516760593067}
