@@ -20,7 +20,7 @@ public class StageTransitionPortal : MonoBehaviour
     {
         if (((1 << other.gameObject.layer) & playerLayer) != 0)
         {
-            SceneManager.LoadScene(SceneName);
+            GameManager.Instance.NextRoom();
         }
     }
 }
