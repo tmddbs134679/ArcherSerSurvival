@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class RewardUI : BaseUI
 {
 
-    [SerializeField] private Button[] rewardButtons; // 인스펙터에 버튼 3개 연결
+    [SerializeField] private Button[] rewardButtons; // ?紐꾨뮞??됯숲??甕곌쑵??3揶??怨뚭퍙
 
     public SkillLevelSystem skillLevelSystem;
 
@@ -16,7 +16,7 @@ public class RewardUI : BaseUI
     private void Awake()
     {
         skillLevelSystem = GameManager.Instance.skillLevelSystem;
-
+        skillPrefabs = Resources.LoadAll<GameObject>("Prefabs/Skill/Prefabs");
     }
 
     private void OnEnable()
@@ -28,7 +28,7 @@ public class RewardUI : BaseUI
     {
         for (int i = 0; i < rewardButtons.Length; i++)
         {
-            int index = i; // 클로저 문제 방지
+            int index = i; // ??以?? ?얜챷??獄쎻뫗?
             rewardButtons[i].onClick.AddListener(() => SelectButton(index));
         }
     }

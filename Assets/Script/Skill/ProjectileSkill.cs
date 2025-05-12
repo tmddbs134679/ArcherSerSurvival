@@ -8,13 +8,13 @@ using UnityEngine.UIElements;
 public class ProjectileSkill : MonoBehaviour
 {
     public string serialname;
-    public GameObject projectilePrefab; //??沅쀯㎗??袁ⓥ봺??
-    public ChangedSkillData Data; //??沅쀯㎗?곸벥 ?怨쀬뵠??
-    public float fireRate; //???????獄쏆뮇沅?揶쏄쑨爰?
+    public GameObject projectilePrefab; //??亦낆?럸??熬곣뱿遊??
+    public ChangedSkillData Data; //??亦낆?럸?怨몃꺄 ??⑥щ턄??
+    public float fireRate; //????????꾩룇裕뉑쾮??띠룄?①댆?
 
-    public float individualFireRate;//揶쏆뮆??獄쏆뮇沅쀥첎袁㏐봄
-    private float fireTimer;//??λ떄 ??볦퍢癰궰??
-    //??곕뼒??
+    public float individualFireRate;//?띠룇裕???꾩룇裕뉑쾮?μ쾸熬곥룓遊?
+    private float fireTimer;//??貫????蹂?뜟?곌떠???
+    //??怨뺣폃??
 
     public GameObject player;
 
@@ -76,7 +76,7 @@ public class ProjectileSkill : MonoBehaviour
 
     private void Fire(int count, Vector2 pivotPos, Vector2 targetPos)
     {
-        GameObject projectile = ProjectileObjectPool.Instance.Get(projectilePrefab.name); //objectpool?癒?퐣 ?癒?짗??곗쨮 ?봔鈺곌퉲釉????袁ⓥ봺?諭??筌?쑴?쇾빳?
+        GameObject projectile = ProjectileObjectPool.Instance.Get(projectilePrefab.name); //objectpool????????吏??怨쀬Ŧ ?遊붋?브퀗?꿴뇡????熬곣뱿遊?獄???嶺????얜뭄?
 
         projectile.transform.position = pivotPos;
         projectile.transform.rotation = Quaternion.identity;

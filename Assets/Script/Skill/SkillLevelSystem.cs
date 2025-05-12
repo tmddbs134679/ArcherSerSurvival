@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static UnityEngine.UI.Image;
 
 public class SkillLevelSystem : MonoBehaviour
 {
@@ -18,9 +19,18 @@ public class SkillLevelSystem : MonoBehaviour
 
     private void Awake()
     {
+        skillDataObject = Resources.LoadAll<ProjectileData>("Prefabs/Skill/Data");
+
+
+        foreach(var temp in skillDataObject)
+        {
+            skillData.Add(temp.name.Substring(0, temp.name.Length - "Data".Length), temp);
+        }
+        /*
         skillData.Add("Axe", skillDataObject[0]);
         skillData.Add("Knife", skillDataObject[1]);
         skillData.Add("Meteo", skillDataObject[2]);
+        */
     }
 
 
