@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3930770141102316115}
   - component: {fileID: 5763316157069405545}
   m_Layer: 9
-  m_Name: Axe
+  m_Name: Knife
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c4674c9b906e3243afca89989a166ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serialName: Axe
+  serialName: Knife
 --- !u!212 &7470724474760578296
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -89,7 +89,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2000
-  m_Sprite: {fileID: 21300000, guid: f8eace003f0474a42918f05cc762efd4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 351d9a2019071244c94a2f7fe9994477, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -136,7 +136,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1.5}
+    oldSize: {x: 0.5625, y: 1.1875}
     newSize: {x: 1, y: 1.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
