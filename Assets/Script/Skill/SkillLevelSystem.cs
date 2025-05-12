@@ -31,16 +31,11 @@ public class SkillLevelSystem : MonoBehaviour
         skillData.Add("Knife", skillDataObject[1]);
         skillData.Add("Meteo", skillDataObject[2]);
         */
-    }
 
-
-
-    private void Start()
-    {
         skillKey = skillData.Keys.ToList();
 
 
-        foreach(string key in skillKey)
+        foreach (string key in skillKey)
         {
             ChangedSkillData newData = new ChangedSkillData();
 
@@ -57,6 +52,15 @@ public class SkillLevelSystem : MonoBehaviour
             newData.hormingTurnDelay = skillData[key].hormingTurnDelay;
             changedSkillData.Add(key, newData);
         }
+
+
+    }
+
+
+
+    private void Start()
+    {
+        
         
     }
 

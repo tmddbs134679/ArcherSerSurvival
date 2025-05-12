@@ -8,13 +8,13 @@ using UnityEngine.UIElements;
 public class ProjectileSkill : MonoBehaviour
 {
     public string serialname;
-    public GameObject projectilePrefab; //??亦낆?럸??熬곣뱿遊??
-    public ChangedSkillData Data; //??亦낆?럸?怨몃꺄 ??⑥щ턄??
-    public float fireRate; //????????꾩룇裕뉑쾮??띠룄?①댆?
+    public GameObject projectilePrefab; //??雅?굞??????ш끽諭욥걡??
+    public ChangedSkillData Data; //??雅?굞?????⑤챶爰????Β????
+    public float fireRate; //????????袁⑸즵獒뺣뎾苡???좊즲??좊뙀?
 
-    public float individualFireRate;//?띠룇裕???꾩룇裕뉑쾮?μ쾸熬곥룓遊?
-    private float fireTimer;//??貫????蹂?뜟?곌떠???
-    //??怨뺣폃??
+    public float individualFireRate;//??좊즵獒???袁⑸즵獒뺣뎾苡?關苡며넭怨λ짃??
+    private float fireTimer;//??縕????癰???怨뚮뼚???
+    //???⑤베???
 
     public GameObject player;
 
@@ -23,6 +23,11 @@ public class ProjectileSkill : MonoBehaviour
 
 
     private void Awake()
+    {
+
+    }
+
+    private void Start()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
         Init();
@@ -44,7 +49,7 @@ public class ProjectileSkill : MonoBehaviour
         SetSkillData();
     }
 
-        public void SetSkillData()
+    public void SetSkillData()
     {
         Data = new ChangedSkillData();
 
@@ -76,7 +81,7 @@ public class ProjectileSkill : MonoBehaviour
 
     private void Fire(int count, Vector2 pivotPos, Vector2 targetPos)
     {
-        GameObject projectile = ProjectileObjectPool.Instance.Get(projectilePrefab.name); //objectpool????????吏??怨쀬Ŧ ?遊붋?브퀗?꿴뇡????熬곣뱿遊?獄???嶺????얜뭄?
+        GameObject projectile = ProjectileObjectPool.Instance.Get(projectilePrefab.name); //objectpool????????筌???⑥????딅텑??釉뚰?轅대눀?????ш끽諭욥걡??????癲?????쒕춣?
 
         projectile.transform.position = pivotPos;
         projectile.transform.rotation = Quaternion.identity;
@@ -93,18 +98,7 @@ public class ProjectileSkill : MonoBehaviour
         {
 
             var currentPivotPos = player.transform.position;
-            Transform targetTransform;
-
-            if (player.GetComponent<PlayerController>() != null)
-            {
-                targetTransform = player.GetComponent<PlayerController>().GetClosestEnemy();
-            }
-            else
-            {
-                targetTransform = GetComponent<EnemyStateMachine>().Player.transform;
-            }
-
-
+            var targetTransform = player.GetComponent<PlayerController>().GetClosestEnemy();
             if (targetTransform == null) yield break;
             var currentTargetPos = targetTransform.position;
 
