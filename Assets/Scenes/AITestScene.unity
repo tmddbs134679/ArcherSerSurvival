@@ -910,6 +910,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6220742813316942080, guid: a4b52b578e193f64bb756a45dd469614, type: 3}
+      propertyPath: projectilePrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6220742813316942080, guid: a4b52b578e193f64bb756a45dd469614, type: 3}
+      propertyPath: projectilePrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 1090315539645706261, guid: 669ccea037459cb41975704bc419e9bf, type: 3}
+    - target: {fileID: 6220742813316942080, guid: a4b52b578e193f64bb756a45dd469614, type: 3}
+      propertyPath: projectilePrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 7060354922805938554, guid: 2ddbce05fe280744f8c5079bb4526044, type: 3}
+    - target: {fileID: 6220742813316942080, guid: a4b52b578e193f64bb756a45dd469614, type: 3}
+      propertyPath: projectilePrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 7827560360998576179, guid: e526136f01fc83746ab37bd9b2640059, type: 3}
     - target: {fileID: 6583815600089746838, guid: a4b52b578e193f64bb756a45dd469614, type: 3}
       propertyPath: m_Name
       value: ObjectPool

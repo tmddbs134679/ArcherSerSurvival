@@ -5,19 +5,20 @@ using UnityEngine.Pool;
 public class ProjectileObjectPool : MonoBehaviour
 {
     public static ProjectileObjectPool Instance { get; private set; }
-    public List<GameObject> projectilePrefabs; // ?????ル굝履???袁ⓥ봺??
+    public GameObject[] projectilePrefabs; // ?????ル굝履???袁ⓥ봺??
 
     private Dictionary<string, ObjectPool<GameObject>> pools = new Dictionary<string, ObjectPool<GameObject>>();
 
     private void Awake()
     {
+
         if (Instance == null) Instance = this;
         else
         {
             Destroy(gameObject);
             return;
         }
-
+                projectilePrefabs = Resources.LoadAll<GameObject>("Prefabs/Skill/Data");
         foreach (var prefab in projectilePrefabs)
         {
             var pool = new ObjectPool<GameObject>(

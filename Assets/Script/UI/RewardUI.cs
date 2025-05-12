@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class RewardUI : BaseUI
 {
 
-    [SerializeField] private Button[] rewardButtons; // ?紐꾨뮞??됯숲??甕곌쑵??3揶??怨뚭퍙
+    [SerializeField] private Button[] rewardButtons;
 
     public SkillLevelSystem skillLevelSystem;
 
@@ -62,6 +62,7 @@ public class RewardUI : BaseUI
         {
             if (skillLevelSystem.changedSkillData["Knife"].level == 0)
             {
+                                Debug.Log(index);
                 GameObject go = Instantiate(skillPrefabs[1]);
                 go.transform.SetParent(GameObject.Find("Player").transform);
 

@@ -3,22 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+//정보만 받고 나아가면 됨
+//본인은 누구한테 나갔는지 아는가?
 public class Projectile : MonoBehaviour
 {
-    private ChangedSkillData data;//鍮꾩뼱?덈뒗 ?ъ궗泥댁쓽 ?곗씠??
-    private Vector2 Target;//鍮꾩뼱?덈뒗 怨듦꺽諛⑺뼢
-    private Vector2 angleDirection;//鍮꾩뼱?덈뒗 異붿쟻 怨듦꺽諛⑺뼢
-    private Rigidbody2D rb;//?꾨━?뱁븳 ?ъ궗泥댁쓽 由ъ쭞諛붾뵒
-    public string serialName;//?대쫫
-    public GameObject ownerObject;
+    private ChangedSkillData Data;//비어있는 투사체의 데이터
+    private GameObject Target;//공격대상
+    public GameObject Launcher;//발사체
+    private Vector2 angleDirection;//비어있는 추적 공격방향
+    private Rigidbody2D rb;//프리팹한 투사체의 리짓바디
+    public string serialName;//이름
 
-    public void Init(GameObject tempobject, Vector2 target, Vector2 angleDir, ChangedSkillData _data)
+    public void Init(GameObject launcher, GameObject target, Vector2 angleDir, ChangedSkillData data)
     {
-        ownerObject = tempobject;
-        Target = target;
+        Launcher = launcher;
+        Target=target;
         angleDirection = angleDir.normalized;
-        data = _data;
+        Data = data;
         rb = GetComponent<Rigidbody2D>();
         GetComponent<SpriteRenderer>().color = data.color;
         StartCoroutine(WrappingInvokeDelay(data.duration));
@@ -28,31 +29,17 @@ public class Projectile : MonoBehaviour
   
     private void FixedUpdate()//물리처리
     {
-        rb.velocity = angleDirection * data.speed;
+        rb.velocity = angleDirection * Data.speed;
         StartCoroutine(AngleDirDelay());
-        transform.Rotate(Vector3.forward, data.rotateSpeed * Time.fixedDeltaTime); //프리팹 자체 회전
+        transform.Rotate(Vector3.forward, Data.rotateSpeed * Time.fixedDeltaTime); //프리팹 자체 회전
     }
     void OnTriggerEnter2D(Collider2D collision)//충돌했을 시
     {
-        //에네미가 발사했을때
-        //6 == enemy
-        if (ownerObject.layer == 6)
-        {
-            if (collision.gameObject.layer == 3)
+            if (Target.layer==collision.gameObject.layer)
             {
-                collision.GetComponent<BaseStat>().Damaged(data.damage);
-                StartCoroutine(WrappingInvokeDelay(0f));//skillShooter??ReturnToPool() 硫붿꽌?쒕? ?몄텧
+                collision.GetComponent<BaseStat>().Damaged(Data.damage);
+                StartCoroutine(WrappingInvokeDelay(0f));
             }
-        }
-        //플레이어가 발사했을때
-        else if (ownerObject.layer == 3)
-        {
-            if (collision.gameObject.layer == 6)
-            {
-                collision.GetComponent<BaseStat>().Damaged(data.damage);
-                StartCoroutine(WrappingInvokeDelay(0f));//skillShooter??ReturnToPool() 硫붿꽌?쒕? ?몄텧
-            }
-        }
     }
     private IEnumerator WrappingInvokeDelay(float delay)
     {
@@ -62,10 +49,10 @@ public class Projectile : MonoBehaviour
 
     private IEnumerator AngleDirDelay()
     {
-        yield return new WaitForSeconds(data.hormingStartDelay);
+        yield return new WaitForSeconds(Data.hormingStartDelay);
         Vector2 self = this.transform.position;
-
-        angleDirection = Vector2.Lerp(angleDirection, (Target - self).normalized, Time.deltaTime * data.hormingTurnDelay);
-        rb.velocity = angleDirection * data.speed;
+        Vector2 dirNormal = (Target.transform.position - Launcher.transform.position).normalized;
+        angleDirection = Vector2.Lerp(angleDirection, dirNormal, Time.deltaTime * Data.hormingTurnDelay);
+        rb.velocity = angleDirection * Data.speed;
     }
 }
