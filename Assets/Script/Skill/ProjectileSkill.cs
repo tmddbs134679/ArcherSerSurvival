@@ -45,7 +45,12 @@ public class ProjectileSkill : MonoBehaviour
 
     private void Init()
     {
-        player = PlayerController.Instance.gameObject;
+        if (gameObject.GetComponentInParent<PlayerController>() != null)
+            player = PlayerController.Instance.gameObject;
+        else
+            player = gameObject;
+
+
         SetSkillData();
     }
 
@@ -89,7 +94,8 @@ public class ProjectileSkill : MonoBehaviour
         Vector2 dir = targetPos - pivotPos;
         Vector2 angleDir = Quaternion.Euler(0, 0, -(Data.angle * Data.count / 2f) + Data.angle * count) * dir;
 
-        projectile.GetComponent<Projectile>().Init(targetPos, angleDir, Data);
+        projectile.GetComponent<Projectile>().Init(gameObject.transform.root.gameObject, targetPos, angleDir, Data);
+   
     }
 
     private IEnumerator FireWithDelay()
@@ -98,7 +104,19 @@ public class ProjectileSkill : MonoBehaviour
         {
 
             var currentPivotPos = player.transform.position;
-            var targetTransform = player.GetComponent<PlayerController>().GetClosestEnemy();
+            Transform targetTransform;
+            
+            if(player.GetComponent<PlayerController>() != null)
+            {
+                targetTransform = player.GetComponent<PlayerController>().GetClosestEnemy();
+            }
+            else
+            {
+                targetTransform = GetComponent<EnemyStateMachine>().Player.transform;
+            }
+
+                
+
             if (targetTransform == null) yield break;
             var currentTargetPos = targetTransform.position;
 
