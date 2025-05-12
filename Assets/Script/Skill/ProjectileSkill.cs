@@ -93,7 +93,18 @@ public class ProjectileSkill : MonoBehaviour
         {
 
             var currentPivotPos = player.transform.position;
-            var targetTransform = player.GetComponent<PlayerController>().GetClosestEnemy();
+            Transform targetTransform;
+
+            if (player.GetComponent<PlayerController>() != null)
+            {
+                targetTransform = player.GetComponent<PlayerController>().GetClosestEnemy();
+            }
+            else
+            {
+                targetTransform = GetComponent<EnemyStateMachine>().Player.transform;
+            }
+
+
             if (targetTransform == null) yield break;
             var currentTargetPos = targetTransform.position;
 
