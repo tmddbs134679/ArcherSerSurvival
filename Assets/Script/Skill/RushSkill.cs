@@ -19,6 +19,9 @@ public class RushSkill : MonoBehaviour
     [SerializeField] private Vector2 topEdgePos;
     [SerializeField] private Vector2 bottomEdgePos;
 
+    //임시 스킬 Name
+    public int animationName = Animator.StringToHash("Skill2");
+
     public RUSHDIR directionType = RUSHDIR.ALL;
     public float rushDistance = 5f;
     public float rushDuration = 0.4f;
