@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class RewardUI : BaseUI
 {
 
-    [SerializeField] private Button[] rewardButtons;
+    [SerializeField] private Button[] rewardButtons; // ??饔낅떽?????癲??????????????3????????⑤벡瑜??
 
     public SkillLevelSystem skillLevelSystem;
 
@@ -22,13 +22,15 @@ public class RewardUI : BaseUI
     private void OnEnable()
     {
         Time.timeScale = 0f;
+        //?????쒓낄??????쒓낯??
+        StartCoroutine(BaseFadeIn());
     }
 
     private void Start()
     {
         for (int i = 0; i < rewardButtons.Length; i++)
         {
-            int index = i; // ??以?? ?얜챷??獄쎻뫗?
+            int index = i; // ?????? ???癲?????????밸븶??縕ユ쾮?
             rewardButtons[i].onClick.AddListener(() => SelectButton(index));
         }
     }
@@ -38,8 +40,10 @@ public class RewardUI : BaseUI
 
         if (index == 0)
         {
+
             if (skillLevelSystem.changedSkillData["Axe"].level == 0)
             {
+                Debug.Log(index);
                 GameObject go = Instantiate(skillPrefabs[0]);
                 go.transform.SetParent(GameObject.Find("Player").transform);
 
