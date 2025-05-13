@@ -17,9 +17,13 @@ public class Explosion : MonoBehaviour
     public float growSpeed = 0.5f;        //반경 속도
 public GameObject WarningZone; //마법진 스프라이트 이미지
 
-
+    void Awake()
+    {
+        WarningZone.SetActive(false);
+    }
     public void Init(GameObject launcher, GameObject target, ChangedSkillData data)
     {
+                WarningZone.SetActive(true);
         Launcher = launcher;
         Target = target;
         Data = data;
@@ -38,19 +42,12 @@ public GameObject WarningZone; //마법진 스프라이트 이미지
                     StartCoroutine(WrappingInvokeDelay(Data.duration));
         }
     }
-    void OnTriggerEnter2D(Collider2D collision)//충돌했을 시
-    {
-        Debug.Log("장판과 충돌했습니다!");
-        if (Target.layer == collision.gameObject.layer)
-        {
-            collision.GetComponent<BaseStat>().Damaged(Data.damage);
-            StartCoroutine(WrappingInvokeDelay(0f));
-        }
-    }
+
     private IEnumerator WrappingInvokeDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
         radius=0;
+                WarningZone.SetActive(false);
         ProjectileObjectPool.Instance.Release(serialName, this.gameObject);
     }
 

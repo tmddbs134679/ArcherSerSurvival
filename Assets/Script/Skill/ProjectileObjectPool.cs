@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -50,6 +52,17 @@ public class ProjectileObjectPool : MonoBehaviour
         Debug.LogWarning($"풀에 {prefabName}이(가) 없습니다!");
         return null;
     }
+
+    public void ReleaseDelayed(string prefabName, GameObject obj, float delay)
+{
+    StartCoroutine(ReleaseAfterDelay(prefabName, obj, delay));
+}
+
+private IEnumerator ReleaseAfterDelay(string prefabName, GameObject obj, float delay)
+{
+    yield return new WaitForSeconds(delay);
+    Release(prefabName, obj);
+}
 
     // 풀에서반환하기
     public void Release(string prefabName, GameObject obj)

@@ -1,4 +1,7 @@
+using System.Collections;
 using UnityEngine;
+
+
 
 public class MeteorSpawner : MonoBehaviour
 {
@@ -6,24 +9,27 @@ public class MeteorSpawner : MonoBehaviour
     public Transform target;
     public float spawnHeight = 20f;
 
-    void Start()
-    {
-        SpawnMeteor();
-                SpawnMeteor();
-                        SpawnMeteor();
-                                SpawnMeteor();
-                                        SpawnMeteor();
-                                                SpawnMeteor();
-                                                        SpawnMeteor();
-    }
-    public void SpawnMeteor()
-    {
-        target= PlayerController.Instance.gameObject.transform;
-        int posX=Random.Range(-10, 10);
-        Vector3 spawnPosition = new Vector3(target.position.x+posX, target.position.y + spawnHeight, target.position.z);
-        GameObject meteor = Instantiate(meteorPrefab, spawnPosition, Quaternion.identity);
+void OnEnable()
+{
+    ExplosionSkill.OnExplosionSkillFired += DropMeteorDelayed;
+}
 
-        Meteor meteorScript = meteor.GetComponent<Meteor>();
-        meteorScript.target = target;
-    }
+void OnDisable()
+{
+    ExplosionSkill.OnExplosionSkillFired -= DropMeteorDelayed;
+}
+public void DropMeteorDelayed(GameObject target, float delay)
+{
+    StartCoroutine(DropMeteorCoroutine(target, delay));
+}
+
+private IEnumerator DropMeteorCoroutine(GameObject target, float delay)
+{
+    yield return new WaitForSeconds(delay*1.2f);
+                    int posX = Random.Range(-10, 10);
+GameObject meteor =ProjectileObjectPool.Instance.Get("MeteoBundle");
+meteor.transform.position=target.transform.position+new Vector3(posX,spawnHeight,0);
+    Meteor meteorScript = meteor.GetComponent<Meteor>();
+meteorScript.targetPosition = target.transform.position;
+}
 }
