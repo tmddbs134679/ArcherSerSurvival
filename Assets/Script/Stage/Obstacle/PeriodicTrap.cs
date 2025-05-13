@@ -69,10 +69,6 @@ public class PeriodicTrap : NormalTrap   //?쒖꽦??鍮꾪솢?깊솕瑜?諛섎�
         }
     }
 
-    protected override void OnTriggerStay2D(Collider2D other)
-    {
-        base.OnTriggerStay2D(other);
-    }
 
     protected override void OnTriggerExit2D(Collider2D other)
     {
