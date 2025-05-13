@@ -23,7 +23,5 @@ public abstract class BaseSkill : MonoBehaviour
     protected abstract void OnSceneLoaded(Scene scene, LoadSceneMode mode);
     protected abstract void Init();
     public abstract void SetSkillData();
-
     protected abstract void Update();
-    protected abstract IEnumerator FireWithDelay();
 }
