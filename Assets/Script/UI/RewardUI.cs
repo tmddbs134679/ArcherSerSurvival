@@ -41,7 +41,6 @@ public class RewardUI : BaseUI
             Augmenter(weightedTable.GetRandom());
         }
 
-
         else if (index == 1)
         {
             Augmenter(weightedTable.GetRandom());
@@ -71,6 +70,7 @@ public class RewardUI : BaseUI
             foreach (var skill in skillPrefabs)
             {
                 var skillComp = skill.GetComponent<ProjectileSkill>();
+                Debug.Log(skillComp.serialname);
                 if (skillComp != null && serialName == skillComp.serialname)
                 {
                     go = Instantiate(skill);
