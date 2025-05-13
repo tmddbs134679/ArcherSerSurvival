@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class EnemyPatrolState : EnemyBaseState
@@ -9,28 +7,44 @@ public class EnemyPatrolState : EnemyBaseState
     private float reach = 0.1f;
     private List<Vector2> patrolPoints => stateMachine.EnemyAIController.PatrolPositions;
 
-    public EnemyPatrolState(EnemyStateMachine stateMachine) : base(stateMachine)
-    {
-      
-    }
+    private Vector2? currentDestination = null;
+
+    public EnemyPatrolState(EnemyStateMachine stateMachine) : base(stateMachine) { }
 
     public override void Enter()
     {
         Debug.Log("Patrol");
+
+        if (patrolPoints == null || patrolPoints.Count == 0)
+        {
+            stateMachine.SwitchState(stateMachine.States[EENEMYSTATE.IDLE]);
+            return;
+        }
+
+        SetNextDestination();
     }
 
     public override void Tick(float deltaTime)
     {
-
-        MoveToNextPatrolPoint(deltaTime);
-
         if (IsInChaseRange())
         {
             stateMachine.SwitchState(stateMachine.States[EENEMYSTATE.CHASING]);
             return;
         }
 
+        if (currentDestination.HasValue)
+        {
+            Vector2 pos = stateMachine.transform.position;
+            Vector2 dest = currentDestination.Value;
 
+            MoveToTarget(dest, deltaTime);
+
+            if (Vector2.Distance(pos, dest) <= reach)
+            {
+                currentDestination = null;
+                stateMachine.SwitchState(stateMachine.States[EENEMYSTATE.IDLE]);
+            }
+        }
     }
 
     public override void Exit()
@@ -38,34 +52,23 @@ public class EnemyPatrolState : EnemyBaseState
         stateMachine.CanAttack = true;
     }
 
-    private void MoveToNextPatrolPoint(float deltaTime)
+    private void SetNextDestination()
     {
-        if (patrolPoints == null || patrolPoints.Count == 0)
-            return;
-
+        Vector2 current = stateMachine.transform.position;
         Vector2 target = patrolPoints[currentPointIndex];
 
-        Vector2 current = stateMachine.transform.position;
-        Vector2 destination = target;
-
-        RaycastHit2D hit = Physics2D.Linecast(current, destination, stateMachine.wallLayer);
+        RaycastHit2D hit = Physics2D.Linecast(current, target, stateMachine.wallLayer);
 
         if (hit.collider != null)
         {
-            stateMachine.SwitchState(stateMachine.States[EENEMYSTATE.IDLE]);
-            return;
+            currentDestination = hit.point - (target - current).normalized * 0.1f; 
         }
-
-
-
-
-        MoveToTarget(target, deltaTime);
-
-        if(Vector2.Distance(stateMachine.transform.position, target) < reach)
+        else
         {
-            currentPointIndex = Random.Range(0, patrolPoints.Count);
-            stateMachine.SwitchState(stateMachine.States[EENEMYSTATE.IDLE]); 
+            currentDestination = target;
         }
+
+    
+        currentPointIndex = Random.Range(0, patrolPoints.Count);
     }
- 
 }

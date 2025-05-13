@@ -11,7 +11,7 @@ public class BaseStat : MonoBehaviour
         set => maxHp = Mathf.Clamp(value, 0, 100);
     }
     [SerializeField] protected float currentHp;
-
+    public float CurrentHp => currentHp;
     [SerializeField] protected float speed = 5f;
     public float Speed
     {

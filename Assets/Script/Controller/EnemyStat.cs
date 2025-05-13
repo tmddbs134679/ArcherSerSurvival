@@ -11,7 +11,7 @@ public class EnemyStat : BaseStat
     // Start is called before the first frame update
     void Start()
     {
-
+        currentHp = maxHp;
     }
 
     // Update is called once per frame
