@@ -19,7 +19,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                     _instance = singletonObject.AddComponent<T>();
                 }
 
-                // ???쒖젏?먯꽌 ?몄뒪?댁뒪??留뚮뱾?댁죱?쇰?濡?DDOL ?깅줉
+                // ????뽰젎?癒?퐣 ?紐꾨뮞??곷뮞??筌띾슢諭??곸１???嚥?DDOL ?源낆쨯
                 DontDestroyOnLoad(_instance.gameObject);
             }
 
@@ -36,7 +36,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         }
         else if (_instance != this)
         {
-            // 以묐났???ㅻ툕?앺듃媛 DDOL ?꾩뿉 ?뚭눼??
+            // 餓λ쵎?????삵닏??븍뱜揶쎛 DDOL ?袁⑸퓠 ???댘??
             Destroy(gameObject);
         }
     }

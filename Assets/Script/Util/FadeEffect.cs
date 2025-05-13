@@ -6,13 +6,13 @@ using UnityEngine.Events;
 
 public class FadeEffect : MonoBehaviour
 {
-    //페이드 효과가 끝났을 때 호출하고 싶은 메소드를 등록하여 호출
+    //??륁뵠????ｋ궢揶쎛 ??멸텢?????紐꾪뀱??랁???? 筌롫뗄???? ?源낆쨯??뤿연 ?紐꾪뀱
     private UnityEvent onFadeEvent = new UnityEvent();
 
     [SerializeField]
     [Range(0.01f, 10f)]
-    private float fadeTime;             //페이드 되는 시간
-    private Image fadeImage;            //페이드 효과에 사용되는 검은 바탕 이미지
+    private float fadeTime;             //??륁뵠????롫뮉 ??볦퍢
+    private Image fadeImage;            //??륁뵠????ｋ궢???????롫뮉 野꺜?? 獄쏅?源????筌왖
 
     private void Start()
     {
@@ -51,7 +51,7 @@ public class FadeEffect : MonoBehaviour
             yield return null;
         }
 
-        //페이드 효과가 끝나면 이벤트 실행
+        //??륁뵠????ｋ궢揶쎛 ??멸돌筌???源????쎈뻬
         onFadeEvent.Invoke();
         onFadeEvent.RemoveListener(action);
     }

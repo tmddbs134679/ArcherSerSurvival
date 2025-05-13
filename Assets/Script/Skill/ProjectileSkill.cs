@@ -104,7 +104,7 @@ private void Init()
             
               if (SkillOwner.layer == LayerMask.NameToLayer("Player")) //SkillOwner가 플레이어일시 타겟 탐색
               {
-                  TargetTemp = SkillOwner.GetComponent<PlayerController>().GetClosestEnemy()?.gameObject;
+                  TargetTemp = SkillOwner.GetComponent<PlayerTargeting>().GetClosestEnemy()?.gameObject;
               }
             else
             {

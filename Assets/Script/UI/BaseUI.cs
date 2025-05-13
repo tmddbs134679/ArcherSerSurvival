@@ -1,12 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BaseUI : MonoBehaviour
 {
-    [Header("UI ON OFF 여부")]
+    [Header("UI ON OFF ???")]
     [SerializeField]
     private bool startActive = false;
+    [Header("FadeIn Speed")]
+    public float fadeDuration = 0.5f;
+    public Image image;
+    public bool fadeFlag = false;
+
+
     public void ExitUI()
     {
         gameObject.SetActive(false);
@@ -24,5 +31,38 @@ public class BaseUI : MonoBehaviour
             gameObject.SetActive(false);
         }
         
+    }
+
+    public IEnumerator BaseFadeIn()
+    {
+        Color color = image.color;
+        float timer = 0f;
+        fadeFlag = true;
+        while (timer < fadeDuration)
+        {
+            timer += Time.unscaledDeltaTime;
+            float alpha = Mathf.Clamp01(timer / fadeDuration);
+            image.color = new Color(color.r, color.g, color.b, alpha);
+            yield return null;
+        }
+
+        fadeFlag = false;
+    }
+
+    public IEnumerator BaseFadeOut(string name)
+    {
+        Color color = image.color;
+        float timer = 0f;
+        fadeFlag = true;
+        while (timer < fadeDuration)
+        {
+            timer += Time.unscaledDeltaTime;
+            float alpha = Mathf.Clamp01(1f - (timer / fadeDuration));
+            image.color = new Color(color.r, color.g, color.b, alpha);
+            yield return null;
+        }
+        image.color = new Color(color.r, color.g, color.b, 0f);
+        fadeFlag = false;
+        UIManager.Instance.HideUI(name);
     }
 }
