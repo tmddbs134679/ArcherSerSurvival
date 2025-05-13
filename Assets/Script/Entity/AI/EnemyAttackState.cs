@@ -19,7 +19,7 @@ public class EnemyAttackState : EnemyBaseState
 
     public override void Tick(float deltaTime)
     {
-        Move(deltaTime);
+        //Move(deltaTime);
 
         if (!IsInAttackRange())
         {

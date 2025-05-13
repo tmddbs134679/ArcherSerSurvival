@@ -114,6 +114,7 @@ public class GameManager : Singleton<GameManager>
     // LodingFadeIn => NextSceneLoad
     public void NextSceneLoad()
     {
+        LoadingManager.LoadScene("AITestScene");
         SceneManager.LoadScene("AITestScene");
     }
 
