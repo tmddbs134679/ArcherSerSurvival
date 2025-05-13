@@ -19,7 +19,7 @@ public class SkeletAttackState : EnemyAttackState
     }
     public override void Tick(float deltaTime)
     {
-        //빠저나가기 위한 임시코드
+        //??쥙????疫??袁る립 ?袁⑸뻻?꾨뗀諭?
         timer += deltaTime;
         
 
@@ -27,7 +27,7 @@ public class SkeletAttackState : EnemyAttackState
             stateMachine.SwitchState(stateMachine.States[EENEMYSTATE.IDLE]);
 
 
-        //1발쏘면 Patroll 상태
+        //1獄쏆뮇猷쒙쭖?Patroll ?怨밴묶
     }
     public override void Exit()
     {

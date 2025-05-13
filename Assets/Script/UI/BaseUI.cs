@@ -63,20 +63,32 @@ public class BaseUI : MonoBehaviour
         fadeFlag = false;
     }
 
-    public IEnumerator BaseFadeOut(string name)
+
+    public void BaseFadeOutCoroutine()
+    {
+        StartCoroutine(BaseFadeOut());
+    }
+
+
+    public IEnumerator BaseFadeOut()
     {
         Color color = image.color;
         float timer = 0f;
         fadeFlag = true;
+
+        image.color = new Color(color.r, color.g, color.b, color.a);
+
         while (timer < fadeDuration)
         {
+            
             timer += Time.unscaledDeltaTime;
-            float alpha = Mathf.Clamp01(1f - (timer / fadeDuration));
+            float alpha = Mathf.Clamp01(1f - (timer / fadeDuration)); // ??疫?1?????0??怨쀬Ŧ
             image.color = new Color(color.r, color.g, color.b, alpha);
             yield return null;
         }
-        image.color = new Color(color.r, color.g, color.b, 0f);
+
+        image.color = new Color(color.r, color.g, color.b, 0f); // ?熬곣뫗?????筌?
         fadeFlag = false;
-        UIManager.Instance.HideUI(name);
+        gameObject.SetActive(false); // UI ?????繹먮봿????嶺뚮씭?꾬쨭??
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using System.Xml.Linq;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -16,7 +17,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     private float time;
     [SerializeField]
-    private bool isOpen = false;
+    public bool isOpen = false;
     public GameObject[] entities;
     [SerializeField]
     private int enemyCount = 0;
@@ -29,7 +30,8 @@ public class GameManager : Singleton<GameManager>
     public SkillLevelSystem skillLevelSystem;
 
     public bool isOption = false;
-    
+    public bool isStartLoading = false;
+
 
 
 
@@ -49,12 +51,17 @@ public class GameManager : Singleton<GameManager>
             SceneManager.sceneLoaded += OnSceneLoaded;
             rooms = Resources.LoadAll<GameObject>("Prefabs/Stages/Room");
             bossRooms = Resources.LoadAll<GameObject>("Prefabs/Stages/BossRoom");
-            //lodingPrefab = Resources.Load<GameObject>("Prefabs/UI/Loding/Loading");
-            //lodingObject = Instantiate(lodingPrefab);
+
+            lodingObject = GameObject.Find("Loading");
+            
+            //디버그
+            //코루틴
+            //인보크
             
         }
         
     }
+
 
     private void OnDestroy()
     {
@@ -66,8 +73,32 @@ public class GameManager : Singleton<GameManager>
         isOpen = false;
         Init_GameManager();
 
-        UIManager.Instance.FadeOutUI("Loding");
 
+
+
+        Invoke("DelayFadeOut", 0.5f);
+
+        
+
+    }
+
+    public void DelayFadeOut()
+    {
+        Debug.Log("??");
+        UIManager.Instance.FadeOutUI("Loading");
+        /*
+        foreach (GameObject obj in UIManager.Instance.uiObjects)
+        {
+            if (obj.name == "Loading")
+            {
+                Debug.Log("??");
+                UIManager.Instance.FadeOutUI("Loading");
+                return;
+            }
+        }
+        
+        Invoke("DelayFadeOut", 0.5f);
+        */
     }
     private void Init_GameManager()
     {
@@ -100,6 +131,7 @@ public class GameManager : Singleton<GameManager>
         if (isOpen)
         {
             isOpen = false;
+            isStartLoading = true;
             UIManager.Instance.FadeInUI("Loading");
             
         }
@@ -109,7 +141,6 @@ public class GameManager : Singleton<GameManager>
     public void NextSceneLoad()
     {
         //LoadingManager.LoadScene("AITestScene");
-        Debug.Log("?ъ씠?숉븿");
         PlayerController.Instance.transform.position = new Vector3(0,0,0);
         SceneManager.LoadScene("AITestScene");
     }

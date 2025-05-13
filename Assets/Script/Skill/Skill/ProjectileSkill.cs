@@ -35,7 +35,7 @@ public class ProjectileSkill : BaseSkill
         SkillOwner = gameObject;
         
     }
-            SetSkillData();//기본 스탯 설정
+            SetSkillData();//疫꿸퀡????쎄틛 ??쇱젟
 }
 
 
@@ -88,13 +88,13 @@ public class ProjectileSkill : BaseSkill
         {
             GameObject TargetTemp=null;
             
-              if (SkillOwner.layer == LayerMask.NameToLayer("Player")) //SkillOwner가 플레이어일시 타겟 탐색
+              if (SkillOwner.layer == LayerMask.NameToLayer("Player")) //SkillOwner揶쎛 ???쟿??곷선??깅뻻 ??野??癒?퉳
               {
                   TargetTemp = SkillOwner.GetComponent<PlayerTargeting>().GetClosestEnemy()?.gameObject;
               }
             else
             {
-                TargetTemp = GetComponent<EnemyStateMachine>().Player;//아닐시 몬스터
+                TargetTemp = GetComponent<EnemyStateMachine>().Player;//?袁⑤빜??筌뤣딅뮞??
             }
             if (TargetTemp == null) yield break;
             Fire(i,SkillOwner,TargetTemp);

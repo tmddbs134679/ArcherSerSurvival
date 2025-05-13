@@ -19,7 +19,7 @@ public class RushSkill : MonoBehaviour
     [SerializeField] private Vector2 topEdgePos;
     [SerializeField] private Vector2 bottomEdgePos;
 
-    //?꾩떆 ?ㅽ궗 Name
+    //?袁⑸뻻 ??쎄텢 Name
     public int animationName = Animator.StringToHash("Skill2");
 
     public RUSHDIR directionType = RUSHDIR.ALL;
@@ -77,7 +77,7 @@ public class RushSkill : MonoBehaviour
                     break;
             }
 
-            //공격전 Flip 결정
+            //怨듦꺽??Flip 寃곗젙
             enemy.transform.position = new Vector3(start.x, start.y, enemy.transform.position.z);
             enemy.States[EENEMYSTATE.SKILL].FlipX(playerPos);
 
