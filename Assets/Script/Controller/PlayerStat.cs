@@ -38,7 +38,7 @@ public class PlayerStat : BaseStat
         animator = GetComponentInChildren<Animator>();
     }
 
-    // 데미지 - 체력 감소
+    // ?곕?吏 - 泥대젰 媛먯냼
     public override void Damaged(float reduceHp)
     {
         if (!isInvincible)
@@ -71,7 +71,7 @@ public class PlayerStat : BaseStat
     {
         sRigidBody.velocity = Vector3.zero;
 
-        // 사망 시 애니 재생
+        // ?щ쭩 ???좊땲 ?ъ깮
         animator.SetLayerWeight(2, 1);
 
         GameManager.Instance.GameOver();

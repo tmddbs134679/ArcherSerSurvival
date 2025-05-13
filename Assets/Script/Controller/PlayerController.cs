@@ -51,7 +51,7 @@ public class PlayerController : Singleton<PlayerController>
 
     void PlayerMove()
     {
-        // 닷지중일땐 move 작동 x
+        // ?룹?以묒씪??move ?묐룞 x
         if (isDodging)
         {
             return;
@@ -64,7 +64,7 @@ public class PlayerController : Singleton<PlayerController>
 
         animator.SetBool("isMove", movement.magnitude > 0.1f);
 
-        // 움직일때만 작동
+        // ?吏곸씪?뚮쭔 ?묐룞
         if (isMoving)
         {
             Rotate(movement);
@@ -103,7 +103,7 @@ public class PlayerController : Singleton<PlayerController>
             yield return new WaitForFixedUpdate();
         }
 
-        //회피 종료 후
+        //?뚰뵾 醫낅즺 ??
         isDodging = false;
         animator.SetBool("IsDodge", false);
         animator.speed = 1f;

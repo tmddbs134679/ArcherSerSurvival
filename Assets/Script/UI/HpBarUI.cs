@@ -55,6 +55,6 @@ public class HpBarUI : MonoBehaviour
         float hpRatio = baseStat.CurrentHp / baseStat.MaxHp;
         Debug.Log(gameObject.name +" : "+ hpBar);
 
-        hpBar.fillAmount = hpRatio;
+        //hpBar.fillAmount = hpRatio;
     }
 }
