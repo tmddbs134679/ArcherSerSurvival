@@ -108,7 +108,7 @@ public class ProjectileSkill : MonoBehaviour
             
             if(player.GetComponent<PlayerController>() != null)
             {
-                targetTransform = player.GetComponent<PlayerController>().GetClosestEnemy();
+                targetTransform = player.GetComponent<PlayerTargeting>().GetClosestEnemy();
             }
             else
             {
