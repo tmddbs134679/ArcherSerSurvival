@@ -15,6 +15,7 @@ public class NPCController : MonoBehaviour
     public bool isSpeak = false;
     // 외곽선의 원래 크기
     public float outlineSizeOn = 1.0f;
+    private GameObject player;
     public string[] speak_text =
     {
         "저는 해골입니다.",
@@ -29,7 +30,7 @@ public class NPCController : MonoBehaviour
     };
     public int dialog_index = 0;
 
-    public UnityEvent onDialogEndEvent = new UnityEvent();  //다이어로그 종료 이벤트
+    public UnityEvent<GameObject> onDialogEndEvent = new UnityEvent<GameObject>();  //다이어로그 종료 이벤트
 
     private void Awake()
     {
@@ -86,8 +87,9 @@ public class NPCController : MonoBehaviour
         }
         isSpeak = false;
     }
-    public void Show_dialog()
+    public void Show_dialog(GameObject talker)
     {
+        player = talker;
         isDialog = true;
         ballon_text.text = dialog_text[0];
         chat_ballon.SetActive(true);
@@ -103,7 +105,10 @@ public class NPCController : MonoBehaviour
         else
         {
             Close_dialog();
-            onDialogEndEvent.Invoke();
+            if (player != null)
+            {
+                onDialogEndEvent.Invoke(player);
+            }
         }
     }
     public void Close_dialog()

@@ -30,7 +30,7 @@ public class SensorController : MonoBehaviour
                 if (player.GetComponent<PlayerController>().isDialog == false)
                 {
                     player.GetComponent<PlayerController>().isDialog = true;
-                    target.gameObject.GetComponent<NPCController>().Show_dialog();
+                    target.gameObject.GetComponent<NPCController>().Show_dialog(this.gameObject);
                 }
                 else
                 {

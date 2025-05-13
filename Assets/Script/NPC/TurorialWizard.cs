@@ -19,7 +19,7 @@ public class TurorialWizard : MonoBehaviour
         }
     }
 
-    public void EnterTutoral()
+    public void EnterTutoral(GameObject player)
     {
         SceneManager.LoadScene(tutorialSceneName);
     }
