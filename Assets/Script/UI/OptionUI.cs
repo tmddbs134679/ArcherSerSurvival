@@ -43,6 +43,7 @@ public class OptionUI : BaseUI
 
     public void Continue()
     {
+        GameManager.Instance.isOption = false;
         UIManager.Instance.HideUI("Option");
         Time.timeScale = 1f;
     }
