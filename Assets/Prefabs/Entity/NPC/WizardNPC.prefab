@@ -500,7 +500,7 @@ GameObject:
   - component: {fileID: 5163937600468979247}
   - component: {fileID: 4777677025940745340}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: NPCCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

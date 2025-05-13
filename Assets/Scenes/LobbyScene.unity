@@ -324,6 +324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiObjects: []
   uiName: 
+  parent: {fileID: 0}
 --- !u!1 &568369651
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,6 +456,10 @@ PrefabInstance:
     - target: {fileID: 8184897253490379571, guid: 86cec8cee33f5594ab57bb8cf11a70b4, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9155881556563192196, guid: 86cec8cee33f5594ab57bb8cf11a70b4, type: 3}
+      propertyPath: m_Name
+      value: PlayerCanvas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -2579,7 +2584,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8653490125108609010, guid: 3c28defbd981e584b853bcfe9c8fc40f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
