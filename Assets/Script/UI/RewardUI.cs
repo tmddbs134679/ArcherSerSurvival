@@ -12,7 +12,7 @@ public class RewardUI : BaseUI
 
     public GameObject[] skillPrefabs;
 
-
+    public WeightedTable weightedTable;
     private void Awake()
     {
         skillLevelSystem = GameManager.Instance.skillLevelSystem;
@@ -38,46 +38,18 @@ public class RewardUI : BaseUI
 
         if (index == 0)
         {
-            if (skillLevelSystem.changedSkillData["Axe"].level == 0)
-            {
-                GameObject go = Instantiate(skillPrefabs[0]);
-                go.transform.SetParent(GameObject.Find("Player").transform);
-
-                PlayerController.Instance.skillList.Add(go);
-
-                skillLevelSystem.changedSkillData["Axe"].level += 1;
-
-            }
-
-            else
-            {
-                skillLevelSystem.SkillLevelUp("Axe");
-            }
+            Augmenter(weightedTable.GetRandom());
         }
 
 
         else if (index == 1)
         {
-            if (skillLevelSystem.changedSkillData["Knife"].level == 0)
-            {
-                GameObject go = Instantiate(skillPrefabs[1]);
-                go.transform.SetParent(GameObject.Find("Player").transform);
-
-                PlayerController.Instance.skillList.Add(go);
-
-                skillLevelSystem.changedSkillData["Knife"].level += 1;
-
-            }
-
-            else
-            {
-                skillLevelSystem.SkillLevelUp("Knife");
-            }
+            Augmenter(weightedTable.GetRandom());
         }
 
         else if (index == 2)
         {
-
+            Augmenter(weightedTable.GetRandom());
         }
 
 
@@ -89,6 +61,30 @@ public class RewardUI : BaseUI
         //gameObject.SetActive(false);
 
         Time.timeScale = 1f;
+    }
+
+    void Augmenter(string serialName)
+    {
+        if (skillLevelSystem.changedSkillData[serialName].level == 0)
+        {
+            GameObject go = null;
+            foreach (var skill in skillPrefabs)
+            {
+                var skillComp = skill.GetComponent<ProjectileSkill>();
+                if (skillComp != null && serialName == skillComp.serialname)
+                {
+                    go = Instantiate(skill);
+                    break;
+                }
+            }
+            go.transform.SetParent(GameObject.Find("Player").transform);
+            PlayerController.Instance.skillList.Add(go);
+            skillLevelSystem.changedSkillData[serialName].level += 1;
+        }
+        else
+        {
+            skillLevelSystem.SkillLevelUp(serialName);
+        }
     }
 
 }
