@@ -47,7 +47,7 @@ MonoBehaviour:
   serialname: Meteo
   projectilePrefab: {fileID: 7827560360998576179, guid: e526136f01fc83746ab37bd9b2640059, type: 3}
   Data: {fileID: 0}
-  fireRate: 0
-  individualFireRate: 0
+  fireRate: 0.3
+  individualFireRate: 0.1
   player: {fileID: 0}
   skillLevelSystem: {fileID: 0}

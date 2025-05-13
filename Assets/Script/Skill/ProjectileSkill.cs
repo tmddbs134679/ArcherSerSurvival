@@ -21,12 +21,6 @@ public class ProjectileSkill : MonoBehaviour
 
     public SkillLevelSystem skillLevelSystem;
 
-
-    private void Awake()
-    {
-
-    }
-
     private void Start()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -43,16 +37,20 @@ public class ProjectileSkill : MonoBehaviour
         Init();
     }
 
-    private void Init()
+private void Init()
+{
+    if (gameObject.GetComponentInParent<PlayerController>() != null)
     {
-        if (gameObject.GetComponentInParent<PlayerController>() != null)
-            SkillOwner = PlayerController.Instance.gameObject;
-        else
-            SkillOwner = gameObject;
-
-
-        SetSkillData();
+        SkillOwner = PlayerController.Instance.gameObject;
     }
+    else
+    {
+        SkillOwner = gameObject;
+        // 몬스터는 스킬 데이터를 따로 설정하지 않음
+    }
+            SetSkillData(); // 플레이어일 경우만 스킬 데이터 설정
+}
+
 
     public void SetSkillData()
     {
@@ -106,8 +104,7 @@ public class ProjectileSkill : MonoBehaviour
             
               if (SkillOwner.layer == LayerMask.NameToLayer("Player")) //SkillOwner가 플레이어일시 타겟 탐색
             {
-                        var closestEnemy = SkillOwner.GetComponent<PlayerController>().GetClosestEnemy();
-            if (closestEnemy == null) yield break;
+                        TargetTemp = SkillOwner.GetComponent<PlayerController>().GetClosestEnemy()?.gameObject;
              }
             else
             {
