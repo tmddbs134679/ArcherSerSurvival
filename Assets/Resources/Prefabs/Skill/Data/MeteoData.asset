@@ -16,7 +16,7 @@ MonoBehaviour:
   lvspeed: 0
   damage: 2.2
   lvdamage: 0
-  count: 3
+  count: 1
   lvcount: 0
   duration: 2.16
   color: {r: 1, g: 1, b: 1, a: 1}

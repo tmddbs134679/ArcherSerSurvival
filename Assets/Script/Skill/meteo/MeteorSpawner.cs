@@ -9,10 +9,18 @@ public class MeteorSpawner : MonoBehaviour
     void Start()
     {
         SpawnMeteor();
+                SpawnMeteor();
+                        SpawnMeteor();
+                                SpawnMeteor();
+                                        SpawnMeteor();
+                                                SpawnMeteor();
+                                                        SpawnMeteor();
     }
     public void SpawnMeteor()
     {
-        Vector3 spawnPosition = new Vector3(target.position.x, target.position.y + spawnHeight, target.position.z);
+        target= PlayerController.Instance.gameObject.transform;
+        int posX=Random.Range(-10, 10);
+        Vector3 spawnPosition = new Vector3(target.position.x+posX, target.position.y + spawnHeight, target.position.z);
         GameObject meteor = Instantiate(meteorPrefab, spawnPosition, Quaternion.identity);
 
         Meteor meteorScript = meteor.GetComponent<Meteor>();

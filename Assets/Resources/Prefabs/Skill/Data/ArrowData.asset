@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 636751bd5872dc349a8077bae4932916, type: 3}
-  m_Name: MonsterKnifeData
+  m_Name: ArrowData
   m_EditorClassIdentifier: 
-  speed: 11.5
-  lvspeed: 1
-  damage: 10
-  lvdamage: 1
+  speed: 11.3
+  lvspeed: 0
+  damage: 5.9
+  lvdamage: 0
   count: 1
-  lvcount: 1
-  duration: 2.16
-  color: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
+  lvcount: 0
+  duration: 2.2
+  color: {r: 1, g: 1, b: 1, a: 1}
   impactEffect: {fileID: 0}
-  rotateSpeed: 133
-  angle: 47
-  hormingStartDelay: 1.43
+  rotateSpeed: 0
+  angle: 0
+  hormingStartDelay: 0.97
   hormingTurnDelay: 10

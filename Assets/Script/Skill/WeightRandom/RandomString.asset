@@ -18,4 +18,6 @@ MonoBehaviour:
   - Serialname: Knife
     weight: 5
   - Serialname: Meteo
-    weight: 0
+    weight: 1000
+  - Serialname: Arrow
+    weight: 5

@@ -15,6 +15,8 @@ public class Explosion : MonoBehaviour
     public float radius = 0f;           //시작 반경
     public float maxRadius = 2.5f;        //끝 반경
     public float growSpeed = 0.5f;        //반경 속도
+public GameObject WarningZone; //마법진 스프라이트 이미지
+
 
     public void Init(GameObject launcher, GameObject target, ChangedSkillData data)
     {
