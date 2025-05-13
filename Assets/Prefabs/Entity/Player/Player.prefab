@@ -1000,11 +1000,32 @@ PrefabInstance:
       propertyPath: m_Name
       value: HpBar
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1184599431564996847, guid: 746b727a96af62246bcea1eb7542691e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1763252963536452605, guid: 746b727a96af62246bcea1eb7542691e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2331656165009411782}
   m_SourcePrefab: {fileID: 100100000, guid: 746b727a96af62246bcea1eb7542691e, type: 3}
+--- !u!1 &1857247287461753541 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1763252963536452605, guid: 746b727a96af62246bcea1eb7542691e, type: 3}
+  m_PrefabInstance: {fileID: 125557266581129528}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2331656165009411782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857247287461753541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38555b2a515401645b604ef4579421ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5354148753328116912 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5472946976707353992, guid: 746b727a96af62246bcea1eb7542691e, type: 3}

@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class HpBarUI : MonoBehaviour
 {
-    [SerializeField] private Image hpBar;
+    private Image hpBar;
 
-    [SerializeField] BaseStat baseStat;
+    BaseStat baseStat;
 
     private void Awake()
     {
@@ -24,8 +24,8 @@ public class HpBarUI : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        baseStat = PlayerController.Instance.GetComponent<BaseStat>();
-        hpBar = gameObject.transform.Find("Mask").transform.Find("HPBar").gameObject.GetComponent<Image>();
+        baseStat = this.GetComponentInParent<BaseStat>();
+        hpBar = this.GetComponent<Image>();
         baseStat.OnHpChanged += OnHpChanged;
     }
 
@@ -53,8 +53,6 @@ public class HpBarUI : MonoBehaviour
     public void UpdateHpBar()
     {
         float hpRatio = baseStat.CurrentHp / baseStat.MaxHp;
-        Debug.Log(gameObject.name +" : "+ hpBar);
-
-        //hpBar.fillAmount = hpRatio;
+        hpBar.fillAmount = hpRatio;
     }
 }
