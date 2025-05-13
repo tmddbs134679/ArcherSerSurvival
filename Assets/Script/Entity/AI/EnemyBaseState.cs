@@ -37,7 +37,7 @@ public abstract class EnemyBaseState : State
         return sqrDistance <= stateMachine.MonsterData.attackRange * stateMachine.MonsterData.attackRange;
     }
 
-    protected void FlipX(Vector3 targetPos)
+    public void FlipX(Vector3 targetPos)
     {
 
         bool faceLeft = targetPos.x < stateMachine.transform.position.x;

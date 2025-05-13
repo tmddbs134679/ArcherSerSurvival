@@ -27,11 +27,13 @@ public class EnemySkillState : EnemyBaseState
         // 콜백 전달: 스킬이 끝나면 OnSkillComplete 호출
         stateMachine.Skills[idx].Execute(stateMachine, OnSkillComplete);
 
-        FlipX(stateMachine.Player.transform.position);
+     
     }
 
     public override void Tick(float deltaTime)
     {
+        
+
         if (isSkillFinished)
         {
             stateMachine.SwitchState(stateMachine.States[EENEMYSTATE.IDLE]);
