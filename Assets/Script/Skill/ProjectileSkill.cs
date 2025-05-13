@@ -46,9 +46,9 @@ private void Init()
     else
     {
         SkillOwner = gameObject;
-        // 몬스터는 스킬 데이터를 따로 설정하지 않음
+        
     }
-            SetSkillData(); // 플레이어일 경우만 스킬 데이터 설정
+            SetSkillData();//기본 스탯 설정
 }
 
 

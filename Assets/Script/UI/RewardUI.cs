@@ -6,13 +6,13 @@ using UnityEngine.UI;
 public class RewardUI : BaseUI
 {
 
-    [SerializeField] private Button[] rewardButtons; // ??耀붾굝?????????????????????3?????????ㅻ깹???
+    [SerializeField] private Button[] rewardButtons;
 
     public SkillLevelSystem skillLevelSystem;
 
     public GameObject[] skillPrefabs;
 
-
+    public WeightedTable weightedTable;
     private void Awake()
     {
         skillLevelSystem = GameManager.Instance.skillLevelSystem;
@@ -22,15 +22,13 @@ public class RewardUI : BaseUI
     private void OnEnable()
     {
         Time.timeScale = 0f;
-        //??????볥굜???????볥궚??
-        StartCoroutine(BaseFadeIn());
     }
 
     private void Start()
     {
         for (int i = 0; i < rewardButtons.Length; i++)
         {
-            int index = i; // ?????? ?????????????諛몃마??潁뺛깺苡?
+            int index = i; // ??以?? ?얜챷??獄쎻뫗?
             rewardButtons[i].onClick.AddListener(() => SelectButton(index));
         }
     }
@@ -40,48 +38,18 @@ public class RewardUI : BaseUI
 
         if (index == 0)
         {
-
-            if (skillLevelSystem.changedSkillData["Axe"].level == 0)
-            {
-                Debug.Log(index);
-                GameObject go = Instantiate(skillPrefabs[0]);
-                go.transform.SetParent(GameObject.Find("Player").transform);
-
-                PlayerController.Instance.skillList.Add(go);
-
-                skillLevelSystem.changedSkillData["Axe"].level += 1;
-
-            }
-
-            else
-            {
-                skillLevelSystem.SkillLevelUp("Axe");
-            }
+            Augmenter(weightedTable.GetRandom());
         }
 
 
         else if (index == 1)
         {
-            if (skillLevelSystem.changedSkillData["Knife"].level == 0)
-            {
-                GameObject go = Instantiate(skillPrefabs[1]);
-                go.transform.SetParent(GameObject.Find("Player").transform);
-
-                PlayerController.Instance.skillList.Add(go);
-
-                skillLevelSystem.changedSkillData["Knife"].level += 1;
-
-            }
-
-            else
-            {
-                skillLevelSystem.SkillLevelUp("Knife");
-            }
+            Augmenter(weightedTable.GetRandom());
         }
 
         else if (index == 2)
         {
-
+            Augmenter(weightedTable.GetRandom());
         }
 
 
@@ -93,6 +61,30 @@ public class RewardUI : BaseUI
         //gameObject.SetActive(false);
 
         Time.timeScale = 1f;
+    }
+
+    void Augmenter(string serialName)
+    {
+        if (skillLevelSystem.changedSkillData[serialName].level == 0)
+        {
+            GameObject go = null;
+            foreach (var skill in skillPrefabs)
+            {
+                var skillComp = skill.GetComponent<ProjectileSkill>();
+                if (skillComp != null && serialName == skillComp.serialname)
+                {
+                    go = Instantiate(skill);
+                    break;
+                }
+            }
+            go.transform.SetParent(GameObject.Find("Player").transform);
+            PlayerController.Instance.skillList.Add(go);
+            skillLevelSystem.changedSkillData[serialName].level += 1;
+        }
+        else
+        {
+            skillLevelSystem.SkillLevelUp(serialName);
+        }
     }
 
 }
