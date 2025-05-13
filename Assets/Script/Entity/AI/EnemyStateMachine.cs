@@ -20,6 +20,7 @@ public class EnemyStateMachine : StateMachine
 
     [field: SerializeField] public bool CanChasing { get; set; } = true;
 
+    [field: SerializeField] public bool CanStun { get; set; } = true;
     private void OnEnable()
     {
         EnemyStat.OnTakeDamage += HandleTakeDamage;
@@ -39,7 +40,8 @@ public class EnemyStateMachine : StateMachine
     {
         States.Add(EENEMYSTATE.IDLE, new EnemyIdleState(this));
         States.Add(EENEMYSTATE.ATTACK, new EnemyAttackState(this));
-        States.Add(EENEMYSTATE.Dead, new EnemyDeadState(this));
+        States.Add(EENEMYSTATE.DEAD, new EnemyDeadState(this));
+        States.Add(EENEMYSTATE.STUN, new EnemyStunState(this));
     }
 
     // Start is called before the first frame update
@@ -57,11 +59,12 @@ public class EnemyStateMachine : StateMachine
 
     private void HandleDie()
     {
-        SwitchState(new EnemyDeadState(this));
+        SwitchState(States[EENEMYSTATE.DEAD]);
     }
     private void HandleTakeDamage()
     {
-        SwitchState(new EnemyStunState(this));
+        if(CanStun)
+         SwitchState(States[EENEMYSTATE.STUN]);
     }
 
 }

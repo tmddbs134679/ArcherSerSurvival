@@ -11,8 +11,9 @@ public enum EENEMYSTATE
     PATROL,
     ATTACK,
     SKILL,
+    STUN,
     CHASING,
-    Dead,
+    DEAD,
 }
 
 public enum EPATROLAXIS

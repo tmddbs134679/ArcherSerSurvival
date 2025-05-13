@@ -10,9 +10,11 @@ public class SkeletStateMachine : EnemyStateMachine
     protected override void Awake()
     {
         States.Add(EENEMYSTATE.IDLE, new SkeletIdleState(this));
+        States.Add(EENEMYSTATE.STUN, new EnemyStunState(this));
         States.Add(EENEMYSTATE.PATROL, new EnemyPatrolState(this));
         States.Add(EENEMYSTATE.ATTACK, new SkeletAttackState(this));
         States.Add(EENEMYSTATE.CHASING, new EnemyChasingState(this));
+        States.Add(EENEMYSTATE.DEAD, new EnemyDeadState(this));
     }
 
 }

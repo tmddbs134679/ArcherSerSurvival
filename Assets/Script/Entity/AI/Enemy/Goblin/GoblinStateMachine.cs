@@ -8,6 +8,6 @@ public class GoblinStateMachine : EnemyStateMachine
     {
         States.Add(EENEMYSTATE.IDLE, new GoblinIdleState(this));
         States.Add(EENEMYSTATE.ATTACK, new GoblinAttackState(this));
-        States.Add(EENEMYSTATE.Dead, new EnemyDeadState(this));
+        States.Add(EENEMYSTATE.DEAD, new EnemyDeadState(this));
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class HpUI : MonoBehaviour
 {
     [SerializeField] private EnemyStat enemyStat;
-    [SerializeField] private Slider slider;
+    [SerializeField] private Image hpBar;
 
 
 
@@ -33,7 +33,7 @@ public class HpUI : MonoBehaviour
      
         if (enemyStat != null)
         {
-            slider.value = enemyStat.CurrentHp / enemyStat.MaxHp;
+            hpBar.fillAmount = enemyStat.CurrentHp / enemyStat.MaxHp;
         }
     }
 }
