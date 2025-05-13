@@ -54,7 +54,7 @@ public class RewardUI : BaseUI
 
         foreach (var skill in PlayerController.Instance.skillList)
         {
-            skill.GetComponent<ProjectileSkill>().SetSkillData();
+            skill.GetComponent<BaseSkill>().SetSkillData();
         }
         UIManager.Instance.HideUI(gameObject.name);
         //gameObject.SetActive(false);

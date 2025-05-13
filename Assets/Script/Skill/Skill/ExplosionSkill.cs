@@ -72,7 +72,7 @@ public class ExplosionSkill : BaseSkill
     public void Fire(int count,GameObject SkillOwner,GameObject Target)
     {
     //  랜덤 위치 오프셋
-    float radius = 1.5f; // 폭발 반경
+    float radius = 5f; // 폭발 반경
     Vector2 randomOffset = Random.insideUnitCircle * radius;
 
     //  최종 위치 계산

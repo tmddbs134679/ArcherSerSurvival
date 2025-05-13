@@ -33,7 +33,6 @@ public class Projectile : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)//충돌했을 시
     {
-            if (Target == null || Data == null)return;
             if (Target.layer==collision.gameObject.layer)
             {
                 collision.GetComponent<BaseStat>().Damaged(Data.damage);

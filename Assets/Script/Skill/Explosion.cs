@@ -23,7 +23,6 @@ public class Explosion : MonoBehaviour
         Data = data;
         rb = GetComponent<Rigidbody2D>();
         GetComponent<SpriteRenderer>().color = data.color;
-        StartCoroutine(WrappingInvokeDelay(data.duration));
     }
 
     private void Update()//물리처리
@@ -33,10 +32,13 @@ public class Explosion : MonoBehaviour
             radius += growSpeed * Time.deltaTime;
             transform.localScale = new Vector2(radius, radius);
         }
+        else{
+                    StartCoroutine(WrappingInvokeDelay(Data.duration));
+        }
     }
     void OnTriggerEnter2D(Collider2D collision)//충돌했을 시
     {
-            if (Target == null || Data == null)return;
+        Debug.Log("장판과 충돌했습니다!");
         if (Target.layer == collision.gameObject.layer)
         {
             collision.GetComponent<BaseStat>().Damaged(Data.damage);
@@ -46,6 +48,7 @@ public class Explosion : MonoBehaviour
     private IEnumerator WrappingInvokeDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
+        radius=0;
         ProjectileObjectPool.Instance.Release(serialName, this.gameObject);
     }
 
