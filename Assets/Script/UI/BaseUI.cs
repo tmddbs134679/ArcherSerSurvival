@@ -33,6 +33,11 @@ public class BaseUI : MonoBehaviour
         
     }
 
+
+    public void BaseFadeInCoroutine()
+    {
+        StartCoroutine(BaseFadeIn());
+    }
     public IEnumerator BaseFadeIn()
     {
         Color targetColor = image.color;

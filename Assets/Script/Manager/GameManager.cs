@@ -49,9 +49,9 @@ public class GameManager : Singleton<GameManager>
             SceneManager.sceneLoaded += OnSceneLoaded;
             rooms = Resources.LoadAll<GameObject>("Prefabs/Stages/Room");
             bossRooms = Resources.LoadAll<GameObject>("Prefabs/Stages/BossRoom");
-            lodingPrefab = Resources.Load<GameObject>("Prefabs/UI/Loding/Loding");
-            lodingObject = Instantiate(lodingPrefab);
-            lodingObject.SetActive(false);
+            //lodingPrefab = Resources.Load<GameObject>("Prefabs/UI/Loding/Loading");
+            //lodingObject = Instantiate(lodingPrefab);
+            
         }
         
     }
@@ -62,23 +62,18 @@ public class GameManager : Singleton<GameManager>
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        lodingObject = GameObject.Find("Loading");
         isOpen = false;
         Init_GameManager();
-        LodingFadeOut();
+
+        UIManager.Instance.FadeOutUI("Loding");
+
     }
     private void Init_GameManager()
     {
         CreateRoom();
     }
 
-    private void LodingFadeIn()
-    {
-        UIManager.Instance.FadeInUI("Loding");
-    }
-    private void LodingFadeOut()
-    {
-        UIManager.Instance.FadeOutUI("Loding");
-    }
     void Update()
     {
         time += Time.deltaTime;
@@ -105,16 +100,17 @@ public class GameManager : Singleton<GameManager>
         if (isOpen)
         {
             isOpen = false;
-            PlayerController.Instance.transform.position = new Vector3(0, 0, 0);
-            lodingObject.GetComponent<LodingUI>().isLoding = true;
-            LodingFadeIn();       
+            UIManager.Instance.FadeInUI("Loading");
+            
         }
     }
 
     // LodingFadeIn => NextSceneLoad
     public void NextSceneLoad()
     {
-        LoadingManager.LoadScene("AITestScene");
+        //LoadingManager.LoadScene("AITestScene");
+        Debug.Log("?ъ씠?숉븿");
+        PlayerController.Instance.transform.position = new Vector3(0,0,0);
         SceneManager.LoadScene("AITestScene");
     }
 

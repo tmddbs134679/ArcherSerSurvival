@@ -27,7 +27,7 @@ public class RewardUI : BaseUI
 
 
 
-
+    //而ㅻ컠??二쇱꽍
     private void Awake()
     {
         slotBox = transform.Find("SlotBox").gameObject.GetComponent<CanvasGroup>();
@@ -41,7 +41,6 @@ public class RewardUI : BaseUI
         Time.timeScale = 0f;
         slotBox.alpha = 0f;
         gameObject.GetComponent<CanvasGroup>().alpha = 1f;
-        //???????곌떽釉?????????곌떽釉붾??
         StartCoroutine(BaseFadeIn());
 
         key[0] = weightedTable.GetRandom();
@@ -121,7 +120,7 @@ public class RewardUI : BaseUI
 
         for (int i = 0; i < rewardButtons.Length; i++)
         {
-            int index = i; // ???嚥?? ???筌??????ш끽維??λ궔?
+            int index = i; // ?????? ???嶺????????썹땟??貫沅?
             rewardButtons[i].onClick.AddListener(() => SelectButton(index));
             rerollButtons[i].onClick.AddListener(() => ReRollButton(index));
         }
@@ -152,7 +151,7 @@ public class RewardUI : BaseUI
 
         foreach (var skill in PlayerController.Instance.skillList)
         {
-            skill.GetComponent<BaseSkill>().SetSkillData();
+            skill.GetComponent<ProjectileSkill>().SetSkillData();
         }
 
         StartCoroutine(Retreat(gameObject.GetComponent<CanvasGroup>()));
@@ -170,14 +169,14 @@ public class RewardUI : BaseUI
             GameObject go = null;
             foreach (var skill in skillPrefabs)
             {
-                var skillComp = skill.GetComponent<ProjectileSkill>();
+                var skillComp = skill.GetComponent<BaseSkill>();
                 if (skillComp != null && serialName == skillComp.serialname)
                 {
                     go = Instantiate(skill);
                     break;
                 }
             }
-            go.transform.SetParent(GameObject.Find("Player").transform);
+            go.transform.SetParent(PlayerController.Instance.transform);
             PlayerController.Instance.skillList.Add(go);
             skillLevelSystem.changedSkillData[serialName].level += 1;
         }
