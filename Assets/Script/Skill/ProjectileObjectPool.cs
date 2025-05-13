@@ -5,26 +5,27 @@ using UnityEngine.Pool;
 public class ProjectileObjectPool : MonoBehaviour
 {
     public static ProjectileObjectPool Instance { get; private set; }
-    public List<GameObject> projectilePrefabs; // ?????ル굝履???袁ⓥ봺??
+    public GameObject[] projectilePrefabs; // 여러 종류의 프리팹
 
     private Dictionary<string, ObjectPool<GameObject>> pools = new Dictionary<string, ObjectPool<GameObject>>();
 
     private void Awake()
     {
+
         if (Instance == null) Instance = this;
         else
         {
             Destroy(gameObject);
             return;
         }
-
+                projectilePrefabs = Resources.LoadAll<GameObject>("Prefabs/Skill/Data");
         foreach (var prefab in projectilePrefabs)
         {
             var pool = new ObjectPool<GameObject>(
                  () =>
                  {
                      var obj = Instantiate(prefab);
-                     obj.transform.SetParent(this.transform); //??삵닏??븍뱜?? 獄쏅쵐?앮에???沅쀯㎗???륁맄???뵬 ??밴쉐
+                     obj.transform.SetParent(this.transform); //오브젝트풀 밑으로 투사체 하위파일 생성
                      return obj;
                  },
                  obj => obj.SetActive(true),
@@ -36,9 +37,11 @@ public class ProjectileObjectPool : MonoBehaviour
         }
     }
 
-    // ???癒?퐣 揶쎛?紐꾩궎疫?
+    // 풀에서 가져오기
     public GameObject Get(string prefabName)
     {
+        Debug.Log(prefabName+"wfwefwfwfwfw");
+                Debug.Log(pools.TryGetValue(prefabName, out var pool2)+"wfwefwfwfwfw");
         if (pools.TryGetValue(prefabName, out var pool))
         {
             GameObject temp = pool.Get();
@@ -46,11 +49,11 @@ public class ProjectileObjectPool : MonoBehaviour
 
         }
 
-        Debug.LogWarning($"????{prefabName}??揶쎛) ??곷뮸??덈뼄!");
+        Debug.LogWarning($"풀에 {prefabName}이(가) 없습니다!");
         return null;
     }
 
-    // ??嚥?獄쏆꼹???띾┛
+    // 풀에서반환하기
     public void Release(string prefabName, GameObject obj)
     {
         if (pools.TryGetValue(prefabName, out var pool))
@@ -59,7 +62,7 @@ public class ProjectileObjectPool : MonoBehaviour
         }
         else
         {
-            Destroy(obj); // ??곸몵筌?域밸챶源????댘
+            Destroy(obj); // 없으면 파괴
         }
     }
 }

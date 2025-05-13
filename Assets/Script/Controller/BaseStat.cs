@@ -57,6 +57,15 @@ public class BaseStat : MonoBehaviour
 
     }
 
+    public virtual void Healed(float healHP)
+    {
+        currentHp += healHP;
+        if(currentHp > maxHp) 
+        {
+            currentHp = maxHp;
+        }
+    }
+
     protected virtual void Death()
     {
 

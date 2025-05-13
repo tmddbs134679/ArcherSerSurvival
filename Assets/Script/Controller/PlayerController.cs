@@ -25,6 +25,7 @@ public class PlayerController : Singleton<PlayerController>
     private bool isDodging = false;
     private bool isDodgeCoolDown = false;
 
+    public bool isDialog = false;
     void Awake()
     {
         base.Awake();
@@ -124,4 +125,5 @@ public class PlayerController : Singleton<PlayerController>
             GameManager.Instance.NextRoom();
         }
     }
+
 }

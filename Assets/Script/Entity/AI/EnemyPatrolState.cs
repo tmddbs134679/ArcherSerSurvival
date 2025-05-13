@@ -21,13 +21,15 @@ public class EnemyPatrolState : EnemyBaseState
 
     public override void Tick(float deltaTime)
     {
+
+        MoveToNextPatrolPoint(deltaTime);
+
         if (IsInChaseRange())
         {
             stateMachine.SwitchState(stateMachine.States[EENEMYSTATE.CHASING]);
             return;
         }
 
-        MoveToNextPatrolPoint(deltaTime);
 
     }
 

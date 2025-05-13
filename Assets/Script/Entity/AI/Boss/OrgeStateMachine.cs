@@ -11,7 +11,7 @@ public class OrgeStateMachine : EnemyStateMachine
     {
         States.Add(EENEMYSTATE.IDLE, new OrgeIdleState(this));
         States.Add(EENEMYSTATE.SKILL, new EnemySkillState(this));
-
+        States.Add(EENEMYSTATE.CHASING, new OrgeChasingState(this));
     }
 
 }

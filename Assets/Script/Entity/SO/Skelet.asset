@@ -16,3 +16,4 @@ MonoBehaviour:
   attackDamage: 3
   attackRange: 10
   movementSpeed: 3
+  PlayerChasingRange: 10

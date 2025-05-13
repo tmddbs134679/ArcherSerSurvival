@@ -21,10 +21,12 @@ public abstract class EnemyBaseState : State
     {
         //if (stateMachine.Player.IsDead) { return false; }
 
-    
+        if (!stateMachine.CanChasing) 
+                return false;
+
         float playerDistanceSqr = (stateMachine.Player.transform.position - stateMachine.transform.position).sqrMagnitude;
 
-        return playerDistanceSqr <= stateMachine.PlayerChasingRange * stateMachine.PlayerChasingRange;
+        return playerDistanceSqr <= stateMachine.MonsterData.PlayerChasingRange * stateMachine.MonsterData.PlayerChasingRange;
     }
 
     protected bool IsInAttackRange()
@@ -37,7 +39,7 @@ public abstract class EnemyBaseState : State
         return sqrDistance <= stateMachine.MonsterData.attackRange * stateMachine.MonsterData.attackRange;
     }
 
-    protected void FlipX(Vector3 targetPos)
+    public void FlipX(Vector3 targetPos)
     {
 
         bool faceLeft = targetPos.x < stateMachine.transform.position.x;
