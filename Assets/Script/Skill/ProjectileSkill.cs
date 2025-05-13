@@ -71,7 +71,7 @@ private void Init()
 
 
 
-    private void Update()
+    protected virtual void Update()
     {
         fireTimer += Time.deltaTime;
         if (fireTimer >= fireRate)
@@ -82,7 +82,7 @@ private void Init()
 
     }
 
-    private void Fire(int count,GameObject SkillOwner,GameObject Target)
+    public void Fire(int count,GameObject SkillOwner,GameObject Target)
     {
         GameObject projectile = ProjectileObjectPool.Instance.Get(projectilePrefab.name); //objectpool????????筌???⑥????딅텑??釉뚰?轅대눀?????ш끽諭욥걡??????癲?????쒕춣?
 
@@ -103,9 +103,9 @@ private void Init()
             GameObject TargetTemp=null;
             
               if (SkillOwner.layer == LayerMask.NameToLayer("Player")) //SkillOwner가 플레이어일시 타겟 탐색
-            {
-                        TargetTemp = SkillOwner.GetComponent<PlayerController>().GetClosestEnemy()?.gameObject;
-             }
+              {
+                  TargetTemp = SkillOwner.GetComponent<PlayerTargeting>().GetClosestEnemy()?.gameObject;
+              }
             else
             {
                 TargetTemp = GetComponent<EnemyStateMachine>().Player;//아닐시 몬스터

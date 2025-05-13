@@ -11,10 +11,15 @@ public class SkeletAttackState : EnemyAttackState
 
     }
 
+    public override void Enter()
+    {
+        base.Enter();
+        stateMachine.GetComponent<MonsterProjectileSkill>().Fire(1, stateMachine.gameObject, stateMachine.Player);
 
+    }
     public override void Tick(float deltaTime)
     {
-        //ºüÀú³ª°¡±â À§ÇÑ ÀÓ½ÃÄÚµå
+        //ë¹ ì €ë‚˜ê°€ê¸° ìœ„í•œ ì„ì‹œì½”ë“œ
         timer += deltaTime;
         
 
@@ -22,10 +27,10 @@ public class SkeletAttackState : EnemyAttackState
             stateMachine.SwitchState(stateMachine.States[EENEMYSTATE.IDLE]);
 
 
-        //1¹ß½î¸é Patroll »óÅÂ
+        //1ë°œì˜ë©´ Patroll ìƒíƒœ
     }
     public override void Exit()
     {
-      stateMachine.CanAttack = false;
+       stateMachine.CanAttack = false;
     }
 }

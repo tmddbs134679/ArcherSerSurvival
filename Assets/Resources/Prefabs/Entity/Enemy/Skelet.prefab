@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 7746067693331829854}
   - component: {fileID: 6879424084190446371}
   - component: {fileID: 1768957048278936749}
-  - component: {fileID: 4267804719387092946}
+  - component: {fileID: 2433422279373917358}
   m_Layer: 6
   m_Name: Skelet
   m_TagString: Untagged
@@ -247,9 +247,9 @@ MonoBehaviour:
   <Player>k__BackingField: {fileID: 0}
   <EnemyStat>k__BackingField: {fileID: 1768957048278936749}
   <Skills>k__BackingField: []
-  <PlayerChasingRange>k__BackingField: 0
   <EnemyAIController>k__BackingField: {fileID: 3470322307665087890}
   <CanAttack>k__BackingField: 1
+  <CanChasing>k__BackingField: 0
   wallLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -356,7 +356,7 @@ MonoBehaviour:
   hpChangeDelay: 3
   speed: 5
   atk: 10
---- !u!114 &4267804719387092946
+--- !u!114 &2433422279373917358
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -365,7 +365,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7659958387202495407}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ea8fb224cdf9f0479e86a1826b0680c, type: 3}
+  m_Script: {fileID: 11500000, guid: 0cbf59ece234cc547859ed83978e2b02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   serialname: MonsterKnife
