@@ -1,16 +1,29 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BaseStat : MonoBehaviour
 {
-    [SerializeField] protected float maxHp = 10f;
+    // 이벤트로 HP 바 변경 호출
+    public event Action<float, float> OnHpChanged;
+
+    [SerializeField] protected float maxHp = 100f;
     public float MaxHp
     {
         get => maxHp;
-        set => maxHp = Mathf.Clamp(value, 0, 100);
+        set => maxHp = Mathf.Clamp(value, 0, 1000);
     }
     [SerializeField] protected float currentHp;
+    public float CurrentHp
+    {
+        get => currentHp;
+        set
+        {
+            currentHp = Mathf.Clamp(value, 0, maxHp);
+            OnHpChanged?.Invoke(currentHp, maxHp);
+        }
+    }
 
     [SerializeField] protected float speed = 5f;
     public float Speed
@@ -25,16 +38,11 @@ public class BaseStat : MonoBehaviour
         get => atk;
         set => atk = value;
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    //hp 초기화
+    private void Start()
     {
-        
+        CurrentHp = maxHp;
     }
 
     public virtual void Damaged(float reduceHp)
@@ -42,27 +50,19 @@ public class BaseStat : MonoBehaviour
 
         if (currentHp <= 0)
         {
-            currentHp = 0;
+            CurrentHp = 0;
             return;
         }
 
-        currentHp -= reduceHp;
-
-
-        //if (currentHp <= 0)
-        //{
-        //    Death();
-        //}
-
-
+        CurrentHp -= reduceHp;
     }
 
     public virtual void Healed(float healHP)
     {
-        currentHp += healHP;
+        CurrentHp += healHP;
         if(currentHp > maxHp) 
         {
-            currentHp = maxHp;
+            CurrentHp = maxHp;
         }
     }
 
