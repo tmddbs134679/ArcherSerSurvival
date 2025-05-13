@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: RandomString
   m_EditorClassIdentifier: Assembly-CSharp::WeightedTable
-  objects: []
+  objects:
+  - Serialname: Axe
+    weight: 5
+  - Serialname: Knife
+    weight: 5
+  - Serialname: Meteo
+    weight: 0
