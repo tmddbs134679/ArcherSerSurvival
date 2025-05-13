@@ -19,7 +19,7 @@ public class RushSkill : MonoBehaviour
     [SerializeField] private Vector2 topEdgePos;
     [SerializeField] private Vector2 bottomEdgePos;
 
-    //임시 스킬 Name
+    //?꾩떆 ?ㅽ궗 Name
     public int animationName = Animator.StringToHash("Skill2");
 
     public RUSHDIR directionType = RUSHDIR.ALL;
@@ -37,6 +37,7 @@ public class RushSkill : MonoBehaviour
     private IEnumerator RushSequence(EnemyStateMachine enemy, Action onComplete)
     {
         int rushCount = Random.Range(minRushCount, maxRushCount + 1);
+
 
         for (int i = 0; i < rushCount; i++)
         {
@@ -75,6 +76,11 @@ public class RushSkill : MonoBehaviour
                     }
                     break;
             }
+
+            //공격전 Flip 결정
+            enemy.transform.position = new Vector3(start.x, start.y, enemy.transform.position.z);
+            enemy.States[EENEMYSTATE.SKILL].FlipX(playerPos);
+
             yield return Rush(enemy, start, end);
         }
 
@@ -94,8 +100,9 @@ public class RushSkill : MonoBehaviour
                 return RUSHDIR.HORIZONTAL;
         }
     }
-    private IEnumerator Rush(StateMachine enemy, Vector2 start, Vector2 end)
+    private IEnumerator Rush(EnemyStateMachine enemy, Vector2 start, Vector2 end)
     {
+        
         float elapsed = 0f;
 
         while (elapsed < rushDuration)

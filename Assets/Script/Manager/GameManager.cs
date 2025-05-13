@@ -33,8 +33,11 @@ public class GameManager : Singleton<GameManager>
     protected override void Awake()
     {
         base.Awake();
-        if (GameManager.Instance == this) {
+        if (GameManager.Instance == this)
+        {
             SceneManager.sceneLoaded += OnSceneLoaded;
+            rooms = Resources.LoadAll<GameObject>("Prefabs/Stages/Room");
+            bossRooms = Resources.LoadAll<GameObject>("Prefabs/Stages/BossRoom");
         }
     }
     private void OnDestroy()

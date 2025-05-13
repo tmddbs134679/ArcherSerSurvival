@@ -6,13 +6,16 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    private ChangedSkillData data;//비어?�는 ?�사체의 ?�이??
-    private Vector2 Target;//비어?�는 공격방향
-    private Vector2 angleDirection;//비어?�는 추적 공격방향
-    private Rigidbody2D rb;//?�리?�한 ?�사체의 리짓바디
-    public string serialName;//?�름
-    public void Init(Vector2 target, Vector2 angleDir, ChangedSkillData _data)
+    private ChangedSkillData data;//鍮꾩뼱?덈뒗 ?ъ궗泥댁쓽 ?곗씠??
+    private Vector2 Target;//鍮꾩뼱?덈뒗 怨듦꺽諛⑺뼢
+    private Vector2 angleDirection;//鍮꾩뼱?덈뒗 異붿쟻 怨듦꺽諛⑺뼢
+    private Rigidbody2D rb;//?꾨━?뱁븳 ?ъ궗泥댁쓽 由ъ쭞諛붾뵒
+    public string serialName;//?대쫫
+    public GameObject ownerObject;
+
+    public void Init(GameObject tempobject, Vector2 target, Vector2 angleDir, ChangedSkillData _data)
     {
+        ownerObject = tempobject;
         Target = target;
         angleDirection = angleDir.normalized;
         data = _data;
@@ -21,19 +24,34 @@ public class Projectile : MonoBehaviour
         StartCoroutine(WrappingInvokeDelay(data.duration));
     }
 
-    private void FixedUpdate()//����ó��
+
+  
+    private void FixedUpdate()//물리처리
     {
         rb.velocity = angleDirection * data.speed;
         StartCoroutine(AngleDirDelay());
-        transform.Rotate(Vector3.forward, data.rotateSpeed * Time.fixedDeltaTime); //������ ��ü ȸ��
+        transform.Rotate(Vector3.forward, data.rotateSpeed * Time.fixedDeltaTime); //프리팹 자체 회전
     }
-
-    void OnTriggerEnter2D(Collider2D collision)//�浹���� ��
+    void OnTriggerEnter2D(Collider2D collision)//충돌했을 시
     {
-        if (collision.GetComponent<EnemyStateMachine>() != null) //&&Target.tag==collsion.tag or layermask ��
+        //에네미가 발사했을때
+        //6 == enemy
+        if (ownerObject.layer == 6)
         {
-            collision.GetComponent<BaseStat>().Damaged(data.damage);
-            StartCoroutine(WrappingInvokeDelay(0f));//skillShooter??ReturnToPool() 메서?��? ?�출
+            if (collision.gameObject.layer == 3)
+            {
+                collision.GetComponent<BaseStat>().Damaged(data.damage);
+                StartCoroutine(WrappingInvokeDelay(0f));//skillShooter??ReturnToPool() 硫붿꽌?쒕? ?몄텧
+            }
+        }
+        //플레이어가 발사했을때
+        else if (ownerObject.layer == 3)
+        {
+            if (collision.gameObject.layer == 6)
+            {
+                collision.GetComponent<BaseStat>().Damaged(data.damage);
+                StartCoroutine(WrappingInvokeDelay(0f));//skillShooter??ReturnToPool() 硫붿꽌?쒕? ?몄텧
+            }
         }
     }
     private IEnumerator WrappingInvokeDelay(float delay)

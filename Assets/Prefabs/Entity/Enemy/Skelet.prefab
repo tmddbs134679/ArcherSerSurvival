@@ -205,6 +205,7 @@ GameObject:
   - component: {fileID: 7746067693331829854}
   - component: {fileID: 6879424084190446371}
   - component: {fileID: 1768957048278936749}
+  - component: {fileID: 5745893712806815165}
   m_Layer: 6
   m_Name: Skelet
   m_TagString: Untagged
@@ -245,6 +246,7 @@ MonoBehaviour:
   <MonsterData>k__BackingField: {fileID: 11400000, guid: 2675e887aae8c5d459af63eb1a08c4c8, type: 2}
   <Player>k__BackingField: {fileID: 0}
   <EnemyStat>k__BackingField: {fileID: 1768957048278936749}
+  <Skills>k__BackingField: []
   <PlayerChasingRange>k__BackingField: 0
   <EnemyAIController>k__BackingField: {fileID: 3470322307665087890}
   <CanAttack>k__BackingField: 1
@@ -350,6 +352,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 10
+  currentHp: 0
   hpChangeDelay: 3
   speed: 5
   atk: 10
+--- !u!114 &5745893712806815165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7659958387202495407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ea8fb224cdf9f0479e86a1826b0680c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serialname: 
+  projectilePrefab: {fileID: 480090936706811311, guid: f83b12d584a207241960cdb01220fe95, type: 3}
+  Data: {fileID: 0}
+  fireRate: 1
+  individualFireRate: 0.1
+  player: {fileID: 7659958387202495407}
+  skillLevelSystem: {fileID: 0}

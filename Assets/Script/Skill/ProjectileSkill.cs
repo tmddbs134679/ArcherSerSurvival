@@ -8,13 +8,13 @@ using UnityEngine.UIElements;
 public class ProjectileSkill : MonoBehaviour
 {
     public string serialname;
-    public GameObject projectilePrefab; //??沅쀯㎗??袁ⓥ봺??
-    public ChangedSkillData Data; //??沅쀯㎗?곸벥 ?怨쀬뵠??
-    public float fireRate; //???????獄쏆뮇沅?揶쏄쑨爰?
+    public GameObject projectilePrefab; //??雅?굞??????ш끽諭욥걡??
+    public ChangedSkillData Data; //??雅?굞?????⑤챶爰????Β????
+    public float fireRate; //????????袁⑸즵獒뺣뎾苡???좊즲??좊뙀?
 
-    public float individualFireRate;//揶쏆뮆??獄쏆뮇沅쀥첎袁㏐봄
-    private float fireTimer;//??λ떄 ??볦퍢癰궰??
-    //??곕뼒??
+    public float individualFireRate;//??좊즵獒???袁⑸즵獒뺣뎾苡?關苡며넭怨λ짃??
+    private float fireTimer;//??縕????癰???怨뚮뼚???
+    //???⑤베???
 
     public GameObject player;
 
@@ -23,6 +23,11 @@ public class ProjectileSkill : MonoBehaviour
 
 
     private void Awake()
+    {
+
+    }
+
+    private void Start()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
         Init();
@@ -40,11 +45,16 @@ public class ProjectileSkill : MonoBehaviour
 
     private void Init()
     {
-        player = PlayerController.Instance.gameObject;
+        if (gameObject.GetComponentInParent<PlayerController>() != null)
+            player = PlayerController.Instance.gameObject;
+        else
+            player = gameObject;
+
+
         SetSkillData();
     }
 
-        public void SetSkillData()
+    public void SetSkillData()
     {
         Data = new ChangedSkillData();
 
@@ -76,7 +86,7 @@ public class ProjectileSkill : MonoBehaviour
 
     private void Fire(int count, Vector2 pivotPos, Vector2 targetPos)
     {
-        GameObject projectile = ProjectileObjectPool.Instance.Get(projectilePrefab.name); //objectpool?癒?퐣 ?癒?짗??곗쨮 ?봔鈺곌퉲釉????袁ⓥ봺?諭??筌?쑴?쇾빳?
+        GameObject projectile = ProjectileObjectPool.Instance.Get(projectilePrefab.name); //objectpool????????筌???⑥????딅텑??釉뚰?轅대눀?????ш끽諭욥걡??????癲?????쒕춣?
 
         projectile.transform.position = pivotPos;
         projectile.transform.rotation = Quaternion.identity;
@@ -84,7 +94,8 @@ public class ProjectileSkill : MonoBehaviour
         Vector2 dir = targetPos - pivotPos;
         Vector2 angleDir = Quaternion.Euler(0, 0, -(Data.angle * Data.count / 2f) + Data.angle * count) * dir;
 
-        projectile.GetComponent<Projectile>().Init(targetPos, angleDir, Data);
+        projectile.GetComponent<Projectile>().Init(gameObject.transform.root.gameObject, targetPos, angleDir, Data);
+   
     }
 
     private IEnumerator FireWithDelay()
@@ -93,7 +104,19 @@ public class ProjectileSkill : MonoBehaviour
         {
 
             var currentPivotPos = player.transform.position;
-            var targetTransform = player.GetComponent<PlayerController>().GetClosestEnemy();
+            Transform targetTransform;
+            
+            if(player.GetComponent<PlayerController>() != null)
+            {
+                targetTransform = player.GetComponent<PlayerController>().GetClosestEnemy();
+            }
+            else
+            {
+                targetTransform = GetComponent<EnemyStateMachine>().Player.transform;
+            }
+
+                
+
             if (targetTransform == null) yield break;
             var currentTargetPos = targetTransform.position;
 

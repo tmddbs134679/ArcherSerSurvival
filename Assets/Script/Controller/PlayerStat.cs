@@ -35,7 +35,7 @@ public class PlayerStat : BaseStat
         }
     }
 
-    // 체력감소 무적판정은 collision에서 진행할것.
+    // 泥대젰媛먯냼 臾댁쟻?먯젙? collision?먯꽌 吏꾪뻾?좉쾬.
     public override void Damaged(float reduceHp)
     {
         if (isHpChanged)
@@ -58,7 +58,7 @@ public class PlayerStat : BaseStat
     {
         sRigidBody.velocity = Vector3.zero;
 
-        // 죽으면 투명해지기
+        // 二쎌쑝硫??щ챸?댁?湲?
         foreach (SpriteRenderer renderer in transform.GetComponentsInChildren<SpriteRenderer>())
         {
             Color color = renderer.color;
@@ -66,7 +66,7 @@ public class PlayerStat : BaseStat
             renderer.color = color;
         }
 
-        // 사망하면 모든 컴포넌트 끄기
+        // ?щ쭩?섎㈃ 紐⑤뱺 而댄룷?뚰듃 ?꾧린
         foreach (Behaviour componenet in transform.GetComponentsInChildren<Behaviour>())
         {
             componenet.enabled = false;
