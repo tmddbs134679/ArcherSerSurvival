@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    private ChangedSkillData Data;//비어있는 투사체의 데이터
-    private GameObject Target;//공격대상
-    public GameObject Launcher;//발사체
-    private Vector2 angleDirection;//비어있는 추적 공격방향
-    private Rigidbody2D rb;//프리팹한 투사체의 리짓바디
-    public string serialName;//이름
+    private ChangedSkillData Data;//??쑴堉??덈뮉 ??沅쀯㎗?곸벥 ?怨쀬뵠??
+    private GameObject Target;//?⑤벀爰????
+    public GameObject Launcher;//獄쏆뮇沅쀯㎗?
+    private Vector2 angleDirection;//??쑴堉??덈뮉 ?곕뗄???⑤벀爰썼쳸?븍샨
+    private Rigidbody2D rb;//?袁ⓥ봺?諭곷립 ??沅쀯㎗?곸벥 ?귐딆췂獄쏅뗀逾?
+    public string serialName;//??已?
 
     public void Init(GameObject launcher, GameObject target, Vector2 angleDir, ChangedSkillData data)
     {
@@ -25,13 +25,13 @@ public class Projectile : MonoBehaviour
 
 
   
-    private void FixedUpdate()//물리처리
+    private void FixedUpdate()//?얠눖?곻㎗?롡봺
     {
         rb.velocity = angleDirection * Data.speed;
         StartCoroutine(AngleDirDelay());
-        transform.Rotate(Vector3.forward, Data.rotateSpeed * Time.fixedDeltaTime); //프리팹 자체 회전
+        transform.Rotate(Vector3.forward, Data.rotateSpeed * Time.fixedDeltaTime); //?袁ⓥ봺???癒?퍥 ???읈
     }
-    void OnTriggerEnter2D(Collider2D collision)//충돌했을 시
+    void OnTriggerEnter2D(Collider2D collision)//?겸뫖猷??됱뱽 ??
     {
             if (Target.layer==collision.gameObject.layer)
             {

@@ -324,7 +324,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiObjects: []
   uiName: 
-  parent: {fileID: 0}
 --- !u!1 &568369651
 GameObject:
   m_ObjectHideFlags: 0
@@ -2226,6 +2225,31 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 697454400179070794, guid: b11c6aa27057bea419420d1741103802, type: 3}
+      propertyPath: speak_text.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 697454400179070794, guid: b11c6aa27057bea419420d1741103802, type: 3}
+      propertyPath: dialog_text.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 697454400179070794, guid: b11c6aa27057bea419420d1741103802, type: 3}
+      propertyPath: speak_text.Array.data[0]
+      value: "\uAC15\uD574\uC9C0\uACE0 \uC2F6\uB098?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 697454400179070794, guid: b11c6aa27057bea419420d1741103802, type: 3}
+      propertyPath: speak_text.Array.data[1]
+      value: "\uB3C8\uB9CC \uC788\uC73C\uBA74 \uB204\uAD6C\uB4E0 \uAC15\uD574\uC9C8
+        \uC218 \uC788\uC5B4."
+      objectReference: {fileID: 0}
+    - target: {fileID: 697454400179070794, guid: b11c6aa27057bea419420d1741103802, type: 3}
+      propertyPath: dialog_text.Array.data[0]
+      value: "\uC6D0\uD55C\uB2E4\uBA74 \uB108\uB97C \uAC15\uD558\uAC8C \uB9CC\uB4E4\uC5B4\uC8FC\uC9C0."
+      objectReference: {fileID: 0}
+    - target: {fileID: 697454400179070794, guid: b11c6aa27057bea419420d1741103802, type: 3}
+      propertyPath: dialog_text.Array.data[1]
+      value: "F : \uC2A4\uD0EF \uAC15\uD654"
+      objectReference: {fileID: 0}
     - target: {fileID: 2841464569901124324, guid: b11c6aa27057bea419420d1741103802, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.5

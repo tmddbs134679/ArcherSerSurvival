@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PeriodicTrap : NormalTrap   //활성화/비활성화를 반복하는 함정 
+public class PeriodicTrap : NormalTrap   //?쒖꽦??鍮꾪솢?깊솕瑜?諛섎났?섎뒗 ?⑥젙 
 {
     [Header("Trap Settings(Periodic)")]
-    [SerializeField] private float activeDuration = 1.5f;     // 함정이 활성화되어 있는 시간
-    [SerializeField] private float inactiveDuration = 2.0f;   // 함정이 비활성화되어 있는 시간
+    [SerializeField] private float activeDuration = 1.5f;     // ?⑥젙???쒖꽦?붾릺???덈뒗 ?쒓컙
+    [SerializeField] private float inactiveDuration = 2.0f;   // ?⑥젙??鍮꾪솢?깊솕?섏뼱 ?덈뒗 ?쒓컙
 
-    private bool isActive = false;      //현재 함정 활성화 상태
-    private float activeTimer = 0f;          //주기 변경을 위한 타이머
+    private bool isActive = false;      //?꾩옱 ?⑥젙 ?쒖꽦???곹깭
+    private float activeTimer = 0f;          //二쇨린 蹂寃쎌쓣 ?꾪븳 ??대㉧
     private Collider2D trapCollider;
     private Animator animator;
     private readonly int IsActive = Animator.StringToHash("IsActive");
@@ -18,7 +18,7 @@ public class PeriodicTrap : NormalTrap   //활성화/비활성화를 반복하�
     private void Start()
     {
         Init();
-        SetTrapState(true);   //활성화 상태로 시작   
+        SetTrapState(true);   //?쒖꽦???곹깭濡??쒖옉   
     }
 
     protected override void Update()
@@ -26,7 +26,7 @@ public class PeriodicTrap : NormalTrap   //활성화/비활성화를 반복하�
         activeTimer -= Time.deltaTime;
         if(activeTimer <= 0f)
         {
-            //함정 상태 전환
+            //?⑥젙 ?곹깭 ?꾪솚
             SetTrapState(!isActive);
         }
 

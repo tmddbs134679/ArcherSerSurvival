@@ -25,9 +25,9 @@ public class RewardUI : BaseUI
 
     string[] key = new string[3];
 
+    bool flag = false;
 
-
-    //而ㅻ컠??二쇱꽍
+    //?뚣끇而??雅뚯눘苑?
     private void Awake()
     {
         slotBox = transform.Find("SlotBox").gameObject.GetComponent<CanvasGroup>();
@@ -38,7 +38,7 @@ public class RewardUI : BaseUI
 
     private void OnEnable()
     {
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
         slotBox.alpha = 0f;
         gameObject.GetComponent<CanvasGroup>().alpha = 1f;
         StartCoroutine(BaseFadeIn());
@@ -50,6 +50,8 @@ public class RewardUI : BaseUI
         key[2] = weightedTable.GetRandom();
         name[2].text = key[2];
     }
+
+
     private void OnDisable()
     {
         slotBox.alpha = 0f;
@@ -120,7 +122,7 @@ public class RewardUI : BaseUI
 
         for (int i = 0; i < rewardButtons.Length; i++)
         {
-            int index = i; // ?????? ???嶺????????썹땟??貫沅?
+            int index = i; // ?????? ???癲?????????밸븶??縕ユ쾮?
             rewardButtons[i].onClick.AddListener(() => SelectButton(index));
             rerollButtons[i].onClick.AddListener(() => ReRollButton(index));
         }
