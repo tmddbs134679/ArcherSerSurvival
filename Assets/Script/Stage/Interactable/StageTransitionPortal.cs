@@ -5,14 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class StageTransitionPortal : MonoBehaviour
 {
-    [SerializeField] private string SceneName;    //ÀÌµ¿ÇÒ ¾À ÀÌ¸§
-    [SerializeField] protected LayerMask playerLayer;    //ÇÃ·¹ÀÌ¾î ·¹ÀÌ¾î
+    [SerializeField] private string SceneName;    //ì´ë™í•  ì”¬ ì´ë¦„
+    [SerializeField] protected LayerMask playerLayer;    //í”Œë ˆì´ì–´ ë ˆì´ì–´
 
     private void Start()
     {
         if (SceneName == null)
         {
-            Debug.LogWarning(gameObject.name + ": ÀÌµ¿ÇÒ ¾À ÀÌ¸§À» ÀÔ·ÂÇØÁÖ¼¼¿ä");
+            Debug.LogWarning(gameObject.name + ": ì´ë™í•  ì”¬ ì´ë¦„ì„ ì…ë ¥í•´ì£¼ì„¸ìš”");
             this.enabled = false;
         } 
     }

@@ -27,7 +27,7 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] private float currentHp = 0;
 
     public List<GameObject> skillList = new List<GameObject>();
-
+    public bool isDialog = false;
     void Awake()
     {
         base.Awake();
