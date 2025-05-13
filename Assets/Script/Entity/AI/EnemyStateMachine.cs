@@ -18,6 +18,8 @@ public class EnemyStateMachine : StateMachine
     [field: SerializeField] public EnemyAIController EnemyAIController { get; private set; }
     [field: SerializeField] public bool CanAttack { get; set; } = true;
 
+    [field: SerializeField] public bool CanChasing { get; set; } = true;
+
     private void OnEnable()
     {
         EnemyStat.OnTakeDamage += HandleTakeDamage;

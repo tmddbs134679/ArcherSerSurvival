@@ -21,7 +21,9 @@ public abstract class EnemyBaseState : State
     {
         //if (stateMachine.Player.IsDead) { return false; }
 
-    
+        if (!stateMachine.CanChasing) 
+                return false;
+
         float playerDistanceSqr = (stateMachine.Player.transform.position - stateMachine.transform.position).sqrMagnitude;
 
         return playerDistanceSqr <= stateMachine.MonsterData.PlayerChasingRange * stateMachine.MonsterData.PlayerChasingRange;
