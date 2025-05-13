@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 11.1
   lvspeed: 0
-  damage: 2.2
+  damage: 55.4
   lvdamage: 0
   count: 1
   lvcount: 0

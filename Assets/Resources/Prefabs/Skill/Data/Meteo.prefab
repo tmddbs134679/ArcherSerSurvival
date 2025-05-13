@@ -103,7 +103,7 @@ MonoBehaviour:
   serialName: Meteo
   radius: 0
   maxRadius: 2.5
-  growSpeed: 1
+  growSpeed: 0.53
   WarningZone: {fileID: 8172890816374988477, guid: f9aba2cbfa5dc05489a928a63e3e457e, type: 3}
 --- !u!61 &7898923865021354576
 BoxCollider2D:
@@ -148,7 +148,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.4, y: 1.4}
   m_EdgeRadius: 0
 --- !u!50 &9177359311143287943
 Rigidbody2D:
