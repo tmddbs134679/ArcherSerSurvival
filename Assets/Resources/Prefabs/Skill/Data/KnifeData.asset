@@ -18,10 +18,10 @@ MonoBehaviour:
   lvdamage: 1
   count: 1
   lvcount: 1
-  duration: 0
-  color: {r: 0, g: 0, b: 0, a: 0}
+  duration: 1.29
+  color: {r: 1, g: 1, b: 1, a: 1}
   impactEffect: {fileID: 0}
-  rotateSpeed: 0
-  angle: 0
-  hormingStartDelay: 0
-  hormingTurnDelay: 0
+  rotateSpeed: 133
+  angle: 47
+  hormingStartDelay: 1.43
+  hormingTurnDelay: 10
