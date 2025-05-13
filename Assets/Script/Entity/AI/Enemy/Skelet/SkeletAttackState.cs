@@ -31,6 +31,6 @@ public class SkeletAttackState : EnemyAttackState
     }
     public override void Exit()
     {
-       stateMachine.CanAttack = false;
+        stateMachine.CanAttack = false;
     }
 }
