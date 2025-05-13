@@ -38,6 +38,7 @@ public class RushSkill : MonoBehaviour
     {
         int rushCount = Random.Range(minRushCount, maxRushCount + 1);
 
+
         for (int i = 0; i < rushCount; i++)
         {
             RUSHDIR dirType = GetRandomDirectionType();
@@ -75,6 +76,11 @@ public class RushSkill : MonoBehaviour
                     }
                     break;
             }
+
+            //공격전 Flip 결정
+            enemy.transform.position = new Vector3(start.x, start.y, enemy.transform.position.z);
+            enemy.States[EENEMYSTATE.SKILL].FlipX(playerPos);
+
             yield return Rush(enemy, start, end);
         }
 
@@ -94,8 +100,9 @@ public class RushSkill : MonoBehaviour
                 return RUSHDIR.HORIZONTAL;
         }
     }
-    private IEnumerator Rush(StateMachine enemy, Vector2 start, Vector2 end)
+    private IEnumerator Rush(EnemyStateMachine enemy, Vector2 start, Vector2 end)
     {
+        
         float elapsed = 0f;
 
         while (elapsed < rushDuration)
