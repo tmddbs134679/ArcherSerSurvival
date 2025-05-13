@@ -12,10 +12,6 @@ public class BaseStat : MonoBehaviour
     }
     [SerializeField] protected float currentHp;
 
-    protected float timeHpDelay = 0f;
-    [SerializeField] protected float hpChangeDelay = 3f;
-    protected bool isHpChanged = true;
-
     [SerializeField] protected float speed = 5f;
     public float Speed
     {

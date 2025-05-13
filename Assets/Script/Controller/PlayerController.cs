@@ -23,6 +23,8 @@ public class PlayerController : Singleton<PlayerController>
     public List<GameObject> skillList = new List<GameObject>();
 
     private bool isDodging = false;
+    private bool isDodgeCoolDown = false;
+
     void Awake()
     {
         base.Awake();
@@ -41,6 +43,11 @@ public class PlayerController : Singleton<PlayerController>
         PlayerMove();
     }
 
+    Vector2 PlayerInput()
+    {
+        return new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+    }
+
     void PlayerMove()
     {
         // 닷지중이면 이동 멈춤
@@ -49,8 +56,7 @@ public class PlayerController : Singleton<PlayerController>
             return;
         }
         
-        // 인풋 분리
-        Vector2 movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+        Vector2 movement = PlayerInput();
         pRigidbody.velocity = movement * playerStat.Speed;
 
         isMoving = movement.magnitude > 0.1f;
@@ -62,29 +68,43 @@ public class PlayerController : Singleton<PlayerController>
         {
             Rotate(movement);
             weaponController.RotateWeapon(-90f);
-        }
-        Dodge(movement);
-    }
-
-    void Dodge(Vector2 direction)
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && !isDodging)
-        {
-            StartCoroutine(DodgeRoutine(direction, playerStat.dodgePower, playerStat.dodgeCoolTime));
+            Dodge(movement);
         }
         
     }
 
-    IEnumerator DodgeRoutine(Vector2 direction, float dodgeSpeed, float duration)
+    void Dodge(Vector2 direction)
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && !isDodging && !isDodgeCoolDown)
+        {
+            StartCoroutine(DodgeRoutine(direction, playerStat.DodgeSpeed, playerStat.DodgeDuration, playerStat.DodgeCoolTime));
+        }
+        animator.SetBool("IsDodge", isDodging);
+        
+
+    }
+
+    IEnumerator DodgeRoutine(Vector2 direction, float dodgeSpeed, float duration, float coolTime)
     {
         isDodging = true;
+        animator.speed = dodgeSpeed;
+        playerStat.isInvincible = true;
+
+        isDodgeCoolDown = true;
         pRigidbody.velocity = direction.normalized * dodgeSpeed;
-        Debug.Log("Dodge!");
 
         yield return new WaitForSeconds(duration);
 
-        pRigidbody.velocity = Vector2.zero;
         isDodging = false;
+        playerStat.isInvincible = false;
+
+        // 회피 종료 후 이동 반영
+        animator.speed = 1f;
+        Vector2 movement = PlayerInput();
+        pRigidbody.velocity = movement * playerStat.Speed;
+
+        yield return new WaitForSeconds(coolTime);
+        isDodgeCoolDown = false;
     }
 
     void Rotate(Vector2 direction)

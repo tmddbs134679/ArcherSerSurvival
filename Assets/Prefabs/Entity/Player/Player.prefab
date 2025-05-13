@@ -296,8 +296,9 @@ MonoBehaviour:
   hpChangeDelay: 3
   speed: 5
   atk: 10
-  dodgeCoolTime: 3
-  dodgePower: 5
+  dodgeDuration: 0.1
+  dodgeSpeed: 10
+  dodgeCoolTime: 1
 --- !u!1 &8463937971123993745
 GameObject:
   m_ObjectHideFlags: 0

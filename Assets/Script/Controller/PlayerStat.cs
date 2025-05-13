@@ -4,12 +4,36 @@ using UnityEngine;
 
 public class PlayerStat : BaseStat
 {
-    public float dodgeCoolTime = 3f;
-    public float dodgePower = 5f;
+    [Header("Dodge")]
+    [SerializeField] float dodgeDuration = 0.1f;
+    public float DodgeDuration
+    {
+        get => dodgeDuration;
+        set => dodgeDuration = Mathf.Clamp(value, 0, 5);
+    }
+
+    [SerializeField] float dodgeSpeed = 20f;
+    public float DodgeSpeed
+    {
+        get => dodgeSpeed;
+        set => dodgeSpeed = Mathf.Clamp(value, 0, 10);
+    }
+    
+    [SerializeField] float dodgeCoolTime = 5f;
+    public float DodgeCoolTime
+    {
+        get => dodgeCoolTime;
+        set => dodgeCoolTime = Mathf.Clamp(value, 0, 10);
+    }
     
     private Rigidbody2D sRigidBody;
     private Animator animator;
-    
+
+    public bool isInvincible = false;
+    [SerializeField] float invincibleTime = 3f;
+
+
+
     private void Awake()
     {
         sRigidBody = GetComponent<Rigidbody2D>();
@@ -23,57 +47,45 @@ public class PlayerStat : BaseStat
 
     private void Update()
     {
-        
-        if (!isHpChanged)
-        {
-            if (timeHpDelay < hpChangeDelay)
-            {
-                timeHpDelay += Time.deltaTime;
-                if (timeHpDelay >= hpChangeDelay)
-                {
-                    animator.SetBool("IsDamaged", false);
-                    isHpChanged = true;
-                }
-            }
-        }
     }
 
-    // 泥대젰媛먯냼 臾댁쟻?먯젙? collision?먯꽌 吏꾪뻾?좉쾬.
+    // 데미지 - 체력 감소
     public override void Damaged(float reduceHp)
     {
-        if (isHpChanged)
+        if (!isInvincible)
         {
             base.Damaged(reduceHp);
 
-            isHpChanged = false;
-            timeHpDelay = 0;
             currentHp -= reduceHp;
-            animator.SetBool("IsDamaged", true);
+            animator.SetTrigger("isDamaged");
 
             if (currentHp <= 0)
             {
                 Death();
-            }   
+                currentHp = 0;
+            }
+
+            StartCoroutine(DamageDelayRoutine());
         }
+    }
+
+    private IEnumerator DamageDelayRoutine()
+    {
+        isInvincible = true;
+        animator.SetLayerWeight(1, 1);
+
+        yield return new WaitForSeconds(invincibleTime);
+
+        isInvincible = false;
+        animator.SetLayerWeight(1, 0);
     }
 
     protected override void Death()
     {
         sRigidBody.velocity = Vector3.zero;
 
-        // 二쎌쑝硫??щ챸?댁?湲?
-        foreach (SpriteRenderer renderer in transform.GetComponentsInChildren<SpriteRenderer>())
-        {
-            Color color = renderer.color;
-            color.a = 0.3f;
-            renderer.color = color;
-        }
-
-        // ?щ쭩?섎㈃ 紐⑤뱺 而댄룷?뚰듃 ?꾧린
-        foreach (Behaviour componenet in transform.GetComponentsInChildren<Behaviour>())
-        {
-            componenet.enabled = false;
-        }
+        // 사망 시 애니 재생
+        animator.SetLayerWeight(2, 1);
 
         GameManager.Instance.GameOver();
     }
