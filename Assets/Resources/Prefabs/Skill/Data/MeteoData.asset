@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 636751bd5872dc349a8077bae4932916, type: 3}
   m_Name: MeteoData
   m_EditorClassIdentifier: 
-  speed: 11.1
+  speed: 0
   lvspeed: 0
-  damage: 2.2
+  damage: 10.2
   lvdamage: 0
-  count: 3
+  count: 1
   lvcount: 0
-  duration: 2.16
-  color: {r: 1, g: 1, b: 1, a: 1}
+  duration: 2.46
+  color: {r: 1, g: 0, b: 0, a: 0.38431373}
   impactEffect: {fileID: 0}
   rotateSpeed: 0
   angle: 0
