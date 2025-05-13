@@ -40,15 +40,6 @@ public class PlayerStat : BaseStat
         animator = GetComponentInChildren<Animator>();
     }
 
-    private void Start()
-    {
-        currentHp = maxHp;
-    }
-
-    private void Update()
-    {
-    }
-
     // 데미지 - 체력 감소
     public override void Damaged(float reduceHp)
     {
@@ -56,13 +47,11 @@ public class PlayerStat : BaseStat
         {
             base.Damaged(reduceHp);
 
-            currentHp -= reduceHp;
             animator.SetTrigger("isDamaged");
 
             if (currentHp <= 0)
             {
                 Death();
-                currentHp = 0;
             }
 
             StartCoroutine(DamageDelayRoutine());
