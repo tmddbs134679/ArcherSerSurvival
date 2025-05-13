@@ -9,7 +9,12 @@ public class GoldDrop :UsableITem
     protected override void Use(GameObject target)
     {
         int gold = Random.Range(minGoldAmount, maxGoldAmount);
-        //골드 추가
+        PlayerResource player = target.GetComponent<PlayerResource>();
+
+        if (player != null)
+        {
+            player.GetGold(gold);
+        }
         base.Use(target);
     }
 }

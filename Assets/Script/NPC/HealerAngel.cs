@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HealerAngel : MonoBehaviour
 {
+    [SerializeField] private int healCost = 500;
     NPCController controller;
 
     private void Start()
@@ -11,8 +12,14 @@ public class HealerAngel : MonoBehaviour
         controller = GetComponent<NPCController>();
         if(controller != null)
         {
-            //플레이어 골드 소모
-            controller.onDialogEndEvent.AddListener(Heal);
+            PlayerResource player = controller.GetComponent<PlayerResource>();
+            if(player != null) 
+            {
+                if (player.UseGold(healCost))
+                {
+                    controller.onDialogEndEvent.AddListener(Heal);
+                }   
+            }
         }
     }
 
