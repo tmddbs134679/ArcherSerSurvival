@@ -17,7 +17,7 @@ public class NormalTrap : MonoBehaviour   //?뚮젅?댁뼱 ?묒큺 ???쇳빐瑜?
         if (player != null && damageDelay <= timer)
         {
             TryDealDamage();
-            timer = 0;
+            timer = 0f;
         }
         timer += Time.deltaTime;
     }
@@ -31,14 +31,6 @@ public class NormalTrap : MonoBehaviour   //?뚮젅?댁뼱 ?묒큺 ???쇳빐瑜?
         }
     }
 
-    protected virtual void OnTriggerStay2D(Collider2D other)
-    {
-        if (player != null && other.gameObject == player.gameObject)
-        {
-            TryDealDamage(); // 罹먯떆??player瑜???곸쑝濡??곕?吏 ?쒕룄
-        }
-        
-    }
 
     protected virtual void OnTriggerExit2D(Collider2D other)
     {
