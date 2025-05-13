@@ -3263,7 +3263,7 @@ GameObject:
   - component: {fileID: 3113737924749302858}
   - component: {fileID: 1300533826611821804}
   m_Layer: 8
-  m_Name: NonVisibleCollision
+  m_Name: InvisibleCollision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 
-public class ProjectileSkill : MonoBehaviour
+
+public class ExplosionSkill : MonoBehaviour
 {
     public string serialname;
     public GameObject projectilePrefab;//투사체 프리팹
@@ -15,11 +16,8 @@ public class ProjectileSkill : MonoBehaviour
     public float individualFireRate;//개별 발사간격
     private float fireTimer;//단순 시간변수
      //파티클
-
     public GameObject SkillOwner;
-
-
-    public SkillLevelSystem skillLevelSystem;
+      public SkillLevelSystem skillLevelSystem;
 
     private void Start()
     {
@@ -70,8 +68,7 @@ private void Init()
     }
 
 
-
-    protected virtual void Update()
+    private void Update()
     {
         fireTimer += Time.deltaTime;
         if (fireTimer >= fireRate)
@@ -116,6 +113,7 @@ private void Init()
 
         }
     }
+
 
 
 }
