@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
+
     [SerializeField]
     private int stage = 0;
     [SerializeField]
@@ -22,7 +24,16 @@ public class GameManager : Singleton<GameManager>
     private int roomCount = 1;
     public GameObject[] rooms;
     public GameObject[] bossRooms;
+    public GameObject lodingPrefab;
+    public GameObject lodingObject;
     public SkillLevelSystem skillLevelSystem;
+
+    public bool isOption = false;
+    
+
+
+
+
 
     private void HandleMonsterDeath(GameObject monster)
     {
@@ -38,8 +49,13 @@ public class GameManager : Singleton<GameManager>
             SceneManager.sceneLoaded += OnSceneLoaded;
             rooms = Resources.LoadAll<GameObject>("Prefabs/Stages/Room");
             bossRooms = Resources.LoadAll<GameObject>("Prefabs/Stages/BossRoom");
+            lodingPrefab = Resources.Load<GameObject>("Prefabs/UI/Loding/Loding");
+            lodingObject = Instantiate(lodingPrefab);
+            lodingObject.SetActive(false);
         }
+        
     }
+
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
@@ -48,14 +64,28 @@ public class GameManager : Singleton<GameManager>
     {
         isOpen = false;
         Init_GameManager();
+        LodingFadeOut();
     }
     private void Init_GameManager()
     {
         CreateRoom();
     }
+
+    private void LodingFadeIn()
+    {
+        UIManager.Instance.FadeInUI("Loding");
+    }
+    private void LodingFadeOut()
+    {
+        UIManager.Instance.FadeOutUI("Loding");
+    }
     void Update()
     {
         time += Time.deltaTime;
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            OnOption();
+        }
     }
     public void CreateRoom()
     {
@@ -76,9 +106,17 @@ public class GameManager : Singleton<GameManager>
         {
             isOpen = false;
             PlayerController.Instance.transform.position = new Vector3(0, 0, 0);
-            SceneManager.LoadScene("AITestScene");
+            lodingObject.GetComponent<LodingUI>().isLoding = true;
+            LodingFadeIn();       
         }
     }
+
+    // LodingFadeIn => NextSceneLoad
+    public void NextSceneLoad()
+    {
+        SceneManager.LoadScene("AITestScene");
+    }
+
     public static event Action openCloseDoor;
     public void CheckEnemy()
     {
@@ -101,6 +139,32 @@ public class GameManager : Singleton<GameManager>
     public void GameOver()
     {
         UIManager.Instance.ShowUI("GameOverUI");
+    }
+
+    public void OnOption()
+    {
+
+        if (isOption == false)
+        {
+            isOption = true;
+            Time.timeScale = 0f;
+            UIManager.Instance.ShowUI("Option");
+        }
+
+        else
+        {
+            isOption = false;
+            Time.timeScale = 1.0f;
+            UIManager.Instance.HideUI("Option");
+        }
+
+
+    }
+
+
+    public void LoadSceneLobby()
+    {
+        SceneManager.LoadScene("Lobby");
     }
 
 

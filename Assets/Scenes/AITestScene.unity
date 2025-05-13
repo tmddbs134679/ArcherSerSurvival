@@ -918,15 +918,15 @@ PrefabInstance:
     - target: {fileID: 6220742813316942080, guid: a4b52b578e193f64bb756a45dd469614, type: 3}
       propertyPath: projectilePrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 1090315539645706261, guid: 669ccea037459cb41975704bc419e9bf, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 6220742813316942080, guid: a4b52b578e193f64bb756a45dd469614, type: 3}
       propertyPath: projectilePrefabs.Array.data[1]
       value: 
-      objectReference: {fileID: 7060354922805938554, guid: 2ddbce05fe280744f8c5079bb4526044, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 6220742813316942080, guid: a4b52b578e193f64bb756a45dd469614, type: 3}
       propertyPath: projectilePrefabs.Array.data[2]
       value: 
-      objectReference: {fileID: 7827560360998576179, guid: e526136f01fc83746ab37bd9b2640059, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 6583815600089746838, guid: a4b52b578e193f64bb756a45dd469614, type: 3}
       propertyPath: m_Name
       value: ObjectPool
@@ -1005,6 +1005,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startActive: 1
+  fadeDuration: 0.5
+  image: {fileID: 0}
+  fadeFlag: 0
   rewardButtons:
   - {fileID: 1929794517}
   - {fileID: 782449747}
@@ -1013,6 +1016,7 @@ MonoBehaviour:
   skillPrefabs:
   - {fileID: 1090315539645706261, guid: 57127594101e41a4bb131d65359d8b79, type: 3}
   - {fileID: 7060354922805938554, guid: c31f8d96e248e044785d7cd3ccb1852e, type: 3}
+  weightedTable: {fileID: 11400000, guid: c1cb522a11ed12549bfbcc7483f7fbba, type: 2}
 --- !u!1 &2058448345
 GameObject:
   m_ObjectHideFlags: 0
@@ -1053,7 +1057,10 @@ MonoBehaviour:
   - {fileID: 3528727724143104295, guid: 726839dce665f624280ccdd5b5cbef93, type: 3}
   bossRooms:
   - {fileID: 0}
+  lodingPrefab: {fileID: 0}
+  lodingObject: {fileID: 0}
   skillLevelSystem: {fileID: 2058448348}
+  isOption: 0
 --- !u!4 &2058448347
 Transform:
   m_ObjectHideFlags: 0
@@ -1082,9 +1089,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillDataObject:
-  - {fileID: 11400000, guid: c586466931787a644b98640a32006d09, type: 2}
-  - {fileID: 11400000, guid: 1ce86bd678b2c6c418661bc9df979c4c, type: 2}
-  - {fileID: 11400000, guid: 19cf548b03044084689541e419da6343, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &2072820772
 PrefabInstance:
   m_ObjectHideFlags: 0

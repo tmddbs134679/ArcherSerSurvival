@@ -96,7 +96,7 @@ public class ExplosionSkill : MonoBehaviour
 //Ÿ���� ���̾�or�±׸� �޾Ƽ� ����ü�� �浹 ó���� ������ ����� 
 //projectile�� OnTriggerEnter2D�޼��忡�� ���� �ʿ�
             var currentPivotPos = player.transform.position;
-            var targetTransform = player.GetComponent<PlayerController>().GetClosestEnemy();
+            var targetTransform = player.GetComponent<PlayerTargeting>().GetClosestEnemy();
             if (targetTransform == null) yield break;
             var currentTargetPos = targetTransform.position;
 

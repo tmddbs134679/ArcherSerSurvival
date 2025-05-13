@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -10,23 +11,20 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] private WeaponController WeaponPrefab;
     [SerializeField] private SpriteRenderer spriteRenderer;
 
-    [SerializeField] private Vector2 targetRange = new Vector2(5, 5);
     private WeaponController weaponController;
 
     private Rigidbody2D pRigidbody;
     private Animator animator;
 
-    private bool isMoving = false;
-    private Transform closestEnemy = null;
-
-    private bool isAttacking = false;
-    private float timeLastAttack = float.MaxValue;
+    public bool isMoving = false;
 
     private PlayerStat playerStat;
 
-    [SerializeField] private float currentHp = 0;
-
     public List<GameObject> skillList = new List<GameObject>();
+
+    private bool isDodging = false;
+    private bool isDodgeCoolDown = false;
+
     public bool isDialog = false;
     void Awake()
     {
@@ -44,29 +42,70 @@ public class PlayerController : Singleton<PlayerController>
     void Update()
     {
         PlayerMove();
-        RotateWeaponToTarget();
-        AttackDelayHandler();
+    }
+
+    Vector2 PlayerInput()
+    {
+        return new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
     }
 
     void PlayerMove()
     {
-        // ?筌뤿굝? ?釉뚯뫊??
-        Vector2 movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+        // 닷지중이면 이동 멈춤
+        if (isDodging)
+        {
+            return;
+        }
+        
+        Vector2 movement = PlayerInput();
         pRigidbody.velocity = movement * playerStat.Speed;
 
         isMoving = movement.magnitude > 0.1f;
 
         animator.SetBool("isMove", movement.magnitude > 0.1f);
 
-        // ??????戮?뱺??????덃뤆???μ쪠??
+        // 이동시에는 회전값 고정
         if (isMoving)
         {
             Rotate(movement);
-            RotateWeapon(-90f);
-            weaponController.FlipWeapon(false);
-            isAttacking = false;
+            weaponController.RotateWeapon(-90f);
+            Dodge(movement);
         }
+        
+    }
 
+    void Dodge(Vector2 direction)
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && !isDodging && !isDodgeCoolDown)
+        {
+            StartCoroutine(DodgeRoutine(direction, playerStat.DodgeSpeed, playerStat.DodgeDuration, playerStat.DodgeCoolTime));
+        }
+        animator.SetBool("IsDodge", isDodging);
+        
+
+    }
+
+    IEnumerator DodgeRoutine(Vector2 direction, float dodgeSpeed, float duration, float coolTime)
+    {
+        isDodging = true;
+        animator.speed = dodgeSpeed;
+        playerStat.isInvincible = true;
+
+        isDodgeCoolDown = true;
+        pRigidbody.velocity = direction.normalized * dodgeSpeed;
+
+        yield return new WaitForSeconds(duration);
+
+        isDodging = false;
+        playerStat.isInvincible = false;
+
+        // 회피 종료 후 이동 반영
+        animator.speed = 1f;
+        Vector2 movement = PlayerInput();
+        pRigidbody.velocity = movement * playerStat.Speed;
+
+        yield return new WaitForSeconds(coolTime);
+        isDodgeCoolDown = false;
     }
 
     void Rotate(Vector2 direction)
@@ -76,119 +115,6 @@ public class PlayerController : Singleton<PlayerController>
         bool isLeft = Mathf.Abs(rotation) > 90f;
 
         spriteRenderer.flipX = isLeft;
-    }
-
-    void RotateWeapon(float rotation)
-    {
-        if (weaponPivot != null)
-        {
-            weaponPivot.rotation = Quaternion.Euler(0f, 0f, rotation);
-        }
-    }
-
-    // ?????띠룆흮???琉우뿰 ?????熬곣뫚???return??濡ル츎 ??貫??
-    public Transform GetClosestEnemy()
-    {
-        if (!isMoving)
-        {
-            // collider????⑤챷諭??띠룆흮? -> 嶺뚣끉裕???? ?熬곥굥???꾩룄?ｈ굢????ル┰
-            Collider2D[] enemiesInRange = new Collider2D[10];
-
-            LayerMask enemyLayer = LayerMask.GetMask("Enemy");
-            int count = Physics2D.OverlapBoxNonAlloc(transform.position, targetRange, 0f, enemiesInRange, enemyLayer);
-
-            if(count == 0)
-            {
-                closestEnemy = null;
-                return null;
-            }
-
-            float minDistance = Mathf.Infinity;
-
-            for (int i = 0; i < count; i++)
-            {
-                float enemyDistance = Vector2.Distance(transform.position, enemiesInRange[i].transform.position);
-                if (enemyDistance < minDistance)
-                {
-                    minDistance = enemyDistance;
-                    closestEnemy = enemiesInRange[i].transform;
-                }
-            }
-
-            if (closestEnemy != null)
-            {
-                float targetRangeDistance = targetRange.magnitude * 0.5f;
-                float closestEnemyDistance = Vector2.Distance(transform.position, closestEnemy.position);
-
-                if (closestEnemyDistance < targetRangeDistance)
-                {
-                    return closestEnemy;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-        }
-        return null;
-    }
-
-
-    // ?????띠룆흮???濡?듆 ???롪퍔????怨쀬Ŧ sprite ???????flip
-    void RotateWeaponToTarget()
-    {
-        if (GetClosestEnemy() != null)
-        {
-            float rotation = Mathf.Atan2(EnemyDirection().y, EnemyDirection().x) * Mathf.Rad2Deg;
-
-            RotateWeapon(rotation);
-
-            bool isLeft = Mathf.Abs(rotation) > 90f;
-            weaponController.FlipWeapon(isLeft);
-            spriteRenderer.flipX = isLeft;
-
-            isAttacking = true;
-        }
-    }
-
-    // ??????怨룹꽑?遊붋?????롪퍔???먯?????꾩렮維싧젆??return??濡ル츎 ??貫??
-    Vector2 EnemyDirection()
-    {
-        Transform target = GetClosestEnemy();
-        return (target.position - transform.position).normalized;
-    }
-
-    void Attack()
-    {
-        Transform target = GetClosestEnemy();
-        if (target != null)
-        {
-            Vector2 direction = (target.position - transform.position).normalized;
-            weaponController.AttackAni();
-        }
-        
-    }
-
-    // ??ㅻ?????類ㅼ읉??
-    void AttackDelayHandler()
-    {
-        if (timeLastAttack <= weaponController.Delay)
-        {
-            timeLastAttack += Time.deltaTime;
-        }
-
-        if (isAttacking && timeLastAttack > weaponController.Delay)
-        {
-            timeLastAttack = 0;
-            Attack();
-        }
-    }
-
-    // ?????띠룆흮? ?뺢퀡???gizmo
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(transform.position, targetRange);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
