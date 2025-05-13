@@ -63,8 +63,15 @@ public class EnemyStateMachine : StateMachine
     }
     private void HandleTakeDamage()
     {
-        if(CanStun)
-         SwitchState(States[EENEMYSTATE.STUN]);
+           if(CanStun)
+            SwitchState(States[EENEMYSTATE.STUN]);
+           else
+           {
+               Animator.SetLayerWeight(1, 1);
+           }
+        
+
+
     }
 
 }

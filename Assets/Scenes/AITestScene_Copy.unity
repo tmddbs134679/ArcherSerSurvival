@@ -539,6 +539,10 @@ PrefabInstance:
       propertyPath: m_FillAmount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6623340214887557354, guid: 2f7168b1290b13248a574b7b9a5f4a18, type: 3}
+      propertyPath: maxRushCount
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6834186963054561962, guid: 2f7168b1290b13248a574b7b9a5f4a18, type: 3}
       propertyPath: m_Name
       value: Ogre
@@ -548,7 +552,8 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2739199317743147875, guid: 2f7168b1290b13248a574b7b9a5f4a18, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f7168b1290b13248a574b7b9a5f4a18, type: 3}

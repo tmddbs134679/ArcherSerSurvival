@@ -54,7 +54,8 @@ public class EnemyAIController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<BaseStat>().Damaged(10);
+            float attackdmg = GetComponent<EnemyStat>().Atk;
+            collision.gameObject.GetComponent<BaseStat>().Damaged(attackdmg);
         }
     }
 

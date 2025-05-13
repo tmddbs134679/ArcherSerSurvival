@@ -25,6 +25,7 @@ public class EnemyStat : BaseStat
         base.Damaged(reduceHp);
 
         OnTakeDamage?.Invoke();
+        
 
         if (currentHp == 0)
         {
