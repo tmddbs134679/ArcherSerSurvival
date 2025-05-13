@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class PlayerResource : MonoBehaviour
 {
-    [SerializeField]
-    private int goldAmount;       //보유 골드량
+    public int goldAmount { get; private set; } = 1000;     //보유 골드량
 
     public event Action OnGoldChanged;
     public void GetGold(int gold)
@@ -24,10 +23,5 @@ public class PlayerResource : MonoBehaviour
             return true;
         }
         else return false;
-    }
-
-    public int ShowGoldAmount()
-    {
-        return goldAmount;
     }
 }

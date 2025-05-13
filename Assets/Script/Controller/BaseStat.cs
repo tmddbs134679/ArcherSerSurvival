@@ -7,12 +7,17 @@ public class BaseStat : MonoBehaviour
 {
     // 이벤트로 HP 바 변경 호출
     public event Action<float, float> OnHpChanged;
+    public event Action OnStatChanged;
 
     [SerializeField] protected float maxHp = 100f;
     public float MaxHp
     {
         get => maxHp;
-        set => maxHp = Mathf.Clamp(value, 0, 1000);
+        set
+        {
+            maxHp = Mathf.Clamp(value, 0, 1000);
+            OnStatChanged?.Invoke();
+        }
     }
     [SerializeField] protected float currentHp;
     public float CurrentHp
@@ -29,15 +34,25 @@ public class BaseStat : MonoBehaviour
     public float Speed
     {
         get => speed;
-        set => speed = Mathf.Clamp(value, 0, 100);
+        set
+        {
+            speed = Mathf.Clamp(value, 0, 100);
+            OnStatChanged?.Invoke();
+        }
     }
 
     [SerializeField] protected float atk = 10f;
     public float Atk
     {
         get => atk;
-        set => atk = value;
+        set
+        {
+            atk = value;
+            OnStatChanged?.Invoke();
+        }
     }
+
+  
 
     //hp 초기화
     private void Start()
