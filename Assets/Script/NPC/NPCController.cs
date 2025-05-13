@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 public class NPCController : MonoBehaviour
 {
@@ -27,6 +28,9 @@ public class NPCController : MonoBehaviour
         "해골여"
     };
     public int dialog_index = 0;
+
+    public UnityEvent onDialogEndEvent = new UnityEvent();  //다이어로그 종료 이벤트
+
     private void Awake()
     {
         renderer = GetComponent<Renderer>();
@@ -53,6 +57,7 @@ public class NPCController : MonoBehaviour
     }
     private void Update()
     {
+        /*
         if (isDialog == false)
         {
             //일정 주기마다 시키고싶은데
@@ -62,6 +67,7 @@ public class NPCController : MonoBehaviour
                 Invoke("Auto_chat", 3f);
             }
         }
+        */
     }
     public void Auto_chat()
     {
@@ -69,7 +75,7 @@ public class NPCController : MonoBehaviour
         {
             ballon_text.text = speak_text[Random.Range(0, speak_text.Length)];
             chat_ballon.SetActive(true);
-            Invoke("Destroy_chat_ballon", Random.RandomRange(2f, 5f));
+            //Invoke("Destroy_chat_ballon", 3f);
         }
     }
     public void Destroy_chat_ballon()
@@ -97,6 +103,7 @@ public class NPCController : MonoBehaviour
         else
         {
             Close_dialog();
+            onDialogEndEvent.Invoke();
         }
     }
     public void Close_dialog()

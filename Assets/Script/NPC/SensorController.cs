@@ -6,7 +6,7 @@ using UnityEngine;
 public class SensorController : MonoBehaviour
 {
     [SerializeField]
-    List<GameObject> gameObject = new List<GameObject>();
+    List<GameObject> gameObjects = new List<GameObject>();
     [SerializeField]
     GameObject target;
     [SerializeField]
@@ -15,11 +15,11 @@ public class SensorController : MonoBehaviour
     void Start()
     {
     }
-    // Update is called once per frame
+
     void Update()
     {
         Target_select();
-        if (gameObject.Count == 0)
+        if (gameObjects.Count == 0)
         {
             target = null;
         }
@@ -40,7 +40,6 @@ public class SensorController : MonoBehaviour
                         player.GetComponent<PlayerController>().isDialog = false;
                     }
                 }
-                //
             }
         }
     }
@@ -50,7 +49,8 @@ public class SensorController : MonoBehaviour
         {
             if (collision.CompareTag("NPC"))
             {
-                gameObject.Add(collision.gameObject);
+                gameObjects.Add(collision.gameObject);
+                collision.GetComponent<NPCController>()?.Auto_chat();
             }
         }
     }
@@ -61,17 +61,17 @@ public class SensorController : MonoBehaviour
             if (collision.CompareTag("NPC"))
             {
                 collision.gameObject.GetComponent<NPCController>().Outline_off();
-                gameObject.Remove(collision.gameObject);
+                collision.gameObject.GetComponent<NPCController>().Close_dialog();
+                gameObjects.Remove(collision.gameObject);
             }
         }
     }
     void Target_select()
     {
-        if (gameObject.Count != 0)
+        if (gameObjects.Count != 0)
         {
-            foreach (GameObject obj in gameObject)
+            foreach (GameObject obj in gameObjects)
             {
-                //으아 시간없다
                 short_distance = 20;
                 if (short_distance > Vector3.Distance(obj.transform.position, transform.position))
                 {
