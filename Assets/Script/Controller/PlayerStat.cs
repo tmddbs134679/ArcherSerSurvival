@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class PlayerStat : BaseStat
 {
+    public bool isInvincible = false;
+    [SerializeField] float invincibleTime = 3f;
+
     [Header("Dodge")]
-    [SerializeField] float dodgeDuration = 0.1f;
+    [SerializeField] float dodgeDuration = 0.3f;
     public float DodgeDuration
     {
         get => dodgeDuration;
         set => dodgeDuration = Mathf.Clamp(value, 0, 5);
     }
 
-    [SerializeField] float dodgeSpeed = 20f;
+    [SerializeField] float dodgeSpeed = 3f;
     public float DodgeSpeed
     {
         get => dodgeSpeed;
@@ -28,11 +31,6 @@ public class PlayerStat : BaseStat
     
     private Rigidbody2D sRigidBody;
     private Animator animator;
-
-    public bool isInvincible = false;
-    [SerializeField] float invincibleTime = 3f;
-
-
 
     private void Awake()
     {

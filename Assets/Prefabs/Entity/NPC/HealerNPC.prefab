@@ -227,6 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fe426e7019a78647b1a68ce38c5471f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healCost: 500
 --- !u!1 &2853189711084513467
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,7 +606,7 @@ GameObject:
   - component: {fileID: 152386092071813450}
   - component: {fileID: 846689634779933562}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: NPCCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

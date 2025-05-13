@@ -15,12 +15,13 @@ public class GoldUI : BaseUI
         if(playerResource != null ) 
         {
             playerResource.OnGoldChanged += UpdateUI;
+            UpdateUI();
         }
     }
 
     public void UpdateUI()
     {
-        int gold = playerResource.ShowGoldAmount();
+        int gold = playerResource.goldAmount;
 
         goldAmountText.text = gold.ToString();
     }
