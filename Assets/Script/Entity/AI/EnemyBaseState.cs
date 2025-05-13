@@ -24,7 +24,7 @@ public abstract class EnemyBaseState : State
     
         float playerDistanceSqr = (stateMachine.Player.transform.position - stateMachine.transform.position).sqrMagnitude;
 
-        return playerDistanceSqr <= stateMachine.PlayerChasingRange * stateMachine.PlayerChasingRange;
+        return playerDistanceSqr <= stateMachine.MonsterData.PlayerChasingRange * stateMachine.MonsterData.PlayerChasingRange;
     }
 
     protected bool IsInAttackRange()
