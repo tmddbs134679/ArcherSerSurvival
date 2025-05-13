@@ -71,14 +71,21 @@ public class ExplosionSkill : BaseSkill
 
     public void Fire(int count,GameObject SkillOwner,GameObject Target)
     {
-        GameObject projectile = ProjectileObjectPool.Instance.Get(projectilePrefab.name); //objectpool????????筌???⑥????딅텑??釉뚰?轅대눀?????ш끽諭욥걡??????癲?????쒕춣?
+    //  랜덤 위치 오프셋
+    float radius = 1.5f; // 폭발 반경
+    Vector2 randomOffset = Random.insideUnitCircle * radius;
 
-        projectile.transform.position = SkillOwner.transform.position;
+    //  최종 위치 계산
+    Vector2 spawnPosition = (Vector2)SkillOwner.transform.position + randomOffset;
+
+    //  오브젝트 가져오기
+    GameObject projectile = ProjectileObjectPool.Instance.Get(projectilePrefab.name);
+    projectile.transform.position = spawnPosition;
         projectile.transform.rotation = Quaternion.identity;
         projectile.GetComponent<Explosion>().Init(SkillOwner,Target,Data);
     }
 
-    protected override IEnumerator FireWithDelay()
+    protected IEnumerator FireWithDelay()
     {
         for (int i = 0; i < Data.count; i++)
         {

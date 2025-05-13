@@ -71,7 +71,7 @@ public class ProjectileSkill : BaseSkill
 
     public void Fire(int count,GameObject SkillOwner,GameObject Target)
     {
-        GameObject projectile = ProjectileObjectPool.Instance.Get(projectilePrefab.name); //objectpool????????筌???⑥????딅텑??釉뚰?轅대눀?????ш끽諭욥걡??????癲?????쒕춣?
+        GameObject projectile = ProjectileObjectPool.Instance.Get(projectilePrefab.name); 
 
         projectile.transform.position = SkillOwner.transform.position;
         projectile.transform.rotation = Quaternion.identity;
@@ -83,7 +83,7 @@ public class ProjectileSkill : BaseSkill
    
     }
 
-    protected override IEnumerator FireWithDelay()
+    protected IEnumerator FireWithDelay()
     {
         for (int i = 0; i < Data.count; i++)
         {
