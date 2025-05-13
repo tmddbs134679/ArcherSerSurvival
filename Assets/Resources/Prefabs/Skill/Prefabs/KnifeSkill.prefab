@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7264356791617181831}
   - component: {fileID: 4328851358628182273}
   m_Layer: 0
-  m_Name: Skill002
+  m_Name: KnifeSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,9 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serialname: Knife
-  projectilePrefab: {fileID: 480090936706811311, guid: 6cfb283afce4aad4a9bd981df09dad59, type: 3}
-  Data: {fileID: 0}
-  fireRate: 0.51
+  projectilePrefab: {fileID: 480090936706811311, guid: 4b25af7ac660676428965e6aeee3a75e, type: 3}
+  fireRate: 0.3
   individualFireRate: 0.05
-  player: {fileID: 0}
+  SkillOwner: {fileID: 0}
   skillLevelSystem: {fileID: 0}
