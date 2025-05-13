@@ -9,6 +9,10 @@ public class HpBarUI : BaseUI
 
     [SerializeField] BaseStat baseStat;
 
+    private void Awake()
+    {
+        baseStat = PlayerController.Instance.GetComponent<BaseStat>();
+    }
     private void Start()
     {
         UpdateHpBar();
