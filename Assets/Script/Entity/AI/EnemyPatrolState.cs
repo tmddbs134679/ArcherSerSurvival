@@ -13,7 +13,7 @@ public class EnemyPatrolState : EnemyBaseState
 
     public override void Enter()
     {
-        Debug.Log("Patrol");
+        //Debug.Log("Patrol");
 
         if (patrolPoints == null || patrolPoints.Count == 0)
         {

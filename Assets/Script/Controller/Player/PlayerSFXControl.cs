@@ -45,7 +45,7 @@ public class PlayerSFXControl : MonoBehaviour
     }
     public void OnAttack(string name)
     {
-        Debug.Log(name);
+        //Debug.Log(name);
         AudioClip clip = projectileSFX[name];
         Debug.Log(clip);
         if (clip == null)

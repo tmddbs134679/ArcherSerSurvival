@@ -84,7 +84,7 @@ public class GameManager : Singleton<GameManager>
 
     public void DelayFadeOut()
     {
-        Debug.Log("??");
+       // Debug.Log("??");
         UIManager.Instance.FadeOutUI("Loading");
         /*
         foreach (GameObject obj in UIManager.Instance.uiObjects)
@@ -115,7 +115,7 @@ public class GameManager : Singleton<GameManager>
     }
     public void CreateRoom()
     {
-        Debug.Log("Create Room");
+        //Debug.Log("Create Room");
         if (roomCount % 5 == 0)
         {
             Instantiate(bossRooms[UnityEngine.Random.RandomRange(0, bossRooms.Length)]);

@@ -15,7 +15,7 @@ public class EnemyDeadState : EnemyBaseState
 
     public override void Enter()
     {
-        Debug.Log("dead");
+        //Debug.Log("dead");
     }
 
  

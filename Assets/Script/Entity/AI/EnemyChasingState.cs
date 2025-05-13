@@ -13,7 +13,7 @@ public class EnemyChasingState : EnemyBaseState
 
     public override void Enter()
     {
-        Debug.Log("Chasing");
+        //Debug.Log("Chasing");
         stateMachine.Animator.CrossFadeInFixedTime(RunHas, CrossFadeDuration);
     }
 

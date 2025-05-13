@@ -14,7 +14,7 @@ public class EnemyStunState : EnemyBaseState
 
     public override void Enter()
     {
-        Debug.Log("Stun");
+        //Debug.Log("Stun");
         duration = 0.3f;
         stateMachine.Animator.CrossFadeInFixedTime(StunHas, CrossFadeDuration);
     }

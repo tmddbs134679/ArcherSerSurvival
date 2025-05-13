@@ -28,6 +28,7 @@ public class Goblin : MonoBehaviour
         isAttacking = true;
 
         currentDir = (this.GetComponent<GoblinStateMachine>().Player.transform.position - transform.position).normalized;
+        
         rb.velocity = currentDir * speed;
     }
 

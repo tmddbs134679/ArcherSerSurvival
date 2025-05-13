@@ -39,7 +39,7 @@ public class HpBarUI : MonoBehaviour
     private void Start()
     {
         UpdateHpBar();
-        Debug.Log("HpBar");
+       // Debug.Log("HpBar");
 
 
     }
