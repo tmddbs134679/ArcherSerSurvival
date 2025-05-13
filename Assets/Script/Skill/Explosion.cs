@@ -16,7 +16,7 @@ public class Explosion : MonoBehaviour
     public float maxRadius = 2.5f;        //끝 반경
     public float growSpeed = 0.5f;        //반경 속도
 
-    public void Init(GameObject launcher, GameObject target, Vector2 angleDir, ChangedSkillData data)
+    public void Init(GameObject launcher, GameObject target, ChangedSkillData data)
     {
         Launcher = launcher;
         Target = target;

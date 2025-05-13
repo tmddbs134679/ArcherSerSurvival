@@ -69,7 +69,7 @@ public class RewardUI : BaseUI
             GameObject go = null;
             foreach (var skill in skillPrefabs)
             {
-                var skillComp = skill.GetComponent<ProjectileSkill>();
+                var skillComp = skill.GetComponent<BaseSkill>();
                 Debug.Log(skillComp.serialname);
                 if (skillComp != null && serialName == skillComp.serialname)
                 {
