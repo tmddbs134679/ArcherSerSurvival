@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5204992565604725562}
   - component: {fileID: 5152183558135061917}
   - component: {fileID: 458237012696366384}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FootDust[Particle]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4899,7 +4899,7 @@ GameObject:
   - component: {fileID: 3903241127431373368}
   - component: {fileID: 5874006431400421119}
   - component: {fileID: 5906359006596787709}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MainSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5007,7 +5007,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6160892084263986018}
   - component: {fileID: 5545611825629043333}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: weapon_axe_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5093,7 +5093,9 @@ GameObject:
   - component: {fileID: 2085658003896008343}
   - component: {fileID: 6623340214887557354}
   - component: {fileID: 5509344942044089138}
-  m_Layer: 0
+  - component: {fileID: 7250908102184212231}
+  - component: {fileID: 3987905602972651943}
+  m_Layer: 6
   m_Name: Ogre
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -5138,9 +5140,9 @@ MonoBehaviour:
   <EnemyStat>k__BackingField: {fileID: 5509344942044089138}
   <Skills>k__BackingField:
   - {fileID: 6623340214887557354}
-  <PlayerChasingRange>k__BackingField: 0
   <EnemyAIController>k__BackingField: {fileID: 0}
   <CanAttack>k__BackingField: 1
+  <CanChasing>k__BackingField: 1
   wallLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -5178,11 +5180,82 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439057d16535a4992f1416cf00fcb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 100
+  maxHp: 1000
   currentHp: 0
-  hpChangeDelay: 3
   speed: 5
   atk: 10
+--- !u!50 &7250908102184212231
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6834186963054561962}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &3987905602972651943
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6834186963054561962}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.026837468, y: -0.2773205}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.0178916, y: 1.554641}
+  m_EdgeRadius: 0
 --- !u!1 &8796410096524268915
 GameObject:
   m_ObjectHideFlags: 0
@@ -5193,7 +5266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9092590859129480516}
   - component: {fileID: 6166364435954832004}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: weapon_axe_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
