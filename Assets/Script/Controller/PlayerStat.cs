@@ -17,11 +17,11 @@ public class PlayerStat : BaseStat
         set => dodgeDuration = Mathf.Clamp(value, 0, 5);
     }
 
-    [SerializeField] float dodgeSpeed = 3f;
-    public float DodgeSpeed
+    [SerializeField] float dodgePower = 3f;
+    public float DodgePower
     {
-        get => dodgeSpeed;
-        set => dodgeSpeed = Mathf.Clamp(value, 0, 10);
+        get => dodgePower;
+        set => dodgePower = Mathf.Clamp(value, 0, 10);
     }
     
     [SerializeField] float dodgeCoolTime = 5f;

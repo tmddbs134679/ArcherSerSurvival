@@ -79,22 +79,22 @@ public class PlayerController : Singleton<PlayerController>
     {
         if (Input.GetKeyDown(KeyCode.Space) && !isDodging && !isDodgeCoolDown)
         {
-            StartCoroutine(DodgeRoutine(direction, playerStat.DodgeSpeed, playerStat.DodgeDuration, playerStat.DodgeCoolTime));
+            StartCoroutine(DodgeRoutine(direction, playerStat.DodgePower, playerStat.DodgeDuration, playerStat.DodgeCoolTime));
         }
     }
 
-    IEnumerator DodgeRoutine(Vector2 direction, float dodgeSpeed, float duration, float coolTime)
+    IEnumerator DodgeRoutine(Vector2 direction, float dodgePower, float duration, float coolTime)
     {
         isDodging = true;
         animator.SetBool("IsDodge", true);
-        animator.speed = dodgeSpeed / 2f;
+        animator.speed = 8/duration;
         playerStat.isInvincible = true;
         sfxControl.OnDodge();
         isDodgeCoolDown = true;
 
         float elapsed = 0f;
         Vector2 start = pRigidbody.position;
-        Vector2 end = start + direction.normalized * dodgeSpeed;
+        Vector2 end = start + direction.normalized * dodgePower;
 
         while (elapsed < duration)
         {
