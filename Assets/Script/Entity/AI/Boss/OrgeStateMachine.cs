@@ -5,6 +5,8 @@ using static UnityEditor.VersionControl.Asset;
 
 public class OrgeStateMachine : EnemyStateMachine
 {
+
+
     protected override void Awake()
     {
         States.Add(EENEMYSTATE.IDLE, new OrgeIdleState(this));

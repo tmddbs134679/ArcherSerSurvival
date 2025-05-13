@@ -13,10 +13,10 @@ public class EnemyIdleState : EnemyBaseState
 
     public override void Enter()
     {
+        timer = 0;
         idleTime = Random.Range(2, 3);
         Debug.Log("Idle");
         stateMachine.Animator.CrossFadeInFixedTime(IdleHas, CrossFadeDuration);
-        timer = 0;
   
     }
 
@@ -40,7 +40,7 @@ public class EnemyIdleState : EnemyBaseState
 
     public override void Exit()
     {
-
+     
     }
 
 }

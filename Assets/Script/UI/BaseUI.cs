@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BaseUI : MonoBehaviour
 {
-    [Header("UI ON OFF ¿©ºÎ")]
+    [Header("UI ON OFF ì—¬ë¶€")]
     [SerializeField]
     private bool startActive = false;
     public void ExitUI()

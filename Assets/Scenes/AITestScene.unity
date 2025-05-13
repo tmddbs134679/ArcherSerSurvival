@@ -1031,8 +1031,11 @@ MonoBehaviour:
   isOpen: 0
   entities: []
   enemyCount: 0
+  roomCount: 1
   rooms:
   - {fileID: 3528727724143104295, guid: 726839dce665f624280ccdd5b5cbef93, type: 3}
+  bossRooms:
+  - {fileID: 0}
   skillLevelSystem: {fileID: 2058448348}
 --- !u!4 &2058448347
 Transform:
@@ -1061,19 +1064,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9fc28290b6cd3840846d6fbdf52e063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  damage: 0
-  duration: 0
-  color: {r: 0, g: 0, b: 0, a: 0}
-  impactEffect: {fileID: 0}
-  rotateSpeed: 0
-  count: 0
-  angle: 0
-  hormingStartDelay: 0
-  hormingTurnDelay: 0
   skillDataObject:
   - {fileID: 11400000, guid: c586466931787a644b98640a32006d09, type: 2}
   - {fileID: 11400000, guid: 1ce86bd678b2c6c418661bc9df979c4c, type: 2}
+  - {fileID: 11400000, guid: 19cf548b03044084689541e419da6343, type: 2}
 --- !u!1001 &2072820772
 PrefabInstance:
   m_ObjectHideFlags: 0

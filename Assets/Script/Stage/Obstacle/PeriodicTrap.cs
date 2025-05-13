@@ -21,13 +21,18 @@ public class PeriodicTrap : NormalTrap   //활성화/비활성화를 반복하�
         SetTrapState(true);   //활성화 상태로 시작   
     }
 
-    private void Update()
+    protected override void Update()
     {
         activeTimer -= Time.deltaTime;
         if(activeTimer <= 0f)
         {
             //함정 상태 전환
             SetTrapState(!isActive);
+        }
+
+        if (isActive)
+        {
+            base.Update();
         }
     }
 

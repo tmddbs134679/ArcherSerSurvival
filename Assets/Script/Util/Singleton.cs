@@ -19,7 +19,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                     _instance = singletonObject.AddComponent<T>();
                 }
 
-                // 이 시점에서 인스턴스는 만들어졌으므로 DDOL 등록
+                // ???쒖젏?먯꽌 ?몄뒪?댁뒪??留뚮뱾?댁죱?쇰?濡?DDOL ?깅줉
                 DontDestroyOnLoad(_instance.gameObject);
             }
 
@@ -36,7 +36,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         }
         else if (_instance != this)
         {
-            // 중복된 오브젝트가 DDOL 전에 파괴됨
+            // 以묐났???ㅻ툕?앺듃媛 DDOL ?꾩뿉 ?뚭눼??
             Destroy(gameObject);
         }
     }

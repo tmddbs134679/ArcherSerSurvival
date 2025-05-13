@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ea8fb224cdf9f0479e86a1826b0680c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Knife
+  serialname: Knife
   projectilePrefab: {fileID: 480090936706811311, guid: 6cfb283afce4aad4a9bd981df09dad59, type: 3}
   Data: {fileID: 0}
   fireRate: 0.51

@@ -17,23 +17,23 @@ public class ChangedSkillData : MonoBehaviour
     */
     public int level;
     [Range(0, 100)]
-    public float speed;//?�피??
+    public float speed;//?占쏀뵾??
     [Range(0, 100)]
-    public float damage;//?��?지
+    public float damage;//?占쏙옙?吏
     [Range(1, 20)]
-    public float duration;//?�명 주기
-    public Color color;//?�터?�의 조언-분리 ?�주?�게 좋음
-    public ParticleSystem impactEffect;//?�터?�의 조언-분리 ?�주?�게 좋음
+    public float duration;//?占쎈챸 二쇨린
+    public Color color;//?占쏀꽣?占쎌쓽 議곗뼵-遺꾨━ ?占쎌＜?占쎄쾶 醫뗭쓬
+    public ParticleSystem impactEffect;//?占쏀꽣?占쎌쓽 議곗뼵-遺꾨━ ?占쎌＜?占쎄쾶 醫뗭쓬
     [Range(0, 1200)]
     public float rotateSpeed;
     [Range(0, 100)]
-    public int count;//???�이??발사�?��
+    public int count;//???占쎌씠??諛쒖궗占?占쏙옙
     [Range(10, 360)]
-    public float angle;//?�사�?발사�?
+    public float angle;//?占쎌궗占?諛쒖궗占?
     [Range(0, 10)]
-    public float hormingStartDelay; //?��?추적 ?�작 ?�간
+    public float hormingStartDelay; //?占쏙옙?異붿쟻 ?占쎌옉 ?占쎄컙
     [Range(0, 10)]
-    public float hormingTurnDelay;//?�겟을 ?�해 방향???�리???�간
+    public float hormingTurnDelay;//?占쎄쿊???占쏀빐 諛⑺뼢???占쎈━???占쎄컙
 }
 
 

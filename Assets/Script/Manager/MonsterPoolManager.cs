@@ -14,11 +14,11 @@ public class MonsterPoolManager : Singleton<MonsterPoolManager>
 
     GameObject poolParent;
 
-
+    
     protected override void Awake()
     {
         base.Awake();
-
+        objectPrefabs = Resources.LoadAll<GameObject>("Prefabs/Entity/Enemy");
         pool[0] = new Queue<GameObject>();
         pool[1] = new Queue<GameObject>();
         pool[2] = new Queue<GameObject>();
@@ -27,7 +27,7 @@ public class MonsterPoolManager : Singleton<MonsterPoolManager>
 
     void Start()
     {
-        // ????ㅻ툕?앺듃 誘몃━ ?앹꽦
+        // ??????삵닏??븍뱜 沃섎챶????밴쉐
         for (int j = 0; j < objectPrefabs.Length; j++)
         {
             for (int i = 0; i < poolSize; i++)
@@ -35,37 +35,37 @@ public class MonsterPoolManager : Singleton<MonsterPoolManager>
                 GameObject obj = Instantiate(objectPrefabs[j]);
                 int temp = j;
                 obj.GetComponent<EnemyStat>().OnDie += () => ReturnObject(obj, temp);
-                obj.SetActive(false);  // ?ㅻ툕?앺듃 鍮꾪솢?깊솕
+                obj.SetActive(false);  // ??삵닏??븍뱜 ??쑵??源딆넅
                 obj.transform.SetParent(gameObject.transform);
-                pool[j].Enqueue(obj);  // ?먯뿉 ?ｊ린
+                pool[j].Enqueue(obj);  // ?癒?퓠 ?節딅┛
             }
         }
     }
 
 
-    // ??먯꽌 ?ㅻ툕?앺듃瑜?媛?몄삤???⑥닔
+    // ???癒?퐣 ??삵닏??븍뱜??揶쎛?紐꾩궎????λ땾
     public GameObject GetObject(int index)
     {
         GameManager.Instance.EnemyCounting(1);
         if (pool[index].Count > 0)
         {
-            GameObject obj = pool[index].Dequeue();  // ?먯뿉???ㅻ툕?앺듃 ?섎굹 爰쇰궡湲?
-            obj.SetActive(true);  // ?ㅻ툕?앺듃 ?쒖꽦??
+            GameObject obj = pool[index].Dequeue();  // ?癒?퓠????삵닏??븍뱜 ??롪돌 ?곗눖沅→묾?
+            obj.SetActive(true);  // ??삵닏??븍뱜 ??뽮쉐??
             return obj;
         }
         else
         {
-            // ?꾩슂??????ㅻ툕?앺듃瑜??숈쟻?쇰줈 異붽?
+            // ?袁⑹뒄????????삵닏??븍뱜????덉읅??곗쨮 ?곕떽?
             GameObject obj = Instantiate(objectPrefabs[index]);
             return obj;
         }
     }
 
-    // ?ъ슜???앸궃 ?ㅻ툕?앺듃瑜????諛섑솚?섎뒗 ?⑥닔
+    // ???????멸텆 ??삵닏??븍뱜??????獄쏆꼹???롫뮉 ??λ땾
     public void ReturnObject(GameObject obj, int index)
     {
         GameManager.Instance.EnemyCounting(-1);
-        obj.SetActive(false);  // ?ㅻ툕?앺듃 鍮꾪솢?깊솕
-        pool[index].Enqueue(obj);  // ???諛섑솚
+        obj.SetActive(false);  // ??삵닏??븍뱜 ??쑵??源딆넅
+        pool[index].Enqueue(obj);  // ????獄쏆꼹??
     }
 }
