@@ -170,14 +170,14 @@ public class RewardUI : BaseUI
             GameObject go = null;
             foreach (var skill in skillPrefabs)
             {
-                var skillComp = skill.GetComponent<ProjectileSkill>();
+                var skillComp = skill.GetComponent<BaseSkill>();
                 if (skillComp != null && serialName == skillComp.serialname)
                 {
                     go = Instantiate(skill);
                     break;
                 }
             }
-            go.transform.SetParent(GameObject.Find("Player").transform);
+            go.transform.SetParent(PlayerController.Instance.transform);
             PlayerController.Instance.skillList.Add(go);
             skillLevelSystem.changedSkillData[serialName].level += 1;
         }
