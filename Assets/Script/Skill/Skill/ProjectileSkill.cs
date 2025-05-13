@@ -80,7 +80,6 @@ public class ProjectileSkill : BaseSkill
         Vector2 angleDir = Quaternion.Euler(0, 0, -(Data.angle * Data.count / 2f) + Data.angle * count) * dir; //
 
         projectile.GetComponent<Projectile>().Init(SkillOwner,Target, angleDir, Data);
-   
     }
 
     protected IEnumerator FireWithDelay()

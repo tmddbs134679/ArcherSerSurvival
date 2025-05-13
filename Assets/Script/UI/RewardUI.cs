@@ -152,7 +152,7 @@ public class RewardUI : BaseUI
 
         foreach (var skill in PlayerController.Instance.skillList)
         {
-            skill.GetComponent<ProjectileSkill>().SetSkillData();
+            skill.GetComponent<BaseSkill>().SetSkillData();
         }
 
         StartCoroutine(Retreat(gameObject.GetComponent<CanvasGroup>()));

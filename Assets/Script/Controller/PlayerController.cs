@@ -88,7 +88,7 @@ public class PlayerController : Singleton<PlayerController>
     IEnumerator DodgeRoutine(Vector2 direction, float dodgeSpeed, float duration, float coolTime)
     {
         isDodging = true;
-        animator.speed = dodgeSpeed;
+        animator.speed = dodgeSpeed / 2;
         playerStat.isInvincible = true;
 
         isDodgeCoolDown = true;
