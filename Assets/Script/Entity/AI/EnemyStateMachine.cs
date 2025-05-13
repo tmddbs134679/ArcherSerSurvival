@@ -69,9 +69,6 @@ public class EnemyStateMachine : StateMachine
            {
                Animator.SetLayerWeight(1, 1);
            }
-        
-
-
     }
 
 }

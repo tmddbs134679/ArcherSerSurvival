@@ -1254,6 +1254,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2055548919317617274, guid: 86cec8cee33f5594ab57bb8cf11a70b4, type: 3}
+      propertyPath: dodgeSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3033453059338148139, guid: 86cec8cee33f5594ab57bb8cf11a70b4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.17

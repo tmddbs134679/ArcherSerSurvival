@@ -48,7 +48,7 @@ public class EnemyAIController : MonoBehaviour
         }
     }
 
-
+ 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
