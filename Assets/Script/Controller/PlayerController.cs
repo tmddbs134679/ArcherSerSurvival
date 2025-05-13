@@ -39,7 +39,7 @@ public class PlayerController : Singleton<PlayerController>
             weaponController = GetComponentInChildren<WeaponController>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         PlayerMove();
     }
@@ -51,12 +51,12 @@ public class PlayerController : Singleton<PlayerController>
 
     void PlayerMove()
     {
-        // ?룹?以묒씠硫??대룞 硫덉땄
+        // 닷지중일땐 move 작동 x
         if (isDodging)
         {
             return;
         }
-        
+
         Vector2 movement = PlayerInput();
         pRigidbody.velocity = movement * playerStat.Speed;
 
@@ -64,14 +64,14 @@ public class PlayerController : Singleton<PlayerController>
 
         animator.SetBool("isMove", movement.magnitude > 0.1f);
 
-        // ?대룞?쒖뿉???뚯쟾媛?怨좎젙
+        // 움직일때만 작동
         if (isMoving)
         {
             Rotate(movement);
             weaponController.RotateWeapon(-90f);
             Dodge(movement);
         }
-        
+
     }
 
     void Dodge(Vector2 direction)
@@ -80,29 +80,34 @@ public class PlayerController : Singleton<PlayerController>
         {
             StartCoroutine(DodgeRoutine(direction, playerStat.DodgeSpeed, playerStat.DodgeDuration, playerStat.DodgeCoolTime));
         }
-        animator.SetBool("IsDodge", isDodging);
-        
-
     }
 
     IEnumerator DodgeRoutine(Vector2 direction, float dodgeSpeed, float duration, float coolTime)
     {
         isDodging = true;
-        animator.speed = dodgeSpeed / 2;
+        animator.SetBool("IsDodge", true);
+        animator.speed = dodgeSpeed / 2f;
         playerStat.isInvincible = true;
-
         isDodgeCoolDown = true;
-        pRigidbody.velocity = direction.normalized * dodgeSpeed;
 
-        yield return new WaitForSeconds(duration);
+        float elapsed = 0f;
+        Vector2 start = pRigidbody.position;
+        Vector2 end = start + direction.normalized * dodgeSpeed;
 
+        while (elapsed < duration)
+        {
+            elapsed += Time.fixedDeltaTime;
+            float t = elapsed / duration;
+            Vector2 newPosition = Vector2.Lerp(start, end, t);
+            pRigidbody.MovePosition(newPosition);
+            yield return new WaitForFixedUpdate();
+        }
+
+        //회피 종료 후
         isDodging = false;
-        playerStat.isInvincible = false;
-
-        // ?뚰뵾 醫낅즺 ???대룞 諛섏쁺
+        animator.SetBool("IsDodge", false);
         animator.speed = 1f;
-        Vector2 movement = PlayerInput();
-        pRigidbody.velocity = movement * playerStat.Speed;
+        playerStat.isInvincible = false;
 
         yield return new WaitForSeconds(coolTime);
         isDodgeCoolDown = false;
