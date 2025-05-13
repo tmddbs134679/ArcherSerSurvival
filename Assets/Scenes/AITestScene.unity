@@ -1123,6 +1123,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8846842347864100737, guid: 86cec8cee33f5594ab57bb8cf11a70b4, type: 3}
+      propertyPath: weaponSounds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
