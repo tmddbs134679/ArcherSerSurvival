@@ -43,6 +43,11 @@ public class WeaponController : MonoBehaviour
     // 타겟 감지하면 타겟쪽으로 sprite 회전 및 flip
     void RotateWeaponToTarget()
     {
+        if (playerTargeting == null)
+        {
+            RotateWeapon(-90f);
+            return;
+        }
         Transform target = playerTargeting.GetClosestEnemy();
         Vector2 targetPosition = playerTargeting.EnemyDirection();
         if (target != null)

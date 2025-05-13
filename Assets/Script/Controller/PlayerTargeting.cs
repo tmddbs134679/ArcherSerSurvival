@@ -58,6 +58,10 @@ public class PlayerTargeting : MonoBehaviour
     // 플레이어부터 타겟까지의 벡터를 return하는 함수
     public Vector2 EnemyDirection()
     {
+        if (GetClosestEnemy() == null)
+        {
+            return Vector2.zero;
+        }
         Transform target = GetClosestEnemy();
         return (target.position - transform.position).normalized;
     }

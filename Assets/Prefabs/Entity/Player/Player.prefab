@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 4112157654392324652}
   - component: {fileID: 730661592102225474}
   - component: {fileID: 3026092303025384751}
+  - component: {fileID: 8915383414101698250}
   - component: {fileID: 2055548919317617274}
   m_Layer: 3
   m_Name: Player
@@ -263,9 +264,21 @@ MonoBehaviour:
   weaponPivot: {fileID: 9087734745600258595}
   WeaponPrefab: {fileID: -2287486402934077916, guid: f22dcd2012bfed84b9eba977d962233b, type: 3}
   spriteRenderer: {fileID: 4305354024098089528}
-  targetRange: {x: 10, y: 10}
-  currentHp: 0
+  isMoving: 0
   skillList: []
+--- !u!114 &8915383414101698250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8184897253490379571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1034152f1ce7ee84e8f6df3c02d53713, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetRange: {x: 8, y: 8}
 --- !u!114 &2055548919317617274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,6 +296,8 @@ MonoBehaviour:
   hpChangeDelay: 3
   speed: 5
   atk: 10
+  dodgeCoolTime: 3
+  dodgePower: 5
 --- !u!1 &8463937971123993745
 GameObject:
   m_ObjectHideFlags: 0
