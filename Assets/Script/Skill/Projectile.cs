@@ -3,8 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//정보만 받고 나아가면 됨
-//본인은 누구한테 나갔는지 아는가?
 public class Projectile : MonoBehaviour
 {
     private ChangedSkillData Data;//비어있는 투사체의 데이터
