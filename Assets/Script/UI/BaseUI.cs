@@ -11,7 +11,7 @@ public class BaseUI : MonoBehaviour
     [Header("FadeIn Speed")]
     public float fadeDuration = 0.5f;
     public Image image;
-    public bool fadeFlag = false;
+    public bool fadeFlag = true;
 
 
     public void ExitUI()
@@ -35,17 +35,26 @@ public class BaseUI : MonoBehaviour
 
     public IEnumerator BaseFadeIn()
     {
-        Color color = image.color;
+        Color targetColor = image.color;
+        float targetAlpha = targetColor.a;
+
         float timer = 0f;
         fadeFlag = true;
+
+        image.color = new Color(targetColor.r, targetColor.g, targetColor.b, 0f);
+
         while (timer < fadeDuration)
         {
             timer += Time.unscaledDeltaTime;
-            float alpha = Mathf.Clamp01(timer / fadeDuration);
-            image.color = new Color(color.r, color.g, color.b, alpha);
+            float t = Mathf.Clamp01(timer / fadeDuration);
+
+            float alpha = Mathf.Lerp(0f, targetAlpha, t);
+            image.color = new Color(targetColor.r, targetColor.g, targetColor.b, alpha);
+
             yield return null;
         }
 
+        image.color = new Color(targetColor.r, targetColor.g, targetColor.b, targetAlpha);
         fadeFlag = false;
     }
 

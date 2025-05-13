@@ -51,7 +51,7 @@ public class PlayerController : Singleton<PlayerController>
 
     void PlayerMove()
     {
-        // 닷지중이면 이동 멈춤
+        // ?룹?以묒씠硫??대룞 硫덉땄
         if (isDodging)
         {
             return;
@@ -64,7 +64,7 @@ public class PlayerController : Singleton<PlayerController>
 
         animator.SetBool("isMove", movement.magnitude > 0.1f);
 
-        // 이동시에는 회전값 고정
+        // ?대룞?쒖뿉???뚯쟾媛?怨좎젙
         if (isMoving)
         {
             Rotate(movement);
@@ -99,7 +99,7 @@ public class PlayerController : Singleton<PlayerController>
         isDodging = false;
         playerStat.isInvincible = false;
 
-        // 회피 종료 후 이동 반영
+        // ?뚰뵾 醫낅즺 ???대룞 諛섏쁺
         animator.speed = 1f;
         Vector2 movement = PlayerInput();
         pRigidbody.velocity = movement * playerStat.Speed;

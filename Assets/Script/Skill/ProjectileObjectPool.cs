@@ -40,8 +40,6 @@ public class ProjectileObjectPool : MonoBehaviour
     // 풀에서 가져오기
     public GameObject Get(string prefabName)
     {
-        Debug.Log(prefabName+"wfwefwfwfwfw");
-                Debug.Log(pools.TryGetValue(prefabName, out var pool2)+"wfwefwfwfwfw");
         if (pools.TryGetValue(prefabName, out var pool))
         {
             GameObject temp = pool.Get();

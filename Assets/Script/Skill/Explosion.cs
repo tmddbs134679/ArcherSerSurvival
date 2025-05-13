@@ -16,7 +16,7 @@ public class Explosion : MonoBehaviour
     public float maxRadius = 2.5f;        //끝 반경
     public float growSpeed = 0.5f;        //반경 속도
 
-    public void Init(GameObject launcher, GameObject target, Vector2 angleDir, ChangedSkillData data)
+    public void Init(GameObject launcher, GameObject target, ChangedSkillData data)
     {
         Launcher = launcher;
         Target = target;
@@ -36,6 +36,7 @@ public class Explosion : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)//충돌했을 시
     {
+            if (Target == null || Data == null)return;
         if (Target.layer == collision.gameObject.layer)
         {
             collision.GetComponent<BaseStat>().Damaged(Data.damage);

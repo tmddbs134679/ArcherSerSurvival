@@ -6,36 +6,26 @@ using UnityEngine.UIElements;
 
 
 
-public class ExplosionSkill : MonoBehaviour
+public class ExplosionSkill : BaseSkill
 {
-    public string serialname;
-    public GameObject projectilePrefab;//투사체 프리팹
-    ChangedSkillData Data;//투사체의 데이터
-    public float fireRate;//한 사이클 발사 간격
-
-    public float individualFireRate;//개별 발사간격
-    private float fireTimer;//단순 시간변수
-     //파티클
-    public GameObject SkillOwner;
-      public SkillLevelSystem skillLevelSystem;
-
-    private void Start()
+    
+    protected override void Start()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
         Init();
     }
 
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    protected override void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Init();
     }
 
-private void Init()
+    protected override void Init()
 {
     if (gameObject.GetComponentInParent<PlayerController>() != null)
     {
@@ -50,7 +40,7 @@ private void Init()
 }
 
 
-    public void SetSkillData()
+    public override void SetSkillData()
     {
         Data = new ChangedSkillData();
 
@@ -68,7 +58,7 @@ private void Init()
     }
 
 
-    private void Update()
+    protected override void Update()
     {
         fireTimer += Time.deltaTime;
         if (fireTimer >= fireRate)
@@ -81,19 +71,21 @@ private void Init()
 
     public void Fire(int count,GameObject SkillOwner,GameObject Target)
     {
-        GameObject projectile = ProjectileObjectPool.Instance.Get(projectilePrefab.name); //objectpool????????筌???⑥????딅텑??釉뚰?轅대눀?????ш끽諭욥걡??????癲?????쒕춣?
+    //  랜덤 위치 오프셋
+    float radius = 1.5f; // 폭발 반경
+    Vector2 randomOffset = Random.insideUnitCircle * radius;
 
-        projectile.transform.position = SkillOwner.transform.position;
+    //  최종 위치 계산
+    Vector2 spawnPosition = (Vector2)SkillOwner.transform.position + randomOffset;
+
+    //  오브젝트 가져오기
+    GameObject projectile = ProjectileObjectPool.Instance.Get(projectilePrefab.name);
+    projectile.transform.position = spawnPosition;
         projectile.transform.rotation = Quaternion.identity;
-
-        Vector2 dir = Target.transform.position - SkillOwner.transform.position;
-        Vector2 angleDir = Quaternion.Euler(0, 0, -(Data.angle * Data.count / 2f) + Data.angle * count) * dir; //
-
-        projectile.GetComponent<Projectile>().Init(SkillOwner,Target, angleDir, Data);
-   
+        projectile.GetComponent<Explosion>().Init(SkillOwner,Target,Data);
     }
 
-    private IEnumerator FireWithDelay()
+    protected IEnumerator FireWithDelay()
     {
         for (int i = 0; i < Data.count; i++)
         {
