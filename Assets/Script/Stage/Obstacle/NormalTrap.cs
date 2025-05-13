@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class NormalTrap : MonoBehaviour   //플레이어 접촉 시 피해를 입히는 함정
+public class NormalTrap : MonoBehaviour   //?뚮젅?댁뼱 ?묒큺 ???쇳빐瑜??낇엳???⑥젙
 {
     [Header("Trap Settings(Base)")]
-    [SerializeField] protected float damageAmount = 10f;        // 피해량
-    [SerializeField] protected LayerMask playerLayer;           // 피해 대상 레이어(플레이어)
-    protected PlayerStat player;  //데미지 처리를 위한 플레이어 체력 관리 객체
+    [SerializeField] protected float damageAmount = 10f;        // ?쇳빐??
+    [SerializeField] protected LayerMask playerLayer;           // ?쇳빐 ????덉씠???뚮젅?댁뼱)
+    protected PlayerStat player;  //?곕?吏 泥섎━瑜??꾪븳 ?뚮젅?댁뼱 泥대젰 愿由?媛앹껜
     protected float damageDelay = .5f;
     private float timer = 0f;
 
@@ -17,7 +17,7 @@ public class NormalTrap : MonoBehaviour   //플레이어 접촉 시 피해를 �
         if (player != null && damageDelay <= timer)
         {
             TryDealDamage();
-            timer = 0;
+            timer = 0f;
         }
         timer += Time.deltaTime;
     }
@@ -31,14 +31,6 @@ public class NormalTrap : MonoBehaviour   //플레이어 접촉 시 피해를 �
         }
     }
 
-    protected virtual void OnTriggerStay2D(Collider2D other)
-    {
-        if (player != null && other.gameObject == player.gameObject)
-        {
-            TryDealDamage(); // 캐시된 player를 대상으로 데미지 시도
-        }
-        
-    }
 
     protected virtual void OnTriggerExit2D(Collider2D other)
     {

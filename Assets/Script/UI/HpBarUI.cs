@@ -1,25 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class HpBarUI : BaseUI
+public class HpBarUI : MonoBehaviour
 {
-    [SerializeField] private Image hpBar;
+    private Image hpBar;
 
-    [SerializeField] BaseStat baseStat;
+    BaseStat baseStat;
 
     private void Awake()
     {
-        baseStat = PlayerController.Instance.GetComponent<BaseStat>();
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
+
     }
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneUnloaded -= OnSceneUnloaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        baseStat = this.GetComponentInParent<BaseStat>();
+        hpBar = this.GetComponent<Image>();
+        baseStat.OnHpChanged += OnHpChanged;
+    }
+
+    private void OnSceneUnloaded(Scene scene)
+    {
+        baseStat.OnHpChanged -= OnHpChanged;
+
+    }
+
+
     private void Start()
     {
         UpdateHpBar();
         Debug.Log("HpBar");
 
-        baseStat.OnHpChanged += OnHpChanged;
+
     }
+
 
     private void OnHpChanged(float currentHp, float maxHp)
     {

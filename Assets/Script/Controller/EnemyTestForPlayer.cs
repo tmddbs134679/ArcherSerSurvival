@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// player 泥대젰 媛먯냼 ?뚯뒪???ㅽ겕由쏀듃
+// player 筌ｋ???揶쏅Ŋ?????뮞????쎄쾿?깆???
 public class EnemyTestForPlayer : MonoBehaviour
 {
     [SerializeField] private PlayerStat playerStat;

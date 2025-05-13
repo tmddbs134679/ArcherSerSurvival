@@ -12,7 +12,7 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] private SpriteRenderer spriteRenderer;
 
     private WeaponController weaponController;
-
+    private PlayerSFXControl sfxControl;
     private Rigidbody2D pRigidbody;
     private Animator animator;
 
@@ -32,6 +32,7 @@ public class PlayerController : Singleton<PlayerController>
         pRigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
         playerStat = GetComponent<PlayerStat>();
+        sfxControl = GetComponent<PlayerSFXControl>();
 
         if (WeaponPrefab != null)
             weaponController = Instantiate(WeaponPrefab, weaponPivot);
@@ -51,7 +52,7 @@ public class PlayerController : Singleton<PlayerController>
 
     void PlayerMove()
     {
-        // 닷지중일땐 move 작동 x
+        // ?룹?以묒씪??move ?묐룞 x
         if (isDodging)
         {
             return;
@@ -64,7 +65,7 @@ public class PlayerController : Singleton<PlayerController>
 
         animator.SetBool("isMove", movement.magnitude > 0.1f);
 
-        // 움직일때만 작동
+        // ?吏곸씪?뚮쭔 ?묐룞
         if (isMoving)
         {
             Rotate(movement);
@@ -78,21 +79,22 @@ public class PlayerController : Singleton<PlayerController>
     {
         if (Input.GetKeyDown(KeyCode.Space) && !isDodging && !isDodgeCoolDown)
         {
-            StartCoroutine(DodgeRoutine(direction, playerStat.DodgeSpeed, playerStat.DodgeDuration, playerStat.DodgeCoolTime));
+            StartCoroutine(DodgeRoutine(direction, playerStat.DodgePower, playerStat.DodgeDuration, playerStat.DodgeCoolTime));
         }
     }
 
-    IEnumerator DodgeRoutine(Vector2 direction, float dodgeSpeed, float duration, float coolTime)
+    IEnumerator DodgeRoutine(Vector2 direction, float dodgePower, float duration, float coolTime)
     {
         isDodging = true;
         animator.SetBool("IsDodge", true);
-        animator.speed = dodgeSpeed / 2f;
+        animator.speed = 8/duration;
         playerStat.isInvincible = true;
+        sfxControl.OnDodge();
         isDodgeCoolDown = true;
 
         float elapsed = 0f;
         Vector2 start = pRigidbody.position;
-        Vector2 end = start + direction.normalized * dodgeSpeed;
+        Vector2 end = start + direction.normalized * dodgePower;
 
         while (elapsed < duration)
         {
@@ -103,7 +105,7 @@ public class PlayerController : Singleton<PlayerController>
             yield return new WaitForFixedUpdate();
         }
 
-        //회피 종료 후
+        //?뚰뵾 醫낅즺 ??
         isDodging = false;
         animator.SetBool("IsDodge", false);
         animator.speed = 1f;
