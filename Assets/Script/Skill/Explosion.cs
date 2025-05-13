@@ -12,25 +12,18 @@ public class Explosion : MonoBehaviour
     private Rigidbody2D rb;//프리팹한 투사체의 리짓바디
     public string serialName;//이름
 
-    GameObject WarnigZone;
-    GameObject MeteoZone;
-    
-
     public float radius = 0f;           //시작 반경
     public float maxRadius = 2.5f;        //끝 반경
     public float growSpeed = 0.5f;        //반경 속도
+
     public void Init(GameObject launcher, GameObject target, ChangedSkillData data)
     {
-        Data = data;
-        radius = 0;
         Launcher = launcher;
         Target = target;
-        maxRadius = Data.duration;
+        Data = data;
         rb = GetComponent<Rigidbody2D>();
-        transform.localScale = Vector3.zero;
         GetComponent<SpriteRenderer>().color = data.color;
     }
-
 
     private void Update()//물리처리
     {
@@ -39,27 +32,23 @@ public class Explosion : MonoBehaviour
             radius += growSpeed * Time.deltaTime;
             transform.localScale = new Vector2(radius, radius);
         }
-        else
-        {
-            StartCoroutine(WrappingInvokeDelay(Data.duration));
+        else{
+                    StartCoroutine(WrappingInvokeDelay(Data.duration));
         }
     }
     void OnTriggerEnter2D(Collider2D collision)//충돌했을 시
     {
-        if (radius > maxRadius)
+        Debug.Log("장판과 충돌했습니다!");
+        if (Target.layer == collision.gameObject.layer)
         {
-            if (Target.layer == collision.gameObject.layer)
-            {
-                collision.GetComponent<BaseStat>().Damaged(Data.damage);
-                StartCoroutine(WrappingInvokeDelay(0f));
-            }
+            collision.GetComponent<BaseStat>().Damaged(Data.damage);
+            StartCoroutine(WrappingInvokeDelay(0f));
         }
     }
     private IEnumerator WrappingInvokeDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        transform.localScale = Vector3.zero;
-        radius = 0;
+        radius=0;
         ProjectileObjectPool.Instance.Release(serialName, this.gameObject);
     }
 
