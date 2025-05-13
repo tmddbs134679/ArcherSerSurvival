@@ -12,7 +12,7 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] private SpriteRenderer spriteRenderer;
 
     private WeaponController weaponController;
-
+    private PlayerSFXControl sfxControl;
     private Rigidbody2D pRigidbody;
     private Animator animator;
 
@@ -32,6 +32,7 @@ public class PlayerController : Singleton<PlayerController>
         pRigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
         playerStat = GetComponent<PlayerStat>();
+        sfxControl = GetComponent<PlayerSFXControl>();
 
         if (WeaponPrefab != null)
             weaponController = Instantiate(WeaponPrefab, weaponPivot);
@@ -88,6 +89,7 @@ public class PlayerController : Singleton<PlayerController>
         animator.SetBool("IsDodge", true);
         animator.speed = dodgeSpeed / 2f;
         playerStat.isInvincible = true;
+        sfxControl.OnDodge();
         isDodgeCoolDown = true;
 
         float elapsed = 0f;

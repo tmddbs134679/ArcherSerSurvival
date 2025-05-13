@@ -9,6 +9,8 @@ public class PlayerStat : BaseStat
 
     [Header("Dodge")]
     [SerializeField] float dodgeDuration = 0.3f;
+
+    private PlayerSFXControl sfxControl;
     public float DodgeDuration
     {
         get => dodgeDuration;
@@ -36,6 +38,7 @@ public class PlayerStat : BaseStat
     {
         sRigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
+        sfxControl = GetComponent<PlayerSFXControl>();
     }
 
     // 데미지 - 체력 감소
@@ -44,9 +47,9 @@ public class PlayerStat : BaseStat
         if (!isInvincible)
         {
             base.Damaged(reduceHp);
-
+            sfxControl.OnHit();
             animator.SetTrigger("isDamaged");
-
+           
             if (currentHp <= 0)
             {
                 Death();
