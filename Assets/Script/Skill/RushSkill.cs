@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public enum RUSHDIR
@@ -11,7 +12,7 @@ public enum RUSHDIR
     ALL
 }
 
-public class RushSkill : MonoBehaviour
+public class RushSkill : BaseSkill
 {
     [Header("Map-based Rush Positions")]
     [SerializeField] private Vector2 leftEdgePos;
@@ -20,7 +21,7 @@ public class RushSkill : MonoBehaviour
     [SerializeField] private Vector2 bottomEdgePos;
 
     //?袁⑸뻻 ??쎄텢 Name
-    public int animationName = Animator.StringToHash("Skill2");
+   
 
     public RUSHDIR directionType = RUSHDIR.ALL;
     public float rushDistance = 5f;
@@ -28,8 +29,36 @@ public class RushSkill : MonoBehaviour
 
     public int minRushCount = 1;
     public int maxRushCount = 3;
+    protected override void Start()
+    {
 
-    public void Execute(EnemyStateMachine enemy, Action onComplete)
+    }
+
+    protected override void OnDestroy()
+    {
+
+    }
+
+    protected override void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+
+    }
+
+    protected override void Init()
+    {
+       animationName = Animator.StringToHash("Skill2");
+    }
+
+    public override void SetSkillData()
+    {
+
+    }
+
+    protected override void Update()
+    {
+
+    }
+    public override void Execute(EnemyStateMachine enemy, Action onComplete)
     {
         enemy.StartCoroutine(RushSequence(enemy, onComplete));
     }
@@ -115,4 +144,6 @@ public class RushSkill : MonoBehaviour
 
         enemy.transform.position = end;
     }
+
+   
 }

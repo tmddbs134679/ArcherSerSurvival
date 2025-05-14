@@ -12,7 +12,8 @@ public class EnemyStateMachine : StateMachine
     [field: SerializeField] public GameObject Player { get; private set; }
     [field: SerializeField] public EnemyStat EnemyStat { get; private set; }
 
-    [field: SerializeField] public List<RushSkill> Skills { get; private set; }
+    [field: SerializeField] public RushSkill Skill { get; private set; }
+    [field: SerializeField] public List<BaseSkill> Skills { get; private set; }
     [field: SerializeField] public EnemyAIController EnemyAIController { get; private set; }
     [field: SerializeField] public bool CanAttack { get; set; } = true;
 

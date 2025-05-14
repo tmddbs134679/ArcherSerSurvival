@@ -32,8 +32,6 @@ public class EnemySkillState : EnemyBaseState
 
     public override void Tick(float deltaTime)
     {
-        
-
         if (isSkillFinished)
         {
             stateMachine.SwitchState(stateMachine.States[EENEMYSTATE.IDLE]);
