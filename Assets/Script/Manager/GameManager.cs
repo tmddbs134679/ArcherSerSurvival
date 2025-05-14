@@ -74,11 +74,12 @@ public class GameManager : Singleton<GameManager>
         if (SceneManager.GetActiveScene().name == "LobbyScene")
         {
             AchievementManager.Instance.currentKillCnt = new Dictionary<string, int>();
+            SoundManager.Instance.PlayTitleBGM();
         }
         else
         {
-            Init_GameManager();
-            
+            Init_GameManager();   
+            SoundManager.Instance.PlayDungeonBGM();
         }
 
         

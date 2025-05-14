@@ -12,6 +12,10 @@ public class SoundManager : Singleton<SoundManager>
 
     private AudioSource audioSource;
 
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     public void StopMusic()
     {
         if (audioSource != null) 
@@ -37,6 +41,12 @@ public class SoundManager : Singleton<SoundManager>
 
     private void PlayBGM(AudioClip clip)
     {
+        Debug.Log(audioSource.clip);
+        if(audioSource.clip == clip)
+        {
+            return;
+        }
+
         if(audioSource != null) 
         {
             audioSource.Stop();
