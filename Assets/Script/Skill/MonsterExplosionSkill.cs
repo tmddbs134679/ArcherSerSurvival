@@ -8,6 +8,11 @@ public class MonsterExplosionSkill : ExplosionSkill
 {
     [SerializeField] private int fireCount = 5;
 
+
+    protected override void Update()
+    {
+       
+    }
     protected override void Init()
     {
         base.Init();

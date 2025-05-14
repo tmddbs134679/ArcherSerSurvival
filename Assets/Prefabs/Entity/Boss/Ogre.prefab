@@ -5618,7 +5618,7 @@ MonoBehaviour:
   SkillOwner: {fileID: 6834186963054561962}
   animationName: 0
   skillLevelSystem: {fileID: 0}
-  RandomCheck: 0
+  RandomCheck: 1
   fireCount: 5
 --- !u!114 &6623340214887557354
 MonoBehaviour:
