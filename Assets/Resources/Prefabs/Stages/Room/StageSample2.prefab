@@ -6120,7 +6120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f396bf5bfa26b7419c1306e67c1fdf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterID: Doc
+  monsterID: Skelet
   spawnMonsterCount: 2
 --- !u!114 &5182804469333860371
 MonoBehaviour:
