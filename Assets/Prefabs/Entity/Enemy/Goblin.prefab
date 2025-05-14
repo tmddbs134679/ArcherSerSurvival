@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 996183184537242794}
   - component: {fileID: 2459229854733854183}
   - component: {fileID: 3980904613982569192}
+  - component: {fileID: 1139861616277778807}
   - component: {fileID: 705821255686906277}
   - component: {fileID: 3839986528828107558}
   - component: {fileID: 7362147652498549896}
@@ -111,6 +112,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxBounce: 5
   speed: 5
+--- !u!114 &1139861616277778807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6225380953669668030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3d282af83453c445ad1cbc62367f450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldDropPrefab: {fileID: 7385615479189390303, guid: d6bf3fedd2a22d84db63dc99b37d067d, type: 3}
+  heartDropPrefab: {fileID: 1381589855428001046, guid: be1a1d1374d45204a84c53366fddff9b, type: 3}
+  goldDropPercentage: 0.9
+  heartDropPercentage: 0.2
 --- !u!50 &705821255686906277
 Rigidbody2D:
   serializedVersion: 4
