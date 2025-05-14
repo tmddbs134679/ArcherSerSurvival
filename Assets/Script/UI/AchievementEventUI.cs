@@ -11,11 +11,22 @@ public class AchievementEventUI : BaseUI
     public float duration = 1f;
     public Text text;
 
+
+    public Sprite[] images;
+    public Image icon;
+    public Dictionary<string, Sprite> enemyImages = new Dictionary<string, Sprite>();
+
+
     private void OnEnable()
     {
+        enemyImages = new Dictionary<string, Sprite>();
+        enemyImages.Add("Doc", images[0]);
+        enemyImages.Add("Skelet", images[1]);
+        //enemyImages.Add("", images[2]);
 
         text.text = AchievementManager.Instance.achievementEvent[AchievementManager.Instance.currentKey];
 
+        icon.sprite = enemyImages[AchievementManager.Instance.currentKey];
 
 
         StartCoroutine(Emergence());

@@ -206,6 +206,7 @@ GameObject:
   - component: {fileID: 6879424084190446371}
   - component: {fileID: 1768957048278936749}
   - component: {fileID: 5745893712806815165}
+  - component: {fileID: 368979192193825567}
   m_Layer: 6
   m_Name: Skelet
   m_TagString: Untagged
@@ -242,14 +243,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Animator>k__BackingField: {fileID: 5346012146063818453}
-  <SpriteRenderers>k__BackingField: []
   <MonsterData>k__BackingField: {fileID: 11400000, guid: 2675e887aae8c5d459af63eb1a08c4c8, type: 2}
   <Player>k__BackingField: {fileID: 0}
   <EnemyStat>k__BackingField: {fileID: 1768957048278936749}
   <Skills>k__BackingField: []
-  <PlayerChasingRange>k__BackingField: 0
+  <SpriteRenderer>k__BackingField: {fileID: 0}
+  <SkillWeight>k__BackingField: {fileID: 0}
   <EnemyAIController>k__BackingField: {fileID: 3470322307665087890}
   <CanAttack>k__BackingField: 1
+  <CanChasing>k__BackingField: 1
+  <CanStun>k__BackingField: 1
   wallLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -353,7 +356,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 10
   currentHp: 0
-  hpChangeDelay: 3
   speed: 5
   atk: 10
 --- !u!114 &5745893712806815165
@@ -370,8 +372,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serialname: 
   projectilePrefab: {fileID: 480090936706811311, guid: f83b12d584a207241960cdb01220fe95, type: 3}
-  Data: {fileID: 0}
   fireRate: 1
   individualFireRate: 0.1
-  player: {fileID: 7659958387202495407}
+  SkillOwner: {fileID: 0}
+  animationName: 0
   skillLevelSystem: {fileID: 0}
+--- !u!114 &368979192193825567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7659958387202495407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3d282af83453c445ad1cbc62367f450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldDropPrefab: {fileID: 7385615479189390303, guid: d6bf3fedd2a22d84db63dc99b37d067d, type: 3}
+  heartDropPrefab: {fileID: 1381589855428001046, guid: be1a1d1374d45204a84c53366fddff9b, type: 3}
+  goldDropPercentage: 0.9
+  heartDropPercentage: 0.2
