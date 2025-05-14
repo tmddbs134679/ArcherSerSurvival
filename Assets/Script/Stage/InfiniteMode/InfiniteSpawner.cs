@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class InfiniteSpawner : MonoBehaviour
 {
-    [SerializeField] GameObject[] enemyPrefabs;     //?앹꽦?????꾨━??
-    
     private List<GameObject> enemyList = new List<GameObject>(); //?앹꽦???곷뱾???대뒗 由ъ뒪??
     private int wave;   //?꾩옱 ?⑥씠釉?
     private const float maxDistance = 20.0f;    //?뚮젅?댁뼱? ?곸쓽 理쒕? 嫄곕━
     private Transform player;
     private MonsterPoolManager monsterPool;
+
+    [SerializeField]
+    private float spawnDelay = 5f;
+    private float timer = 0f;
+    private int killCount = 0;
 
     private void Start()
     {
@@ -20,20 +23,27 @@ public class InfiniteSpawner : MonoBehaviour
             Debug.LogWarning(gameObject.name + ": Player Transform Not Found");
             Destroy(gameObject);
         }
-        wave = 100;
         monsterPool = MonsterPoolManager.Instance;
         if (monsterPool == null)
         {
             Debug.LogWarning(gameObject.name + ": MonsterPool Not Found");
             Destroy(gameObject);
         }
+        SpawnWave();
     }
 
     private void Update()
     {
-        if(enemyList.Count <= 0)
+        timer += Time.deltaTime;
+        if(timer >= spawnDelay)
         {
             SpawnWave();
+            timer = 0;
+        }
+        if(killCount >= wave * 2)
+        {
+            UIManager.Instance.ShowUI("Reward");
+            killCount = 0;
         }
 
         foreach(GameObject enemy in enemyList)
@@ -48,8 +58,6 @@ public class InfiniteSpawner : MonoBehaviour
 
     private void SpawnWave()
     {
-        //Reward 泥섎━
-        UIManager.Instance?.ShowUI("RewardUI");
 
         wave++;
 
@@ -58,6 +66,10 @@ public class InfiniteSpawner : MonoBehaviour
         for(int i = 0; i < spawnCount; i++) 
         {
             CreateRandomEnemy();
+        }
+        if (wave % 10 == 0)
+        {
+            CreateBoss();
         }
     }
 
@@ -71,9 +83,23 @@ public class InfiniteSpawner : MonoBehaviour
         if(enemyStat != null ) 
         {
             enemy.GetComponent<EnemyStat>().OnDie += () => enemyList.Remove(enemy);
+            enemy.GetComponent<EnemyStat>().OnDie += () => killCount++;
         }
-        
     }
+
+    private void CreateBoss()
+    {
+        GameObject enemy = monsterPool.GetRandomBossObject();
+        Reposition(enemy);
+        enemyList.Add(enemy);
+
+        EnemyStat enemyStat = enemy.GetComponent<EnemyStat>();
+        if (enemyStat != null)
+        {
+            enemy.GetComponent<EnemyStat>().OnDie += () => enemyList.Remove(enemy);
+        }
+    }
+
     void Reposition(GameObject enemy)
     {
         player = PlayerController.Instance.transform;

@@ -15,7 +15,6 @@ public class GoldUI : BaseUI
         if(playerResource != null ) 
         {
             playerResource.OnGoldChanged += UpdateUI;
-            Debug.Log("gold UI Init");
             UpdateUI();
         }
     }
