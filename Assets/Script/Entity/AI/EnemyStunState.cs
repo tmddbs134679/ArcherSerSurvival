@@ -30,7 +30,7 @@ public class EnemyStunState : EnemyBaseState
     }
     public override void Exit()
     {
-        
+        stateMachine.SpriteRenderer.color = Color.white;
     }
 
 }

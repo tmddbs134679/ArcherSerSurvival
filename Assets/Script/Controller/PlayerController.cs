@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
+using static UnityEngine.ParticleSystem;
 
 public class PlayerController : Singleton<PlayerController>
 {
@@ -11,6 +12,7 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] private WeaponController WeaponPrefab;
     [SerializeField] private SpriteRenderer spriteRenderer;
 
+    private ParticleSystem particle;
     private WeaponController weaponController;
     private PlayerSFXControl sfxControl;
     private Rigidbody2D pRigidbody;
@@ -33,6 +35,7 @@ public class PlayerController : Singleton<PlayerController>
         animator = GetComponentInChildren<Animator>();
         playerStat = GetComponent<PlayerStat>();
         sfxControl = GetComponent<PlayerSFXControl>();
+        particle = GetComponentInChildren<ParticleSystem>();
 
         if (WeaponPrefab != null)
             weaponController = Instantiate(WeaponPrefab, weaponPivot);
@@ -40,7 +43,7 @@ public class PlayerController : Singleton<PlayerController>
             weaponController = GetComponentInChildren<WeaponController>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
         PlayerMove();
     }
@@ -52,7 +55,7 @@ public class PlayerController : Singleton<PlayerController>
 
     void PlayerMove()
     {
-        // ?룹?以묒씪??move ?묐룞 x
+        // ?猷?餓λ쵐???move ?臾먮짗 x
         if (isDodging)
         {
             return;
@@ -65,7 +68,7 @@ public class PlayerController : Singleton<PlayerController>
 
         animator.SetBool("isMove", movement.magnitude > 0.1f);
 
-        // ?吏곸씪?뚮쭔 ?묐룞
+        // ??筌욊낯????춸 ?臾먮짗
         if (isMoving)
         {
             Rotate(movement);
@@ -87,6 +90,7 @@ public class PlayerController : Singleton<PlayerController>
     {
         isDodging = true;
         animator.SetBool("IsDodge", true);
+        particle.Play();
         animator.speed = 1/duration;
         playerStat.isInvincible = true;
         sfxControl.OnDodge();
@@ -105,8 +109,9 @@ public class PlayerController : Singleton<PlayerController>
             yield return new WaitForFixedUpdate();
         }
 
-        //?뚰뵾 醫낅즺 ??
+        //??곕돗 ?ル굝利???
         isDodging = false;
+        particle.Stop();
         animator.SetBool("IsDodge", false);
         animator.speed = 1f;
         playerStat.isInvincible = false;
@@ -122,6 +127,15 @@ public class PlayerController : Singleton<PlayerController>
         bool isLeft = Mathf.Abs(rotation) > 90f;
 
         spriteRenderer.flipX = isLeft;
+
+        if (isLeft)
+        {
+            particle.transform.localRotation = Quaternion.Euler(0, 180, 0);
+        }
+        else
+        {
+            particle.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

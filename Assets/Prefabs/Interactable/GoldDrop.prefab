@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8030694726090150539}
   - component: {fileID: 75063087123869119}
+  - component: {fileID: 8619226920072346470}
   - component: {fileID: 1935108833203247713}
   m_Layer: 0
   m_Name: GoldDrop
@@ -51,6 +52,20 @@ MonoBehaviour:
     m_Bits: 8
   minGoldAmount: 1
   maxGoldAmount: 5
+--- !u!114 &8619226920072346470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7385615479189390303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9202bbb576ed22b4f85c4262c49b39c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip: {fileID: 8300000, guid: 4ce57b52f43d74f4faea7e020f12d674, type: 3}
+  audioSource: {fileID: 0}
 --- !u!61 &1935108833203247713
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -32,7 +32,6 @@ public class HpBarUI : MonoBehaviour
     private void OnSceneUnloaded(Scene scene)
     {
         baseStat.OnHpChanged -= OnHpChanged;
-
     }
 
 

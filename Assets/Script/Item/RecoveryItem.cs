@@ -4,6 +4,12 @@ public class RecoveryItem :  UsableITem
 {
     [SerializeField]
     private float health = 10;       //체력 회복 수치
+    SFXControl sfxControl;
+
+    private void Start()
+    {
+        sfxControl = GetComponent<SFXControl>();
+    }
 
     protected override void Use(GameObject target)
     {
@@ -13,7 +19,10 @@ public class RecoveryItem :  UsableITem
         {
             player.Healed(health);
         }
-
+        if(sfxControl != null) 
+        {
+            sfxControl.PlaySoundEffect();
+        }
        base.Use(target);
     }
 }

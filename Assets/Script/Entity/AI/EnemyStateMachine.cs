@@ -13,6 +13,7 @@ public class EnemyStateMachine : StateMachine
     [field: SerializeField] public EnemyStat EnemyStat { get; private set; }
     [field: SerializeField] public List<BaseSkill> Skills { get; private set; }
 
+    [field: SerializeField] public SpriteRenderer SpriteRenderer { get; private set; }
     [field: SerializeField] public WeightedTable SkillWeight { get; private set; }
     [field: SerializeField] public EnemyAIController EnemyAIController { get; private set; }
     [field: SerializeField] public bool CanAttack { get; set; } = true;

@@ -6,6 +6,12 @@ public class GoldDrop :UsableITem
 {
     [SerializeField] private int minGoldAmount = 1;
     [SerializeField] private int maxGoldAmount = 5;
+    SFXControl playSFX;
+
+    private void Start()
+    {
+        playSFX = GetComponent<SFXControl>();
+    }
     protected override void Use(GameObject target)
     {
         int gold = Random.Range(minGoldAmount, maxGoldAmount);
@@ -15,6 +21,12 @@ public class GoldDrop :UsableITem
         {
             player.GetGold(gold);
         }
+
+        if(playSFX != null)
+        {
+            playSFX.PlaySoundEffect();
+        }
+
         base.Use(target);
     }
 }

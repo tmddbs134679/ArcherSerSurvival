@@ -26,13 +26,15 @@ public class EnemyDeadState : EnemyBaseState
 
         if (stateInfo.normalizedTime >= 1f)
         {
-            stateMachine.SwitchState(null); 
+            stateMachine.SwitchState(stateMachine.States[EENEMYSTATE.IDLE]); 
         }
 
     }
 
     public override void Exit()
     {
-       // MonsterPoolManager.Instance.ReturnObject(stateMachine.gameObject, stateMachine.MonsterData.monsterId);
+        MonsterPoolManager.Instance.ReturnObject(stateMachine.gameObject, stateMachine.MonsterData.monsterId);
+        
+
     }
 }

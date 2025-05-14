@@ -5,14 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class StageTransitionPortal : MonoBehaviour
 {
-    [SerializeField] private string SceneName;    //이동할 씬 이름
-    [SerializeField] protected LayerMask playerLayer;    //플레이어 레이어
+    [SerializeField] private string SceneName;    //?대룞?????대쫫
+    [SerializeField] protected LayerMask playerLayer;    //?뚮젅?댁뼱 ?덉씠??
 
     private void Start()
     {
         if (SceneName == null)
         {
-            Debug.LogWarning(gameObject.name + ": 이동할 씬 이름을 입력해주세요");
+            Debug.LogWarning(gameObject.name + ": ?대룞?????대쫫???낅젰?댁＜?몄슂");
             this.enabled = false;
         } 
     }

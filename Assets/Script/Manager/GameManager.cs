@@ -54,9 +54,9 @@ public class GameManager : Singleton<GameManager>
 
             lodingObject = GameObject.Find("Loading");
             
-            //??븐뼚?붷윜?
-            //?袁⑤?塋??
-            //?筌뤾퍓沅??
+            //????거???釉랃폎??
+            //????썹땟??雍??
+            //??꿔꺂???癰귥쥙???
             
         }
         
@@ -73,26 +73,31 @@ public class GameManager : Singleton<GameManager>
         isOpen = false;
         if (SceneManager.GetActiveScene().name == "LobbyScene")
         {
-
+            AchievementManager.Instance.currentKillCnt = new Dictionary<string, int>();
         }
         else
         {
             Init_GameManager();
+            
         }
 
         
 
 
         Invoke("DelayFadeOut", 0.5f);
-        Invoke("CheckEnemy", 1.5f);
+        Invoke("CheckEnemy", 0.5f);
         
 
     }
 
     public void DelayFadeOut()
     {
+        if (SceneManager.GetActiveScene().name != "LobbyScene")
+        {
+            Time.timeScale = 0f;
+        }
         // Debug.Log("??");
-        Time.timeScale = 0f;
+
         UIManager.Instance.FadeOutUI("Loading");
         /*
         foreach (GameObject obj in UIManager.Instance.uiObjects)

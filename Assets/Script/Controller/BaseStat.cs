@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BaseStat : MonoBehaviour
 {
-    // ??源?紐껋쨮 HP 獄?癰궰野??紐꾪뀱
+    // ???繹?筌뤾퍔夷?HP ???곌떠????筌뤾쑵??
     public Action OnHpChanged;
     public event Action OnStatChanged;
 
@@ -54,7 +54,7 @@ public class BaseStat : MonoBehaviour
 
   
 
-    //hp ?λ뜃由??
+    //hp ?貫?껆뵳??
     private void Start()
     {
         CurrentHp = maxHp;
