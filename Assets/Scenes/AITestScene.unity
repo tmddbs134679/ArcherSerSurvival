@@ -184,67 +184,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!1001 &66258851
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5437609621943608088, guid: 32856fc77e9d95b42a58fa23aa959ea0, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5437609621943608088, guid: 32856fc77e9d95b42a58fa23aa959ea0, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5437609621943608088, guid: 32856fc77e9d95b42a58fa23aa959ea0, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5437609621943608088, guid: 32856fc77e9d95b42a58fa23aa959ea0, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5437609621943608088, guid: 32856fc77e9d95b42a58fa23aa959ea0, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5437609621943608088, guid: 32856fc77e9d95b42a58fa23aa959ea0, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5437609621943608088, guid: 32856fc77e9d95b42a58fa23aa959ea0, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5437609621943608088, guid: 32856fc77e9d95b42a58fa23aa959ea0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5437609621943608088, guid: 32856fc77e9d95b42a58fa23aa959ea0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5437609621943608088, guid: 32856fc77e9d95b42a58fa23aa959ea0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6800338950794716611, guid: 32856fc77e9d95b42a58fa23aa959ea0, type: 3}
-      propertyPath: m_Name
-      value: Doc
-      objectReference: {fileID: 0}
-    - target: {fileID: 6800338950794716611, guid: 32856fc77e9d95b42a58fa23aa959ea0, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 32856fc77e9d95b42a58fa23aa959ea0, type: 3}
 --- !u!1 &71559826
 GameObject:
   m_ObjectHideFlags: 0
@@ -1554,11 +1493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a29f765283f436043a6d68ab7c660f2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectPrefabs:
-  - {fileID: 6800338950794716611, guid: 7e99233efb0341a4e81b52828b771101, type: 3}
-  - {fileID: 7659958387202495407, guid: b23671489ee1b5d49b75ecab425d597f, type: 3}
-  - {fileID: 7659958387202495407, guid: a03877d09b32ecc4e8dbac51960fc513, type: 3}
-  - {fileID: 7659958387202495407, guid: bc4c85bbf1bf14743b5d5c57a4ae24e2, type: 3}
+  objectPrefabs: []
   poolSize: 10
 --- !u!4 &1041568172
 Transform:
@@ -2508,6 +2443,10 @@ PrefabInstance:
     - target: {fileID: 6834186963054561962, guid: 2f7168b1290b13248a574b7b9a5f4a18, type: 3}
       propertyPath: m_Name
       value: Ogre
+      objectReference: {fileID: 0}
+    - target: {fileID: 6834186963054561962, guid: 2f7168b1290b13248a574b7b9a5f4a18, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7217894395238620155, guid: 2f7168b1290b13248a574b7b9a5f4a18, type: 3}
       propertyPath: individualFireRate
@@ -4546,7 +4485,6 @@ SceneRoots:
   - {fileID: 1385998290}
   - {fileID: 1290756078}
   - {fileID: 1228729414}
-  - {fileID: 66258851}
   - {fileID: 1305036215}
   - {fileID: 732925698}
   - {fileID: 1916483180}
