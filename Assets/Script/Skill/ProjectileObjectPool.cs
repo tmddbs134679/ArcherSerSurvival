@@ -4,22 +4,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class ProjectileObjectPool : MonoBehaviour
+
+[System.Serializable]
+public class PoolEntry
 {
-    public static ProjectileObjectPool Instance { get; private set; }
+    public string key;
+    public GameObject prefab;
+
+}
+public class ProjectileObjectPool : Singleton<ProjectileObjectPool>
+{
+   // public static ProjectileObjectPool Instance { get; private set; }
     public GameObject[] projectilePrefabs; // ?щ윭 醫낅쪟???꾨━??
 
     private Dictionary<string, ObjectPool<GameObject>> pools = new Dictionary<string, ObjectPool<GameObject>>();
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
 
-        if (Instance == null) Instance = this;
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
                 projectilePrefabs = Resources.LoadAll<GameObject>("Prefabs/Skill/Data");
         foreach (var prefab in projectilePrefabs)
         {

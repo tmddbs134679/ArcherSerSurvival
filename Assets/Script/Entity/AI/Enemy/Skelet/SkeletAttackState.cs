@@ -13,8 +13,9 @@ public class SkeletAttackState : EnemyAttackState
 
     public override void Enter()
     {
+        Debug.Log("AttackEnter");
         base.Enter();
-        stateMachine.GetComponent<MonsterProjectileSkill>().Fire(1, stateMachine.gameObject, stateMachine.Player);
+        stateMachine.GetComponent<MonsterProjectileSkill>().FireStart(1, stateMachine.gameObject, stateMachine.Player);
 
     }
     public override void Tick(float deltaTime)

@@ -69,22 +69,43 @@ public class ProjectileSkill : BaseSkill
     }
 
 
-    public void Fire(int count,GameObject SkillOwner,GameObject Target)
-    {
+    //public void Fire(int count,GameObject SkillOwner,GameObject Target)
+    //{
 
-        SkillOwner.GetComponentInChildren<WeaponController>().AttackAni();
-        //serialname
-        GameObject projectile = ProjectileObjectPool.Instance.Get(projectilePrefab.name); 
+    //    SkillOwner.GetComponentInChildren<WeaponController>().AttackAni();
+    //    //serialname
+    //    GameObject projectile = ProjectileObjectPool.Instance.Get(projectilePrefab.name); 
+
+    //    projectile.transform.position = SkillOwner.transform.position;
+    //    projectile.transform.rotation = Quaternion.identity;
+
+    //    Vector2 dir = Target.transform.position - SkillOwner.transform.position;
+    //    Vector2 angleDir = Quaternion.Euler(0, 0, -(Data.angle * Data.count / 2f) + Data.angle * count) * dir; //
+
+    //    projectile.GetComponent<Projectile>().Init(SkillOwner,Target, angleDir, Data);
+    //}
+
+    public void FireStart(int count, GameObject obj, GameObject Target)
+    {
+        StartCoroutine(Fire(count,obj, Target));
+    }
+    public IEnumerator Fire(int count, GameObject SkillOwner, GameObject Target)
+    {
+        yield return new WaitForSeconds(1f); // 1초 대기
+
+        if (GetComponentInChildren<WeaponController>() != null)
+            SkillOwner.GetComponentInChildren<WeaponController>().AttackAni();
+
+        GameObject projectile = ProjectileObjectPool.Instance.Get(projectilePrefab.name);
 
         projectile.transform.position = SkillOwner.transform.position;
         projectile.transform.rotation = Quaternion.identity;
 
         Vector2 dir = Target.transform.position - SkillOwner.transform.position;
-        Vector2 angleDir = Quaternion.Euler(0, 0, -(Data.angle * Data.count / 2f) + Data.angle * count) * dir; //
+        Vector2 angleDir = Quaternion.Euler(0, 0, -(Data.angle * Data.count / 2f) + Data.angle * count) * dir;
 
-        projectile.GetComponent<Projectile>().Init(SkillOwner,Target, angleDir, Data);
+        projectile.GetComponent<Projectile>().Init(SkillOwner, Target, angleDir, Data);
     }
-
     protected IEnumerator FireWithDelay()
     {
         for (int i = 0; i < Data.count; i++)
@@ -100,7 +121,7 @@ public class ProjectileSkill : BaseSkill
                 TargetTemp = GetComponent<EnemyStateMachine>().Player;//?????밸븶?????轅붽틓??????우ク??
             }
             if (TargetTemp == null) yield break;
-            Fire(i,SkillOwner,TargetTemp);
+            StartCoroutine(Fire(i,SkillOwner,TargetTemp));
             yield return new WaitForSeconds(individualFireRate);
 
         }
