@@ -12,10 +12,11 @@ public class Projectile : MonoBehaviour
     private Rigidbody2D rb;//?袁ⓥ봺?諭곷립 ??沅쀯㎗?곸벥 ?귐딆췂獄쏅뗀逾?
     public string serialName;//??已?
 
+private bool justReflected = false;
     public void Init(GameObject launcher, GameObject target, Vector2 angleDir, ChangedSkillData data)
     {
         Launcher = launcher;
-        Target=target;
+        Target = target;
         angleDirection = angleDir.normalized;
         Data = data;
         rb = GetComponent<Rigidbody2D>();
@@ -24,21 +25,48 @@ public class Projectile : MonoBehaviour
     }
 
 
-  
+
     private void FixedUpdate()//?얠눖?곻㎗?롡봺
     {
+            if (!justReflected)
         rb.velocity = angleDirection * Data.speed;
         StartCoroutine(AngleDirDelay());
         transform.Rotate(Vector3.forward, Data.rotateSpeed * Time.fixedDeltaTime); //?袁ⓥ봺???癒?퍥 ???읈
     }
     void OnTriggerEnter2D(Collider2D collision)//?겸뫖猷??됱뱽 ??
     {
-            if (Target.layer==collision.gameObject.layer)
-            {
-                collision.GetComponent<BaseStat>().Damaged(Data.damage);
-                StartCoroutine(WrappingInvokeDelay(0f));
-            }
+
+        if (Target.layer == collision.gameObject.layer)
+        {
+            collision.GetComponent<BaseStat>().Damaged(Data.damage);
+            StartCoroutine(WrappingInvokeDelay(0f));
+        }
+
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
+    {
+        Vector2 incoming = rb.velocity.normalized;
+       RaycastHit2D hit = Physics2D.Raycast(transform.position, incoming, 1f, LayerMask.GetMask("Wall"));
+       // RaycastHit2D hit = Physics2D.Raycast(transform.position, incoming, Data.speed * Time.fixedDeltaTime *0.1f, LayerMask.GetMask("Wall"));
+
+        if (hit.collider != null)
+        {
+            Vector2 normal = hit.normal;
+            Vector2 reflect = Vector2.Reflect(incoming, normal);
+            angleDirection = reflect.normalized;
+                        justReflected = true;
+                                    StartCoroutine(ResetReflectFlag());
+        }
     }
+    }
+    IEnumerator ResetReflectFlag()
+{
+    yield return new WaitForFixedUpdate();
+    justReflected = false;
+}
+
+
+
+
     private IEnumerator WrappingInvokeDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
