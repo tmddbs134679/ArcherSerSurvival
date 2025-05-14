@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serialname: Arrow
   projectilePrefab: {fileID: 1950492447012934545, guid: 4eb963a29b0a99c4595e41374763f9bb, type: 3}
-  fireRate: 1
+  fireRate: 0.6
   individualFireRate: 0.1
   SkillOwner: {fileID: 0}
   animationName: 0
