@@ -15,9 +15,9 @@ MonoBehaviour:
   speed: 11
   lvspeed: 0
   damage: 30
-  lvdamage: 0
+  lvdamage: 6
   count: 1
-  lvcount: 0
+  lvcount: 1
   duration: 2.16
   color: {r: 1, g: 0, b: 0, a: 0.57254905}
   impactEffect: {fileID: 0}
