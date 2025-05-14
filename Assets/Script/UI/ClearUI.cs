@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ClearUI : BaseUI
 {
@@ -8,10 +9,18 @@ public class ClearUI : BaseUI
     public float startPosY = 500;
     public float targetPosY = 0;
     public float duration = 1f;
+    public Text text;
 
     private void OnEnable()
     {
+        text.text = "";
+
+        foreach(var key in AchievementManager.Instance.currentKillCnt.Keys)
+        {
+            text.text += "잡은 " + key + " : " + AchievementManager.Instance.currentKillCnt[key].ToString() + "마리\n";
+        }
         StartCoroutine(Emergence());
+
     }
 
     public IEnumerator Emergence()
