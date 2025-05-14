@@ -62,7 +62,7 @@ public class BaseStat : MonoBehaviour
 
     public virtual void Damaged(float reduceHp)
     {
-
+        DamagePool.Instance.ShowDamageText((int)reduceHp, transform.position);
         if (currentHp <= 0)
         {
             CurrentHp = 0;
