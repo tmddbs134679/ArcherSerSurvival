@@ -27,8 +27,8 @@ public class EnemyStat : BaseStat
         base.Damaged(reduceHp);
 
         OnTakeDamage?.Invoke();
-        
 
+        DamagePool.Instance.ShowDamageText((int)reduceHp, transform.position);
         if (currentHp == 0)
         {
             OnDie?.Invoke();

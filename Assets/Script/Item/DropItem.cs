@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class DropItem : MonoBehaviour
 {
-    [SerializeField]
-    GameObject goldDropPrefab;
-
-    [SerializeField]
-    GameObject heartDropPrefab;
+    private const string goldDropName = "GoldDrop";
+    private const string heartDropName = "RecoverHeart";
+    private const string magnetDropName = "MagnetDrop";
 
     [SerializeField]
     [Range(0, 1)] private float goldDropPercentage;
 
     [SerializeField]
-    [Range(0,1)] private float heartDropPercentage;
+    [Range(0,1)] private float heartDropPercentage; 
+    [SerializeField]
+    [Range(0,1)] private float magnetDropPercentage;
 
     private EnemyStat enemy;
     private void Start()
@@ -31,19 +31,26 @@ public class DropItem : MonoBehaviour
         Debug.Log("item drop");
         if(Random.Range(0, 1f) < goldDropPercentage)
         {
-            DropOnRandomPoint(goldDropPrefab); 
+            DropOnRandomPoint(goldDropName); 
         } 
         if(Random.Range(0, 1f) < heartDropPercentage)
         {
-            DropOnRandomPoint(heartDropPrefab); 
+            DropOnRandomPoint(heartDropName); 
+        }
+        if(Random.Range(0, 1f) < magnetDropPercentage)
+        {
+            DropOnRandomPoint(magnetDropName); 
         }
     }
 
-    private void DropOnRandomPoint(GameObject prefab)
+    private void DropOnRandomPoint(string name)
     {
         Vector2 spawnPoint = new Vector2(transform.position.x + Random.Range(0, 0.5f),
             transform.position.y + Random.Range(0, 0.5f));
 
-        Instantiate(prefab, spawnPoint, Quaternion.identity);
+        var item = ItemPool.Instance.GetObject(name);
+        item.transform.position = spawnPoint;
+
+        //Instantiate(prefab, spawnPoint, Quaternion.identity);
     }
 }

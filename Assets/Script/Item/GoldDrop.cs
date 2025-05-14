@@ -6,7 +6,10 @@ public class GoldDrop :UsableITem
 {
     [SerializeField] private int minGoldAmount = 1;
     [SerializeField] private int maxGoldAmount = 5;
+    [SerializeField] private float moveSpeed = 10f;
     SFXControl playSFX;
+    private Coroutine attractionCoroutine = null;
+    private Transform playerTarget;
 
     private void Start()
     {
@@ -16,7 +19,10 @@ public class GoldDrop :UsableITem
     {
         int gold = Random.Range(minGoldAmount, maxGoldAmount);
         PlayerResource player = target.GetComponent<PlayerResource>();
-
+        if (attractionCoroutine != null)
+        {
+            StopCoroutine(attractionCoroutine);
+        }
         if (player != null)
         {
             player.GetGold(gold);
@@ -26,7 +32,25 @@ public class GoldDrop :UsableITem
         {
             playSFX.PlaySoundEffect();
         }
+        ItemPool.Instance.ReturnObject(this.gameObject, "GoldDrop");
+    }
 
-        base.Use(target);
+    public void StartAttraction(Transform target)
+    {
+        if (attractionCoroutine != null)
+        {
+            StopCoroutine(attractionCoroutine);
+        }
+        playerTarget = target;
+        attractionCoroutine = StartCoroutine(MoveTowardsPlayerCoroutine());
+    }
+
+    IEnumerator MoveTowardsPlayerCoroutine()
+    {
+        while (true)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, playerTarget.position, moveSpeed * Time.deltaTime);
+            yield return null;
+        }
     }
 }
