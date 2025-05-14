@@ -54,9 +54,9 @@ public class GameManager : Singleton<GameManager>
 
             lodingObject = GameObject.Find("Loading");
             
-            //????거???釉랃폎??
-            //????썹땟??雍??
-            //??꿔꺂???癰귥쥙???
+            //????嫄????됰엪???
+            //?????밸븶?????
+            //??轅붽틓????곌램伊???
             
         }
         
@@ -218,7 +218,10 @@ public class GameManager : Singleton<GameManager>
     }
     public void GameOver()
     {
-        UIManager.Instance.ShowUI("GameOverUI");
+        //UIManager.Instance.ShowUI("GameOverUI");
+        roomCount = 6;
+        UIManager.Instance.ShowUI("Clear");
+
     }
 
     public void OnOption()
