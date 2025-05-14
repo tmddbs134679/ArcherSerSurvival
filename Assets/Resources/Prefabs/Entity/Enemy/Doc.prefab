@@ -203,10 +203,10 @@ GameObject:
   - component: {fileID: 2327899744472762287}
   - component: {fileID: 3744437999047480500}
   - component: {fileID: 1783932811612168923}
+  - component: {fileID: 8650370242718431134}
   - component: {fileID: 148256016238909937}
   - component: {fileID: 4159071615303732288}
   - component: {fileID: 2817243799296068096}
-  - component: {fileID: 8650370242718431134}
   m_Layer: 6
   m_Name: Doc
   m_TagString: Untagged
@@ -288,6 +288,21 @@ MonoBehaviour:
   currentHp: 0
   speed: 5
   atk: 10
+--- !u!114 &8650370242718431134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6800338950794716611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3d282af83453c445ad1cbc62367f450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldDropPercentage: 0.9
+  heartDropPercentage: 0.2
+  magnetDropPercentage: 0.02
 --- !u!50 &148256016238909937
 Rigidbody2D:
   serializedVersion: 4
@@ -456,22 +471,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8650370242718431134
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6800338950794716611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3d282af83453c445ad1cbc62367f450, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldDropPrefab: {fileID: 7385615479189390303, guid: d6bf3fedd2a22d84db63dc99b37d067d, type: 3}
-  heartDropPrefab: {fileID: 1381589855428001046, guid: be1a1d1374d45204a84c53366fddff9b, type: 3}
-  goldDropPercentage: 0.9
-  heartDropPercentage: 0.2
 --- !u!1001 &7107244801666021309
 PrefabInstance:
   m_ObjectHideFlags: 0

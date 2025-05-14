@@ -23,6 +23,6 @@ public class RecoveryItem :  UsableITem
         {
             sfxControl.PlaySoundEffect();
         }
-       base.Use(target);
+        ItemPool.Instance.ReturnObject(this.gameObject, "RecoverHeart");
     }
 }

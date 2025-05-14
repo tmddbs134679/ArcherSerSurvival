@@ -488,10 +488,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3d282af83453c445ad1cbc62367f450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldDropPrefab: {fileID: 7385615479189390303, guid: d6bf3fedd2a22d84db63dc99b37d067d, type: 3}
-  heartDropPrefab: {fileID: 1381589855428001046, guid: be1a1d1374d45204a84c53366fddff9b, type: 3}
   goldDropPercentage: 0.9
   heartDropPercentage: 0.2
+  magnetDropPercentage: 0.01
 --- !u!1001 &6762738761530273527
 PrefabInstance:
   m_ObjectHideFlags: 0
