@@ -145,7 +145,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1597866483734963021}
   m_Father: {fileID: 3033453059338148139}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4305354024098089528
@@ -623,9 +624,9 @@ MonoBehaviour:
   atk: 10
   isInvincible: 0
   invincibleTime: 3
-  dodgeDuration: 0.1
+  dodgeDuration: 0.3
   dodgePower: 3
-  dodgeCoolTime: 1
+  dodgeCoolTime: 5
 --- !u!114 &6458435759068820342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -653,7 +654,9 @@ MonoBehaviour:
   dodge: {fileID: 8300000, guid: 2a8c1867e065b374d969acb7c9564e4b, type: 3}
   hit: {fileID: 8300000, guid: 868ef4e62ee3c374880d10b09ed19b25, type: 3}
   die: {fileID: 8300000, guid: b15a5e97d6cca7546b4183181abc79ea, type: 3}
-  weaponSounds: []
+  weaponSounds:
+  - {fileID: 8300000, guid: 2ce2480d17762ee46be467491f6793a9, type: 3}
+  - {fileID: 8300000, guid: ea415eb48edcbcc408ceaac1796b8cc8, type: 3}
 --- !u!82 &-2359103908090320661
 AudioSource:
   m_ObjectHideFlags: 0
@@ -909,6 +912,68 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1001 &33621960920997730
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5444745940701717134}
+    m_Modifications:
+    - target: {fileID: 1611076898163489839, guid: 2a53697490111594ea34379b64354ee0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611076898163489839, guid: 2a53697490111594ea34379b64354ee0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611076898163489839, guid: 2a53697490111594ea34379b64354ee0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611076898163489839, guid: 2a53697490111594ea34379b64354ee0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611076898163489839, guid: 2a53697490111594ea34379b64354ee0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611076898163489839, guid: 2a53697490111594ea34379b64354ee0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611076898163489839, guid: 2a53697490111594ea34379b64354ee0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611076898163489839, guid: 2a53697490111594ea34379b64354ee0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611076898163489839, guid: 2a53697490111594ea34379b64354ee0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611076898163489839, guid: 2a53697490111594ea34379b64354ee0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4458303627231517721, guid: 2a53697490111594ea34379b64354ee0, type: 3}
+      propertyPath: m_Name
+      value: DodgeParticle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a53697490111594ea34379b64354ee0, type: 3}
+--- !u!4 &1597866483734963021 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1611076898163489839, guid: 2a53697490111594ea34379b64354ee0, type: 3}
+  m_PrefabInstance: {fileID: 33621960920997730}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &125557266581129528
 PrefabInstance:
   m_ObjectHideFlags: 0
