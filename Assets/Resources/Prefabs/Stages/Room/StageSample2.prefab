@@ -4412,8 +4412,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f396bf5bfa26b7419c1306e67c1fdf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterID: 0
-  spawnMonsterCount: 0
+  monsterID: Doc
+  spawnMonsterCount: 3
 --- !u!114 &4670372954835591985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5430,7 +5430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f396bf5bfa26b7419c1306e67c1fdf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterID: 0
+  monsterID: Skelet(Gold)
   spawnMonsterCount: 0
 --- !u!114 &5662971358604622811
 MonoBehaviour:
@@ -5490,8 +5490,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f396bf5bfa26b7419c1306e67c1fdf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterID: 0
-  spawnMonsterCount: 0
+  monsterID: Skelet
+  spawnMonsterCount: 2
 --- !u!114 &7869128498734879434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6120,8 +6120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f396bf5bfa26b7419c1306e67c1fdf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterID: 0
-  spawnMonsterCount: 1
+  monsterID: Doc
+  spawnMonsterCount: 2
 --- !u!114 &5182804469333860371
 MonoBehaviour:
   m_ObjectHideFlags: 0
