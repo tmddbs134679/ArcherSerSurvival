@@ -20,7 +20,7 @@ public class AchievementEventUI : BaseUI
 
         StartCoroutine(Emergence());
 
-        Invoke("DelayOff", 2f);
+        Invoke("DelayOff", 3.5f);
     }
 
     public IEnumerator Emergence()

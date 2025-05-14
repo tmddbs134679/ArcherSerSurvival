@@ -48,10 +48,10 @@ public class AchievementManager : Singleton<AchievementManager>
             }
         }
 
-        achievementEvent.Add("Doc", "Doc?щ깷袁?");
+        achievementEvent.Add("Doc", "Doc사냥꾼");
         achievementFlag.Add("Doc", false);
-        achievementEvent.Add("Sekelete", "?닿낏洹몄옟梨?");
-        achievementFlag.Add("Sekelete", false);
+        achievementEvent.Add("Sekelet", "해골그잡채");
+        achievementFlag.Add("Sekelet", false);
 
 
     }
