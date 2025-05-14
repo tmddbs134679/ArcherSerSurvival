@@ -5345,9 +5345,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b20604b46a745449f9916cd7a0c5ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderers: []
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
-  duration: 0.1
 --- !u!1 &6637417695399940568
 GameObject:
   m_ObjectHideFlags: 0
@@ -5442,11 +5439,12 @@ GameObject:
   m_Component:
   - component: {fileID: 318433763871782778}
   - component: {fileID: 2085658003896008343}
-  - component: {fileID: 6623340214887557354}
   - component: {fileID: 5509344942044089138}
   - component: {fileID: 7250908102184212231}
   - component: {fileID: 3987905602972651943}
   - component: {fileID: 1510997552760728133}
+  - component: {fileID: 7217894395238620155}
+  - component: {fileID: 6623340214887557354}
   m_Layer: 6
   m_Name: Ogre
   m_TagString: Enemy
@@ -5484,15 +5482,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Animator>k__BackingField: {fileID: 5906359006596787709}
-  <SpriteRenderers>k__BackingField:
-  - {fileID: 5874006431400421119}
-  - {fileID: 5545611825629043333}
-  - {fileID: 6166364435954832004}
   <MonsterData>k__BackingField: {fileID: 11400000, guid: 9635b4ef83202be46a78d83eea97145e, type: 2}
   <Player>k__BackingField: {fileID: 0}
   <EnemyStat>k__BackingField: {fileID: 5509344942044089138}
+  <Skill>k__BackingField: {fileID: 0}
   <Skills>k__BackingField:
   - {fileID: 6623340214887557354}
+  - {fileID: 7217894395238620155}
   <EnemyAIController>k__BackingField: {fileID: 1510997552760728133}
   <CanAttack>k__BackingField: 1
   <CanChasing>k__BackingField: 1
@@ -5500,28 +5496,6 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 0
---- !u!114 &6623340214887557354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6834186963054561962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bdf476cbaf7fa64ca01afa5a100e22b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftEdgePos: {x: 8.5, y: 0}
-  rightEdgePos: {x: -8.5, y: 0}
-  topEdgePos: {x: 0, y: 12}
-  bottomEdgePos: {x: 0, y: -2}
-  animationName: -750362048
-  directionType: 2
-  rushDistance: 2
-  rushDuration: 2
-  minRushCount: 1
-  maxRushCount: 3
 --- !u!114 &5509344942044089138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5624,6 +5598,53 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   patrolAxis: 2
   patrolDistance: 3
+--- !u!114 &7217894395238620155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6834186963054561962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0732a670f52ae94488d5abcbbc34142, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serialname: Meteo
+  projectilePrefab: {fileID: 7827560360998576179, guid: e526136f01fc83746ab37bd9b2640059, type: 3}
+  fireRate: 1
+  individualFireRate: 0
+  SkillOwner: {fileID: 6834186963054561962}
+  skillLevelSystem: {fileID: 0}
+  RandomCheck: 0
+--- !u!114 &6623340214887557354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6834186963054561962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bdf476cbaf7fa64ca01afa5a100e22b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serialname: Rush
+  projectilePrefab: {fileID: 0}
+  fireRate: 0
+  individualFireRate: 0
+  SkillOwner: {fileID: 6834186963054561962}
+  skillLevelSystem: {fileID: 0}
+  leftEdgePos: {x: 8.5, y: 0}
+  rightEdgePos: {x: -8.5, y: 0}
+  topEdgePos: {x: 0, y: 12}
+  bottomEdgePos: {x: 0, y: -2}
+  animationName: -750362048
+  directionType: 2
+  rushDistance: 2
+  rushDuration: 2
+  minRushCount: 1
+  maxRushCount: 3
 --- !u!1 &7046706323802497083
 GameObject:
   m_ObjectHideFlags: 0

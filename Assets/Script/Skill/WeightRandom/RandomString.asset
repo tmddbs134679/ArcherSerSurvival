@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objects:
   - Serialname: Axe
-    weight: 15
+    weight: 5
   - Serialname: Knife
     weight: 5
   - Serialname: Meteo
-    weight: 1
+    weight: 0
   - Serialname: Arrow
     weight: 5

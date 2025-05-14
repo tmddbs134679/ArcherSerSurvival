@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,7 @@ public abstract class BaseSkill : MonoBehaviour
     protected float fireTimer;//??λ떄 ??볦퍢癰궰??
      //??곕뼒??
     public GameObject SkillOwner;
-
+    public int animationName;
 
     public SkillLevelSystem skillLevelSystem;
 
@@ -24,4 +25,6 @@ public abstract class BaseSkill : MonoBehaviour
     protected abstract void Init();
     public abstract void SetSkillData();
     protected abstract void Update();
+
+    public virtual void Execute(EnemyStateMachine enemy, Action onComplete){ }
 }
