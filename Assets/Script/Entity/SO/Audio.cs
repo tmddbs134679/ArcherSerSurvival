@@ -5,7 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Audio/Audio", fileName = "Audio")]
 public class Audio : ScriptableObject
 {
-    public AudioClip hit;
+    public EENEMYTYPE monsterType;
+    public AudioClip damage;
     public AudioClip die;
     public AudioClip move;
 

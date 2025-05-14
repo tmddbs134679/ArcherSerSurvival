@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72331b1780e05e04a9cdf9a00c8c8eb6, type: 3}
   m_Name: OgreSound
   m_EditorClassIdentifier: 
-  hit: {fileID: 0}
-  die: {fileID: 0}
+  monsterType: 2
+  damage: {fileID: 8300000, guid: f53eaf7a2652b7a44a3d75c4d199e3c1, type: 3}
+  die: {fileID: 8300000, guid: 6e9aa7ac821ae3a41b0f50f7ccac0997, type: 3}
+  move: {fileID: 0}
   weaponSounds: []

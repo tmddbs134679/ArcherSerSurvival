@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Skelet
   m_EditorClassIdentifier: 
   monsterId: 1
+  monsterType: 1
   attackDamage: 3
   attackRange: 10
   movementSpeed: 3

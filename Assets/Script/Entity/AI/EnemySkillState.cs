@@ -17,17 +17,16 @@ public class EnemySkillState : EnemyBaseState
 
     public override void Enter()
     {
-        //Debug.Log("Skill");
+        //가중치 가지고와서 idx로 변환
+        string weight = stateMachine.SkillWeight.GetRandom();
+        int idx = int.Parse(weight);
 
-        int idx = Random.Range(0, stateMachine.Skills.Count);
         SkillHas = stateMachine.Skills[idx].animationName;
 
         stateMachine.Animator.CrossFadeInFixedTime(SkillHas, CrossFadeDuration);
 
         // 콜백 전달: 스킬이 끝나면 OnSkillComplete 호출
         stateMachine.Skills[idx].Execute(stateMachine, OnSkillComplete);
-
-     
     }
 
     public override void Tick(float deltaTime)

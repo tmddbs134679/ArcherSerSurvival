@@ -11,9 +11,9 @@ public class EnemyStateMachine : StateMachine
     [field: SerializeField] public MonsterData MonsterData { get; private set; }
     [field: SerializeField] public GameObject Player { get; private set; }
     [field: SerializeField] public EnemyStat EnemyStat { get; private set; }
-
-    [field: SerializeField] public RushSkill Skill { get; private set; }
     [field: SerializeField] public List<BaseSkill> Skills { get; private set; }
+
+    [field: SerializeField] public WeightedTable SkillWeight { get; private set; }
     [field: SerializeField] public EnemyAIController EnemyAIController { get; private set; }
     [field: SerializeField] public bool CanAttack { get; set; } = true;
 
@@ -58,7 +58,10 @@ public class EnemyStateMachine : StateMachine
 
     private void HandleDie()
     {
+
         SwitchState(States[EENEMYSTATE.DEAD]);
+
+        MonsterSoundManager.Instance.PlayMonsterDie(MonsterData.monsterType, EnemyAIController.AudioSource);
     }
     private void HandleTakeDamage()
     {
@@ -68,6 +71,8 @@ public class EnemyStateMachine : StateMachine
            {
                Animator.SetLayerWeight(1, 1);
            }
+
+        MonsterSoundManager.Instance.PlayMonsterDamage(MonsterData.monsterType, EnemyAIController.AudioSource);
     }
 
 }
