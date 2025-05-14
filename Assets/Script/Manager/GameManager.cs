@@ -91,7 +91,8 @@ public class GameManager : Singleton<GameManager>
 
     public void DelayFadeOut()
     {
-       // Debug.Log("??");
+        // Debug.Log("??");
+        Time.timeScale = 0f;
         UIManager.Instance.FadeOutUI("Loading");
         /*
         foreach (GameObject obj in UIManager.Instance.uiObjects)
@@ -168,11 +169,14 @@ public class GameManager : Singleton<GameManager>
         PlayerController.Instance.GetComponent<BaseStat>().Healed(10000000);
         PlayerController.Instance.transform.position = new Vector3(0, 0, 0);
 
-        foreach (var key in skillLevelSystem.changedSkillData.Keys)
+
+        skillLevelSystem.Init_Skill();
+        /*
+        foreach (var key in skillLevelSystem.skillData.Keys)
         {
             skillLevelSystem.changedSkillData[key].level = 0;
         }
-
+        */
         foreach(Transform child in PlayerController.Instance.transform)
         {
             if (child.CompareTag("Skill"))
