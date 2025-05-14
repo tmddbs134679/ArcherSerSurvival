@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3623409735798238707}
   - component: {fileID: 3436275035603491341}
   m_Layer: 0
-  m_Name: WarningZone
+  m_Name: MeteoWarningZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
