@@ -30,8 +30,6 @@ private bool justReflected = false;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle-90);
 
-            if (!justReflected)
-        rb.velocity = angleDirection * Data.speed;
         StartCoroutine(AngleDirDelay());
       transform.Rotate(Vector3.forward, Data.rotateSpeed * Time.fixedDeltaTime); //?袁ⓥ봺???癒?퍥 ???읈
     }
@@ -44,21 +42,7 @@ private bool justReflected = false;
             StartCoroutine(WrappingInvokeDelay(0f));
         }
 
-            if (collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
-    {
-        Vector2 incoming = rb.velocity.normalized;
-       RaycastHit2D hit = Physics2D.Raycast(transform.position, incoming, 1f, LayerMask.GetMask("Wall"));
-       // RaycastHit2D hit = Physics2D.Raycast(transform.position, incoming, Data.speed * Time.fixedDeltaTime *0.1f, LayerMask.GetMask("Wall"));
 
-        if (hit.collider != null)
-        {
-            Vector2 normal = hit.normal;
-            Vector2 reflect = Vector2.Reflect(incoming, normal);
-            angleDirection = reflect.normalized;
-                        justReflected = true;
-                                    StartCoroutine(ResetReflectFlag());
-        }
-    }
     }
     IEnumerator ResetReflectFlag()
 {
