@@ -1603,6 +1603,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2573681102303498941}
+  - component: {fileID: 7383136987287347540}
+  - component: {fileID: 8911874907658987965}
   m_Layer: 0
   m_Name: BossSpawnPoint
   m_TagString: Untagged
@@ -1625,6 +1627,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 112272097503421144}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7383136987287347540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5353566071900018402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f396bf5bfa26b7419c1306e67c1fdf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterID: 2
+  spawnMonsterCount: 1
+--- !u!114 &8911874907658987965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5353566071900018402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd725ebf1d261ee4ba8d8f168b24f33b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnAreaRadius: 0
 --- !u!1 &6492359740362212138
 GameObject:
   m_ObjectHideFlags: 0
