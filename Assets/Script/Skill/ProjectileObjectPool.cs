@@ -7,7 +7,7 @@ using UnityEngine.Pool;
 public class ProjectileObjectPool : MonoBehaviour
 {
     public static ProjectileObjectPool Instance { get; private set; }
-    public GameObject[] projectilePrefabs; // 여러 종류의 프리팹
+    public GameObject[] projectilePrefabs; // ?щ윭 醫낅쪟???꾨━??
 
     private Dictionary<string, ObjectPool<GameObject>> pools = new Dictionary<string, ObjectPool<GameObject>>();
 
@@ -27,7 +27,7 @@ public class ProjectileObjectPool : MonoBehaviour
                  () =>
                  {
                      var obj = Instantiate(prefab);
-                     obj.transform.SetParent(this.transform); //오브젝트풀 밑으로 투사체 하위파일 생성
+                     obj.transform.SetParent(this.transform); //?ㅻ툕?앺듃? 諛묒쑝濡??ъ궗泥??섏쐞?뚯씪 ?앹꽦
                      return obj;
                  },
                  obj => obj.SetActive(true),
@@ -39,7 +39,7 @@ public class ProjectileObjectPool : MonoBehaviour
         }
     }
 
-    // 풀에서 가져오기
+    // ??먯꽌 媛?몄삤湲?
     public GameObject Get(string prefabName)
     {
         if (pools.TryGetValue(prefabName, out var pool))
@@ -49,7 +49,7 @@ public class ProjectileObjectPool : MonoBehaviour
 
         }
 
-        Debug.LogWarning($"풀에 {prefabName}이(가) 없습니다!");
+        Debug.LogWarning($"???{prefabName}??媛) ?놁뒿?덈떎!");
         return null;
     }
 
@@ -64,7 +64,7 @@ private IEnumerator ReleaseAfterDelay(string prefabName, GameObject obj, float d
     Release(prefabName, obj);
 }
 
-    // 풀에서반환하기
+    // ??먯꽌諛섑솚?섍린
     public void Release(string prefabName, GameObject obj)
     {
         if (pools.TryGetValue(prefabName, out var pool))
@@ -73,7 +73,7 @@ private IEnumerator ReleaseAfterDelay(string prefabName, GameObject obj, float d
         }
         else
         {
-            Destroy(obj); // 없으면 파괴
+            Destroy(obj); // ?놁쑝硫??뚭눼
         }
     }
 }

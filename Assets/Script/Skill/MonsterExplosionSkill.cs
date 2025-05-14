@@ -40,13 +40,13 @@ public class MonsterExplosionSkill : ExplosionSkill
         {
             GameObject TargetTemp = null;
 
-            if (SkillOwner.layer == LayerMask.NameToLayer("Player")) //SkillOwner가 플레이어일시 타겟 탐색
+            if (SkillOwner.layer == LayerMask.NameToLayer("Player")) //SkillOwner媛 ?뚮젅?댁뼱?쇱떆 ?寃??먯깋
             {
                 TargetTemp = SkillOwner.GetComponent<PlayerTargeting>().GetClosestEnemy()?.gameObject;
             }
             else
             {
-                TargetTemp = GetComponent<EnemyStateMachine>().Player;//아닐시 몬스터
+                TargetTemp = GetComponent<EnemyStateMachine>().Player;//?꾨땺??紐ъ뒪??
             }
             if (TargetTemp == null) yield break;
             Fire(i, SkillOwner, TargetTemp);

@@ -173,8 +173,10 @@ public class GameManager : Singleton<GameManager>
         roomCount = 1;
         enemyCount = 0;
         PlayerController.Instance.GetComponent<BaseStat>().Healed(10000000);
+        PlayerController.Instance.GetComponentInChildren<Animator>().SetLayerWeight(2, 0);
         PlayerController.Instance.transform.position = new Vector3(0, 0, 0);
 
+        MonsterPoolManager.Instance.AllObjectOff();
 
         skillLevelSystem.Init_Skill();
         /*
