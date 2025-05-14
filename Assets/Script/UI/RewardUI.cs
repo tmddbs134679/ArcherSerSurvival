@@ -12,7 +12,7 @@ public class RewardUI : BaseUI
     public Sprite[] images;
 
     public Dictionary<string, Sprite> weaponImage = new Dictionary<string, Sprite>();
-
+    //test
     [SerializeField]
     private Image[] icon;
     [SerializeField] private Text[] name;
