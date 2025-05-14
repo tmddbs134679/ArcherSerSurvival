@@ -12,37 +12,20 @@ public class HpBarUI : MonoBehaviour
 
     private void Awake()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-        SceneManager.sceneUnloaded += OnSceneUnloaded;
-
-    }
-    private void OnDestroy()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-        SceneManager.sceneUnloaded -= OnSceneUnloaded;
-    }
-
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
         baseStat = this.GetComponentInParent<BaseStat>();
         hpBar = this.GetComponent<Image>();
         baseStat.OnHpChanged += OnHpChanged;
     }
 
-    private void OnSceneUnloaded(Scene scene)
+    private void OnDestroy()
     {
         baseStat.OnHpChanged -= OnHpChanged;
     }
 
-
     private void Start()
     {
         UpdateHpBar();
-       // Debug.Log("HpBar");
-
-
     }
-
 
     private void OnHpChanged()
     {
