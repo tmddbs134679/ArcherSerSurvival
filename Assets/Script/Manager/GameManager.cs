@@ -89,7 +89,7 @@ public class GameManager : Singleton<GameManager>
             SoundManager.Instance.PlayDungeonBGM();
         }
 
-        
+        Time.timeScale = 1.0f;
 
 
         Invoke("DelayFadeOut", 0.5f);
@@ -101,7 +101,7 @@ public class GameManager : Singleton<GameManager>
     public void DelayFadeOut()
     {
 
-
+        
         if (SceneManager.GetActiveScene().name != "LobbyScene")
         {
             Time.timeScale = 0f;
@@ -237,7 +237,10 @@ public class GameManager : Singleton<GameManager>
     public void GameOver()
     {
         //UIManager.Instance.ShowUI("GameOverUI");
+        UIManager.Instance.HideUI("Reward");
         roomCount = 6;
+        Time.timeScale = 0f;
+        ProjectileObjectPool.Instance.AllObjectOff();
         UIManager.Instance.ShowUI("Clear");
 
     }
