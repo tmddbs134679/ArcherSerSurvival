@@ -71,6 +71,8 @@ public class ProjectileSkill : BaseSkill
 
     public void Fire(int count,GameObject SkillOwner,GameObject Target)
     {
+
+        SkillOwner.GetComponentInChildren<WeaponController>().AttackAni();
         //serialname
         GameObject projectile = ProjectileObjectPool.Instance.Get(projectilePrefab.name); 
 
@@ -91,7 +93,7 @@ public class ProjectileSkill : BaseSkill
             
               if (SkillOwner.layer == LayerMask.NameToLayer("Player")) //SkillOwner???ル봿?? ?????????욱룑???嚥싲갭큔?댁빢彛??????????
               {
-                  TargetTemp = SkillOwner.GetComponent<PlayerTargeting>().GetClosestEnemy()?.gameObject;
+                TargetTemp = SkillOwner.GetComponent<PlayerTargeting>().GetClosestEnemy()?.gameObject;
               }
             else
             {
