@@ -88,7 +88,7 @@ public class GameManager : Singleton<GameManager>
             Init_GameManager();   
             SoundManager.Instance.PlayDungeonBGM();
         }
-
+        ItemPool.Instance.AllObjectOff();
         Time.timeScale = 1.0f;
 
 

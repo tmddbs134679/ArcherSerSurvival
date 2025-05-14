@@ -76,5 +76,15 @@ public class ItemPool : Singleton<ItemPool>
         obj.SetActive(false);  
         itemPool[key].Enqueue(obj);  
     }
+
+    public void AllObjectOff()
+    {
+        foreach (Transform child in gameObject.transform)
+        {
+            child.gameObject.SetActive(false);
+            itemPool[child.gameObject.name.Substring(0, child.gameObject.name.Length - "(Clone)".Length)].Enqueue(child.gameObject);
+        }
+
+    }
 }
 
