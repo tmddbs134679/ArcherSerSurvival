@@ -236,6 +236,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Doc
       objectReference: {fileID: 0}
+    - target: {fileID: 6800338950794716611, guid: 32856fc77e9d95b42a58fa23aa959ea0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1703,7 +1707,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1305036215
 Transform:
   m_ObjectHideFlags: 0
@@ -3605,7 +3609,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Animator>k__BackingField: {fileID: 2898989112228267531}
-  <SpriteRenderers>k__BackingField: []
   <MonsterData>k__BackingField: {fileID: 11400000, guid: a568ce374bda35741bd3e73397f3130b, type: 2}
   <Player>k__BackingField: {fileID: 0}
   <EnemyStat>k__BackingField: {fileID: 996183185028258254}
@@ -4092,3 +4095,5 @@ SceneRoots:
   - {fileID: 1228729414}
   - {fileID: 66258851}
   - {fileID: 1305036215}
+  - {fileID: 732925698}
+  - {fileID: 1916483180}

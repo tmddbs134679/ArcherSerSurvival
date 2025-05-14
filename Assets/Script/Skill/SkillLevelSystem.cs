@@ -10,7 +10,7 @@ public class SkillLevelSystem : MonoBehaviour
 
     public ProjectileData[] skillDataObject;
 
-    Dictionary<string, ProjectileData> skillData = new Dictionary<string, ProjectileData>();
+    public Dictionary<string, ProjectileData> skillData = new Dictionary<string, ProjectileData>();
     public Dictionary<string, ChangedSkillData> changedSkillData = new Dictionary<string, ChangedSkillData>();
 
     
@@ -19,10 +19,18 @@ public class SkillLevelSystem : MonoBehaviour
 
     private void Awake()
     {
+
+
+        Init_Skill();
+    }
+
+    public void Init_Skill()
+    {
         skillDataObject = Resources.LoadAll<ProjectileData>("Prefabs/Skill/Data");
+        skillData = new Dictionary<string, ProjectileData>();
+        changedSkillData = new Dictionary<string, ChangedSkillData>();
 
-
-        foreach(var temp in skillDataObject)
+        foreach (var temp in skillDataObject)
         {
             skillData.Add(temp.name.Substring(0, temp.name.Length - "Data".Length), temp);
         }
@@ -52,11 +60,7 @@ public class SkillLevelSystem : MonoBehaviour
             newData.hormingTurnDelay = skillData[key].hormingTurnDelay;
             changedSkillData.Add(key, newData);
         }
-
-
     }
-
-
 
     private void Start()
     {
