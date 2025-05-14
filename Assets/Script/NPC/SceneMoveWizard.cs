@@ -4,10 +4,10 @@ using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TurorialWizard : MonoBehaviour
+public class SceneMoveWizard : MonoBehaviour
 {
     [SerializeField]
-    private string tutorialSceneName;
+    private string sceneName;
     NPCController controller;
 
     private void Start()
@@ -21,6 +21,6 @@ public class TurorialWizard : MonoBehaviour
 
     public void EnterTutoral(GameObject player)
     {
-        SceneManager.LoadScene(tutorialSceneName);
+        SceneManager.LoadScene(sceneName);
     }
 }
