@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
-
+using System;
 
 
 public class ExplosionSkill : BaseSkill
 {
-    
+    public bool RandomCheck;
+    public static event Action<GameObject,float> OnExplosionSkillFired;
+
+
     protected override void Start()
     {
+
         SceneManager.sceneLoaded += OnSceneLoaded;
         Init();
     }
@@ -26,18 +30,19 @@ public class ExplosionSkill : BaseSkill
     }
 
     protected override void Init()
-{
-    if (gameObject.GetComponentInParent<PlayerController>() != null)
     {
-        SkillOwner = PlayerController.Instance.gameObject;
+
+        if (gameObject.GetComponentInParent<PlayerController>() != null)
+        {
+            SkillOwner = PlayerController.Instance.gameObject;
+        }
+        else
+        {
+            SkillOwner = gameObject;
+
+        }
+        SetSkillData();//기본 스탯 설정
     }
-    else
-    {
-        SkillOwner = gameObject;
-        
-    }
-            SetSkillData();//기본 스탯 설정
-}
 
 
     public override void SetSkillData()
@@ -69,38 +74,46 @@ public class ExplosionSkill : BaseSkill
 
     }
 
-    public void Fire(int count,GameObject SkillOwner,GameObject Target)
+    public void Fire(int count, GameObject SkillOwner, GameObject Target)
     {
-    //  랜덤 위치 오프셋
-    float radius = 5f; // 폭발 반경
-    Vector2 randomOffset = Random.insideUnitCircle * radius;
+        //  랜덤 위치 오프셋
+        float radius = 5f; // 폭발 반경
+        Vector2 randomOffset = UnityEngine.Random.insideUnitCircle * radius;
 
-    //  최종 위치 계산
-    Vector2 spawnPosition = (Vector2)SkillOwner.transform.position + randomOffset;
+        //  최종 위치 계산
+        Vector2 spawnPosition = (Vector2)SkillOwner.transform.position + randomOffset;
 
-    //  오브젝트 가져오기
-    GameObject projectile = ProjectileObjectPool.Instance.Get(projectilePrefab.name);
-    projectile.transform.position = spawnPosition;
+        //  오브젝트 가져오기
+        GameObject projectile = ProjectileObjectPool.Instance.Get(projectilePrefab.name);
+        if(RandomCheck)
+        {
+        projectile.transform.position =Target.transform.position;//타겟 위치 폭발
+        }
+        else
+        {
+       projectile.transform.position = spawnPosition;//랜덤 위치 폭발
+        }
         projectile.transform.rotation = Quaternion.identity;
-        projectile.GetComponent<Explosion>().Init(SkillOwner,Target,Data);
+        projectile.GetComponent<Explosion>().Init(SkillOwner, Target,Data);
+                                      OnExplosionSkillFired?.Invoke(projectile,Data.duration);
     }
 
     protected IEnumerator FireWithDelay()
     {
         for (int i = 0; i < Data.count; i++)
         {
-            GameObject TargetTemp=null;
-            
-              if (SkillOwner.layer == LayerMask.NameToLayer("Player")) //SkillOwner가 플레이어일시 타겟 탐색
-              {
-                  TargetTemp = SkillOwner.GetComponent<PlayerTargeting>().GetClosestEnemy()?.gameObject;
-              }
+            GameObject TargetTemp = null;
+
+            if (SkillOwner.layer == LayerMask.NameToLayer("Player")) //SkillOwner가 플레이어일시 타겟 탐색
+            {
+                TargetTemp = SkillOwner.GetComponent<PlayerTargeting>().GetClosestEnemy()?.gameObject;
+            }
             else
             {
                 TargetTemp = GetComponent<EnemyStateMachine>().Player;//아닐시 몬스터
             }
             if (TargetTemp == null) yield break;
-            Fire(i,SkillOwner,TargetTemp);
+            Fire(i, SkillOwner, TargetTemp);
             yield return new WaitForSeconds(individualFireRate);
 
         }

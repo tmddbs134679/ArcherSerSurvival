@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -5,7 +7,7 @@ using UnityEngine.Pool;
 public class ProjectileObjectPool : MonoBehaviour
 {
     public static ProjectileObjectPool Instance { get; private set; }
-    public GameObject[] projectilePrefabs; // ?щ윭 醫낅쪟???꾨━??
+    public GameObject[] projectilePrefabs; // 여러 종류의 프리팹
 
     private Dictionary<string, ObjectPool<GameObject>> pools = new Dictionary<string, ObjectPool<GameObject>>();
 
@@ -25,7 +27,7 @@ public class ProjectileObjectPool : MonoBehaviour
                  () =>
                  {
                      var obj = Instantiate(prefab);
-                     obj.transform.SetParent(this.transform); //?ㅻ툕?앺듃? 諛묒쑝濡??ъ궗泥??섏쐞?뚯씪 ?앹꽦
+                     obj.transform.SetParent(this.transform); //오브젝트풀 밑으로 투사체 하위파일 생성
                      return obj;
                  },
                  obj => obj.SetActive(true),
@@ -37,7 +39,7 @@ public class ProjectileObjectPool : MonoBehaviour
         }
     }
 
-    // ??먯꽌 媛?몄삤湲?
+    // 풀에서 가져오기
     public GameObject Get(string prefabName)
     {
         if (pools.TryGetValue(prefabName, out var pool))
@@ -47,11 +49,22 @@ public class ProjectileObjectPool : MonoBehaviour
 
         }
 
-        Debug.LogWarning($"???{prefabName}??媛) ?놁뒿?덈떎!");
+        Debug.LogWarning($"풀에 {prefabName}이(가) 없습니다!");
         return null;
     }
 
-    // ??먯꽌諛섑솚?섍린
+    public void ReleaseDelayed(string prefabName, GameObject obj, float delay)
+{
+    StartCoroutine(ReleaseAfterDelay(prefabName, obj, delay));
+}
+
+private IEnumerator ReleaseAfterDelay(string prefabName, GameObject obj, float delay)
+{
+    yield return new WaitForSeconds(delay);
+    Release(prefabName, obj);
+}
+
+    // 풀에서반환하기
     public void Release(string prefabName, GameObject obj)
     {
         if (pools.TryGetValue(prefabName, out var pool))
@@ -60,7 +73,7 @@ public class ProjectileObjectPool : MonoBehaviour
         }
         else
         {
-            Destroy(obj); // ?놁쑝硫??뚭눼
+            Destroy(obj); // 없으면 파괴
         }
     }
 }

@@ -54,9 +54,9 @@ public class GameManager : Singleton<GameManager>
 
             lodingObject = GameObject.Find("Loading");
             
-            //디버그
-            //코루틴
-            //인보크
+            //?붾쾭洹?
+            //肄붾（??
+            //?몃낫??
             
         }
         
@@ -77,7 +77,7 @@ public class GameManager : Singleton<GameManager>
 
 
         Invoke("DelayFadeOut", 0.5f);
-
+        Invoke("CheckEnemy", 1.5f);
         
 
     }
