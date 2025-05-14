@@ -15,7 +15,7 @@ public class EnemyDeadState : EnemyBaseState
 
     public override void Enter()
     {
-        //Debug.Log("dead");
+        stateMachine.gameObject.GetComponent<BoxCollider2D>().enabled = false;
     }
 
  
@@ -34,7 +34,5 @@ public class EnemyDeadState : EnemyBaseState
     public override void Exit()
     {
         MonsterPoolManager.Instance.ReturnObject(stateMachine.gameObject, stateMachine.MonsterData.monsterId);
-        
-
     }
 }
