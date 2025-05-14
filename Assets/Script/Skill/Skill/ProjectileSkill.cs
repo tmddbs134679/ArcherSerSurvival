@@ -71,8 +71,8 @@ public class ProjectileSkill : BaseSkill
 
     public void Fire(int count,GameObject SkillOwner,GameObject Target)
     {
-
-        SkillOwner.GetComponentInChildren<WeaponController>().AttackAni();
+        if(SkillOwner.GetComponentInChildren<WeaponController>() != null)
+            SkillOwner.GetComponentInChildren<WeaponController>().AttackAni();
         //serialname
         GameObject projectile = ProjectileObjectPool.Instance.Get(projectilePrefab.name); 
 

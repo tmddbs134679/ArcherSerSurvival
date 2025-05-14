@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f396bf5bfa26b7419c1306e67c1fdf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterID: 0
-  spawnMonsterCount: 0
+  monsterID: Doc
+  spawnMonsterCount: 2
 --- !u!114 &9166957888436131522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,8 +105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f396bf5bfa26b7419c1306e67c1fdf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterID: 0
-  spawnMonsterCount: 0
+  monsterID: Goblin
+  spawnMonsterCount: 2
 --- !u!114 &116230756605316424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6030,8 +6030,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f396bf5bfa26b7419c1306e67c1fdf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterID: 0
-  spawnMonsterCount: 0
+  monsterID: Goblin
+  spawnMonsterCount: 3
 --- !u!114 &7227958497216469213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6090,8 +6090,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f396bf5bfa26b7419c1306e67c1fdf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterID: 0
-  spawnMonsterCount: 1
+  monsterID: Doc
+  spawnMonsterCount: 3
 --- !u!114 &3438733771881823365
 MonoBehaviour:
   m_ObjectHideFlags: 0

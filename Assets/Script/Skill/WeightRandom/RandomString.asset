@@ -20,6 +20,6 @@ MonoBehaviour:
   - Serialname: Meteo
     weight: 0
   - Serialname: Arrow
-    weight: 1000
+    weight: 10
   - Serialname: Ice
-    weight: 0
+    weight: 10
