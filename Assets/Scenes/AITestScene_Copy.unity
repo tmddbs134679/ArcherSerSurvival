@@ -339,6 +339,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dafcbc35e2f08154da26dd3404b028a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &164677691 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6834186963054561962, guid: 2f7168b1290b13248a574b7b9a5f4a18, type: 3}
+  m_PrefabInstance: {fileID: 474661236}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &164677699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164677691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5619bc38914a4418ccdb3225a57f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patrolAxis: 2
+  patrolDistance: 3
 --- !u!1 &168225842
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,9 +554,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2085658003896008343, guid: 2f7168b1290b13248a574b7b9a5f4a18, type: 3}
+      propertyPath: <EnemyAIController>k__BackingField
+      value: 
+      objectReference: {fileID: 164677699}
     - target: {fileID: 3638032670598904044, guid: 2f7168b1290b13248a574b7b9a5f4a18, type: 3}
       propertyPath: m_FillAmount
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6623340214887557354, guid: 2f7168b1290b13248a574b7b9a5f4a18, type: 3}
+      propertyPath: maxRushCount
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6834186963054561962, guid: 2f7168b1290b13248a574b7b9a5f4a18, type: 3}
       propertyPath: m_Name
@@ -548,9 +575,13 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2739199317743147875, guid: 2f7168b1290b13248a574b7b9a5f4a18, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6834186963054561962, guid: 2f7168b1290b13248a574b7b9a5f4a18, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 164677699}
   m_SourcePrefab: {fileID: 100100000, guid: 2f7168b1290b13248a574b7b9a5f4a18, type: 3}
 --- !u!1 &556896793
 GameObject:

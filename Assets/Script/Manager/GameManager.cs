@@ -54,9 +54,9 @@ public class GameManager : Singleton<GameManager>
 
             lodingObject = GameObject.Find("Loading");
             
-            //디버그
-            //코루틴
-            //인보크
+            //?붾쾭洹?
+            //肄붾（??
+            //?몃낫??
             
         }
         
@@ -77,14 +77,14 @@ public class GameManager : Singleton<GameManager>
 
 
         Invoke("DelayFadeOut", 0.5f);
-
+        Invoke("CheckEnemy", 1.5f);
         
 
     }
 
     public void DelayFadeOut()
     {
-        Debug.Log("??");
+       // Debug.Log("??");
         UIManager.Instance.FadeOutUI("Loading");
         /*
         foreach (GameObject obj in UIManager.Instance.uiObjects)
@@ -115,7 +115,7 @@ public class GameManager : Singleton<GameManager>
     }
     public void CreateRoom()
     {
-        Debug.Log("Create Room");
+        //Debug.Log("Create Room");
         if (roomCount % 5 == 0)
         {
             Instantiate(bossRooms[UnityEngine.Random.RandomRange(0, bossRooms.Length)]);

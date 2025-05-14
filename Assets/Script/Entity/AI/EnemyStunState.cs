@@ -8,14 +8,14 @@ public class EnemyStunState : EnemyBaseState
     private const float AnimatorDampTime = 0.1f;
     private const float CrossFadeDuration = 0.1f;
 
-    private float duration = 1f;
+    private float duration = 0.3f;
 
     public EnemyStunState(EnemyStateMachine stateMachine) : base(stateMachine) { }
 
     public override void Enter()
     {
-        Debug.Log("Stun");
-        duration = 1f;
+        //Debug.Log("Stun");
+        duration = 0.3f;
         stateMachine.Animator.CrossFadeInFixedTime(StunHas, CrossFadeDuration);
     }
 

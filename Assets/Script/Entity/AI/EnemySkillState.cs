@@ -17,7 +17,7 @@ public class EnemySkillState : EnemyBaseState
 
     public override void Enter()
     {
-        Debug.Log("Skill");
+        //Debug.Log("Skill");
 
         int idx = Random.Range(0, stateMachine.Skills.Count);
         SkillHas = stateMachine.Skills[idx].animationName;

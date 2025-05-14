@@ -5234,6 +5234,7 @@ GameObject:
   - component: {fileID: 3903241127431373368}
   - component: {fileID: 5874006431400421119}
   - component: {fileID: 5906359006596787709}
+  - component: {fileID: 9157291617012527266}
   m_Layer: 6
   m_Name: MainSprite
   m_TagString: Untagged
@@ -5332,6 +5333,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &9157291617012527266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6152374957737298993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9b20604b46a745449f9916cd7a0c5ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderers: []
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  duration: 0.1
 --- !u!1 &6637417695399940568
 GameObject:
   m_ObjectHideFlags: 0
@@ -5430,6 +5446,7 @@ GameObject:
   - component: {fileID: 5509344942044089138}
   - component: {fileID: 7250908102184212231}
   - component: {fileID: 3987905602972651943}
+  - component: {fileID: 1510997552760728133}
   m_Layer: 6
   m_Name: Ogre
   m_TagString: Enemy
@@ -5476,7 +5493,7 @@ MonoBehaviour:
   <EnemyStat>k__BackingField: {fileID: 5509344942044089138}
   <Skills>k__BackingField:
   - {fileID: 6623340214887557354}
-  <EnemyAIController>k__BackingField: {fileID: 0}
+  <EnemyAIController>k__BackingField: {fileID: 1510997552760728133}
   <CanAttack>k__BackingField: 1
   <CanChasing>k__BackingField: 1
   <CanStun>k__BackingField: 0
@@ -5593,6 +5610,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0178916, y: 1.554641}
   m_EdgeRadius: 0
+--- !u!114 &1510997552760728133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6834186963054561962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5619bc38914a4418ccdb3225a57f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patrolAxis: 2
+  patrolDistance: 3
 --- !u!1 &7046706323802497083
 GameObject:
   m_ObjectHideFlags: 0

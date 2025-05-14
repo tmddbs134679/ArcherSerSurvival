@@ -87,7 +87,7 @@ public class PlayerController : Singleton<PlayerController>
     {
         isDodging = true;
         animator.SetBool("IsDodge", true);
-        animator.speed = 8/duration;
+        animator.speed = 1/duration;
         playerStat.isInvincible = true;
         sfxControl.OnDodge();
         isDodgeCoolDown = true;

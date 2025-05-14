@@ -10,12 +10,12 @@ public class CustomButton : Button
     {
         base.Awake();
         //gameObject.GetComponent<UIManager>
-        Debug.Log(gameObject);
+       // Debug.Log(gameObject);
         onClick.AddListener(() => UIManager.Instance.ToggleUI(gameObject.name));
     }
     public override void OnSubmit(BaseEventData eventData)
     {
-        // ¿£ÅÍ¹«½Ã
+        // ì—”í„°ë¬´ì‹œ
         if (eventData is PointerEventData pointerEventData)
         {
             return;

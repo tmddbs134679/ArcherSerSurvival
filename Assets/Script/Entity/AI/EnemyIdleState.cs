@@ -15,7 +15,7 @@ public class EnemyIdleState : EnemyBaseState
     {
         timer = 0;
         idleTime = Random.Range(2, 3);
-        Debug.Log("Idle");
+       // Debug.Log("Idle");
         stateMachine.Animator.CrossFadeInFixedTime(IdleHas, CrossFadeDuration);
   
     }
