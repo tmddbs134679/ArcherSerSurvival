@@ -54,9 +54,9 @@ public class GameManager : Singleton<GameManager>
 
             lodingObject = GameObject.Find("Loading");
             
-            //????椰?????곗뿪???
-            //?????諛몃마?????
-            //??饔낅떽?????怨뚮옩鴉???
+            //????濾?????怨쀫역???
+            //?????獄쏅챶留?????
+            //??耀붾굝???????⑤슢?⑶큺???
             
         }
         
@@ -76,6 +76,12 @@ public class GameManager : Singleton<GameManager>
             AchievementManager.Instance.currentKillCnt = new Dictionary<string, int>();
             SoundManager.Instance.PlayTitleBGM();
         }
+        
+        else if (SceneManager.GetActiveScene().name == "InfiniteModeScene")
+        {
+
+        }
+        
         else
         {
             Init_GameManager();   
@@ -93,26 +99,35 @@ public class GameManager : Singleton<GameManager>
 
     public void DelayFadeOut()
     {
-        if (SceneManager.GetActiveScene().name != "LobbyScene")
+        if (SceneManager.GetActiveScene().name == "InfiniteModeScene")
         {
-            Time.timeScale = 0f;
-        }
-        // Debug.Log("??");
 
-        UIManager.Instance.FadeOutUI("Loading");
-        /*
-        foreach (GameObject obj in UIManager.Instance.uiObjects)
-        {
-            if (obj.name == "Loading")
-            {
-                Debug.Log("??");
-                UIManager.Instance.FadeOutUI("Loading");
-                return;
-            }
         }
-        
-        Invoke("DelayFadeOut", 0.5f);
-        */
+
+        else
+        {
+            if (SceneManager.GetActiveScene().name != "LobbyScene")
+            {
+                Time.timeScale = 0f;
+            }
+            UIManager.Instance.FadeOutUI("Loading");
+            // Debug.Log("??");
+
+
+            /*
+            foreach (GameObject obj in UIManager.Instance.uiObjects)
+            {
+                if (obj.name == "Loading")
+                {
+                    Debug.Log("??");
+                    UIManager.Instance.FadeOutUI("Loading");
+                    return;
+                }
+            }
+
+            Invoke("DelayFadeOut", 0.5f);
+            */
+        }
     }
     private void Init_GameManager()
     {
