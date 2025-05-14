@@ -317,6 +317,7 @@ GameObject:
   - component: {fileID: 3383031003157903501}
   - component: {fileID: 6739273532756901475}
   - component: {fileID: 6766411031945792922}
+  - component: {fileID: 2051212565401719432}
   m_Layer: 0
   m_Name: KnightNPC
   m_TagString: NPC
@@ -485,15 +486,25 @@ MonoBehaviour:
   isSpeak: 0
   outlineSizeOn: 1
   speak_text:
-  - "\uC0C1\uC810\uC740 \uC544\uC9C1 \uAD6C\uD604\uB418\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4"
+  - "\uC5C5\uC801\uC744 \uD655\uC778\uD574\uBCF4\uACA0\uB098?"
   dialog_text:
-  - "\uC0C1\uC810\uC740"
-  - "\uC544\uC9C1"
-  - "\uAD6C\uD604\uB418\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4"
+  - "F : \uC5C5\uC801 \uD655\uC778"
   dialog_index: 0
   onDialogEndEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2051212565401719432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3747810155779725502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49cc9fe99b2144b4f8a23464452c12cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5038917552822452741
 GameObject:
   m_ObjectHideFlags: 0
