@@ -35,7 +35,7 @@ public class ProjectileSkill : BaseSkill
         SkillOwner = gameObject;
         
     }
-            SetSkillData();//??????????????袁ｋ쨨?앭퐲?????μ떜媛?걫???
+            SetSkillData();//????????????ш낄援ο쭛????濚밸Ŧ???
 }
 
 
@@ -71,8 +71,8 @@ public class ProjectileSkill : BaseSkill
 
     public void Fire(int count,GameObject SkillOwner,GameObject Target)
     {
-        if(SkillOwner.GetComponentInChildren<WeaponController>() != null)
-            SkillOwner.GetComponentInChildren<WeaponController>().AttackAni();
+
+        SkillOwner.GetComponentInChildren<WeaponController>().AttackAni();
         //serialname
         GameObject projectile = ProjectileObjectPool.Instance.Get(projectilePrefab.name); 
 
@@ -91,13 +91,13 @@ public class ProjectileSkill : BaseSkill
         {
             GameObject TargetTemp=null;
             
-              if (SkillOwner.layer == LayerMask.NameToLayer("Player")) //SkillOwner?????ル뒌?? ??????????源낆┸????關?쒎첎?嫄??怨룸쵂鶯??????????
+              if (SkillOwner.layer == LayerMask.NameToLayer("Player")) //SkillOwner???ル봿?? ?????????욱룑???嚥싲갭큔?댁빢彛??????????
               {
                 TargetTemp = SkillOwner.GetComponent<PlayerTargeting>().GetClosestEnemy()?.gameObject;
               }
             else
             {
-                TargetTemp = GetComponent<EnemyStateMachine>().Player;//?????獄쏅챶留?????耀붾굝?????????寃밴텥??
+                TargetTemp = GetComponent<EnemyStateMachine>().Player;//?????밸븶?????轅붽틓??????우ク??
             }
             if (TargetTemp == null) yield break;
             Fire(i,SkillOwner,TargetTemp);
