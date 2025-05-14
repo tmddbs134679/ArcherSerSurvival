@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    private ChangedSkillData Data;//??쑴堉??덈뮉 ??沅쀯㎗?곸벥 ?怨쀬뵠??
-    private GameObject Target;//?⑤벀爰????
-    public GameObject Launcher;//獄쏆뮇沅쀯㎗?
-    private Vector2 angleDirection;//??쑴堉??덈뮉 ?곕뗄???⑤벀爰썼쳸?븍샨
-    private Rigidbody2D rb;//?袁ⓥ봺?諭곷립 ??沅쀯㎗?곸벥 ?귐딆췂獄쏅뗀逾?
-    public string serialName;//??已?
+    private ChangedSkillData Data;//???닷젆???덈츎 ??亦낆?럸?怨몃꺄 ??⑥щ턄??
+    private GameObject Target;//??ㅻ??????
+    public GameObject Launcher;//?꾩룇裕뉑쾮??럸?
+    private Vector2 angleDirection;//???닷젆???덈츎 ?怨뺣뾼????ㅻ??곗띁爾?釉띿깿
+    private Rigidbody2D rb;//?熬곣뱿遊?獄?낮由???亦낆?럸?怨몃꺄 ?洹먮봿痍귞뛾?낅???
+    public string serialName;//???藥?
 
     private bool justReflected = false;
     public void Init(GameObject launcher, GameObject target, Vector2 angleDir, ChangedSkillData data)
@@ -26,15 +26,20 @@ public class Projectile : MonoBehaviour
         StartCoroutine(WrappingInvokeDelay(data.duration));
     }
 
-    private void FixedUpdate()//?얠눖?곻㎗?롡봺
+    private void Update()//??좊닑?怨삠럸?濡〓뉴
     {
-      if (!justReflected)
-      {
-            rb.velocity = angleDirection * Data.speed;
-      }
-        transform.Rotate(Vector3.forward, Data.rotateSpeed * Time.fixedDeltaTime); //?袁ⓥ봺???癒?퍥 ???읈
+        if (Data != null)
+        {
+            if (!justReflected)
+            {
+
+                rb.velocity = angleDirection * Data.speed;
+
+            }
+            transform.Rotate(Vector3.forward, Data.rotateSpeed * Time.fixedDeltaTime); //?熬곣뱿遊????????????
+        }
     }
-    void OnTriggerEnter2D(Collider2D collision)//?겸뫖猷??됱뱽 ??
+    void OnTriggerEnter2D(Collider2D collision)//?寃몃쳳????깅굵 ??
     {
 
         if (Target.layer == collision.gameObject.layer)
@@ -54,7 +59,7 @@ public class Projectile : MonoBehaviour
                 Vector2 normal = hit.normal;
                 Vector2 reflect = Vector2.Reflect(incoming, normal);
                 angleDirection = reflect.normalized;
-                    // 회전값 세팅
+                    // ?뚯쟾媛??명똿
     float angle = Mathf.Atan2(angleDirection.y, angleDirection.x) * Mathf.Rad2Deg;
     transform.rotation = Quaternion.Euler(0, 0, angle - 90);
 

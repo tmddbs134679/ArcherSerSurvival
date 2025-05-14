@@ -15,7 +15,7 @@ public class PoolEntry
 public class ProjectileObjectPool : Singleton<ProjectileObjectPool>
 {
    // public static ProjectileObjectPool Instance { get; private set; }
-    public GameObject[] projectilePrefabs; // ?щ윭 醫낅쪟???꾨━??
+    public GameObject[] projectilePrefabs; // ?????ル굝履???袁ⓥ봺??
 
     private Dictionary<string, ObjectPool<GameObject>> pools = new Dictionary<string, ObjectPool<GameObject>>();
 
@@ -30,7 +30,7 @@ public class ProjectileObjectPool : Singleton<ProjectileObjectPool>
                  () =>
                  {
                      var obj = Instantiate(prefab);
-                     obj.transform.SetParent(this.transform); //?ㅻ툕?앺듃? 諛묒쑝濡??ъ궗泥??섏쐞?뚯씪 ?앹꽦
+                     obj.transform.SetParent(this.transform); //??삵닏??븍뱜?? 獄쏅쵐?앮에???沅쀯㎗???륁맄???뵬 ??밴쉐
                      return obj;
                  },
                  obj => obj.SetActive(true),
@@ -42,7 +42,7 @@ public class ProjectileObjectPool : Singleton<ProjectileObjectPool>
         }
     }
 
-    // ??먯꽌 媛?몄삤湲?
+    // ???癒?퐣 揶쎛?紐꾩궎疫?
     public GameObject Get(string prefabName)
     {
         if (pools.TryGetValue(prefabName, out var pool))
@@ -52,7 +52,7 @@ public class ProjectileObjectPool : Singleton<ProjectileObjectPool>
 
         }
 
-        Debug.LogWarning($"???{prefabName}??媛) ?놁뒿?덈떎!");
+        Debug.LogWarning($"????{prefabName}??揶쎛) ??곷뮸??덈뼄!");
         return null;
     }
 
@@ -67,7 +67,7 @@ private IEnumerator ReleaseAfterDelay(string prefabName, GameObject obj, float d
     Release(prefabName, obj);
 }
 
-    // ??먯꽌諛섑솚?섍린
+    // ???癒?퐣獄쏆꼹???띾┛
     public void Release(string prefabName, GameObject obj)
     {
         if (pools.TryGetValue(prefabName, out var pool))
@@ -76,7 +76,21 @@ private IEnumerator ReleaseAfterDelay(string prefabName, GameObject obj, float d
         }
         else
         {
-            Destroy(obj); // ?놁쑝硫??뚭눼
+            Destroy(obj); // ??곸몵筌????댘
         }
+    }
+
+    public void AllObjectOff()
+    {
+        //???뗣뀑 諛뽰쓣 媛?몄??쇱? ?뗣뀑
+
+
+
+        foreach (Transform child in gameObject.transform)
+        {
+            child.gameObject.SetActive(false);
+            pools[child.gameObject.name.Substring(0, child.gameObject.name.Length - "(Clone)".Length)].Release(child.gameObject);
+        }
+
     }
 }

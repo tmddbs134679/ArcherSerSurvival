@@ -42,7 +42,7 @@ public class ExplosionSkill : BaseSkill
             SkillOwner = gameObject;
 
         }
-        SetSkillData();//기본 스탯 설정
+        SetSkillData();//湲곕낯 ?ㅽ꺈 ?ㅼ젙
     }
 
 
@@ -77,22 +77,22 @@ public class ExplosionSkill : BaseSkill
 
     public void Fire(int count, GameObject SkillOwner, GameObject Target)
     {
-        //  랜덤 위치 오프셋
-        float radius = 5f; // 폭발 반경
+        //  ?쒕뜡 ?꾩튂 ?ㅽ봽??
+        float radius = 5f; // ??컻 諛섍꼍
         Vector2 randomOffset = UnityEngine.Random.insideUnitCircle * radius;
 
-        //  최종 위치 계산
+        //  理쒖쥌 ?꾩튂 怨꾩궛
         Vector2 spawnPosition = (Vector2)SkillOwner.transform.position + randomOffset;
 
-        //  오브젝트 가져오기
+        //  ?ㅻ툕?앺듃 媛?몄삤湲?
         GameObject projectile = ProjectileObjectPool.Instance.Get(projectilePrefab.name);
         if(RandomCheck)
         {
-        projectile.transform.position =Target.transform.position;//타겟 위치 폭발
+        projectile.transform.position =Target.transform.position;//?寃??꾩튂 ??컻
         }
         else
         {
-       projectile.transform.position = spawnPosition;//랜덤 위치 폭발
+       projectile.transform.position = spawnPosition;//?쒕뜡 ?꾩튂 ??컻
         }
         projectile.transform.rotation = Quaternion.identity;
         projectile.GetComponent<Explosion>().Init(SkillOwner, Target,Data);
@@ -106,13 +106,13 @@ public class ExplosionSkill : BaseSkill
         {
             GameObject TargetTemp = null;
 
-            if (SkillOwner.layer == LayerMask.NameToLayer("Player")) //SkillOwner가 플레이어일시 타겟 탐색
+            if (SkillOwner.layer == LayerMask.NameToLayer("Player")) //SkillOwner媛 ?뚮젅?댁뼱?쇱떆 ?寃??먯깋
             {
                 TargetTemp = SkillOwner.GetComponent<PlayerTargeting>().GetClosestEnemy()?.gameObject;
             }
             else
             {
-                TargetTemp = GetComponent<EnemyStateMachine>().Player;//아닐시 몬스터
+                TargetTemp = GetComponent<EnemyStateMachine>().Player;//?꾨땺??紐ъ뒪??
             }
             if (TargetTemp == null) yield break;
             Fire(i, SkillOwner, TargetTemp);
