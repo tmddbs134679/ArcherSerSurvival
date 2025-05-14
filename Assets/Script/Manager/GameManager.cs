@@ -54,9 +54,9 @@ public class GameManager : Singleton<GameManager>
 
             lodingObject = GameObject.Find("Loading");
             
-            //????濾?????怨쀫역???
-            //?????獄쏅챶留?????
-            //??耀붾굝???????⑤슢?⑶큺???
+            //????癲??????⑥レ뿭???
+            //??????꾩룆梨띰쭕?????
+            //???遺얘턁????????ㅼ뒧??띤겫???
             
         }
         
@@ -157,9 +157,12 @@ public class GameManager : Singleton<GameManager>
         {
             isOpen = false;
 
+            ProjectileObjectPool.Instance.AllObjectOff();
+
             if (roomCount < 6)
             {
                 isStartLoading = true;
+                
                 UIManager.Instance.FadeInUI("Loading");
             }
             else
@@ -175,6 +178,7 @@ public class GameManager : Singleton<GameManager>
     {
         //LoadingManager.LoadScene("AITestScene");
         PlayerController.Instance.transform.position = new Vector3(0,0,0);
+        
         SceneManager.LoadScene("AITestScene");
     }
 

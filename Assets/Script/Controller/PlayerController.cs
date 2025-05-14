@@ -55,7 +55,7 @@ public class PlayerController : Singleton<PlayerController>
 
     void PlayerMove()
     {
-        // ?猷?餓λ쵐???move ?臾먮짗 x
+        // ???繞벿살탳???move ??얜Ŧ吏?x
         if (isDodging)
         {
             return;
@@ -68,7 +68,7 @@ public class PlayerController : Singleton<PlayerController>
 
         animator.SetBool("isMove", movement.magnitude > 0.1f);
 
-        // ??筌욊낯????춸 ?臾먮짗
+        // ??嶺뚯쉳?????異???얜Ŧ吏?
         if (isMoving)
         {
             Rotate(movement);
@@ -109,7 +109,7 @@ public class PlayerController : Singleton<PlayerController>
             yield return new WaitForFixedUpdate();
         }
 
-        //??곕돗 ?ル굝利???
+        //??怨뺣룛 ??リ턁筌???
         isDodging = false;
         particle.Stop();
         animator.SetBool("IsDodge", false);
