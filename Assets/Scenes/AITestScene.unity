@@ -3402,13 +3402,21 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f8eace003f0474a42918f05cc762efd4, type: 3}
   - {fileID: 21300000, guid: 351d9a2019071244c94a2f7fe9994477, type: 3}
   - {fileID: 21300000, guid: 2e6dbdfe35c78f84391d78fe1414ca40, type: 3}
+  - {fileID: 21300000, guid: 2e6dbdfe35c78f84391d78fe1414ca40, type: 3}
+  - {fileID: 21300000, guid: 2e6dbdfe35c78f84391d78fe1414ca40, type: 3}
+  - {fileID: 21300000, guid: 2e6dbdfe35c78f84391d78fe1414ca40, type: 3}
+  - {fileID: 21300000, guid: 2e6dbdfe35c78f84391d78fe1414ca40, type: 3}
   icon:
   - {fileID: 1522637693}
   - {fileID: 1231647585}
   - {fileID: 2072820773}
+  - {fileID: 2072820773}
+  - {fileID: 2072820773}
   name:
   - {fileID: 1274867092}
   - {fileID: 1842453381}
+  - {fileID: 24022388}
+  - {fileID: 24022388}
   - {fileID: 24022388}
   aniflag: 0
   slotBox: {fileID: 1209963487}

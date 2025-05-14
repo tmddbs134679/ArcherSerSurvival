@@ -40,7 +40,7 @@ public class GameManager : Singleton<GameManager>
     private void HandleMonsterDeath(GameObject monster)
     {
         enemyCount--;
-        MonsterPoolManager.Instance.ReturnObject(monster, int.Parse(monster.name));
+        MonsterPoolManager.Instance.ReturnObject(monster, monster.name);
         //CheckEnemy();
     }
     protected override void Awake()
@@ -54,9 +54,9 @@ public class GameManager : Singleton<GameManager>
 
             lodingObject = GameObject.Find("Loading");
             
-            //????嫄????됰엪???
-            //?????밸븶?????
-            //??轅붽틓????곌램伊???
+            //????椰?????곗뿪???
+            //?????諛몃마?????
+            //??饔낅떽?????怨뚮옩鴉???
             
         }
         
