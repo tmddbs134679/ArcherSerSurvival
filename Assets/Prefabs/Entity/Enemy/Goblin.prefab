@@ -87,8 +87,9 @@ MonoBehaviour:
   <MonsterData>k__BackingField: {fileID: 11400000, guid: a568ce374bda35741bd3e73397f3130b, type: 2}
   <Player>k__BackingField: {fileID: 0}
   <EnemyStat>k__BackingField: {fileID: 996183184537242794}
-  <Skill>k__BackingField: {fileID: 0}
   <Skills>k__BackingField: []
+  <SpriteRenderer>k__BackingField: {fileID: 274657398508050206}
+  <SkillWeight>k__BackingField: {fileID: 0}
   <EnemyAIController>k__BackingField: {fileID: 514072009536943842}
   <CanAttack>k__BackingField: 1
   <CanChasing>k__BackingField: 1
