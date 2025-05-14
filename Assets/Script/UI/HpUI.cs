@@ -22,6 +22,8 @@ public class HpUI : MonoBehaviour
 
     private void OnEnable()
     {
+        UpdateHpBar();
+
         if (enemyStat != null)
             enemyStat.OnTakeDamage += UpdateHpBar;
     }

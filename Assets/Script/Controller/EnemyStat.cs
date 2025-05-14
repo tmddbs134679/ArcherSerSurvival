@@ -9,10 +9,12 @@ public class EnemyStat : BaseStat
     public event Action OnTakeDamage;
     public event Action OnDie;
     // Start is called before the first frame update
-    void Start()
+
+    private void OnEnable()
     {
         currentHp = maxHp;
     }
+ 
 
     // Update is called once per frame
     void Update()

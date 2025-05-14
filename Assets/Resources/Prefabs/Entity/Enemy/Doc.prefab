@@ -262,6 +262,7 @@ MonoBehaviour:
   <Player>k__BackingField: {fileID: 0}
   <EnemyStat>k__BackingField: {fileID: 1783932811612168923}
   <Skills>k__BackingField: []
+  <SpriteRenderer>k__BackingField: {fileID: 2821711444294859596}
   <SkillWeight>k__BackingField: {fileID: 0}
   <EnemyAIController>k__BackingField: {fileID: 2327899744472762287}
   <CanAttack>k__BackingField: 1
