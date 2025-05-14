@@ -669,9 +669,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d48a3d812d5d45e4abf4fce6b5b893ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TitleBGM: {fileID: 0}
-  DungeonBGM: {fileID: 0}
-  BossBGM: {fileID: 0}
+  TitleBGM: {fileID: 8300000, guid: af43128924f05bc4d9e13f21679ebaa2, type: 3}
+  DungeonBGM: {fileID: 8300000, guid: b0605c1107ef3924e92cb2ed4ffa4fa9, type: 3}
+  BossBGM: {fileID: 8300000, guid: b0605c1107ef3924e92cb2ed4ffa4fa9, type: 3}
 --- !u!4 &385486961
 Transform:
   m_ObjectHideFlags: 0
