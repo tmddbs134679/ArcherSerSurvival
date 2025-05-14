@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class ChangedSkillData : MonoBehaviour
+public class ChangedSkillData 
 {
     /*
     public float speed;

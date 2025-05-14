@@ -375,7 +375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serialname: MonsterKnife
   projectilePrefab: {fileID: 480090936706811311, guid: 302381a4d56405f4893e4dd111ccbc0f, type: 3}
-  fireRate: 0.5
+  fireRate: 1.5
   individualFireRate: 0.1
   SkillOwner: {fileID: 0}
   animationName: 0
