@@ -13,6 +13,7 @@ public class InfiniteSpawner : MonoBehaviour
     [SerializeField]
     private float spawnDelay = 5f;
     private float timer = 0f;
+    private int levelUpThreshold = 2;
     private int killCount = 0;
 
     private void Start()
@@ -40,8 +41,9 @@ public class InfiniteSpawner : MonoBehaviour
             SpawnWave();
             timer = 0;
         }
-        if(killCount >= wave * 2)
+        if(killCount >= levelUpThreshold)
         {
+            levelUpThreshold += killCount;
             UIManager.Instance.ShowUI("Reward");
             killCount = 0;
         }
