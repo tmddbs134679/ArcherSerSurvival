@@ -14,7 +14,7 @@ public class PlayerStat : BaseStat
     public float DodgeDuration
     {
         get => dodgeDuration;
-        set => dodgeDuration = Mathf.Clamp(value, 0, 5);
+        set => dodgeDuration = Mathf.Clamp(value, 0, 1);
     }
 
     [SerializeField] float dodgePower = 3f;

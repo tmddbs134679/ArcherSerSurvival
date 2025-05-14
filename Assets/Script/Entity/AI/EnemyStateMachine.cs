@@ -8,8 +8,6 @@ public class EnemyStateMachine : StateMachine
 {
     public Dictionary<EENEMYSTATE, EnemyBaseState> States = new Dictionary<EENEMYSTATE, EnemyBaseState>();
     [field: SerializeField] public Animator Animator { get; private set; }
-
-    [field: SerializeField] public List<SpriteRenderer> SpriteRenderers { get; private set; }
     [field: SerializeField] public MonsterData MonsterData { get; private set; }
     [field: SerializeField] public GameObject Player { get; private set; }
     [field: SerializeField] public EnemyStat EnemyStat { get; private set; }

@@ -13,7 +13,11 @@ public class HpUI : MonoBehaviour
         if (enemyStat == null)
             enemyStat = GetComponentInParent<EnemyStat>();
 
-        
+
+    }
+    private void LateUpdate()
+    {
+        transform.rotation = Quaternion.identity;
     }
 
     private void OnEnable()
@@ -36,4 +40,6 @@ public class HpUI : MonoBehaviour
             hpBar.fillAmount = enemyStat.CurrentHp / enemyStat.MaxHp;
         }
     }
+
+
 }

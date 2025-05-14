@@ -23,3 +23,10 @@ public enum EPATROLAXIS
     ALL
 }
 
+public enum EENEMYTYPE
+{
+    DOC,
+    SKELET,
+    OGRE,
+    GOBLIN,
+}

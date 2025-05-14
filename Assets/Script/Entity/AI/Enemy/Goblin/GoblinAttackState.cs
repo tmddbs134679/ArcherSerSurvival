@@ -21,7 +21,7 @@ public class GoblinAttackState : EnemyAttackState
     }
     public override void Tick(float deltaTime)
     {
-
+        FlipX(stateMachine.Player.transform.position);
     }
 
 
