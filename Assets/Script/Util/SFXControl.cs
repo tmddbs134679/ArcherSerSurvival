@@ -17,7 +17,7 @@ public class SFXControl : MonoBehaviour
         if (audioSource != null && audioClip != null)
         {
             Debug.Log("playOneShot");
-            AudioSource.PlayClipAtPoint(audioClip, PlayerController.Instance.transform.position, 1.0f);
+            AudioSource.PlayClipAtPoint(audioClip,transform.position, 1.0f);
             //audioSource.PlayClip(audioClip);
         }
     }
