@@ -17,7 +17,7 @@ public class ClearUI : BaseUI
 
         foreach(var key in AchievementManager.Instance.currentKillCnt.Keys)
         {
-            text.text += "처치한 적 " + key + " : " + AchievementManager.Instance.currentKillCnt[key].ToString() + "마리";
+            text.text += "泥섏튂????" + key + " : " + AchievementManager.Instance.currentKillCnt[key].ToString() + "留덈━";
         }
         StartCoroutine(Emergence());
 
