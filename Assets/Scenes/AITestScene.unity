@@ -1403,6 +1403,14 @@ PrefabInstance:
       propertyPath: weaponSounds.Array.data[1]
       value: 
       objectReference: {fileID: 8300000, guid: ea415eb48edcbcc408ceaac1796b8cc8, type: 3}
+    - target: {fileID: 8915383414101698250, guid: 86cec8cee33f5594ab57bb8cf11a70b4, type: 3}
+      propertyPath: targetRange.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8915383414101698250, guid: 86cec8cee33f5594ab57bb8cf11a70b4, type: 3}
+      propertyPath: targetRange.y
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3613,6 +3621,7 @@ MonoBehaviour:
   <Player>k__BackingField: {fileID: 0}
   <EnemyStat>k__BackingField: {fileID: 996183185028258254}
   <Skills>k__BackingField: []
+  <SkillWeight>k__BackingField: {fileID: 0}
   <EnemyAIController>k__BackingField: {fileID: 514072010020053894}
   <CanAttack>k__BackingField: 1
   <CanChasing>k__BackingField: 1
