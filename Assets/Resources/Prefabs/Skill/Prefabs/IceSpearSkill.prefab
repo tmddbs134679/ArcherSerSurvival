@@ -51,4 +51,4 @@ MonoBehaviour:
   SkillOwner: {fileID: 0}
   animationName: 0
   skillLevelSystem: {fileID: 0}
-  RandomCheck: 1
+  RandomCheck: 0
