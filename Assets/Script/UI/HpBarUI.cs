@@ -45,7 +45,7 @@ public class HpBarUI : MonoBehaviour
     }
 
 
-    private void OnHpChanged(float currentHp, float maxHp)
+    private void OnHpChanged()
     {
         UpdateHpBar();
     }

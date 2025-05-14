@@ -82,13 +82,13 @@ public class BaseUI : MonoBehaviour
         {
             
             timer += Time.unscaledDeltaTime;
-            float alpha = Mathf.Clamp01(1f - (timer / fadeDuration)); // ??疫?1?????0??怨쀬Ŧ
+            float alpha = Mathf.Clamp01(1f - (timer / fadeDuration)); // ????1?????0????Β??
             image.color = new Color(color.r, color.g, color.b, alpha);
             yield return null;
         }
 
-        image.color = new Color(color.r, color.g, color.b, 0f); // ?熬곣뫗?????筌?
+        image.color = new Color(color.r, color.g, color.b, 0f); // ????썹땟?????癲?
         fadeFlag = false;
-        gameObject.SetActive(false); // UI ?????繹먮봿????嶺뚮씭?꾬쨭??
+        gameObject.SetActive(false); // UI ?????嚥싲갭큔??????꿔꺂???熬곎듑??
     }
 }

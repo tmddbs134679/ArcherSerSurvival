@@ -25,7 +25,15 @@ public class LodingUI : BaseUI
                 //isLoading = false;
                 PlayerController.Instance.transform.position = new Vector3(0, 0, 0);
                 GameManager.Instance.isStartLoading = false;
-                GameManager.Instance.NextSceneLoad();
+
+                if (GameManager.Instance.roomCount < 6)
+                {
+                    GameManager.Instance.NextSceneLoad();
+                }
+                else
+                {
+                    GameManager.Instance.LobbySceneLoad();
+                }
             }
 
         }

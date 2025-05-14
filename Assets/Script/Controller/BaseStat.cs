@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class BaseStat : MonoBehaviour
 {
-    // ?대깽?몃줈 HP 諛?蹂寃??몄텧
-    public event Action<float, float> OnHpChanged;
+    // ??源?紐껋쨮 HP 獄?癰궰野??紐꾪뀱
+    public Action OnHpChanged;
     public event Action OnStatChanged;
 
     [SerializeField] protected float maxHp = 100f;
@@ -26,7 +26,7 @@ public class BaseStat : MonoBehaviour
         set
         {
             currentHp = Mathf.Clamp(value, 0, maxHp);
-            OnHpChanged?.Invoke(currentHp, maxHp);
+            OnHpChanged?.Invoke();
         }
     }
 
@@ -54,7 +54,7 @@ public class BaseStat : MonoBehaviour
 
   
 
-    //hp 珥덇린??
+    //hp ?λ뜃由??
     private void Start()
     {
         CurrentHp = maxHp;

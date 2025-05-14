@@ -1,0 +1,48 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ClearUI : BaseUI
+{
+    public RectTransform UIBox;
+    public float startPosY = 500;
+    public float targetPosY = 0;
+    public float duration = 1f;
+
+    private void OnEnable()
+    {
+        StartCoroutine(Emergence());
+    }
+
+    public IEnumerator Emergence()
+    {
+        float timer = 0f;
+
+        Vector2 startPos = new Vector2(0, startPosY);
+        Vector2 endPos = new Vector2(0, targetPosY);
+
+        UIBox.anchoredPosition = startPos;
+
+        while (timer < duration)
+        {
+            timer += Time.unscaledDeltaTime;
+            float t = Mathf.Clamp01(timer / duration);
+
+            t = Mathf.SmoothStep(0f, 1f, t);
+
+            UIBox.anchoredPosition = Vector2.Lerp(startPos, endPos, t);
+
+            yield return null;
+        }
+
+        UIBox.anchoredPosition = endPos;
+    }
+
+    public void LobbyBtn()
+    {
+        GameManager.Instance.isStartLoading = true;
+        gameObject.SetActive(false);
+        UIManager.Instance.FadeInUI("Loading");
+
+    }
+}

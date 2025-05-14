@@ -7,11 +7,10 @@ using UnityEngine.UIElements;
 
 public class ProjectileSkill : BaseSkill
 {
-    private PlayerSFXControl sfxControl;
+
     protected override void Start()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
-        sfxControl = GetComponentInParent<PlayerSFXControl>();  
         Init();
     }
 
@@ -36,7 +35,7 @@ public class ProjectileSkill : BaseSkill
         SkillOwner = gameObject;
         
     }
-            SetSkillData();//疫꿸퀡????쎄틛 ??쇱젟
+            SetSkillData();//???뚯???????熬곥굥六????繹먮냱??
 }
 
 
@@ -72,6 +71,7 @@ public class ProjectileSkill : BaseSkill
 
     public void Fire(int count,GameObject SkillOwner,GameObject Target)
     {
+        //serialname
         GameObject projectile = ProjectileObjectPool.Instance.Get(projectilePrefab.name); 
 
         projectile.transform.position = SkillOwner.transform.position;
@@ -81,8 +81,6 @@ public class ProjectileSkill : BaseSkill
         Vector2 angleDir = Quaternion.Euler(0, 0, -(Data.angle * Data.count / 2f) + Data.angle * count) * dir; //
 
         projectile.GetComponent<Projectile>().Init(SkillOwner,Target, angleDir, Data);
-
-        sfxControl.OnAttack(projectilePrefab.name);
     }
 
     protected IEnumerator FireWithDelay()
@@ -91,13 +89,13 @@ public class ProjectileSkill : BaseSkill
         {
             GameObject TargetTemp=null;
             
-              if (SkillOwner.layer == LayerMask.NameToLayer("Player")) //SkillOwner揶쎛 ???쟿??곷선??깅뻻 ??野??癒?퉳
+              if (SkillOwner.layer == LayerMask.NameToLayer("Player")) //SkillOwner??醫딆쓧? ????????ㅿ폎???濚밸Ŧ援앾쭛??????????
               {
                   TargetTemp = SkillOwner.GetComponent<PlayerTargeting>().GetClosestEnemy()?.gameObject;
               }
             else
             {
-                TargetTemp = GetComponent<EnemyStateMachine>().Player;//?袁⑤빜??筌뤣딅뮞??
+                TargetTemp = GetComponent<EnemyStateMachine>().Player;//????썹땟?????꿔꺂?????녿쫯??
             }
             if (TargetTemp == null) yield break;
             Fire(i,SkillOwner,TargetTemp);

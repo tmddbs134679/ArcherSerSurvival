@@ -40,7 +40,7 @@ public class WeaponController : MonoBehaviour
         animator.SetTrigger(isAttack);
     }
 
-    // 타겟 감지하면 타겟쪽으로 sprite 회전 및 flip
+    // ?寃?媛먯??섎㈃ ?寃잛そ?쇰줈 sprite ?뚯쟾 諛?flip
     void RotateWeaponToTarget()
     {
         if (playerTargeting == null)
