@@ -1183,8 +1183,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8846842347864100737, guid: 86cec8cee33f5594ab57bb8cf11a70b4, type: 3}
       propertyPath: weaponSounds.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8846842347864100737, guid: 86cec8cee33f5594ab57bb8cf11a70b4, type: 3}
+      propertyPath: weaponSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 2ce2480d17762ee46be467491f6793a9, type: 3}
+    - target: {fileID: 8846842347864100737, guid: 86cec8cee33f5594ab57bb8cf11a70b4, type: 3}
+      propertyPath: weaponSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: ea415eb48edcbcc408ceaac1796b8cc8, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
