@@ -11,6 +11,7 @@ public class AchievementManager : Singleton<AchievementManager>
 
     public Dictionary<string, int> goalKillCnt = new Dictionary<string, int>();
     public Dictionary<string, int> killCnt = new Dictionary<string, int>();
+
     public Dictionary<string, int> currentKillCnt = new Dictionary<string, int>();
 
 

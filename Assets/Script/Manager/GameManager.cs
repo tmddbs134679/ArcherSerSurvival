@@ -175,8 +175,8 @@ public class GameManager : Singleton<GameManager>
         PlayerController.Instance.GetComponent<BaseStat>().Healed(10000000);
         PlayerController.Instance.GetComponentInChildren<Animator>().SetLayerWeight(2, 0);
         PlayerController.Instance.transform.position = new Vector3(0, 0, 0);
-        MonsterPoolManager.Instance.AllObjectOff();
 
+        MonsterPoolManager.Instance.AllObjectOff();
 
         skillLevelSystem.Init_Skill();
         /*
