@@ -21,8 +21,7 @@ public class Projectile : MonoBehaviour
         Data = data;
         rb = GetComponent<Rigidbody2D>();
         GetComponent<SpriteRenderer>().color = data.color;
-                Vector2 dir = (Target.transform.position - Launcher.transform.position).normalized;
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        float angle = Mathf.Atan2(angleDirection.y,angleDirection.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle - 90);
         StartCoroutine(WrappingInvokeDelay(data.duration));
     }
@@ -41,10 +40,10 @@ public class Projectile : MonoBehaviour
         if (Target.layer == collision.gameObject.layer)
         {
             collision.GetComponent<BaseStat>().Damaged(Data.damage);
-            StartCoroutine(WrappingInvokeDelay(0f));
+
         }
 
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Wall")||Target.layer == collision.gameObject.layer)
         {
             Vector2 incoming = rb.velocity.normalized;
             RaycastHit2D hit = Physics2D.Raycast(transform.position, incoming, 1.5f, LayerMask.GetMask("Wall"));
