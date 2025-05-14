@@ -5490,6 +5490,7 @@ MonoBehaviour:
   <Skills>k__BackingField:
   - {fileID: 6623340214887557354}
   - {fileID: 7217894395238620155}
+  <SpriteRenderer>k__BackingField: {fileID: 0}
   <SkillWeight>k__BackingField: {fileID: 11400000, guid: 21f875be3cb358348b1b163e47a26b5a, type: 2}
   <EnemyAIController>k__BackingField: {fileID: 1510997552760728133}
   <CanAttack>k__BackingField: 1
@@ -5615,12 +5616,12 @@ MonoBehaviour:
   serialname: Meteo
   projectilePrefab: {fileID: 7827560360998576179, guid: e526136f01fc83746ab37bd9b2640059, type: 3}
   fireRate: 1
-  individualFireRate: 0
+  individualFireRate: 0.5
   SkillOwner: {fileID: 6834186963054561962}
   animationName: 0
   skillLevelSystem: {fileID: 0}
   RandomCheck: 1
-  fireCount: 5
+  fireCount: 10
 --- !u!114 &6623340214887557354
 MonoBehaviour:
   m_ObjectHideFlags: 0
