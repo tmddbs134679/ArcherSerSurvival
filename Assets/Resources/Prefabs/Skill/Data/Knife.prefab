@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5763316157069405545}
   m_Layer: 9
   m_Name: Knife
-  m_TagString: Untagged
+  m_TagString: Skill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c4674c9b906e3243afca89989a166ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Launcher: {fileID: 0}
   serialName: Knife
 --- !u!212 &7470724474760578296
 SpriteRenderer:

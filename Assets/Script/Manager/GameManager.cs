@@ -54,9 +54,9 @@ public class GameManager : Singleton<GameManager>
 
             lodingObject = GameObject.Find("Loading");
             
-            //?遺얠쒔域?
-            //?꾨뗀竊??
-            //?紐껊궖??
+            //??븐뼚?붷윜?
+            //?袁⑤?塋??
+            //?筌뤾퍓沅??
             
         }
         
@@ -163,7 +163,28 @@ public class GameManager : Singleton<GameManager>
 
     public void LobbySceneLoad()
     {
+        roomCount = 1;
+        enemyCount = 0;
+        PlayerController.Instance.GetComponent<BaseStat>().Healed(10000000);
         PlayerController.Instance.transform.position = new Vector3(0, 0, 0);
+
+        foreach (var key in skillLevelSystem.changedSkillData.Keys)
+        {
+            skillLevelSystem.changedSkillData[key].level = 0;
+        }
+
+        foreach(Transform child in PlayerController.Instance.transform)
+        {
+            if (child.CompareTag("Skill"))
+            {
+                Destroy(child.gameObject);
+            }
+        }
+        PlayerController.Instance.skillList = new List<GameObject>();
+
+
+
+
         SceneManager.LoadScene("LobbyScene");
     }
 

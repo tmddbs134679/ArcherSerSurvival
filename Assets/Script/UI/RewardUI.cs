@@ -27,7 +27,7 @@ public class RewardUI : BaseUI
 
     bool flag = false;
 
-    //??ｋ걞????낅슣?섋땻?
+    //??節뗪콪?????낆뒩??뗫빝?
     private void Awake()
     {
         slotBox = transform.Find("SlotBox").gameObject.GetComponent<CanvasGroup>();
@@ -122,7 +122,7 @@ public class RewardUI : BaseUI
 
         for (int i = 0; i < rewardButtons.Length; i++)
         {
-            int index = i; // ?????? ?????????????諛몃마??潁뺛깺苡?
+            int index = i; // ?????? ?????????????獄쏅챶留??逆곷틳源븃떋?
             rewardButtons[i].onClick.AddListener(() => SelectButton(index));
             rerollButtons[i].onClick.AddListener(() => ReRollButton(index));
         }
