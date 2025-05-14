@@ -3,32 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ClearUI : BaseUI
+public class AchievementEventUI : BaseUI
 {
     public RectTransform UIBox;
-    public float startPosY = 500;
-    public float targetPosY = 0;
+    public float startPosX = 1000;
+    public float targetPosX = 0;
     public float duration = 1f;
     public Text text;
 
     private void OnEnable()
     {
-        text.text = "";
 
-        foreach(var key in AchievementManager.Instance.currentKillCnt.Keys)
-        {
-            text.text += "??? " + key + " : " + AchievementManager.Instance.currentKillCnt[key].ToString() + "筌띾뜄??n";
-        }
+        text.text = AchievementManager.Instance.achievementEvent[AchievementManager.Instance.currentKey];
+
+
+
         StartCoroutine(Emergence());
 
+        Invoke("DelayOff", 2f);
     }
 
     public IEnumerator Emergence()
     {
         float timer = 0f;
 
-        Vector2 startPos = new Vector2(0, startPosY);
-        Vector2 endPos = new Vector2(0, targetPosY);
+        Vector2 startPos = new Vector2(startPosX, 0);
+        Vector2 endPos = new Vector2(targetPosX, 0);
 
         UIBox.anchoredPosition = startPos;
 
@@ -47,11 +47,8 @@ public class ClearUI : BaseUI
         UIBox.anchoredPosition = endPos;
     }
 
-    public void LobbyBtn()
+    public void DelayOff()
     {
-        GameManager.Instance.isStartLoading = true;
         gameObject.SetActive(false);
-        UIManager.Instance.FadeInUI("Loading");
-
     }
 }

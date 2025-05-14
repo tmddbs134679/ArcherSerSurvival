@@ -13,6 +13,18 @@ public class AchievementManager : Singleton<AchievementManager>
     public Dictionary<string, int> killCnt = new Dictionary<string, int>();
     public Dictionary<string, int> currentKillCnt = new Dictionary<string, int>();
 
+
+    public Dictionary<string, bool> achievementFlag = new Dictionary<string, bool>();
+    public Dictionary<string, string> achievementEvent = new Dictionary<string, string>();
+
+    public string currentKey;
+    //??쀫꽅?귐딅섰 ??놁읅???類ㅻ??댿봺
+    //1/1
+
+    //NPC揶쎛 ??쀫꽅?귐딅섰筌뤿?????뺤춳????る툡??
+
+    //筌띲끇????癒?퐣 ??苑??덈뮉筌왖 筌ｋ똾寃?
+    // ??苑??뽯퓠 ????苑??뉖럡????쇱벉 ??쀫꽅?귐딅섰
     private void Awake()
     {
         
@@ -25,7 +37,7 @@ public class AchievementManager : Singleton<AchievementManager>
 
             foreach (var obj in enemyList)
             {
-                goalKillCnt.Add(obj.name, 15);
+                goalKillCnt.Add(obj.name, 3);
                 killCnt.Add(obj.name, 0);
             }
 
@@ -35,6 +47,12 @@ public class AchievementManager : Singleton<AchievementManager>
                 killCnt.Add(obj.name, 0);
             }
         }
+
+        achievementEvent.Add("Doc", "Doc?щ깷袁?");
+        achievementFlag.Add("Doc", false);
+        achievementEvent.Add("Sekelete", "?닿낏洹몄옟梨?");
+        achievementFlag.Add("Sekelete", false);
+
 
     }
 
