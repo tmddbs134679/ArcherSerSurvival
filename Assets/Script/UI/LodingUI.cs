@@ -30,10 +30,15 @@ public class LodingUI : BaseUI
                 {
                     GameManager.Instance.NextSceneLoad();
                 }
+                else if(GameManager.Instance.roomCount <= -1)
+                {
+
+                }
                 else
                 {
                     GameManager.Instance.LobbySceneLoad();
                 }
+                
             }
 
         }

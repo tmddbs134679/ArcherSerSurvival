@@ -79,7 +79,7 @@ public class GameManager : Singleton<GameManager>
         
         else if (SceneManager.GetActiveScene().name == "InfiniteModeScene")
         {
-
+            roomCount = -10;
         }
         
         else
@@ -99,35 +99,30 @@ public class GameManager : Singleton<GameManager>
 
     public void DelayFadeOut()
     {
-        if (SceneManager.GetActiveScene().name == "InfiniteModeScene")
-        {
 
+
+        if (SceneManager.GetActiveScene().name != "LobbyScene")
+        {
+            Time.timeScale = 0f;
+        }
+        UIManager.Instance.FadeOutUI("Loading");
+        // Debug.Log("??");
+
+
+        /*
+        foreach (GameObject obj in UIManager.Instance.uiObjects)
+        {
+            if (obj.name == "Loading")
+            {
+                Debug.Log("??");
+                UIManager.Instance.FadeOutUI("Loading");
+                return;
+            }
         }
 
-        else
-        {
-            if (SceneManager.GetActiveScene().name != "LobbyScene")
-            {
-                Time.timeScale = 0f;
-            }
-            UIManager.Instance.FadeOutUI("Loading");
-            // Debug.Log("??");
+        Invoke("DelayFadeOut", 0.5f);
+        */
 
-
-            /*
-            foreach (GameObject obj in UIManager.Instance.uiObjects)
-            {
-                if (obj.name == "Loading")
-                {
-                    Debug.Log("??");
-                    UIManager.Instance.FadeOutUI("Loading");
-                    return;
-                }
-            }
-
-            Invoke("DelayFadeOut", 0.5f);
-            */
-        }
     }
     private void Init_GameManager()
     {

@@ -13351,6 +13351,55 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &684442463
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 684442465}
+  - component: {fileID: 684442464}
+  m_Layer: 0
+  m_Name: MonsterSoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &684442464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684442463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d2a739359808e34ba0b39161038f959, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterAudioSets:
+  - {fileID: 11400000, guid: 856814d94d67c1e4f8313e870d35866b, type: 2}
+  - {fileID: 11400000, guid: f7eebbc00fad91347ab4358b966d5dbc, type: 2}
+  - {fileID: 11400000, guid: 79c3b2545b3278943adf35ae606f5bd3, type: 2}
+  - {fileID: 11400000, guid: 40f5aa3ade7191a4085fca4251da1fc1, type: 2}
+--- !u!4 &684442465
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684442463}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &701770443
 GameObject:
   m_ObjectHideFlags: 0
@@ -22852,7 +22901,7 @@ PrefabInstance:
       objectReference: {fileID: 1370312678}
     - target: {fileID: 8074574911319065370, guid: 5f00c900fae3f634392ffc34a05b530e, type: 3}
       propertyPath: startActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -31526,7 +31575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba58caa62ce6e5a4885cbdc8eca1de41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startActive: 0
+  startActive: 1
   fadeDuration: 0.5
   image: {fileID: 2138394574}
   fadeFlag: 0
@@ -40785,3 +40834,4 @@ SceneRoots:
   - {fileID: 1241969128}
   - {fileID: 276011823}
   - {fileID: 1069157855}
+  - {fileID: 684442465}
