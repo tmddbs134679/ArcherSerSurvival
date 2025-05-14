@@ -9,7 +9,8 @@ using System;
 public class ExplosionSkill : BaseSkill
 {
     public bool RandomCheck;
-    public static event Action<GameObject,float> OnExplosionSkillFired;
+    public static event Action<GameObject,float> OnMeteorFired;
+    public static event Action<GameObject,float> OnIceSpearFired;
 
 
     protected override void Start()
@@ -95,7 +96,8 @@ public class ExplosionSkill : BaseSkill
         }
         projectile.transform.rotation = Quaternion.identity;
         projectile.GetComponent<Explosion>().Init(SkillOwner, Target,Data);
-                                      OnExplosionSkillFired?.Invoke(projectile,Data.duration);
+        if(serialname=="Ice")OnIceSpearFired?.Invoke(projectile,Data.duration);
+        else if(serialname=="Meteo")OnMeteorFired?.Invoke(projectile,Data.duration);
     }
 
     protected IEnumerator FireWithDelay()

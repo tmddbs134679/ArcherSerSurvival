@@ -11,12 +11,12 @@ public class IceSpearSpawner : MonoBehaviour
 
     void OnEnable()
     {
-        ExplosionSkill.OnExplosionSkillFired += DropMeteorDelayed;
+        ExplosionSkill.OnIceSpearFired += DropMeteorDelayed;
     }
 
     void OnDisable()
     {
-        ExplosionSkill.OnExplosionSkillFired -= DropMeteorDelayed;
+        ExplosionSkill.OnIceSpearFired -= DropMeteorDelayed;
     }
     public void DropMeteorDelayed(GameObject target, float delay)
     {
@@ -27,9 +27,9 @@ public class IceSpearSpawner : MonoBehaviour
     {
         GameObject Zone = ProjectileObjectPool.Instance.Get("BlizzardWarningZone");
         Zone.transform.position = target.transform.position;
-        ProjectileObjectPool.Instance.ReleaseDelayed("BlizzardWarningZone", Zone,4.6f);
+        ProjectileObjectPool.Instance.ReleaseDelayed("BlizzardWarningZone", Zone,1.8f);
 
-        yield return new WaitForSeconds(delay * 1.2f);
+        yield return new WaitForSeconds(delay * 0.7f);
 
         int posX = Random.Range(-10, 10);
         GameObject IceSpear = ProjectileObjectPool.Instance.Get("Blizzard");

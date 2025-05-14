@@ -11,12 +11,12 @@ public class MeteorSpawner : MonoBehaviour
 
     void OnEnable()
     {
-        ExplosionSkill.OnExplosionSkillFired += DropMeteorDelayed;
+        ExplosionSkill.OnMeteorFired += DropMeteorDelayed;
     }
 
     void OnDisable()
     {
-        ExplosionSkill.OnExplosionSkillFired -= DropMeteorDelayed;
+        ExplosionSkill.OnMeteorFired -= DropMeteorDelayed;
     }
     public void DropMeteorDelayed(GameObject target, float delay)
     {

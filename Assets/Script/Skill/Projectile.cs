@@ -33,7 +33,7 @@ private bool justReflected = false;
             if (!justReflected)
         rb.velocity = angleDirection * Data.speed;
         StartCoroutine(AngleDirDelay());
-      //  transform.Rotate(Vector3.forward, Data.rotateSpeed * Time.fixedDeltaTime); //?袁ⓥ봺???癒?퍥 ???읈
+      transform.Rotate(Vector3.forward, Data.rotateSpeed * Time.fixedDeltaTime); //?袁ⓥ봺???癒?퍥 ???읈
     }
     void OnTriggerEnter2D(Collider2D collision)//?겸뫖猷??됱뱽 ??
     {

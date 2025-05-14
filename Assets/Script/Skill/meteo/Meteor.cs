@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Meteor : MonoBehaviour
 {
-    public float fallSpeed = 10f;  // 떨어지는 속도
+    public float fallSpeed;  // 떨어지는 속도
 
     public Vector3 targetPosition;
     void Update()
