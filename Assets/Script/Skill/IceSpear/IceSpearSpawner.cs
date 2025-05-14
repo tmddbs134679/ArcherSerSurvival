@@ -3,7 +3,7 @@ using UnityEngine;
 
 
 
-public class MeteorSpawner : MonoBehaviour
+public class IceSpearSpawner : MonoBehaviour
 {
     public GameObject meteorPrefab;
     public Transform target;
@@ -25,16 +25,16 @@ public class MeteorSpawner : MonoBehaviour
 
     private IEnumerator DropMeteorCoroutine(GameObject target, float delay)
     {
-        GameObject Zone = ProjectileObjectPool.Instance.Get("MeteoWarningZone");
+        GameObject Zone = ProjectileObjectPool.Instance.Get("BlizzardWarningZone");
         Zone.transform.position = target.transform.position;
-        ProjectileObjectPool.Instance.ReleaseDelayed("MeteoWarningZone", Zone,4.6f);
+        ProjectileObjectPool.Instance.ReleaseDelayed("BlizzardWarningZone", Zone,4.6f);
 
         yield return new WaitForSeconds(delay * 1.2f);
 
         int posX = Random.Range(-10, 10);
-        GameObject meteor = ProjectileObjectPool.Instance.Get("MeteoBundle");
-        meteor.transform.position = target.transform.position + new Vector3(posX, spawnHeight, 0);
-        Meteor meteorScript = meteor.GetComponent<Meteor>();
-        meteorScript.targetPosition = target.transform.position;
+        GameObject IceSpear = ProjectileObjectPool.Instance.Get("Blizzard");
+        IceSpear.transform.position = target.transform.position + new Vector3(posX, spawnHeight, 0);
+        IceSpear IceSpearScript = IceSpear.GetComponent<IceSpear>();
+        IceSpearScript.targetPosition = target.transform.position;
     }
 }

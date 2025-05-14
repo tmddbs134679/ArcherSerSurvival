@@ -17,11 +17,11 @@ MonoBehaviour:
   damage: 5.9
   lvdamage: 0
   count: 1
-  lvcount: 0
+  lvcount: 1
   duration: 2.2
   color: {r: 1, g: 1, b: 1, a: 1}
   impactEffect: {fileID: 0}
   rotateSpeed: 0
-  angle: 0
-  hormingStartDelay: 0.97
+  angle: 16
+  hormingStartDelay: 0
   hormingTurnDelay: 10

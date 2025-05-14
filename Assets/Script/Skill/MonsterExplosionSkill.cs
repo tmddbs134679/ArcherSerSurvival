@@ -17,12 +17,14 @@ public class MonsterExplosionSkill : ExplosionSkill
     {
         base.Init();
         animationName = Animator.StringToHash("Skill3");
+      
     }
 
     public override void Execute(EnemyStateMachine enemy, Action onComplete)
     {
+        RandomCheck = !RandomCheck;
         GameObject target = GetComponent<OrgeStateMachine>().Player;
-        Fire(fireCount, this.gameObject, target); // 筌롫??????띾┛
+        StartCoroutine(FireWithDelay(fireCount));
         StartCoroutine(DelayComplete(onComplete));
     }
 
@@ -31,4 +33,26 @@ public class MonsterExplosionSkill : ExplosionSkill
         yield return new WaitForSeconds(3f);
         onComplete?.Invoke();
     }
+
+    public IEnumerator FireWithDelay(int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            GameObject TargetTemp = null;
+
+            if (SkillOwner.layer == LayerMask.NameToLayer("Player")) //SkillOwner가 플레이어일시 타겟 탐색
+            {
+                TargetTemp = SkillOwner.GetComponent<PlayerTargeting>().GetClosestEnemy()?.gameObject;
+            }
+            else
+            {
+                TargetTemp = GetComponent<EnemyStateMachine>().Player;//아닐시 몬스터
+            }
+            if (TargetTemp == null) yield break;
+            Fire(i, SkillOwner, TargetTemp);
+            yield return new WaitForSeconds(individualFireRate);
+
+        }
+    }
+
 }
