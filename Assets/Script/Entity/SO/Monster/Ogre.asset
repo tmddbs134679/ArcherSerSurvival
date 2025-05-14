@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67f8630391c8adf4fa6fc4938d3b572b, type: 3}
-  m_Name: Orge
+  m_Name: Ogre
   m_EditorClassIdentifier: 
-  monsterId: Orge
+  monsterId: Ogre
   monsterType: 2
   attackDamage: 10
   attackRange: 10
