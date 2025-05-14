@@ -17,10 +17,12 @@ public class MonsterExplosionSkill : ExplosionSkill
     {
         base.Init();
         animationName = Animator.StringToHash("Skill3");
+      
     }
 
     public override void Execute(EnemyStateMachine enemy, Action onComplete)
     {
+        RandomCheck = !RandomCheck;
         GameObject target = GetComponent<OrgeStateMachine>().Player;
         StartCoroutine(FireWithDelay(fireCount));
         StartCoroutine(DelayComplete(onComplete));
