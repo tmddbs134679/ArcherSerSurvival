@@ -5,20 +5,12 @@ using UnityEngine;
 public class SFXControl : MonoBehaviour
 {
     [SerializeField] private AudioClip audioClip;
-    [SerializeField] private AudioSource audioSource;
-
-    private void Start()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
 
     public void PlaySoundEffect()
     {
-        if (audioSource != null && audioClip != null)
+        if (audioClip != null)
         {
-            Debug.Log("playOneShot");
             AudioSource.PlayClipAtPoint(audioClip,transform.position, 1.0f);
-            //audioSource.PlayClip(audioClip);
         }
     }
 }
