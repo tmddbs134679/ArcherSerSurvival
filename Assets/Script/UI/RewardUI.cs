@@ -9,6 +9,12 @@ public class RewardUI : BaseUI
     [SerializeField] private Button[] rewardButtons;
     [SerializeField] private CanvasGroup[] rewardButtonCanvasGroup;
     [SerializeField] private Button[] rerollButtons;
+    public Sprite[] images;
+
+    public Dictionary<string, Sprite> weaponImage = new Dictionary<string, Sprite>();
+    //test
+    [SerializeField]
+    private Image[] icon;
     [SerializeField] private Text[] name;
 
     [SerializeField]
@@ -27,9 +33,14 @@ public class RewardUI : BaseUI
 
     bool flag = false;
 
-    //??壤굿??뚯돖???????용츧????ロ뒌?
+    //??鶯ㅺ동?????룚????????⑹름??????뭽?
     private void Awake()
     {
+        
+        weaponImage.Add("Axe", images[0]);
+        weaponImage.Add("Knife", images[1]);
+        weaponImage.Add("Arrow", images[2]);
+        
         slotBox = transform.Find("SlotBox").gameObject.GetComponent<CanvasGroup>();
         skillLevelSystem = GameManager.Instance.skillLevelSystem;
         skillPrefabs = Resources.LoadAll<GameObject>("Prefabs/Skill/Prefabs");
@@ -43,12 +54,16 @@ public class RewardUI : BaseUI
         gameObject.GetComponent<CanvasGroup>().alpha = 1f;
         StartCoroutine(BaseFadeIn());
 
-        key[0] = weightedTable.GetRandom();
-        name[0].text = key[0];
-        key[1] = weightedTable.GetRandom();
-        name[1].text = key[1];
-        key[2] = weightedTable.GetRandom();
-        name[2].text = key[2];
+
+        for (int i = 0; i < 3; i++)
+        {
+            key[i] = weightedTable.GetRandom();
+            name[i].text = key[i];
+            icon[i].sprite = weaponImage[key[i]];
+        }
+
+
+
     }
 
 
@@ -122,7 +137,7 @@ public class RewardUI : BaseUI
 
         for (int i = 0; i < rewardButtons.Length; i++)
         {
-            int index = i; // ?????? ??????????????袁⑸즴筌?씛彛????얜궙??뷀떐?됯퍓堉?
+            int index = i; // ?????? ??????????????熬곣뫖利당춯??쎾퐲?????쒓텤??酉????뜐?됀?
             rewardButtons[i].onClick.AddListener(() => SelectButton(index));
             rerollButtons[i].onClick.AddListener(() => ReRollButton(index));
         }
@@ -193,6 +208,7 @@ public class RewardUI : BaseUI
 
         key[index] = weightedTable.GetRandom();
         name[index].text = key[index];
+        icon[index].sprite = weaponImage[key[index]];
         rerollButtons[index].gameObject.SetActive(false);
 
         Debug.Log(index);
