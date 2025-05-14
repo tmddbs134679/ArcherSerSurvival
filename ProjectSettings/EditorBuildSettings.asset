@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AITestScene.unity
     guid: ba32536f58948414ba88783ff4bcd362
+  - enabled: 1
+    path: Assets/Scenes/InfiniteModeScene.unity
+    guid: a41e8da9235ed044d83c3f42dba5c0d6
   m_configObjects: {}
