@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -2357434331570409125}
   m_Layer: 0
   m_Name: MeteoSkill
-  m_TagString: Untagged
+  m_TagString: Skill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serialname: Meteo
   projectilePrefab: {fileID: 7827560360998576179, guid: e526136f01fc83746ab37bd9b2640059, type: 3}
-  fireRate: 1
+  fireRate: 3
   individualFireRate: 0.2
   SkillOwner: {fileID: 0}
   skillLevelSystem: {fileID: 0}

@@ -7,6 +7,7 @@ using UnityEngine;
 public class MonsterData : ScriptableObject
 {
     public int monsterId;
+    public EENEMYTYPE monsterType;
     public int attackDamage;
     public float attackRange;
     public float movementSpeed;

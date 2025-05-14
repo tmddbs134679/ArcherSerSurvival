@@ -202,6 +202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 318433763871782778}
   - component: {fileID: 2085658003896008343}
+  - component: {fileID: 2287580114685844605}
   m_Layer: 0
   m_Name: Ogre
   m_TagString: Untagged
@@ -239,14 +240,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Animator>k__BackingField: {fileID: 5906359006596787709}
-  <SpriteRenderers>k__BackingField:
-  - {fileID: 5874006431400421119}
-  - {fileID: 5545611825629043333}
-  - {fileID: 6166364435954832004}
   <MonsterData>k__BackingField: {fileID: 0}
   <Player>k__BackingField: {fileID: 0}
   <EnemyStat>k__BackingField: {fileID: 0}
-  <Skills>k__BackingField: []
+  <Skills>k__BackingField:
+  - {fileID: 0}
   <EnemyAIController>k__BackingField: {fileID: 0}
   <CanAttack>k__BackingField: 1
   <CanChasing>k__BackingField: 1
@@ -254,6 +252,25 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 0
+--- !u!114 &2287580114685844605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6834186963054561962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e49556e129e05d241a0f8663c1fb1000, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serialname: Meteo
+  projectilePrefab: {fileID: 7827560360998576179, guid: e526136f01fc83746ab37bd9b2640059, type: 3}
+  fireRate: 1
+  individualFireRate: 0
+  SkillOwner: {fileID: 6834186963054561962}
+  skillLevelSystem: {fileID: 0}
+  RandomCheck: 1
 --- !u!1 &8796410096524268915
 GameObject:
   m_ObjectHideFlags: 0

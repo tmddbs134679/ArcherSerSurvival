@@ -8,9 +8,14 @@ public class EnemyAIController : MonoBehaviour
     [Header("Patrol Settings")]
     public EPATROLAXIS patrolAxis = EPATROLAXIS.ALL;
     public float patrolDistance = 3f;
-
     public List<Vector2> PatrolPositions { get; private set; } = new();
 
+    public AudioSource AudioSource { get; private set; }
+
+    private void Awake()
+    {
+        AudioSource = GetComponent<AudioSource>();  
+    }
     private void OnEnable()
     {
         CreatePatrolPositions();
