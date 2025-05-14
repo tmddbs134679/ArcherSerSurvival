@@ -22,7 +22,7 @@ public class MonsterExplosionSkill : ExplosionSkill
     public override void Execute(EnemyStateMachine enemy, Action onComplete)
     {
         GameObject target = GetComponent<OrgeStateMachine>().Player;
-        Fire(fireCount, this.gameObject, target); // 硫뷀뀒???섍린
+        Fire(fireCount, this.gameObject, target); // 筌롫??????띾┛
         StartCoroutine(DelayComplete(onComplete));
     }
 
