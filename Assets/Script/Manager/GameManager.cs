@@ -22,7 +22,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     private int enemyCount = 0;
     [SerializeField]
-    private int roomCount = 1;
+    public int roomCount = 1;
     public GameObject[] rooms;
     public GameObject[] bossRooms;
     public GameObject lodingPrefab;
@@ -54,9 +54,9 @@ public class GameManager : Singleton<GameManager>
 
             lodingObject = GameObject.Find("Loading");
             
-            //?붾쾭洹?
-            //肄붾（??
-            //?몃낫??
+            //?遺얠쒔域?
+            //?꾨뗀竊??
+            //?紐껊궖??
             
         }
         
@@ -71,9 +71,16 @@ public class GameManager : Singleton<GameManager>
     {
         lodingObject = GameObject.Find("Loading");
         isOpen = false;
-        Init_GameManager();
+        if (SceneManager.GetActiveScene().name == "LobbyScene")
+        {
 
+        }
+        else
+        {
+            Init_GameManager();
+        }
 
+        
 
 
         Invoke("DelayFadeOut", 0.5f);
@@ -131,8 +138,16 @@ public class GameManager : Singleton<GameManager>
         if (isOpen)
         {
             isOpen = false;
-            isStartLoading = true;
-            UIManager.Instance.FadeInUI("Loading");
+
+            if (roomCount < 6)
+            {
+                isStartLoading = true;
+                UIManager.Instance.FadeInUI("Loading");
+            }
+            else
+            {
+                UIManager.Instance.ShowUI("Clear");
+            }
             
         }
     }
@@ -143,6 +158,13 @@ public class GameManager : Singleton<GameManager>
         //LoadingManager.LoadScene("AITestScene");
         PlayerController.Instance.transform.position = new Vector3(0,0,0);
         SceneManager.LoadScene("AITestScene");
+    }
+
+
+    public void LobbySceneLoad()
+    {
+        PlayerController.Instance.transform.position = new Vector3(0, 0, 0);
+        SceneManager.LoadScene("LobbyScene");
     }
 
     public static event Action openCloseDoor;

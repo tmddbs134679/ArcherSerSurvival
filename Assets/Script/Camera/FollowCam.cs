@@ -12,7 +12,8 @@ public class FollowCam : MonoBehaviour
 
     private void Start()
     {
-        target = FindObjectOfType<PlayerController>().transform;
+        target = PlayerController.Instance.gameObject.transform;
+            //FindObjectOfType<PlayerController>().transform;
         fixedXZ = new Vector3(transform.position.x, 0, transform.position.z);
     }
 
