@@ -605,7 +605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1034152f1ce7ee84e8f6df3c02d53713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetRange: {x: 8, y: 8}
+  targetRange: {x: 20, y: 20}
 --- !u!114 &2055548919317617274
 MonoBehaviour:
   m_ObjectHideFlags: 0

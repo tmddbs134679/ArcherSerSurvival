@@ -12,7 +12,7 @@ public class Projectile : MonoBehaviour
     private Rigidbody2D rb;//?袁ⓥ봺?諭곷립 ??沅쀯㎗?곸벥 ?귐딆췂獄쏅뗀逾?
     public string serialName;//??已?
 
-private bool justReflected = false;
+    private bool justReflected = false;
     public void Init(GameObject launcher, GameObject target, Vector2 angleDir, ChangedSkillData data)
     {
         Launcher = launcher;
@@ -21,17 +21,19 @@ private bool justReflected = false;
         Data = data;
         rb = GetComponent<Rigidbody2D>();
         GetComponent<SpriteRenderer>().color = data.color;
+                Vector2 dir = (Target.transform.position - Launcher.transform.position).normalized;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle - 90);
         StartCoroutine(WrappingInvokeDelay(data.duration));
     }
 
     private void FixedUpdate()//?얠눖?곻㎗?롡봺
     {
-        Vector2 dir = (Target.transform.position - transform.position).normalized;
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, angle-90);
-
-        StartCoroutine(AngleDirDelay());
-      transform.Rotate(Vector3.forward, Data.rotateSpeed * Time.fixedDeltaTime); //?袁ⓥ봺???癒?퍥 ???읈
+      if (!justReflected)
+      {
+            rb.velocity = angleDirection * Data.speed;
+      }
+        transform.Rotate(Vector3.forward, Data.rotateSpeed * Time.fixedDeltaTime); //?袁ⓥ봺???癒?퍥 ???읈
     }
     void OnTriggerEnter2D(Collider2D collision)//?겸뫖猷??됱뱽 ??
     {
@@ -42,13 +44,31 @@ private bool justReflected = false;
             StartCoroutine(WrappingInvokeDelay(0f));
         }
 
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
+        {
+            Vector2 incoming = rb.velocity.normalized;
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, incoming, 1.5f, LayerMask.GetMask("Wall"));
+            // RaycastHit2D hit = Physics2D.Raycast(transform.position, incoming, Data.speed * Time.fixedDeltaTime *0.1f, LayerMask.GetMask("Wall"));
 
+            if (hit.collider != null)
+            {
+                Vector2 normal = hit.normal;
+                Vector2 reflect = Vector2.Reflect(incoming, normal);
+                angleDirection = reflect.normalized;
+                    // 회전값 세팅
+    float angle = Mathf.Atan2(angleDirection.y, angleDirection.x) * Mathf.Rad2Deg;
+    transform.rotation = Quaternion.Euler(0, 0, angle - 90);
+
+                justReflected = true;
+                StartCoroutine(ResetReflectFlag());
+            }
+        }
     }
     IEnumerator ResetReflectFlag()
-{
-    yield return new WaitForFixedUpdate();
-    justReflected = false;
-}
+    {
+        yield return new WaitForFixedUpdate();
+        justReflected = false;
+    }
 
 
 

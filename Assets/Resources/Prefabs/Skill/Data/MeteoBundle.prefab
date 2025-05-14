@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 51
   m_Sprite: {fileID: 21300000, guid: 4c56b9bd121af8546867aecc7510dd9e, type: 3}
   m_Color: {r: 1, g: 0.5286917, b: 0.2688679, a: 1}
   m_FlipX: 0
@@ -9711,7 +9711,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 27
+  m_SortingOrder: 53
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -9791,6 +9791,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 265c7a8f0c499fe4d8b1219825aac212, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   fallSpeed: 10
-  impactEffect: {fileID: 8492316585704290070, guid: 612ea9a1e975d484c88eef6a3acb0aab, type: 3}
+  targetPosition: {x: 0, y: 0, z: 0}
