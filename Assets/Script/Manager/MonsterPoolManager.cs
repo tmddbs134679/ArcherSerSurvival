@@ -18,7 +18,14 @@ public class MonsterPoolManager : Singleton<MonsterPoolManager>
     protected override void Awake()
     {
         base.Awake();
-        objectPrefabs = Resources.LoadAll<GameObject>("Prefabs/Entity/Enemy");
+        
+        var enemyPrefabs  = Resources.LoadAll<GameObject>("Prefabs/Entity/Enemy");
+        var bossPrefabs  = Resources.LoadAll<GameObject>("Prefabs/Entity/Boss");
+
+        objectPrefabs = new GameObject[enemyPrefabs.Length + bossPrefabs.Length];
+        enemyPrefabs.CopyTo(objectPrefabs, 0);
+        bossPrefabs.CopyTo(objectPrefabs, enemyPrefabs.Length);
+
         pool[0] = new Queue<GameObject>();
         pool[1] = new Queue<GameObject>();
         pool[2] = new Queue<GameObject>();
