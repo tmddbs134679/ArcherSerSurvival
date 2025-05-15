@@ -64,7 +64,9 @@
 - **GitHub Desktop** (형상 관리)  
 - **Visual Studio** (개발 환경)  
 
+## 🎮 게임 플레이 링크
 
+[Archer Survival](https://play.unity.com/en/games/14b48fe5-e079-45dd-a173-86e60d9d3d27/archer-survival)
 
 
 
