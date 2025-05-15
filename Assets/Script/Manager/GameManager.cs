@@ -54,9 +54,9 @@ public class GameManager : Singleton<GameManager>
 
             lodingObject = GameObject.Find("Loading");
             
-            //????癲??????⑥レ뿭???
-            //??????꾩룆梨띰쭕?????
-            //???遺얘턁????????ㅼ뒧??띤겫???
+            //????????????Β?щ열???
+            //??????袁⑸즴筌?씛彛?????
+            //?????븐뼐??????????쇰뮛???ㅺ껀???
             
         }
         
@@ -133,10 +133,23 @@ public class GameManager : Singleton<GameManager>
 
     void Update()
     {
-        time += Time.deltaTime;
+        
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            OnOption();
+            bool isUI = false;
+            foreach(var obj in UIManager.Instance.uiObjects)
+            {
+                if(obj.active == true)
+                {
+                    isUI = true;
+                }
+            }
+
+            if (isUI == false)
+            {
+                time += Time.deltaTime;
+                OnOption();
+            }
         }
     }
     public void CreateRoom()
