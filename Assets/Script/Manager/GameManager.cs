@@ -80,6 +80,7 @@ public class GameManager : Singleton<GameManager>
         else if (SceneManager.GetActiveScene().name == "InfiniteModeScene")
         {
             roomCount = -10;
+            SoundManager.Instance.PlayDungeonBGM();
             PlayerController.Instance.transform.position = new Vector3(0, 0, 0);
         }
         
