@@ -62,7 +62,9 @@
 - **Figma** (구조 설계 · 프레임워크)  
 - **Google Slides** (발표 PPT 준비)
 - **GitHub Desktop** (형상 관리)  
-- **Visual Studio** (개발 환경)  
+- **Visual Studio** (개발 환경)
+
+---
 
 ## 🎮 게임 플레이 링크
 
