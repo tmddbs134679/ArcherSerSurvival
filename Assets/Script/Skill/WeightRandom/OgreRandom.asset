@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objects:
   - Serialname: 0
-    weight: 60
+    weight: 50
   - Serialname: 1
-    weight: 40
+    weight: 50
