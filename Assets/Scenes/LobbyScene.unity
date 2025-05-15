@@ -255,90 +255,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!1 &332162089
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 332162090}
-  - component: {fileID: 332162091}
-  m_Layer: 0
-  m_Name: Shadow
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &332162090
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 332162089}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.71, z: 0}
-  m_LocalScale: {x: 5, y: 3.81, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1543683512}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &332162091
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 332162089}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 10
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.45490196}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!1 &417399225
 GameObject:
   m_ObjectHideFlags: 0
@@ -854,6 +770,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2359103908090320661, guid: 86cec8cee33f5594ab57bb8cf11a70b4, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3033453059338148139, guid: 86cec8cee33f5594ab57bb8cf11a70b4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -910,6 +830,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8846842347864100737, guid: 86cec8cee33f5594ab57bb8cf11a70b4, type: 3}
+      propertyPath: die
+      value: 
+      objectReference: {fileID: 8300000, guid: 7acee81fd5a96cf46b149bbd048d45ae, type: 3}
+    - target: {fileID: 8846842347864100737, guid: 86cec8cee33f5594ab57bb8cf11a70b4, type: 3}
+      propertyPath: hit
+      value: 
+      objectReference: {fileID: 8300000, guid: 7c916ca8c410151419a3d617f61803b9, type: 3}
+    - target: {fileID: 8846842347864100737, guid: 86cec8cee33f5594ab57bb8cf11a70b4, type: 3}
+      propertyPath: dodge
+      value: 
+      objectReference: {fileID: 8300000, guid: 6548311f7a4e84a40af392fff628bd58, type: 3}
+    - target: {fileID: 8846842347864100737, guid: 86cec8cee33f5594ab57bb8cf11a70b4, type: 3}
+      propertyPath: weaponSounds.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8846842347864100737, guid: 86cec8cee33f5594ab57bb8cf11a70b4, type: 3}
+      propertyPath: weaponSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: a05b84960fa4d1e4b82efdbed71e2672, type: 3}
+    - target: {fileID: 8846842347864100737, guid: 86cec8cee33f5594ab57bb8cf11a70b4, type: 3}
+      propertyPath: weaponSounds.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 1782e772d5db09840b39296a234e782c, type: 3}
     - target: {fileID: 9155881556563192196, guid: 86cec8cee33f5594ab57bb8cf11a70b4, type: 3}
       propertyPath: m_Name
       value: PlayerCanvas
@@ -918,10 +862,7 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 8463937971123993745, guid: 86cec8cee33f5594ab57bb8cf11a70b4, type: 3}
     - {fileID: 8837089887954617057, guid: 86cec8cee33f5594ab57bb8cf11a70b4, type: 3}
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 3033453059338148139, guid: 86cec8cee33f5594ab57bb8cf11a70b4, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 332162090}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86cec8cee33f5594ab57bb8cf11a70b4, type: 3}
 --- !u!1 &1021808930
@@ -1141,11 +1082,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1543683512 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3033453059338148139, guid: 86cec8cee33f5594ab57bb8cf11a70b4, type: 3}
-  m_PrefabInstance: {fileID: 933053452}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1602671836 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6131639829557099211, guid: 3c28defbd981e584b853bcfe9c8fc40f, type: 3}
