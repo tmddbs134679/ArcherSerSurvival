@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,13 @@ public class BaseUI : MonoBehaviour
     public bool fadeFlag = true;
 
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            gameObject.SetActive(false);
+        }
+    }
     public void ExitUI()
     {
         gameObject.SetActive(false);
@@ -82,13 +90,13 @@ public class BaseUI : MonoBehaviour
         {
             
             timer += Time.unscaledDeltaTime;
-            float alpha = Mathf.Clamp01(1f - (timer / fadeDuration)); // ????1?????0????Β??
+            float alpha = Mathf.Clamp01(1f - (timer / fadeDuration)); // ????1?????0????????
             image.color = new Color(color.r, color.g, color.b, alpha);
             yield return null;
         }
 
-        image.color = new Color(color.r, color.g, color.b, 0f); // ????썹땟?????癲?
+        image.color = new Color(color.r, color.g, color.b, 0f); // ?????밸븶???????
         fadeFlag = false;
-        gameObject.SetActive(false); // UI ?????嚥싲갭큔??????꿔꺂???熬곎듑??
+        gameObject.SetActive(false); // UI ??????μ떜媛?걫??????轅붽틓????ш퀚???
     }
 }

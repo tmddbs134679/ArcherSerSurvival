@@ -12,6 +12,7 @@ public class ExplosionSkill : BaseSkill
     public static event Action<GameObject,float> OnMeteorFired;
     public static event Action<GameObject,float> OnIceSpearFired;
 
+    PlayerSFXControl sfxControl;
 
     protected override void Start()
     {
@@ -43,6 +44,7 @@ public class ExplosionSkill : BaseSkill
 
         }
         SetSkillData();//湲곕낯 ?ㅽ꺈 ?ㅼ젙
+        sfxControl = GetComponentInParent<PlayerSFXControl>();
     }
 
 
@@ -86,6 +88,7 @@ public class ExplosionSkill : BaseSkill
 
         //  ?ㅻ툕?앺듃 媛?몄삤湲?
         GameObject projectile = ProjectileObjectPool.Instance.Get(projectilePrefab.name);
+        RandomCheck=RandomBool();
         if(RandomCheck)
         {
         projectile.transform.position =Target.transform.position;//?寃??꾩튂 ??컻
@@ -98,6 +101,11 @@ public class ExplosionSkill : BaseSkill
         projectile.GetComponent<Explosion>().Init(SkillOwner, Target,Data);
         if(serialname=="Ice")OnIceSpearFired?.Invoke(projectile,Data.duration);
         else if(serialname=="Meteo")OnMeteorFired?.Invoke(projectile,Data.duration);
+
+        if (sfxControl != null)
+        {
+            sfxControl.OnAttack(serialname);
+        }
     }
 
     protected IEnumerator FireWithDelay()
@@ -121,6 +129,11 @@ public class ExplosionSkill : BaseSkill
         }
     }
 
+    public bool RandomBool()
+    {
+        System.Random random = new System.Random();
+        return random.NextDouble() < 0.4;
+    }
 
 
 }

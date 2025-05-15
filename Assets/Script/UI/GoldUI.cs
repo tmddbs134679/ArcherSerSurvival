@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GoldUI : BaseUI
+public class GoldUI : MonoBehaviour
 {
     [SerializeField]
     private PlayerResource playerResource;
@@ -27,8 +27,6 @@ public class GoldUI : BaseUI
     public void UpdateUI()
     {
         int gold = playerResource.goldAmount;
-
-        Debug.Log(gameObject.name);
         goldAmountText.text = gold.ToString();
     }
 }

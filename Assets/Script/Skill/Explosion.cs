@@ -18,6 +18,11 @@ public class Explosion : MonoBehaviour
 public GameObject WarningZone; //마법진 스프라이트 이미지
 
 private bool hasDamaged = false;
+
+    void OnEnable()
+    {
+                hasDamaged = false;
+    }
     void Awake()
     {
         WarningZone.SetActive(false);

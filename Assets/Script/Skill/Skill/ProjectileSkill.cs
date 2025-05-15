@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 
 public class ProjectileSkill : BaseSkill
 {
+    PlayerSFXControl sFXControl;
 
     protected override void Start()
     {
@@ -36,6 +37,7 @@ public class ProjectileSkill : BaseSkill
         
     }
             SetSkillData();//????????????ш낄援ο쭛????濚밸Ŧ???
+    sFXControl = GetComponentInParent<PlayerSFXControl>();  
 }
 
 
@@ -105,6 +107,11 @@ public class ProjectileSkill : BaseSkill
         Vector2 angleDir = Quaternion.Euler(0, 0, -(Data.angle * Data.count / 2f) + Data.angle * count) * dir;
 
         projectile.GetComponent<Projectile>().Init(SkillOwner, Target, angleDir, Data);
+
+        if (sFXControl != null) 
+        { 
+            sFXControl.OnAttack(serialname);
+        }
     }
     protected IEnumerator FireWithDelay()
     {

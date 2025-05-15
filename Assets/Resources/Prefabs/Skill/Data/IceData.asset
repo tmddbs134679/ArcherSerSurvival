@@ -15,10 +15,10 @@ MonoBehaviour:
   speed: 11
   lvspeed: 0
   damage: 30
-  lvdamage: 0
+  lvdamage: 6
   count: 1
-  lvcount: 0
-  duration: 2.16
+  lvcount: 1
+  duration: 1
   color: {r: 0.495283, g: 0.95374954, b: 1, a: 0.57254905}
   impactEffect: {fileID: 0}
   rotateSpeed: 0

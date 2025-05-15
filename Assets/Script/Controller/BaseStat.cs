@@ -15,7 +15,7 @@ public class BaseStat : MonoBehaviour
         get => maxHp;
         set
         {
-            maxHp = Mathf.Clamp(value, 0, 1000);
+            maxHp = Mathf.Clamp(value, 0, 10000);
             OnStatChanged?.Invoke();
         }
     }

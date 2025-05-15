@@ -5490,6 +5490,7 @@ MonoBehaviour:
   <Skills>k__BackingField:
   - {fileID: 6623340214887557354}
   - {fileID: 7217894395238620155}
+  <SpriteRenderer>k__BackingField: {fileID: 0}
   <SkillWeight>k__BackingField: {fileID: 11400000, guid: 21f875be3cb358348b1b163e47a26b5a, type: 2}
   <EnemyAIController>k__BackingField: {fileID: 1510997552760728133}
   <CanAttack>k__BackingField: 1
@@ -5510,7 +5511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c439057d16535a4992f1416cf00fcb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 1000
+  maxHp: 8000
   currentHp: 0
   speed: 5
   atk: 10

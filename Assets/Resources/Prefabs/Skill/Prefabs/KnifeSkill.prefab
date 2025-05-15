@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serialname: Knife
   projectilePrefab: {fileID: 480090936706811311, guid: 4b25af7ac660676428965e6aeee3a75e, type: 3}
-  fireRate: 0.3
+  fireRate: 0.6
   individualFireRate: 0.1
   SkillOwner: {fileID: 0}
   animationName: 0

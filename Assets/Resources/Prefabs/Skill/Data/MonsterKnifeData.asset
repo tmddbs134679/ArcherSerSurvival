@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 636751bd5872dc349a8077bae4932916, type: 3}
   m_Name: MonsterKnifeData
   m_EditorClassIdentifier: 
-  speed: 11.5
-  lvspeed: 1
-  damage: 10
-  lvdamage: 1
+  speed: 4.8
+  lvspeed: 0
+  damage: 4.8
+  lvdamage: 2
   count: 1
   lvcount: 1
-  duration: 2.16
-  color: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
+  duration: 2
+  color: {r: 1, g: 0.00000019073488, b: 0, a: 1}
   impactEffect: {fileID: 0}
-  rotateSpeed: 133
-  angle: 47
-  hormingStartDelay: 1.43
+  rotateSpeed: 293
+  angle: 22
+  hormingStartDelay: 0
   hormingTurnDelay: 10

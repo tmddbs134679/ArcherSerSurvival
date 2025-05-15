@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serialname: Axe
   projectilePrefab: {fileID: 480090936706811311, guid: f83b12d584a207241960cdb01220fe95, type: 3}
-  fireRate: 0.3
+  fireRate: 0.6
   individualFireRate: 0.1
   SkillOwner: {fileID: 0}
   animationName: 0

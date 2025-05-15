@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Launcher: {fileID: 0}
   serialName: Knife
+  StopReflected: 0
 --- !u!212 &7470724474760578296
 SpriteRenderer:
   m_ObjectHideFlags: 0

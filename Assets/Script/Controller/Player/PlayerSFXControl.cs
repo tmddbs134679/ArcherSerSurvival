@@ -27,9 +27,7 @@ public class PlayerSFXControl : MonoBehaviour
             foreach (AudioClip clip in weaponSounds)
             {
                 string name = clip.name;
-                Debug.Log(clip);
                 projectileSFX.Add(name.Substring(0, clip.name.Length - "_Sound".Length), clip);
-                Debug.Log(name.Substring(0, clip.name.Length - "_Sound".Length));
             }
         }
     }

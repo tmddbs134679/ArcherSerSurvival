@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 636751bd5872dc349a8077bae4932916, type: 3}
   m_Name: AxeData
   m_EditorClassIdentifier: 
-  speed: 9.7
-  lvspeed: 0
+  speed: 10
+  lvspeed: 1.1
   damage: 10
-  lvdamage: 0
+  lvdamage: 2
   count: 1
   lvcount: 1
   duration: 2.1
   color: {r: 1, g: 1, b: 1, a: 1}
   impactEffect: {fileID: 0}
-  rotateSpeed: 182
+  rotateSpeed: 496
   angle: 16
   hormingStartDelay: 0
   hormingTurnDelay: 10

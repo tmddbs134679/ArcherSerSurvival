@@ -13,6 +13,8 @@ public class Projectile : MonoBehaviour
     public string serialName;//???藥?
 
     private bool justReflected = false;
+
+    public bool StopReflected;
     public void Init(GameObject launcher, GameObject target, Vector2 angleDir, ChangedSkillData data)
     {
         Launcher = launcher;
@@ -48,6 +50,8 @@ public class Projectile : MonoBehaviour
 
         }
 
+if(StopReflected)
+{
         if (collision.gameObject.layer == LayerMask.NameToLayer("Wall")||Target.layer == collision.gameObject.layer)
         {
             Vector2 incoming = rb.velocity.normalized;
@@ -67,6 +71,7 @@ public class Projectile : MonoBehaviour
                 StartCoroutine(ResetReflectFlag());
             }
         }
+}
     }
     IEnumerator ResetReflectFlag()
     {
