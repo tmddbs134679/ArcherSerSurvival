@@ -50,7 +50,7 @@
 
 | 이름            | 역할 및 담당                                                         |
 | --------------- | --------------------------------------------------------------------|
-| **송승윤(팀장)**   | [Enemy FSM 구현](./Assets/Script/Entity/AI/ReadMe/ReadMe_EnemyFSM.md), [Damage Text 기능 구현](#/Script/UI/DamageText/ReadMe_DamageText.md) ,Enemy Sound관리            |
+| **송승윤(팀장)**   | [Enemy FSM 구현](./Assets/Script/Entity/AI/ReadMe/ReadMe_EnemyFSM.md), [Damage Text 기능 구현](./Assets/Script/UI/DamageText/ReadMe_DamageText.md) ,Enemy Sound관리            |
 | **이수민**         | 플레이어 조작 및 기능 구현                                         |
 | **전인우**         | 스킬 시스템 구현                                                  |
 | **손채민**         | 맵 디자인 및 기믹 구현                                            |
