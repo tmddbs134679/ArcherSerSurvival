@@ -1,5 +1,5 @@
 
-# Archer Survival 
+# Archer Survival 🎯
 > 내일배움캠프 4~5주차 6조(핫식스) 팀 프로젝트입니다.
 
 ---
