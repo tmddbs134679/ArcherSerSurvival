@@ -26,7 +26,7 @@
 ---
 
 ## 🎥 시연 영상
-[🎥 시연 영상 보기](https://www.youtube.com/watch?v=V-Zsx7P0w1E)
+[🎥 시연 영상 보기](https://www.youtube.com/watch?v=PWr_BYpygns&t=2s)
 
 
 ---
