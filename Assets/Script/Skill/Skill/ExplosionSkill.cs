@@ -86,6 +86,7 @@ public class ExplosionSkill : BaseSkill
 
         //  ?ㅻ툕?앺듃 媛?몄삤湲?
         GameObject projectile = ProjectileObjectPool.Instance.Get(projectilePrefab.name);
+        RandomCheck=RandomBool();
         if(RandomCheck)
         {
         projectile.transform.position =Target.transform.position;//?寃??꾩튂 ??컻
@@ -121,6 +122,11 @@ public class ExplosionSkill : BaseSkill
         }
     }
 
+    public bool RandomBool()
+    {
+        System.Random random = new System.Random();
+        return random.NextDouble() < 0.4;
+    }
 
 
 }
