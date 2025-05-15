@@ -16,6 +16,11 @@ public class OptionUI : BaseUI
         StartCoroutine(Emergence());
     }
 
+    private void OnDisable()
+    {
+        GameManager.Instance.isOption = false;
+        Time.timeScale = 1.0f;
+    }
     public IEnumerator Emergence()
     {
         float timer = 0f;
