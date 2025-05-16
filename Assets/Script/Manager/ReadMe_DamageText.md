@@ -22,3 +22,5 @@
 
 ✅ **해결 방법**:
  사운드 정보만 별도의 `MonsterSoundData` (SO)로 분리하고, `MonsterSoundManager`에서 몬스터 타입(`EENEMYTYPE`)을 기준으로 해당 사운드 SO를 불러오는 방식으로 설계하였습니다.
+
+ ![Audio](https://github.com/user-attachments/assets/109846bd-85da-4678-bd07-e6f941ca4290)
