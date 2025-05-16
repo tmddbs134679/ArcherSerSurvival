@@ -1,10 +1,18 @@
 # 🎵 Monster Sound Manager
 
-[MonsterSoundManager](MonsterSoundManager.cs)
+
 
 ## 📖 도입 배경
 
 몬스터마다 고유한 피격음, 사망 음성 등을 재생해야 하는 요구가 있었고, 이를 Monster마다 사용하는 `AudioClip` 들을 Scriptable Object로 간편하게  처리하고 관리하고자 **`MonsterSoundManager`** 시스템을 도입하였습니다.
+
+
+## 🧱 코드
+
+
+| Script명      | 설명                                                         |
+| ------------- | ------------------------------------------------------------ |
+| [MonsterSoundManager](MonsterSoundManager.cs) | Monster Sound 기능 |
 
 
 
