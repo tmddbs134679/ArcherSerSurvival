@@ -8,8 +8,8 @@
 
 ## 📌 목차
 
-- [DamagePool (오브젝트 풀 매니저)](#damagepool)
-- [DamageText (데미지 텍스트)](#damagetext)
+- [DamagePool (오브젝트 풀 매니저)](#damagepool.cs)
+- [DamageText (데미지 텍스트)](#Damagetext.cs)
 
 ------
 
